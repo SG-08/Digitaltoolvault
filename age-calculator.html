@@ -1,0 +1,209 @@
+<!DOCT<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ✅ TITLE -->
+<title>Age Calculator Online | Calculate Your Exact Age Instantly</title>
+
+<!-- ✅ SEO -->
+<meta name="description" content="Free Age Calculator to calculate your exact age in years, months and days instantly. Fast, accurate and easy to use tool.">
+<meta name="keywords" content="age calculator, calculate age online, DOB calculator, age finder, age in years months days">
+<meta name="author" content="DigitalToolVault">
+<meta name="robots" content="index, follow">
+
+<!-- ✅ CANONICAL -->
+<link rel="canonical" href="https://yourdomain.com/age-calculator">
+
+<!-- ✅ OPEN GRAPH -->
+<meta property="og:title" content="Age Calculator Online | DigitalToolVault">
+<meta property="og:description" content="Calculate your exact age instantly with our free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.com/age-calculator">
+<meta property="og:image" content="https://yourdomain.com/logo.png">
+
+<!-- ✅ TWITTER -->
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ✅ SCHEMA -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Age Calculator",
+ "url": "https://yourdomain.com/age-calculator",
+ "applicationCategory": "Utility",
+ "operatingSystem": "All",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "INR"
+ }
+}
+</script>
+
+<!-- ✅ GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-4M99EKVCD5');
+</script>
+
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #ffffff;
+    --primary: #37474f;
+    --accent: #ff5722;
+    --muted: #94a3b8;
+    --dot-color: #d1d5db;
+    --glass: rgba(255, 255, 255, 0.9);
+}
+
+* { box-sizing: border-box; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.vault-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--primary);
+    padding: 40px;
+    box-shadow: 15px 15px 0px var(--primary);
+}
+
+.header {
+    font-family: 'JetBrains Mono', monospace;
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+.brand-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand-line h1 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.brand-line span { color: var(--accent); }
+
+.tool-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.input-group { margin-bottom: 25px; }
+
+label {
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e2e8f0;
+}
+
+.results-box {
+    padding: 30px;
+    background: #f8fafc;
+    text-align: center;
+    cursor: pointer;
+}
+
+#output-main {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+#output-sub {
+    font-size: 12px;
+    color: var(--muted);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="vault-card">
+    <div class="header">
+        <div class="brand-line">
+            <h1>DigitalTool<span>Vault</span></h1>
+        </div>
+        <div class="tool-title">Age Calculator</div>
+    </div>
+
+    <div class="input-group">
+        <label>Date of Birth</label>
+        <input type="date" id="dob-input">
+    </div>
+
+    <div class="results-box" id="copyArea">
+        <p id="output-main">-- Years Old</p>
+        <div id="output-sub">Waiting for input</div>
+    </div>
+</div>
+
+<script>
+const dobInput = document.getElementById('dob-input');
+const outMain = document.getElementById('output-main');
+const outSub = document.getElementById('output-sub');
+
+dobInput.max = new Date().toISOString().split("T")[0];
+
+dobInput.addEventListener('input', () => {
+    const birthDate = new Date(dobInput.value);
+    const today = new Date();
+
+    if (!dobInput.value) return;
+
+    let years = today.getFullYear() - birthDate.getFullYear();
+    let months = today.getMonth() - birthDate.getMonth();
+    let days = today.getDate() - birthDate.getDate();
+
+    if (days < 0) {
+        months--;
+        days += 30;
+    }
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    outMain.innerText = `${years}Y ${months}M ${days}D`;
+    outSub.innerText = "Calculated Successfully";
+});
+</script>
+
+</body>
+</html>

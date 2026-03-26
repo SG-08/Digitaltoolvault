@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalToolVault | Image Watermark</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --primary: #37474f; 
+            --accent: #ff5722;  
+            --muted: #94a3b8;
+            --dot-color: #d1d5db;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * { box-sizing: border-box; transition: all 0.2s ease; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .vault-card {
+            width: 100%;
+            max-width: 600px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--primary);
+            padding: 40px;
+            position: relative;
+            box-shadow: 15px 15px 0px var(--primary);
+        }
+
+        .header {
+            font-family: 'JetBrains Mono', monospace;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+
+        .brand-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800; color: var(--primary); }
+        .brand-line h1 span { color: var(--accent); }
+        .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
+
+        .tool-title { font-size: 18px; font-weight: 600; text-transform: uppercase; margin-top: 10px; color: var(--primary); }
+
+        /* Stage */
+        .preview-stage {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            margin-bottom: 25px;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        canvas { max-width: 100%; height: auto; border: 1px solid #ddd; display: none; }
+
+        /* Controls */
+        .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .full-width { grid-column: span 2; }
+
+        label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 8px; letter-spacing: 1px; }
+
+        input, select {
+            width: 100%;
+            border: 2px solid #e2e8f0;
+            padding: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            outline: none;
+            background: #fff;
+        }
+
+        .color-picker-wrap { display: flex; align-items: center; gap: 10px; border: 2px solid #e2e8f0; padding: 5px 10px; background: #fff; }
+        input[type="color"] { width: 30px; height: 30px; border: none; padding: 0; cursor: pointer; }
+
+        button {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 18px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        button:hover { background: var(--accent); }
+        button:disabled { background: var(--muted); cursor: not-allowed; }
+
+        .sys-footer {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8px;
+            color: var(--muted);
+            margin-top: 25px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="vault-card">
+    <div class="header">
+        <div class="brand-line">
+            <h1>DigitalTool<span>Vault</span></h1>
+            <span class="sys-code">IMG_WM_SYNTH_V1</span>
+        </div>
+        <div class="tool-title">Image Watermark Generator</div>
+    </div>
+
+    <div class="preview-stage">
+        <div id="placeholder" style="font-family: 'JetBrains Mono'; font-size: 10px; color: var(--muted);">AWAITING_IMAGE_BUFFER</div>
+        <canvas id="mainCanvas"></canvas>
+    </div>
+
+    <div class="control-grid">
+        <div class="full-width">
+            <label>Select_Source_Image</label>
+            <input type="file" id="imageLoader" accept="image/*">
+        </div>
+
+        <div class="full-width">
+            <label>Watermark_Text_Content</label>
+            <input type="text" id="wmText" placeholder="ENTER CUSTOM TEXT..." value="DIGITAL TOOL VAULT">
+        </div>
+
+        <div>
+            <label>Matrix_Color</label>
+            <div class="color-picker-wrap">
+                <input type="color" id="wmColor" value="#ffffff">
+                <span style="font-size: 9px; font-family: 'JetBrains Mono'; color: var(--muted);">HEX_VAL</span>
+            </div>
+        </div>
+
+        <div>
+            <label>Position_Anchor</label>
+            <select id="wmPos">
+                <option value="center">Center</option>
+                <option value="bottom-right" selected>Bottom-Right</option>
+                <option value="bottom-left">Bottom-Left</option>
+                <option value="top-right">Top-Right</option>
+                <option value="top-left">Top-Left</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Opacity_Level [%]</label>
+            <input type="range" id="wmOpacity" min="10" max="100" value="50">
+        </div>
+
+        <div>
+            <label>Scale_Ratio [%]</label>
+            <input type="range" id="wmSize" min="5" max="50" value="10">
+        </div>
+    </div>
+
+    <button id="downloadBtn" disabled onclick="downloadImage()">Download_Watermarked_Asset</button>
+
+    <div class="sys-footer">PROCESSING: BROWSER_CANVAS_API | SECURITY: ZERO_SERVER_UPLOADS</div>
+</div>
+
+<script>
+    const canvas = document.getElementById('mainCanvas');
+    const ctx = canvas.getContext('2d');
+    const imageLoader = document.getElementById('imageLoader');
+    const placeholder = document.getElementById('placeholder');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    // Controls
+    const wmTextInput = document.getElementById('wmText');
+    const wmColorInput = document.getElementById('wmColor');
+    const wmPosInput = document.getElementById('wmPos');
+    const wmOpacityInput = document.getElementById('wmOpacity');
+    const wmSizeInput = document.getElementById('wmSize');
+
+    let originalImage = null;
+
+    imageLoader.addEventListener('change', (e) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            originalImage = new Image();
+            originalImage.onload = () => {
+                render();
+                canvas.style.display = 'block';
+                placeholder.style.display = 'none';
+                downloadBtn.disabled = false;
+            };
+            originalImage.src = event.target.result;
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    });
+
+    [wmTextInput, wmColorInput, wmPosInput, wmOpacityInput, wmSizeInput].forEach(input => {
+        input.addEventListener('input', render);
+    });
+
+    function render() {
+        if (!originalImage) return;
+
+        // Setup Canvas Size
+        canvas.width = originalImage.width;
+        canvas.height = originalImage.height;
+
+        // Draw Base Image
+        ctx.drawImage(originalImage, 0, 0);
+
+        // Watermark Configuration
+        const text = wmTextInput.value || "DTV";
+        const fontSize = (canvas.width * (wmSizeInput.value / 100));
+        ctx.font = `bold ${fontSize}px 'JetBrains Mono', monospace`;
+        
+        // Color & Opacity
+        const hex = wmColorInput.value;
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        const alpha = wmOpacityInput.value / 100;
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+
+        // Position Logic
+        const padding = canvas.width * 0.05;
+        const metrics = ctx.measureText(text);
+        let x, y;
+
+        switch(wmPosInput.value) {
+            case 'center':
+                x = (canvas.width / 2) - (metrics.width / 2);
+                y = (canvas.height / 2);
+                break;
+            case 'top-left':
+                x = padding;
+                y = padding + fontSize;
+                break;
+            case 'top-right':
+                x = canvas.width - metrics.width - padding;
+                y = padding + fontSize;
+                break;
+            case 'bottom-left':
+                x = padding;
+                y = canvas.height - padding;
+                break;
+            default: // bottom-right
+                x = canvas.width - metrics.width - padding;
+                y = canvas.height - padding;
+        }
+
+        ctx.fillText(text, x, y);
+    }
+
+    function downloadImage() {
+        const link = document.createElement('a');
+        link.download = 'DTV_Watermarked_Image.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    }
+</script>
+
+</body>
+</html>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4M99EKVCD5');
+</script>

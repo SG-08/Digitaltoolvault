@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalToolVault | Custom QR Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --primary: #37474f; 
+            --accent: #ff5722;  
+            --muted: #94a3b8;
+            --dot-color: #d1d5db;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * { box-sizing: border-box; transition: all 0.2s ease; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .vault-card {
+            width: 100%;
+            max-width: 460px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--primary);
+            padding: 40px;
+            position: relative;
+            box-shadow: 15px 15px 0px var(--primary);
+        }
+
+        .header {
+            font-family: 'JetBrains Mono', monospace;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+
+        .brand-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800; color: var(--primary); }
+        .brand-line h1 span { color: var(--accent); }
+        .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
+
+        .tool-title { font-size: 18px; font-weight: 600; text-transform: uppercase; margin-top: 10px; color: var(--primary); }
+
+        .input-group { margin-bottom: 20px; }
+        label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 8px; letter-spacing: 1px; }
+
+        input[type="text"] {
+            width: 100%;
+            border: 2px solid #e2e8f0;
+            padding: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            outline: none;
+            background: #fff;
+        }
+
+        /* Color Control Grid */
+        .color-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .color-input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #e2e8f0;
+            padding: 8px;
+            background: white;
+        }
+
+        input[type="color"] {
+            border: none;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            background: none;
+        }
+
+        .qr-stage {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            min-height: 220px;
+        }
+
+        #qrcode {
+            padding: 10px;
+            border: 1px solid var(--primary);
+            background: white;
+        }
+
+        button {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        button:hover { background: var(--accent); }
+
+        .sys-footer {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8px;
+            color: var(--muted);
+            margin-top: 25px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="vault-card">
+    <div class="header">
+        <div class="brand-line">
+            <h1>DigitalTool<span>Vault</span></h1>
+            <span class="sys-code">QR_COLOUR_MOD_V2</span>
+        </div>
+        <div class="tool-title">Custom QR Generator</div>
+    </div>
+
+    <div class="input-group">
+        <label>Input_Buffer [Data]</label>
+        <input type="text" id="qr-data" placeholder="https://digitaltoolvault.com" autocomplete="off">
+    </div>
+
+    <div class="color-matrix">
+        <div>
+            <label>Matrix_Color</label>
+            <div class="color-input-wrap">
+                <input type="color" id="fg-color" value="#37474f">
+                <span style="font-size: 9px; font-family: 'JetBrains Mono'; color: var(--muted);">HEX</span>
+            </div>
+        </div>
+        <div>
+            <label>Canvas_Color</label>
+            <div class="color-input-wrap">
+                <input type="color" id="bg-color" value="#ffffff">
+                <span style="font-size: 9px; font-family: 'JetBrains Mono'; color: var(--muted);">HEX</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="qr-stage">
+        <div id="qrcode"></div>
+        <div id="status" style="font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-top: 15px;">AWAITING_INPUT_STREAM</div>
+    </div>
+
+    <button onclick="downloadQR()">Download_Branded_QR</button>
+
+    <div class="sys-footer">COLOR_NORMALIZATION: ACTIVE | LOCAL_RENDER: ON</div>
+</div>
+
+<script>
+    const qrData = document.getElementById('qr-data');
+    const fgColor = document.getElementById('fg-color');
+    const bgColor = document.getElementById('bg-color');
+    const qrContainer = document.getElementById('qrcode');
+    const status = document.getElementById('status');
+
+    let qrcode = null;
+
+    function generateQR() {
+        const val = qrData.value.trim();
+        
+        // Clear previous QR
+        qrContainer.innerHTML = '';
+        
+        if (val) {
+            qrcode = new QRCode(qrContainer, {
+                text: val,
+                width: 160,
+                height: 160,
+                colorDark : fgColor.value,
+                colorLight : bgColor.value,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+            qrContainer.style.display = 'block';
+            qrContainer.style.backgroundColor = bgColor.value;
+            status.innerText = "COLOR_SYNC_SUCCESSFUL";
+            status.style.color = "var(--accent)";
+        } else {
+            qrContainer.style.display = 'none';
+            status.innerText = "AWAITING_INPUT_STREAM";
+            status.style.color = "var(--muted)";
+        }
+    }
+
+    // Event Listeners for Live Update
+    qrData.addEventListener('input', generateQR);
+    fgColor.addEventListener('input', generateQR);
+    bgColor.addEventListener('input', generateQR);
+
+    // Initial state
+    qrContainer.style.display = 'none';
+
+    function downloadQR() {
+        const img = qrContainer.querySelector('img');
+        if (img) {
+            const link = document.createElement('a');
+            link.download = 'DTV_Branded_QR.png';
+            link.href = img.src;
+            link.click();
+        }
+    }
+</script>
+
+</body>
+</html>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4M99EKVCD5');
+</script>
