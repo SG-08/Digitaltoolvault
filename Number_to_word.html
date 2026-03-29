@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DigitalToolVault | Number to Words Converter</title>
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg:#ffffff;
+    --primary:#37474f;
+    --accent:#ff5722;
+    --muted:#94a3b8;
+    --dot-color:#d1d5db;
+    --glass:rgba(255,255,255,0.9);
+}
+
+*{box-sizing:border-box;}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    background-image:radial-gradient(var(--dot-color)1.5px,transparent 1.5px);
+    background-size:30px 30px;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.vault-card{
+    width:100%;
+    max-width:500px;
+    background:var(--glass);
+    border:2px solid var(--primary);
+    padding:40px;
+    box-shadow:15px 15px 0px var(--primary);
+}
+
+.header{
+    font-family:'JetBrains Mono';
+    border-bottom:2px solid var(--primary);
+    margin-bottom:25px;
+}
+
+.brand-line{
+    display:flex;
+    justify-content:space-between;
+}
+
+.tool-title{
+    font-size:18px;
+    font-weight:600;
+    margin-top:10px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:2px solid #e2e8f0;
+    font-family:'JetBrains Mono';
+    margin-bottom:20px;
+}
+
+.result-box{
+    padding:20px;
+    border:1px solid #e2e8f0;
+    background:#f8fafc;
+    font-family:'JetBrains Mono';
+}
+
+.toggle{
+    display:flex;
+    margin-bottom:15px;
+    background:#f1f5f9;
+    padding:4px;
+}
+
+.toggle div{
+    flex:1;
+    text-align:center;
+    padding:8px;
+    cursor:pointer;
+    font-size:10px;
+    font-family:'JetBrains Mono';
+}
+
+.active{
+    background:var(--primary);
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="vault-card">
+
+<div class="header">
+<div class="brand-line">
+<h1>DigitalTool<span style="color:#ff5722">Vault</span></h1>
+<span>NUM_WORD_V3</span>
+</div>
+<div class="tool-title">Number to Words Converter</div>
+</div>
+
+<div class="toggle">
+<div id="intlBtn" class="active" onclick="setMode('intl')">INTERNATIONAL</div>
+<div id="indBtn" onclick="setMode('ind')">INDIAN</div>
+</div>
+
+<input type="number" id="numberInput" placeholder="ENTER_NUMBER">
+
+<div class="result-box" id="result">RESULT</div>
+
+</div>
+
+<script>
+let mode = "intl";
+
+function setMode(m){
+    mode = m;
+    document.getElementById("intlBtn").classList.remove("active");
+    document.getElementById("indBtn").classList.remove("active");
+    document.getElementById(m+"Btn").classList.add("active");
+    convert();
+}
+
+const input = document.getElementById('numberInput');
+const result = document.getElementById('result');
+
+input.addEventListener('input', convert);
+
+function convert(){
+    let num = parseInt(input.value);
+    if(isNaN(num)){
+        result.innerText="RESULT";
+        return;
+    }
+    result.innerText = mode === "intl" ? intlWords(num) : indWords(num);
+}
+
+/* INTERNATIONAL */
+function intlWords(num){
+    if(num===0) return "zero";
+
+    const a=["","one","two","three","four","five","six","seven","eight","nine",
+    "ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen",
+    "seventeen","eighteen","nineteen"];
+    const b=["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+
+    function helper(n){
+        if(n<20) return a[n];
+        if(n<100) return b[Math.floor(n/10)]+" "+a[n%10];
+        if(n<1000) return a[Math.floor(n/100)]+" hundred "+helper(n%100);
+        if(n<1000000) return helper(Math.floor(n/1000))+" thousand "+helper(n%1000);
+        if(n<1000000000) return helper(Math.floor(n/1000000))+" million "+helper(n%1000000);
+        return helper(Math.floor(n/1000000000))+" billion "+helper(n%1000000000);
+    }
+
+    return helper(num).trim();
+}
+
+/* INDIAN */
+function indWords(num){
+    if(num===0) return "zero";
+
+    const a=["","one","two","three","four","five","six","seven","eight","nine",
+    "ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen",
+    "seventeen","eighteen","nineteen"];
+    const b=["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+
+    function helper(n){
+        if(n<20) return a[n];
+        if(n<100) return b[Math.floor(n/10)]+" "+a[n%10];
+        if(n<1000) return a[Math.floor(n/100)]+" hundred "+helper(n%100);
+        if(n<100000) return helper(Math.floor(n/1000))+" thousand "+helper(n%1000);
+        if(n<10000000) return helper(Math.floor(n/100000))+" lakh "+helper(n%100000);
+        return helper(Math.floor(n/10000000))+" crore "+helper(n%10000000);
+    }
+
+    return helper(num).trim();
+}
+</script>
+
+<!-- ===== SEO + FAQ ===== -->
+<div style="max-width:900px;margin-top:60px;font-family:Inter">
+
+<h2>Number to Words Converter (Indian & International)</h2>
+<p>This free tool converts numbers into words in both Indian and International formats. Perfect for financial documents, invoices, and checks.</p>
+
+<h3>Features</h3>
+<ul>
+<li>Indian system (lakh, crore)</li>
+<li>International system (million, billion)</li>
+<li>Instant conversion</li>
+<li>Accurate results</li>
+</ul>
+
+<h3>FAQs</h3>
+
+<p><b>1. Does it support crore format?</b><br>Yes, Indian mode supports lakh and crore.</p>
+<p><b>2. Can I switch formats?</b><br>Yes, toggle between Indian and International.</p>
+<p><b>3. Is it free?</b><br>Yes, 100% free.</p>
+
+</div>
+
+</body>
+</html>
