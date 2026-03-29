@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigitalToolVault | Password Generator</title>
+    <title>Digitaltoolvault | JPG to PDF</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         :root {
             --bg: #ffffff;
-            --primary: #37474f; 
-            --accent: #ff5722;  
+            --primary: #000000;
+            --accent: #ff3e00;
             --muted: #94a3b8;
-            --dot-color: #d1d5db;
+            --dot-color: #e2e8f0;
             --glass: rgba(255, 255, 255, 0.9);
-            --success: #10b981;
         }
 
 ```
-    * { box-sizing: border-box; transition: all 0.2s ease; }
+    * { box-sizing: border-box; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
 
     body {
         font-family: 'Inter', sans-serif;
@@ -27,7 +27,7 @@
         background-size: 30px 30px;
         margin: 0;
         display: flex;
-        flex-direction: column; /* ONLY FIX */
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
@@ -36,7 +36,7 @@
 
     .vault-card {
         width: 100%;
-        max-width: 440px;
+        max-width: 460px;
         background: var(--glass);
         backdrop-filter: blur(10px);
         border: 2px solid var(--primary);
@@ -48,7 +48,7 @@
     .header {
         font-family: 'JetBrains Mono', monospace;
         border-bottom: 2px solid var(--primary);
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         padding-bottom: 15px;
     }
 
@@ -56,177 +56,181 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 5px;
     }
 
-    .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800; color: var(--primary); }
-    .brand-line h1 span { color: var(--accent); }
+    .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 600; }
     .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
 
-    .tool-title { font-size: 18px; font-weight: 600; text-transform: uppercase; margin-top: 10px; color: var(--primary); }
-
-    .display-area {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        padding: 20px;
-        margin-bottom: 25px;
-        position: relative;
-        cursor: pointer;
-        word-break: break-all;
-        min-height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    #password-out {
-        font-family: 'JetBrains Mono', monospace;
+    .tool-title {
         font-size: 18px;
-        font-weight: 500;
-        color: var(--primary);
-    }
-
-    .control-group { margin-bottom: 20px; }
-
-    label { 
-        font-family: 'JetBrains Mono', monospace; 
-        font-size: 9px; 
-        text-transform: uppercase; 
-        color: var(--muted); 
-        display: flex; 
-        justify-content: space-between;
-        margin-bottom: 10px; 
-    }
-
-    input[type="range"] {
-        width: 100%;
-        accent-color: var(--accent);
-    }
-
-    .options-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        margin-bottom: 25px;
-    }
-
-    .option-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        color: var(--primary);
+        font-weight: 600;
         text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 10px;
+        color: var(--primary);
     }
 
-    button {
+    .dropzone {
+        border: 1px dashed var(--primary);
+        padding: 50px 20px;
+        text-align: center;
+        cursor: pointer;
+        background: #fafafa;
+        margin-top: 20px;
+    }
+
+    .dropzone:hover { background: #fff; border-style: solid; }
+
+    #file-input { display: none; }
+
+    #preview-matrix {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin: 20px 0;
+    }
+
+    .thumb {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border: 1px solid var(--primary);
+        filter: grayscale(100%);
+    }
+
+    .thumb:hover { filter: grayscale(0%); }
+
+    .btn-execute {
         width: 100%;
         background: var(--primary);
         color: white;
         border: none;
-        padding: 18px;
+        padding: 20px;
         font-family: 'JetBrains Mono', monospace;
+        cursor: pointer;
+        display: none;
     }
 
-    .sys-footer {
+    .progress-bar {
+        height: 2px;
+        width: 100%;
+        background: var(--dot-color);
+        margin-top: 15px;
+        display: none;
+    }
+
+    #progress-fill { height: 100%; background: var(--accent); width: 0%; }
+
+    .footer {
+        margin-top: 30px;
         font-family: 'JetBrains Mono', monospace;
         font-size: 8px;
         color: var(--muted);
-        margin-top: 25px;
-        text-align: center;
+        display: flex;
+        justify-content: space-between;
     }
 </style>
 ```
 
 </head>
+
 <body>
 
 <div class="vault-card">
     <div class="header">
         <div class="brand-line">
-            <h1>DigitalTool<span>Vault</span></h1>
-            <span class="sys-code">ENTROPY_GEN_V1</span>
+            <h1>Digitaltoolvault</h1>
+            <span class="sys-code">ONLINE_OFFLINE</span>
         </div>
-        <div class="tool-title">Password Generator</div>
+        <div class="tool-title">JPG TO PDF CONVERTER</div>
     </div>
 
 ```
-<div class="display-area" id="copyBtn">
-    <span id="password-out">P@ssw0rd_123</span>
+<div class="dropzone" id="drop-area" onclick="document.getElementById('file-input').click()">
+    <p id="label-text">Select_Image_Source</p>
+    <input type="file" id="file-input" accept="image/jpeg" multiple>
 </div>
 
-<div class="control-group">
-    <label>Entropy_Length: <span id="lengthVal">16</span></label>
-    <input type="range" id="lengthRange" min="8" max="50" value="16">
+<div id="preview-matrix"></div>
+
+<button class="btn-execute" id="convert-btn" onclick="generatePDF()">Run_Compilation</button>
+
+<div class="progress-bar" id="prog-wrap">
+    <div id="progress-fill"></div>
 </div>
 
-<div class="options-grid">
-    <label class="option-item"><input type="checkbox" id="upper" checked> Uppercase</label>
-    <label class="option-item"><input type="checkbox" id="lower" checked> Lowercase</label>
-    <label class="option-item"><input type="checkbox" id="numbers" checked> Numbers</label>
-    <label class="option-item"><input type="checkbox" id="symbols" checked> Symbols</label>
+<div class="footer">
+    <span>Secure_Local_Vault</span>
+    <span>Version_2.0</span>
 </div>
-
-<button onclick="generate()">Generate_Secure_Key</button>
-
-<div class="sys-footer">PROTOCOL: CRYPTO_JS_WEBAPI</div>
 ```
 
 </div>
 
-<!-- ✅ ONLY ADDITION -->
+<!-- ✅ SEO CONTENT (ONLY ADDITION) -->
 
 <div style="max-width:800px;margin:60px auto 0 auto;line-height:1.6;font-family:Inter;padding:0 10px;">
 
-<h1>Password Generator Online – Create Secure Random Passwords Instantly</h1>
+<h1>JPG to PDF Converter Online – Convert Images to PDF Instantly</h1>
 
 <p>
-Use this free password generator to create strong and secure passwords instantly.
-Customize length and include uppercase, lowercase, numbers, and symbols.
+Use this free JPG to PDF converter to convert multiple images into a single PDF file instantly.
+It works completely in your browser, keeping your files secure and private.
 </p>
 
 <h2>How to Use</h2>
 <ul>
-<li>Select password length</li>
-<li>Choose character options</li>
-<li>Click generate</li>
-<li>Copy password instantly</li>
+<li>Select or drag your JPG images</li>
+<li>Preview selected images</li>
+<li>Click run to convert</li>
+<li>Download PDF instantly</li>
 </ul>
 
 <h2>Features</h2>
 <ul>
-<li>Secure random generation</li>
-<li>Custom options</li>
-<li>Instant copy</li>
-<li>Works on all devices</li>
+<li>Secure local processing</li>
+<li>Multiple image support</li>
+<li>Fast conversion</li>
+<li>No login required</li>
 </ul>
 
 <h2>FAQs</h2>
-<p><strong>Is it secure?</strong> Yes.</p>
-<p><strong>Free?</strong> Yes.</p>
+<p><strong>Is my data safe?</strong> Yes, everything is processed locally.</p>
+<p><strong>Is this tool free?</strong> Yes, completely free.</p>
 
 </div>
 
 <script>
-const lengthRange = document.getElementById('lengthRange');
-const lengthVal = document.getElementById('lengthVal');
-const passwordOut = document.getElementById('password-out');
+const fileInput = document.getElementById('file-input');
+const previewMatrix = document.getElementById('preview-matrix');
+const convertBtn = document.getElementById('convert-btn');
+const labelText = document.getElementById('label-text');
+const progWrap = document.getElementById('prog-wrap');
+const progFill = document.getElementById('progress-fill');
 
-lengthRange.addEventListener('input', () => {
-    lengthVal.innerText = lengthRange.value;
-});
+let filesList = [];
 
-function generate() {
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-    let pass = "";
-    for (let i = 0; i < lengthRange.value; i++) {
-        pass += chars[Math.floor(Math.random() * chars.length)];
+fileInput.addEventListener('change', (e) => {
+    const files = Array.from(e.target.files);
+    if (files.length > 0) {
+        filesList = files;
+        previewMatrix.innerHTML = '';
+        convertBtn.style.display = 'block';
+        labelText.innerText = `${files.length}_FILES_READY`;
+
+        files.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                const img = document.createElement('img');
+                img.src = ev.target.result;
+                img.className = 'thumb';
+                previewMatrix.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
     }
-    passwordOut.innerText = pass;
-}
-
-generate();
+});
 </script>
 
 </body>
