@@ -11,55 +11,80 @@
 
 <style>
 :root {
-    --bg: #ffffff;
-    --primary: #37474f;
-    --accent: #ff5722;
-    --muted: #94a3b8;
-    --dot-color: #d1d5db;
+    --bg:#ffffff;
+    --primary:#37474f;
+    --accent:#ff5722;
+    --muted:#94a3b8;
+    --dot:#d1d5db;
+    --glass:rgba(255,255,255,0.9);
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-    background-size: 30px 30px;
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* IMPORTANT FIX */
-    align-items: center;
-    padding: 20px;
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px);
+    background-size:30px 30px;
+    margin:0;
+    display:flex;
+    flex-direction:column; /* IMPORTANT */
+    align-items:center;
+    padding:20px;
 }
 
-/* SAME UI */
-.vault-card {
-    width: 100%;
-    max-width: 420px;
-    border: 2px solid var(--primary);
-    padding: 30px;
-    box-shadow: 10px 10px 0px var(--primary);
+/* 🔥 SAME OLD UI */
+.vault-card{
+    width:100%;
+    max-width:420px;
+    background:var(--glass);
+    backdrop-filter:blur(10px);
+    border:2px solid var(--primary);
+    padding:40px;
+    box-shadow:15px 15px 0 var(--primary);
 }
 
-.header {
-    font-family: 'JetBrains Mono', monospace;
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 20px;
+.header{
+    font-family:'JetBrains Mono';
+    border-bottom:2px solid var(--primary);
+    margin-bottom:30px;
+    padding-bottom:15px;
 }
 
-.tool-title {
-    font-size: 18px;
-    margin-top: 10px;
+.brand-line{
+    display:flex;
+    justify-content:space-between;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 2px solid #ccc;
+.brand-line h1{
+    font-size:12px;
+    letter-spacing:3px;
 }
 
-.result {
-    text-align: center;
-    margin-top: 10px;
+.brand-line span{color:var(--accent);}
+
+.tool-title{
+    font-size:18px;
+    font-weight:600;
+    margin-top:10px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:2px solid #e2e8f0;
+    margin-bottom:15px;
+}
+
+.results-box{
+    padding:20px;
+    background:#f8fafc;
+    text-align:center;
+}
+
+/* SEO */
+.seo{
+    max-width:800px;
+    margin-top:60px;
+    line-height:1.6;
 }
 </style>
 
@@ -67,11 +92,13 @@ input {
 
 <body>
 
-<!-- ✅ SAME UI (UNCHANGED) -->
+<!-- ✅ ORIGINAL UI SAME -->
 
 <div class="vault-card">
     <div class="header">
-        <h2>DigitalToolVault</h2>
+        <div class="brand-line">
+            <h1>DigitalTool<span>Vault</span></h1>
+        </div>
         <div class="tool-title">Binary Converter</div>
     </div>
 
@@ -79,19 +106,19 @@ input {
 <input type="text" id="binary" placeholder="Enter Binary">
 <input type="text" id="decimal" placeholder="Enter Decimal">
 
-<div class="result">⇅ Auto Convert</div>
+<div class="results-box">⇅ Auto Convert</div>
 ```
 
 </div>
 
-<!-- ✅ ONLY ADDITION (SEO CONTENT) -->
+<!-- ✅ ONLY ADDITION -->
 
-<div style="max-width:800px;margin-top:60px;line-height:1.6;">
+<div class="seo">
 
 <h1>Binary Converter Online – Convert Binary to Decimal Instantly</h1>
 
 <p>
-This free binary converter allows you to convert binary numbers to decimal and decimal to binary instantly.
+This free binary converter helps you convert binary numbers to decimal and decimal to binary instantly. 
 It is fast, accurate, and easy to use on all devices.
 </p>
 
@@ -99,7 +126,7 @@ It is fast, accurate, and easy to use on all devices.
 <ul>
 <li>Enter a binary number to convert to decimal</li>
 <li>Enter a decimal number to convert to binary</li>
-<li>Get instant results automatically</li>
+<li>Get instant results instantly</li>
 </ul>
 
 <h2>Features</h2>
@@ -112,7 +139,7 @@ It is fast, accurate, and easy to use on all devices.
 
 <h2>FAQs</h2>
 <p><strong>What is binary?</strong> Binary uses only 0 and 1.</p>
-<p><strong>Is this tool free?</strong> Yes, it is completely free.</p>
+<p><strong>Is this tool free?</strong> Yes, completely free.</p>
 
 </div>
 
