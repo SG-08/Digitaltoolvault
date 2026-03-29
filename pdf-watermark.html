@@ -1,22 +1,196 @@
+<!DOCTYPE html>
 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalToolVault | PDF Watermark</title>
 
-            const pdfBytes = await pdfDoc.save();
-            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-            const url = URL.createObjectURL(blob);
-            
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `DTV_Watermarked_${customText.replace(/\s+/g, '_')}.pdf`;
-            link.click();
+```
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-            status.innerText = "SYNTHESIS_COMPLETE_DOWNLOADED";
-            processBtn.disabled = false;
-        } catch (err) {
-            console.error(err);
-            status.innerText = "CRITICAL_SYNTHESIS_ERROR";
-            processBtn.disabled = false;
-        }
+<style>
+    :root {
+        --bg: #ffffff;
+        --primary: #37474f;
+        --accent: #ff5722;
+        --muted: #94a3b8;
+        --dot-color: #d1d5db;
     }
+
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg);
+        background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+        background-size: 30px 30px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .vault-card {
+        width: 100%;
+        max-width: 500px;
+        background: white;
+        border: 2px solid var(--primary);
+        padding: 40px;
+        box-shadow: 15px 15px 0px var(--primary);
+    }
+
+    .header {
+        font-family: 'JetBrains Mono', monospace;
+        border-bottom: 2px solid var(--primary);
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+    }
+
+    .brand-line {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .upload-zone {
+        border: 2px dashed #e2e8f0;
+        padding: 40px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+
+    input, textarea {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 2px solid #e2e8f0;
+    }
+
+    button {
+        width: 100%;
+        padding: 18px;
+        background: var(--primary);
+        color: white;
+        border: none;
+    }
+
+    .status {
+        margin-top: 10px;
+        font-size: 12px;
+        font-family: 'JetBrains Mono';
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="vault-card">
+
+```
+<div class="header">
+    <div class="brand-line">
+        <h1>DigitalToolVault</h1>
+        <span>PDF_WATERMARK_V1</span>
+    </div>
+</div>
+
+<input type="file" id="pdfInput" accept="application/pdf">
+<textarea id="wmText" placeholder="Enter Watermark Text"></textarea>
+
+<button id="processBtn" onclick="applyWatermark()">Apply Watermark</button>
+
+<div class="status" id="status">READY</div>
+```
+
+</div>
+
+<!-- ✅ SEO CONTENT (ONLY ADDITION) -->
+
+<div style="max-width:800px;margin:60px auto 0 auto;line-height:1.6;font-family:Inter;padding:0 10px;">
+
+<h1>PDF Watermark Tool Online – Add Watermark to PDF Instantly</h1>
+
+<p>
+Use this free PDF watermark tool to add custom text watermark to your PDF files instantly.
+Protect your documents and add branding without installing any software.
+</p>
+
+<h2>How to Use</h2>
+<ul>
+<li>Upload your PDF file</li>
+<li>Enter watermark text</li>
+<li>Click apply watermark</li>
+<li>Download your file instantly</li>
+</ul>
+
+<h2>Features</h2>
+<ul>
+<li>Fast watermark processing</li>
+<li>Secure file handling</li>
+<li>No login required</li>
+<li>Works on all devices</li>
+</ul>
+
+<h2>FAQs</h2>
+<p><strong>Is my file safe?</strong> Yes, your PDF is processed securely.</p>
+<p><strong>Is this tool free?</strong> Yes, completely free.</p>
+
+</div>
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<script>
+async function applyWatermark() {
+    const fileInput = document.getElementById('pdfInput');
+    const text = document.getElementById('wmText').value;
+    const status = document.getElementById('status');
+    const processBtn = document.getElementById('processBtn');
+
+    if (!fileInput.files.length) return;
+
+    processBtn.disabled = true;
+    status.innerText = "PROCESSING...";
+
+    try {
+        const file = fileInput.files[0];
+        const arrayBuffer = await file.arrayBuffer();
+
+        const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+        const pages = pdfDoc.getPages();
+
+        pages.forEach(page => {
+            const { width, height } = page.getSize();
+            page.drawText(text, {
+                x: width / 4,
+                y: height / 2,
+                size: 30,
+                opacity: 0.3
+            });
+        });
+
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        const url = URL.createObjectURL(blob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `DTV_Watermarked_${text.replace(/\s+/g, '_')}.pdf`;
+        link.click();
+
+        status.innerText = "SYNTHESIS_COMPLETE_DOWNLOADED";
+        processBtn.disabled = false;
+
+    } catch (err) {
+        console.error(err);
+        status.innerText = "CRITICAL_SYNTHESIS_ERROR";
+        processBtn.disabled = false;
+    }
+}
 </script>
 
 </body>
