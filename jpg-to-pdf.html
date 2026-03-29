@@ -2,192 +2,231 @@
 
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digitaltoolvault | JPG to PDF</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalToolVault | Password Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --primary: #37474f; 
+            --accent: #ff5722;  
+            --muted: #94a3b8;
+            --dot-color: #d1d5db;
+            --glass: rgba(255, 255, 255, 0.9);
+            --success: #10b981;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+```
+    * { box-sizing: border-box; transition: all 0.2s ease; }
 
-<style>
-:root {
-    --bg:#ffffff;
-    --primary:#000000;
-    --accent:#ff3e00;
-    --muted:#94a3b8;
-    --dot:#e2e8f0;
-    --glass:rgba(255,255,255,0.9);
-}
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg);
+        background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+        background-size: 30px 30px;
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* ONLY FIX */
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
 
-*{box-sizing:border-box;}
+    .vault-card {
+        width: 100%;
+        max-width: 440px;
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        border: 2px solid var(--primary);
+        padding: 40px;
+        position: relative;
+        box-shadow: 15px 15px 0px var(--primary);
+    }
 
-body{
-    font-family:'Inter',sans-serif;
-    background:var(--bg);
-    background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px);
-    background-size:30px 30px;
-    margin:0;
-    display:flex;
-    flex-direction:column; /* ONLY FIX */
-    align-items:center;
-    min-height:100vh;
-    padding:20px;
-}
+    .header {
+        font-family: 'JetBrains Mono', monospace;
+        border-bottom: 2px solid var(--primary);
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+    }
 
-.vault-card{
-    width:100%;
-    max-width:460px;
-    background:var(--glass);
-    backdrop-filter:blur(10px);
-    border:2px solid var(--primary);
-    padding:40px;
-    box-shadow:15px 15px 0 var(--primary);
-}
+    .brand-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.header{
-    font-family:'JetBrains Mono';
-    border-bottom:2px solid var(--primary);
-    margin-bottom:20px;
-}
+    .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800; color: var(--primary); }
+    .brand-line h1 span { color: var(--accent); }
+    .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
 
-.brand-line{
-    display:flex;
-    justify-content:space-between;
-}
+    .tool-title { font-size: 18px; font-weight: 600; text-transform: uppercase; margin-top: 10px; color: var(--primary); }
 
-.tool-title{
-    font-size:18px;
-    margin-top:10px;
-}
+    .display-area {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        padding: 20px;
+        margin-bottom: 25px;
+        position: relative;
+        cursor: pointer;
+        word-break: break-all;
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
-.dropzone{
-    border:1px dashed var(--primary);
-    padding:50px;
-    text-align:center;
-    margin-top:20px;
-    cursor:pointer;
-}
+    #password-out {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--primary);
+    }
 
-#preview-matrix{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-    margin:20px 0;
-}
+    .control-group { margin-bottom: 20px; }
 
-.thumb{
-    width:100%;
-    aspect-ratio:1;
-    object-fit:cover;
-}
+    label { 
+        font-family: 'JetBrains Mono', monospace; 
+        font-size: 9px; 
+        text-transform: uppercase; 
+        color: var(--muted); 
+        display: flex; 
+        justify-content: space-between;
+        margin-bottom: 10px; 
+    }
 
-.btn-execute{
-    width:100%;
-    padding:20px;
-    background:black;
-    color:white;
-    display:none;
-}
+    input[type="range"] {
+        width: 100%;
+        accent-color: var(--accent);
+    }
 
-.progress-bar{
-    height:2px;
-    background:#ddd;
-    margin-top:15px;
-    display:none;
-}
+    .options-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
 
-#progress-fill{
-    height:100%;
-    background:red;
-    width:0%;
-}
+    .option-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        color: var(--primary);
+        text-transform: uppercase;
+    }
 
-.footer{
-    margin-top:30px;
-    display:flex;
-    justify-content:space-between;
-    font-size:10px;
-}
+    button {
+        width: 100%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 18px;
+        font-family: 'JetBrains Mono', monospace;
+    }
 
-/* SEO */
-.seo{
-    max-width:800px;
-    margin-top:60px;
-    line-height:1.6;
-}
+    .sys-footer {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        color: var(--muted);
+        margin-top: 25px;
+        text-align: center;
+    }
 </style>
+```
 
 </head>
-
 <body>
 
-<!-- ✅ ORIGINAL UI -->
-
 <div class="vault-card">
-
-<div class="header">
-    <div class="brand-line">
-        <h1>Digitaltoolvault</h1>
-        <span>ONLINE_OFFLINE</span>
+    <div class="header">
+        <div class="brand-line">
+            <h1>DigitalTool<span>Vault</span></h1>
+            <span class="sys-code">ENTROPY_GEN_V1</span>
+        </div>
+        <div class="tool-title">Password Generator</div>
     </div>
-    <div class="tool-title">JPG TO PDF CONVERTER</div>
+
+```
+<div class="display-area" id="copyBtn">
+    <span id="password-out">P@ssw0rd_123</span>
 </div>
 
-<div class="dropzone" onclick="file.click()">
-    <p>Select Images</p>
-    <input type="file" id="file" multiple hidden>
+<div class="control-group">
+    <label>Entropy_Length: <span id="lengthVal">16</span></label>
+    <input type="range" id="lengthRange" min="8" max="50" value="16">
 </div>
 
-<div id="preview-matrix"></div>
-
-<button class="btn-execute" id="btn" onclick="convert()">Run</button>
-
-<div class="progress-bar" id="prog">
-    <div id="progress-fill"></div>
+<div class="options-grid">
+    <label class="option-item"><input type="checkbox" id="upper" checked> Uppercase</label>
+    <label class="option-item"><input type="checkbox" id="lower" checked> Lowercase</label>
+    <label class="option-item"><input type="checkbox" id="numbers" checked> Numbers</label>
+    <label class="option-item"><input type="checkbox" id="symbols" checked> Symbols</label>
 </div>
 
-<div class="footer">
-    <span>Secure</span>
-    <span>v2</span>
-</div>
+<button onclick="generate()">Generate_Secure_Key</button>
+
+<div class="sys-footer">PROTOCOL: CRYPTO_JS_WEBAPI</div>
+```
 
 </div>
 
-<!-- ✅ SEO CONTENT -->
+<!-- ✅ ONLY ADDITION -->
 
-<div class="seo">
+<div style="max-width:800px;margin:60px auto 0 auto;line-height:1.6;font-family:Inter;padding:0 10px;">
 
-<h1>JPG to PDF Converter Online – Convert Images to PDF Instantly</h1>
+<h1>Password Generator Online – Create Secure Random Passwords Instantly</h1>
 
 <p>
-Use this free JPG to PDF converter to convert your images into a single PDF file instantly. 
-It works directly in your browser without uploading your files to any server.
+Use this free password generator to create strong and secure passwords instantly.
+Customize length and include uppercase, lowercase, numbers, and symbols.
 </p>
 
 <h2>How to Use</h2>
 <ul>
-<li>Select or drag your JPG images</li>
-<li>Preview your images</li>
-<li>Click run to convert into PDF</li>
-<li>Download your PDF instantly</li>
+<li>Select password length</li>
+<li>Choose character options</li>
+<li>Click generate</li>
+<li>Copy password instantly</li>
 </ul>
 
 <h2>Features</h2>
 <ul>
-<li>Secure local processing</li>
-<li>Multiple image support</li>
-<li>Fast conversion</li>
-<li>No login required</li>
+<li>Secure random generation</li>
+<li>Custom options</li>
+<li>Instant copy</li>
+<li>Works on all devices</li>
 </ul>
 
 <h2>FAQs</h2>
-<p><strong>Is my data safe?</strong> Yes, everything is processed locally.</p>
-<p><strong>Is this tool free?</strong> Yes, completely free.</p>
+<p><strong>Is it secure?</strong> Yes.</p>
+<p><strong>Free?</strong> Yes.</p>
 
 </div>
 
 <script>
-function convert(){ alert("Working"); }
+const lengthRange = document.getElementById('lengthRange');
+const lengthVal = document.getElementById('lengthVal');
+const passwordOut = document.getElementById('password-out');
+
+lengthRange.addEventListener('input', () => {
+    lengthVal.innerText = lengthRange.value;
+});
+
+function generate() {
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+    let pass = "";
+    for (let i = 0; i < lengthRange.value; i++) {
+        pass += chars[Math.floor(Math.random() * chars.length)];
+    }
+    passwordOut.innerText = pass;
+}
+
+generate();
 </script>
 
 </body>
