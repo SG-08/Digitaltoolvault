@@ -24,7 +24,7 @@
             background-size: 30px 30px;
             margin: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* ONLY added for SEO stacking */
             align-items: center;
             min-height: 100vh;
             padding: 20px;
@@ -144,10 +144,17 @@
             text-align: center;
             letter-spacing: 1px;
         }
+
+        /* SEO section */
+        .seo-content {
+            max-width: 900px;
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
 
+<!-- ===== ORIGINAL TOOL (UNCHANGED) ===== -->
 <div class="vault-card">
     <div class="header">
         <div class="brand-line">
@@ -187,51 +194,77 @@
     <div class="sys-footer">PROCESSING: REALTIME_SYNC | STORAGE: NON_PERSISTENT</div>
 </div>
 
+<!-- ===== SEO CONTENT ===== -->
+<div class="seo-content">
+
+<h2>Word Counter Tool – Count Words, Characters & Reading Time Instantly</h2>
+<p>
+This free online Word Counter helps you analyze your text in real-time. It provides accurate word count, character count, sentence count, and estimated reading time.
+</p>
+
+<h3>What Does This Tool Do?</h3>
+<p>
+The tool instantly calculates the number of words, characters (with and without spaces), and sentences in your text. It also estimates how long it will take to read the content.
+</p>
+
+<h3>Key Features</h3>
+<ul>
+<li>Real-time word and character count</li>
+<li>Sentence detection</li>
+<li>Reading time estimation</li>
+<li>Clean and distraction-free interface</li>
+</ul>
+
+<h3>Who Can Use This Tool?</h3>
+<ul>
+<li>Students writing assignments</li>
+<li>Content writers and bloggers</li>
+<li>SEO professionals</li>
+<li>Anyone needing quick text analysis</li>
+</ul>
+
+<h3>How to Use</h3>
+<ul>
+<li>Paste or type your text</li>
+<li>View stats instantly</li>
+<li>Clear text using the button</li>
+</ul>
+
+</div>
+
+<!-- ===== ORIGINAL SCRIPT ===== -->
 <script>
-    const textInput = document.getElementById('textInput');
-    const wordCount = document.getElementById('wordCount');
-    const charCount = document.getElementById('charCount');
-    const sentenceCount = document.getElementById('sentenceCount');
-    const charNoSpace = document.getElementById('charNoSpace');
-    const readTime = document.getElementById('readTime');
+const textInput = document.getElementById('textInput');
+const wordCount = document.getElementById('wordCount');
+const charCount = document.getElementById('charCount');
+const sentenceCount = document.getElementById('sentenceCount');
+const charNoSpace = document.getElementById('charNoSpace');
+const readTime = document.getElementById('readTime');
 
-    textInput.addEventListener('input', () => {
-        const text = textInput.value;
-        
-        // Word Count
-        const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-        wordCount.innerText = words;
+textInput.addEventListener('input', () => {
+    const text = textInput.value;
+    
+    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    wordCount.innerText = words;
 
-        // Character Counts
-        charCount.innerText = text.length;
-        charNoSpace.innerText = text.replace(/\s/g, '').length;
+    charCount.innerText = text.length;
+    charNoSpace.innerText = text.replace(/\s/g, '').length;
 
-        // Sentence Count
-        const sentences = text.split(/[.!?]+/).filter(Boolean).length;
-        sentenceCount.innerText = sentences;
+    const sentences = text.split(/[.!?]+/).filter(Boolean).length;
+    sentenceCount.innerText = sentences;
 
-        // Reading Time (Average 200 words per minute)
-        const totalSeconds = Math.floor((words / 200) * 60);
-        const m = Math.floor(totalSeconds / 60);
-        const s = totalSeconds % 60;
-        readTime.innerText = `${m}m ${s}s`;
-    });
+    const totalSeconds = Math.floor((words / 200) * 60);
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
+    readTime.innerText = `${m}m ${s}s`;
+});
 
-    function clearBuffer() {
-        textInput.value = '';
-        textInput.dispatchEvent(new Event('input'));
-        textInput.focus();
-    }
+function clearBuffer() {
+    textInput.value = '';
+    textInput.dispatchEvent(new Event('input'));
+    textInput.focus();
+}
 </script>
 
 </body>
 </html>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4M99EKVCD5');
-</script>
