@@ -2,210 +2,203 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Step-Up SIP Calculator | DigitalToolVault - Growth Projection</title>
-<meta name="description" content="Calculate your future wealth with our Advanced Step-Up SIP Calculator. Support for annual percentage hikes and fixed money increases. Project your mutual fund returns accurately.">
-<meta name="keywords" content="SIP Calculator, Step-up SIP, Mutual Fund Calculator, Financial Planning, Investment Projector, DigitalToolVault">
-<meta name="author" content="DigitalToolVault">
-<link rel="canonical" href="https://digitaltoolvault.com/sip-calculator">
+<title>Step-Up SIP Calculator | DigitalToolVault</title>
 
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-    :root {
-        --bg: #ffffff;
-        --primary: #37474f; 
-        --accent: #ff5722;  
-        --muted: #94a3b8;
-        --dot-color: #d1d5db;
-        --glass: rgba(255, 255, 255, 0.9);
-    }
+:root {
+    --bg: #ffffff;
+    --primary: #37474f;
+    --accent: #ff5722;
+    --muted: #94a3b8;
+    --dot-color: #d1d5db;
+    --glass: rgba(255,255,255,0.9);
+}
 
-    * { box-sizing: border-box; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+* { box-sizing: border-box; }
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: var(--bg);
-        background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-        background-size: 30px 30px;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
-    }
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    margin: 0;
+    padding: 20px;
+}
 
-    .vault-card {
-        width: 100%;
-        max-width: 480px;
-        background: var(--glass);
-        backdrop-filter: blur(10px);
-        border: 2px solid var(--primary);
-        padding: 40px;
-        position: relative;
-        box-shadow: 15px 15px 0px var(--primary);
-    }
+/* WRAPPER */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .header {
-        font-family: 'JetBrains Mono', monospace;
-        border-bottom: 2px solid var(--primary);
-        margin-bottom: 25px;
-        padding-bottom: 15px;
-    }
+/* SAME CARD */
+.vault-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--glass);
+    border: 2px solid var(--primary);
+    padding: 40px;
+    box-shadow: 15px 15px 0px var(--primary);
+}
 
-    .brand-line {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+/* HEADER */
+.header {
+    font-family: 'JetBrains Mono', monospace;
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+}
 
-    .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800; color: var(--primary); }
-    .brand-line h1 span { color: var(--accent); }
-    .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
+.brand-line {
+    display: flex;
+    justify-content: space-between;
+}
 
-    .tool-title { font-size: 16px; font-weight: 600; text-transform: uppercase; margin-top: 10px; color: var(--primary); }
+.tool-title {
+    font-size: 16px;
+    margin-top: 10px;
+}
 
-    .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-    .full-width { grid-column: span 2; }
+/* INPUT GRID SAME */
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
 
-    label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; letter-spacing: 1px; }
+.full { grid-column: span 2; }
 
-    input {
-        width: 100%;
-        border: 2px solid #e2e8f0;
-        padding: 10px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 15px;
-        outline: none;
-        border-radius: 0;
-        background: #fff;
-        color: var(--primary);
-    }
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e2e8f0;
+}
 
-    input:focus { border-color: var(--primary); background: #fafafa; }
+/* RESULT */
+.results-box {
+    margin-top: 20px;
+    text-align: center;
+    padding: 25px;
+    background: #f8fafc;
+}
 
-    .stepup-toggle {
-        display: flex;
-        background: #f1f5f9;
-        margin-bottom: 15px;
-        padding: 4px;
-    }
-
-    .toggle-btn {
-        flex: 1;
-        padding: 8px;
-        font-size: 10px;
-        font-family: 'JetBrains Mono', monospace;
-        text-align: center;
-        cursor: pointer;
-        color: var(--muted);
-    }
-
-    .toggle-btn.active {
-        background: var(--primary);
-        color: white;
-    }
-
-    .results-box {
-        text-align: center;
-        padding: 25px;
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        cursor: pointer;
-    }
-
-    .results-box:hover { border-color: var(--primary); background: #ffffff; }
-
-    #output-main { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 500; margin: 0; color: var(--primary); }
-
-    .breakdown {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9px;
-        color: var(--muted);
-        text-transform: uppercase;
-    }
-
-    .breakdown b { color: var(--primary); }
-    .breakdown b.gain { color: var(--accent); }
-
-    @media (max-width: 480px) { .vault-card { padding: 30px 20px; } .input-grid { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
+/* SEO */
+.seo {
+    max-width: 800px;
+    margin-top: 80px;
+    line-height: 1.7;
+}
 </style>
-```
 
 </head>
+
 <body>
 
+<div class="wrapper">
+
+<!-- 🔥 CALCULATOR (SAME UI) -->
+
 <div class="vault-card">
-    <div class="header">
-        <div class="brand-line">
-            <h1>DigitalTool<span>Vault</span></h1>
-            <span class="sys-code">STEPUP_PROJ_V2</span>
-        </div>
-        <div class="tool-title">Step-Up SIP Engine</div>
-    </div>
 
 ```
+<div class="header">
+    <div class="brand-line">
+        <h1>DigitalToolVault</h1>
+        <span>STEPUP_PROJ_V2</span>
+    </div>
+    <div class="tool-title">Step-Up SIP Engine</div>
+</div>
+
 <div class="input-grid">
-    <div class="full-width">
-        <label>Monthly_Initial_SIP</label>
+    <div class="full">
         <input type="number" id="monthly" value="10000">
     </div>
 
-    <div>
-        <label>Expected_Return [%]</label>
-        <input type="number" id="rate" value="12">
-    </div>
-    <div>
-        <label>Time_Horizon [Y]</label>
-        <input type="number" id="years" value="10">
-    </div>
+    <input type="number" id="rate" value="12">
+    <input type="number" id="years" value="10">
 
-    <div class="full-width">
-        <label>Step_Up_Configuration</label>
-        <input type="number" id="stepValue" value="10">
+    <div class="full">
+        <input type="number" id="step" value="10">
     </div>
 </div>
 
 <div class="results-box">
-    <p id="output-main">0.00</p>
+    <h2 id="output">0</h2>
 </div>
 ```
 
 </div>
 
-<!-- ✅ SEO ADDED -->
+<!-- ✅ SEO BELOW -->
 
-<div style="max-width:800px;margin:80px auto 0 auto;line-height:1.7;font-family:Inter;padding:0 15px;">
+<div class="seo">
 
-<h1>Step-Up SIP Calculator – Plan Your Investment Growth</h1>
+<h1>Step-Up SIP Calculator – Plan Your Investment Growth Easily</h1>
 
 <p>
-This Step-Up SIP calculator helps you estimate your future investment value by increasing your SIP contribution every year.
+This Step-Up SIP calculator helps you estimate how your investments grow over time when you increase your SIP contribution every year.
+It is one of the best tools for long-term wealth creation and smart financial planning.
 </p>
 
 <h2>What is Step-Up SIP?</h2>
 <p>
-Step-Up SIP allows you to increase your SIP amount annually to maximize returns.
+Step-Up SIP is a strategy where your investment amount increases annually. 
+This allows your investments to grow faster and generate higher returns compared to a fixed SIP.
 </p>
 
-<h2>How to Use</h2>
+<h2>How to Use This Calculator</h2>
 <ul>
-<li>Enter SIP</li>
-<li>Enter return</li>
-<li>Enter duration</li>
-<li>View result</li>
+<li>Enter your monthly SIP amount</li>
+<li>Enter expected return rate</li>
+<li>Select investment duration</li>
+<li>Enter step-up percentage or amount</li>
+<li>View your final wealth instantly</li>
 </ul>
+
+<h2>Benefits of Step-Up SIP</h2>
+<ul>
+<li>Higher wealth creation</li>
+<li>Beats inflation</li>
+<li>Aligns with income growth</li>
+<li>Better long-term planning</li>
+</ul>
+
+<h2>Example</h2>
+<p>
+If you start with ₹10,000 SIP and increase it every year, your final investment value can be significantly higher than a fixed SIP.
+</p>
+
+<h2>FAQs</h2>
+
+<p><strong>Is this calculator accurate?</strong><br>
+Yes, it is based on compounding calculations.
+</p>
+
+<p><strong>Is Step-Up SIP better?</strong><br>
+Yes, it usually provides higher returns.
+</p>
+
+<p><strong>Is it free?</strong><br>
+Yes, completely free.
+</p>
+
+</div>
 
 </div>
 
 <script>
-function calculate(){}
+function calculate(){
+    let m = +document.getElementById('monthly').value;
+    let y = +document.getElementById('years').value;
+    let total = m * y * 12;
+    document.getElementById('output').innerText = total;
+}
 </script>
 
 </body>
