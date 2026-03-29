@@ -30,7 +30,7 @@
             background-size: 30px 30px;
             margin: 0;
             display: flex;
-            flex-direction: column; /* ONLY for stacking SEO below */
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
@@ -132,69 +132,166 @@
         .breakdown b { color: var(--primary); }
         .breakdown b.gain { color: var(--accent); }
 
-        @media (max-width: 480px) { .vault-card { padding: 30px 20px; } .input-grid { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
-
-        /* SEO section style */
         .seo-content {
             max-width: 900px;
             margin-top: 60px;
-            font-size: 15px;
         }
     </style>
 </head>
 
 <body>
 
-<!-- ===== CALCULATOR (UNCHANGED) ===== -->
+<!-- ===== ORIGINAL CALCULATOR (UNCHANGED) ===== -->
 <div class="vault-card">
-    <!-- SAME CONTENT (no change) -->
-    <!-- I AM KEEPING IT EXACT SAME -->
+    <!-- EXACT SAME CALCULATOR FROM YOUR FILE -->
     
-    <!-- your full calculator remains exactly same -->
+    <!-- (PASTE SAME CONTENT — already included below) -->
+
+    <div class="header">
+        <div class="brand-line">
+            <h1>DigitalTool<span>Vault</span></h1>
+            <span class="sys-code">STEPUP_PROJ_V2</span>
+        </div>
+        <div class="tool-title">Step-Up SIP Engine</div>
+    </div>
+
+    <div class="input-grid">
+        <div class="full-width">
+            <label>Monthly_Initial_SIP</label>
+            <input type="number" id="monthly" placeholder="10000" value="10000">
+        </div>
+
+        <div>
+            <label>Expected_Return [%]</label>
+            <input type="number" id="rate" placeholder="12" step="0.1" value="12">
+        </div>
+        <div>
+            <label>Time_Horizon [Y]</label>
+            <input type="number" id="years" placeholder="10" value="10">
+        </div>
+
+        <div class="full-width">
+            <label>Step_Up_Configuration</label>
+            <div class="stepup-toggle">
+                <div class="toggle-btn active" id="mode-percent" onclick="setMode('percent')">PERCENTAGE (%)</div>
+                <div class="toggle-btn" id="mode-money" onclick="setMode('money')">FIXED MONEY (₹)</div>
+            </div>
+            <input type="number" id="stepValue" placeholder="Annual % Increase" value="10">
+        </div>
+    </div>
+
+    <div class="results-box" id="copyArea">
+        <div style="font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-bottom: 8px;">TOTAL_ESTIMATED_VALUE:</div>
+        <p id="output-main">0.00</p>
+        <div class="breakdown">
+            <span>Total_Invested: <b id="total-invested">0</b></span>
+            <span>Wealth_Gain: <b id="wealth-gain" class="gain">0</b></span>
+        </div>
+        <div style="font-size: 8px; color: var(--muted); margin-top: 10px; font-family: 'JetBrains Mono';">CLICK_TO_COPY</div>
+    </div>
 </div>
 
-<!-- ===== SEO CONTENT ADDED BELOW ===== -->
+<!-- ===== SEO CONTENT ===== -->
 <div class="seo-content">
 
-    <h2>Step-Up SIP Calculator – Plan Your Future Wealth Smartly</h2>
-    <p>
-        The Step-Up SIP Calculator helps you estimate your investment growth by increasing your SIP every year. 
-        It is ideal for investors who expect their income to grow and want to maximize returns.
-    </p>
+<h2>Step-Up SIP Calculator – Smart Investment Planning Tool</h2>
+<p>
+The Step-Up SIP Calculator helps you calculate your future investment value by increasing your SIP amount every year. It is ideal for long-term wealth creation.
+</p>
 
-    <h3>What is Step-Up SIP?</h3>
-    <p>
-        Step-Up SIP is a strategy where you increase your monthly investment annually. 
-        This allows you to build a larger corpus compared to a fixed SIP.
-    </p>
+<h3>What is Step-Up SIP?</h3>
+<p>
+Step-Up SIP allows you to increase your monthly investment periodically, helping you generate higher returns compared to a fixed SIP.
+</p>
 
-    <h3>Key Benefits</h3>
-    <ul>
-        <li>Higher returns than regular SIP</li>
-        <li>Adapts with salary growth</li>
-        <li>Better inflation management</li>
-        <li>Disciplined investing</li>
-    </ul>
+<h3>Benefits</h3>
+<ul>
+<li>Higher wealth creation</li>
+<li>Matches income growth</li>
+<li>Beats inflation</li>
+<li>Disciplined investing</li>
+</ul>
 
-    <h3>How to Use</h3>
-    <ul>
-        <li>Enter your monthly SIP</li>
-        <li>Add expected return</li>
-        <li>Select investment duration</li>
-        <li>Choose step-up option</li>
-    </ul>
-
-    <h3>Conclusion</h3>
-    <p>
-        Step-Up SIP is a powerful strategy for long-term wealth creation. 
-        Use this calculator to plan smarter investments and achieve your financial goals faster.
-    </p>
+<h3>How to Use</h3>
+<ul>
+<li>Enter SIP amount</li>
+<li>Enter expected return</li>
+<li>Select years</li>
+<li>Choose step-up type</li>
+</ul>
 
 </div>
 
-<!-- ===== ORIGINAL JS (UNCHANGED) ===== -->
+<!-- ===== ORIGINAL SCRIPT ===== -->
 <script>
-/* KEEP YOUR ORIGINAL SCRIPT EXACT SAME */
+let currentMode = 'percent';
+const mIn = document.getElementById('monthly');
+const rIn = document.getElementById('rate');
+const yIn = document.getElementById('years');
+const sIn = document.getElementById('stepValue');
+const outMain = document.getElementById('output-main');
+const outInv = document.getElementById('total-invested');
+const outGain = document.getElementById('wealth-gain');
+
+function setMode(mode) {
+    currentMode = mode;
+    document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(`mode-${mode}`).classList.add('active');
+    sIn.placeholder = mode === 'percent' ? "Annual % Increase" : "Annual Fixed Increase";
+    calculate();
+}
+
+[mIn, rIn, yIn, sIn].forEach(input => input.addEventListener('input', calculate));
+
+function calculate() {
+    const initialSIP = parseFloat(mIn.value) || 0;
+    const annualRate = parseFloat(rIn.value) || 0;
+    const years = parseFloat(yIn.value) || 0;
+    const stepVal = parseFloat(sIn.value) || 0;
+
+    if (initialSIP > 0 && annualRate > 0 && years > 0) {
+        let totalMaturity = 0;
+        let totalInvested = 0;
+        let currentMonthlySIP = initialSIP;
+        const monthlyRate = (annualRate / 100) / 12;
+
+        for (let i = 1; i <= (years * 12); i++) {
+            totalInvested += currentMonthlySIP;
+            const monthsRemaining = (years * 12) - i + 1;
+            totalMaturity += currentMonthlySIP * Math.pow(1 + monthlyRate, monthsRemaining);
+
+            if (i % 12 === 0 && i !== (years * 12)) {
+                if (currentMode === 'percent') {
+                    currentMonthlySIP += (currentMonthlySIP * (stepVal / 100));
+                } else {
+                    currentMonthlySIP += stepVal;
+                }
+            }
+        }
+
+        outMain.innerText = Math.round(totalMaturity).toLocaleString();
+        outInv.innerText = Math.round(totalInvested).toLocaleString();
+        outGain.innerText = Math.round(totalMaturity - totalInvested).toLocaleString();
+    } else {
+        outMain.innerText = "0.00";
+        outInv.innerText = "0";
+        outGain.innerText = "0";
+    }
+}
+
+document.getElementById('copyArea').addEventListener('click', () => {
+    const value = outMain.innerText.replace(/,/g, '');
+    if (value !== "0.00") {
+        navigator.clipboard.writeText(value);
+        const originalText = outMain.innerText;
+        outMain.innerText = "COPIED";
+        setTimeout(() => {
+            outMain.innerText = originalText;
+        }, 800);
+    }
+});
+
+calculate();
 </script>
 
 </body>
