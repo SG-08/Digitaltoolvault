@@ -5,7 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Age Calculator</title>
+<title>Age Calculator Online | Calculate Your Exact Age Instantly</title>
+
+<meta name="description" content="Free Age Calculator to calculate your exact age in years, months and days instantly. Fast, accurate and easy to use tool.">
 
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -26,17 +28,16 @@ body {
     background-size: 30px 30px;
     margin: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
     padding: 20px;
 }
 
+/* CALCULATOR */
 .vault-card {
     width: 100%;
     max-width: 420px;
     background: var(--glass);
-    backdrop-filter: blur(10px);
     border: 2px solid var(--primary);
     padding: 40px;
     box-shadow: 15px 15px 0px var(--primary);
@@ -49,17 +50,9 @@ body {
     padding-bottom: 15px;
 }
 
-.brand-line {
-    display: flex;
-    justify-content: space-between;
-}
-
 .brand-line h1 {
     font-size: 12px;
-    text-transform: uppercase;
     letter-spacing: 3px;
-    margin: 0;
-    font-weight: 800;
 }
 
 .brand-line span { color: var(--accent); }
@@ -67,18 +60,6 @@ body {
 .tool-title {
     font-size: 18px;
     font-weight: 600;
-    margin-top: 10px;
-}
-
-.input-group {
-    margin-bottom: 25px;
-}
-
-label {
-    font-size: 10px;
-    color: var(--muted);
-    margin-bottom: 8px;
-    display: block;
 }
 
 input {
@@ -88,6 +69,7 @@ input {
 }
 
 .results-box {
+    margin-top: 20px;
     padding: 30px;
     background: #f8fafc;
     text-align: center;
@@ -95,18 +77,21 @@ input {
 
 #output-main {
     font-size: 26px;
-    font-weight: 600;
 }
 
-#output-sub {
-    font-size: 12px;
-    color: var(--muted);
+/* SEO */
+.seo {
+    max-width: 800px;
+    margin-top: 50px;
+    line-height: 1.6;
 }
 </style>
 
 </head>
 
 <body>
+
+<!-- ✅ ONLY CALCULATOR (TOP) -->
 
 <div class="vault-card">
     <div class="header">
@@ -117,47 +102,70 @@ input {
     </div>
 
 ```
-<div class="input-group">
-    <label>Date of Birth</label>
-    <input type="date" id="dob-input">
-</div>
+<input type="date" id="dob">
 
 <div class="results-box">
-    <p id="output-main">-- Years Old</p>
-    <div id="output-sub">Waiting for input</div>
+    <p id="output-main">-- Years</p>
 </div>
 ```
 
 </div>
 
+<!-- ✅ SEO CONTENT (BOTTOM) -->
+
+<div class="seo">
+
+<h1>Age Calculator Online – Calculate Your Exact Age Instantly</h1>
+
+<p>
+Use our free age calculator to find your exact age in years, months, and days instantly. 
+This tool is fast, accurate, and works on all devices.
+</p>
+
+<h2>How to Use</h2>
+<ul>
+<li>Enter your date of birth</li>
+<li>Get instant result</li>
+</ul>
+
+<h2>Features</h2>
+<ul>
+<li>Free and fast</li>
+<li>Accurate results</li>
+<li>No login required</li>
+</ul>
+
+<h2>FAQs</h2>
+<p><strong>Is it free?</strong> Yes.</p>
+<p><strong>Is it safe?</strong> Yes.</p>
+
+</div>
+
 <script>
-const dobInput = document.getElementById('dob-input');
-const outMain = document.getElementById('output-main');
-const outSub = document.getElementById('output-sub');
+const dob = document.getElementById("dob");
+const output = document.getElementById("output-main");
 
-dobInput.max = new Date().toISOString().split("T")[0];
+dob.max = new Date().toISOString().split("T")[0];
 
-dobInput.addEventListener('input', () => {
-    const birthDate = new Date(dobInput.value);
+dob.addEventListener("input", () => {
+    const birth = new Date(dob.value);
     const today = new Date();
 
-    if (!dobInput.value) return;
-
-    let years = today.getFullYear() - birthDate.getFullYear();
-    let months = today.getMonth() - birthDate.getMonth();
-    let days = today.getDate() - birthDate.getDate();
+    let years = today.getFullYear() - birth.getFullYear();
+    let months = today.getMonth() - birth.getMonth();
+    let days = today.getDate() - birth.getDate();
 
     if (days < 0) {
         months--;
         days += 30;
     }
+
     if (months < 0) {
         years--;
         months += 12;
     }
 
-    outMain.innerText = `${years}Y ${months}M ${days}D`;
-    outSub.innerText = "Calculated Successfully";
+    output.innerText = `${years}Y ${months}M ${days}D`;
 });
 </script>
 
