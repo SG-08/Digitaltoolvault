@@ -185,4 +185,81 @@ Yes, it works perfectly on mobile devices.</p>
 </div>
 
 </body>
+    <script>
+let originalFile;
+let compressedBlob;
+
+const fileInput = document.getElementById("fileInput");
+const range = document.querySelector("input[type='range']");
+const downloadBtn = document.querySelector("button");
+
+range.min = 0.1;
+range.max = 1;
+range.step = 0.1;
+range.value = 0.7;
+
+fileInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    originalFile = file;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const img = new Image();
+        img.src = e.target.result;
+
+        img.onload = function () {
+            compressImage(img);
+        };
+    };
+    reader.readAsDataURL(file);
+});
+
+range.addEventListener("input", function () {
+    if (originalFile) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = new Image();
+            img.src = e.target.result;
+
+            img.onload = function () {
+                compressImage(img);
+            };
+        };
+        reader.readAsDataURL(originalFile);
+    }
+});
+
+function compressImage(img) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    ctx.drawImage(img, 0, 0);
+
+    canvas.toBlob(function (blob) {
+        compressedBlob = blob;
+
+        document.querySelectorAll(".stat-box")[0].innerText =
+            "Original: " + (originalFile.size / 1024).toFixed(2) + " KB";
+
+        document.querySelectorAll(".stat-box")[1].innerText =
+            "Compressed: " + (blob.size / 1024).toFixed(2) + " KB";
+
+    }, "image/jpeg", range.value);
+}
+
+downloadBtn.addEventListener("click", function () {
+    if (!compressedBlob) return alert("No image compressed!");
+
+    const url = URL.createObjectURL(compressedBlob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "compressed.jpg";
+    a.click();
+});
+</script>
 </html>
