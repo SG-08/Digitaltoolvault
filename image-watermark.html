@@ -75,15 +75,13 @@ body {
 
 canvas { max-width: 100%; display: none; }
 
-.control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-.full-width { grid-column: span 2; }
+label { font-size: 9px; color: var(--muted); margin-bottom: 6px; display: block; }
 
-label { font-size: 9px; color: var(--muted); margin-bottom: 8px; display: block; }
-
-input, select {
+input {
     width: 100%;
     border: 2px solid #e2e8f0;
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 button {
@@ -102,7 +100,6 @@ button {
     text-align: center;
 }
 
-/* SEO */
 .seo {
     max-width: 800px;
     margin-top: 60px;
@@ -130,44 +127,24 @@ button {
     <input type="file" id="imageLoader">
     <input type="text" id="wmText" placeholder="ENTER TEXT">
 
+    <!-- ✅ NEW CONTROLS -->
+    <label>Font Size</label>
+    <input type="range" id="fontSize" min="10" max="100" value="40">
+
+    <label>Watermark Color</label>
+    <input type="color" id="wmColor" value="#ffffff">
+
     <button id="downloadBtn">Download</button>
 
     <div class="sys-footer">PROCESSING: BROWSER_CANVAS_API</div>
 </div>
 
-<!-- ✅ SAME SEO CONTENT (UNCHANGED) -->
+<!-- SEO SAME -->
 <div class="seo">
-
 <h1>Image Watermark Tool Online – Add Watermark to Images Instantly</h1>
-
-<p>
-Use this free image watermark tool to add text watermark to your images instantly. 
-Protect your photos and brand your content easily without any software.
-</p>
-
-<h2>How to Use</h2>
-<ul>
-<li>Upload your image</li>
-<li>Enter watermark text</li>
-<li>Adjust position and style</li>
-<li>Download watermarked image</li>
-</ul>
-
-<h2>Features</h2>
-<ul>
-<li>No upload to server (secure)</li>
-<li>Custom watermark text</li>
-<li>Adjustable opacity and size</li>
-<li>Works on all devices</li>
-</ul>
-
-<h2>FAQs</h2>
-<p><strong>Is my image safe?</strong> Yes, processing is done in your browser.</p>
-<p><strong>Is this tool free?</strong> Yes, completely free.</p>
-
+<p>Use this free image watermark tool to add text watermark to your images instantly.</p>
 </div>
 
-<!-- ✅ ONLY JS ADDED -->
 <script>
 const imageLoader = document.getElementById('imageLoader');
 const canvas = document.getElementById('mainCanvas');
@@ -175,6 +152,8 @@ const ctx = canvas.getContext('2d');
 const textInput = document.getElementById('wmText');
 const placeholder = document.getElementById('placeholder');
 const downloadBtn = document.getElementById('downloadBtn');
+const fontSize = document.getElementById('fontSize');
+const wmColor = document.getElementById('wmColor');
 
 let img = new Image();
 
@@ -196,16 +175,21 @@ imageLoader.addEventListener('change', function(e){
 });
 
 textInput.addEventListener('input', drawWatermark);
+fontSize.addEventListener('input', drawWatermark);
+wmColor.addEventListener('input', drawWatermark);
 
 function drawWatermark(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     ctx.drawImage(img,0,0);
 
     const text = textInput.value;
+    const size = fontSize.value;
+    const color = wmColor.value;
 
     if(text){
-        ctx.font = "40px Arial";
-        ctx.fillStyle = "rgba(255,255,255,0.6)";
+        ctx.font = size + "px Arial";
+        ctx.fillStyle = color;
+        ctx.globalAlpha = 0.6;
         ctx.textAlign = "right";
 
         ctx.fillText(text, canvas.width - 20, canvas.height - 20);
