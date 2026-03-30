@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digitaltoolvault | JPG to PDF</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- ✅ jsPDF CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <style>
         :root {
             --bg: #ffffff;
@@ -144,14 +147,14 @@
         <div class="tool-title">JPG TO PDF CONVERTER</div>
     </div>
 
-<div class="dropzone" id="drop-area" onclick="document.getElementById('file-input').click()">
+<div class="dropzone" onclick="document.getElementById('file-input').click()">
     <p id="label-text">Select_Image_Source</p>
     <input type="file" id="file-input" accept="image/jpeg" multiple>
 </div>
 
 <div id="preview-matrix"></div>
 
-<button class="btn-execute" id="convert-btn" onclick="generatePDF()">Run_Compilation</button>
+<button class="btn-execute" id="convert-btn">Run_Compilation</button>
 
 <div class="progress-bar" id="prog-wrap">
     <div id="progress-fill"></div>
@@ -227,9 +230,13 @@ fileInput.addEventListener('change', (e) => {
     }
 });
 
-// ✅ ONLY THIS ADDED
-async function generatePDF() {
-    if (filesList.length === 0) return alert("No images!");
+// ✅ WORKING PDF GENERATOR
+convertBtn.addEventListener("click", async function () {
+
+    if (filesList.length === 0) {
+        alert("No images selected!");
+        return;
+    }
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
@@ -237,10 +244,11 @@ async function generatePDF() {
     progWrap.style.display = "block";
 
     for (let i = 0; i < filesList.length; i++) {
+
         const file = filesList[i];
-        const reader = new FileReader();
 
         const imgData = await new Promise(resolve => {
+            const reader = new FileReader();
             reader.onload = e => resolve(e.target.result);
             reader.readAsDataURL(file);
         });
@@ -253,7 +261,7 @@ async function generatePDF() {
     }
 
     pdf.save("output.pdf");
-}
+});
 </script>
 
 </body>
