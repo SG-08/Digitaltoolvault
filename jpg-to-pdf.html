@@ -17,7 +17,6 @@
             --glass: rgba(255, 255, 255, 0.9);
         }
 
-```
     * { box-sizing: border-box; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
 
     body {
@@ -59,7 +58,7 @@
         margin-bottom: 5px;
     }
 
-    .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 600; }
+    .brand-line h1 { font size: 12px; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 600; }
     .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
 
     .tool-title {
@@ -131,7 +130,6 @@
         justify-content: space-between;
     }
 </style>
-```
 
 </head>
 
@@ -146,7 +144,6 @@
         <div class="tool-title">JPG TO PDF CONVERTER</div>
     </div>
 
-```
 <div class="dropzone" id="drop-area" onclick="document.getElementById('file-input').click()">
     <p id="label-text">Select_Image_Source</p>
     <input type="file" id="file-input" accept="image/jpeg" multiple>
@@ -164,12 +161,10 @@
     <span>Secure_Local_Vault</span>
     <span>Version_2.0</span>
 </div>
-```
 
 </div>
 
-<!-- ✅ SEO CONTENT (ONLY ADDITION) -->
-
+<!-- SEO SAME -->
 <div style="max-width:800px;margin:60px auto 0 auto;line-height:1.6;font-family:Inter;padding:0 10px;">
 
 <h1>JPG to PDF Converter Online – Convert Images to PDF Instantly</h1>
@@ -231,6 +226,65 @@ fileInput.addEventListener('change', (e) => {
         });
     }
 });
+
+// ✅ ONLY THIS ADDED (FUNCTION FIX)
+async function generatePDF() {
+    if (filesList.length === 0) {
+        alert("No images selected!");
+        return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    const pageWidth = 210;
+    const pageHeight = 297;
+
+    progWrap.style.display = "block";
+    progFill.style.width = "0%";
+
+    for (let i = 0; i < filesList.length; i++) {
+        const file = filesList[i];
+
+        const imgData = await readFile(file);
+        const img = await loadImage(imgData);
+
+        let imgWidth = img.width;
+        let imgHeight = img.height;
+
+        const ratio = Math.min(pageWidth / imgWidth, pageHeight / imgHeight);
+        imgWidth *= ratio;
+        imgHeight *= ratio;
+
+        const x = (pageWidth - imgWidth) / 2;
+        const y = (pageHeight - imgHeight) / 2;
+
+        if (i > 0) pdf.addPage();
+
+        pdf.addImage(imgData, "JPEG", x, y, imgWidth, imgHeight);
+
+        let progress = ((i + 1) / filesList.length) * 100;
+        progFill.style.width = progress + "%";
+    }
+
+    pdf.save("digitaltoolvault.pdf");
+}
+
+function readFile(file) {
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.readAsDataURL(file);
+    });
+}
+
+function loadImage(src) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.src = src;
+    });
+}
 </script>
 
 </body>
