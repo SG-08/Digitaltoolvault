@@ -58,7 +58,7 @@
         margin-bottom: 5px;
     }
 
-    .brand-line h1 { font size: 12px; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 600; }
+    .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 600; }
     .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
 
     .tool-title {
@@ -227,63 +227,32 @@ fileInput.addEventListener('change', (e) => {
     }
 });
 
-// ✅ ONLY THIS ADDED (FUNCTION FIX)
+// ✅ ONLY THIS ADDED
 async function generatePDF() {
-    if (filesList.length === 0) {
-        alert("No images selected!");
-        return;
-    }
+    if (filesList.length === 0) return alert("No images!");
 
     const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF("p", "mm", "a4");
-
-    const pageWidth = 210;
-    const pageHeight = 297;
+    const pdf = new jsPDF();
 
     progWrap.style.display = "block";
-    progFill.style.width = "0%";
 
     for (let i = 0; i < filesList.length; i++) {
         const file = filesList[i];
+        const reader = new FileReader();
 
-        const imgData = await readFile(file);
-        const img = await loadImage(imgData);
-
-        let imgWidth = img.width;
-        let imgHeight = img.height;
-
-        const ratio = Math.min(pageWidth / imgWidth, pageHeight / imgHeight);
-        imgWidth *= ratio;
-        imgHeight *= ratio;
-
-        const x = (pageWidth - imgWidth) / 2;
-        const y = (pageHeight - imgHeight) / 2;
+        const imgData = await new Promise(resolve => {
+            reader.onload = e => resolve(e.target.result);
+            reader.readAsDataURL(file);
+        });
 
         if (i > 0) pdf.addPage();
 
-        pdf.addImage(imgData, "JPEG", x, y, imgWidth, imgHeight);
+        pdf.addImage(imgData, 'JPEG', 10, 10, 190, 0);
 
-        let progress = ((i + 1) / filesList.length) * 100;
-        progFill.style.width = progress + "%";
+        progFill.style.width = ((i + 1) / filesList.length * 100) + "%";
     }
 
-    pdf.save("digitaltoolvault.pdf");
-}
-
-function readFile(file) {
-    return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = (e) => resolve(e.target.result);
-        reader.readAsDataURL(file);
-    });
-}
-
-function loadImage(src) {
-    return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.src = src;
-    });
+    pdf.save("output.pdf");
 }
 </script>
 
