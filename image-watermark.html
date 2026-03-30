@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -27,7 +26,7 @@ body {
     background-size: 30px 30px;
     margin: 0;
     display: flex;
-    flex-direction: column; /* ONLY FIX */
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
@@ -76,15 +75,13 @@ body {
 
 canvas { max-width: 100%; display: none; }
 
-.control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-.full-width { grid-column: span 2; }
-
 label { font-size: 9px; color: var(--muted); margin-bottom: 8px; display: block; }
 
-input, select {
+input {
     width: 100%;
     border: 2px solid #e2e8f0;
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 button {
@@ -103,19 +100,15 @@ button {
     text-align: center;
 }
 
-/* SEO */
 .seo {
     max-width: 800px;
     margin-top: 60px;
     line-height: 1.6;
 }
 </style>
-
 </head>
 
 <body>
-
-<!-- ✅ ORIGINAL UI (UNCHANGED) -->
 
 <div class="vault-card">
     <div class="header">
@@ -126,59 +119,75 @@ button {
         <div class="tool-title">Image Watermark Generator</div>
     </div>
 
-```
-<div class="preview-stage">
-    <div id="placeholder">AWAITING_IMAGE_BUFFER</div>
-    <canvas id="mainCanvas"></canvas>
+    <div class="preview-stage">
+        <div id="placeholder">AWAITING_IMAGE_BUFFER</div>
+        <canvas id="mainCanvas"></canvas>
+    </div>
+
+    <input type="file" id="imageLoader">
+    <input type="text" id="wmText" placeholder="ENTER TEXT">
+
+    <button id="downloadBtn">Download</button>
+
+    <div class="sys-footer">PROCESSING: BROWSER_CANVAS_API</div>
 </div>
-
-<input type="file" id="imageLoader">
-<input type="text" id="wmText" placeholder="ENTER TEXT">
-
-<button id="downloadBtn" onclick="downloadImage()">Download</button>
-
-<div class="sys-footer">PROCESSING: BROWSER_CANVAS_API</div>
-```
-
-</div>
-
-<!-- ✅ ONLY ADDITION -->
 
 <div class="seo">
-
-<h1>Image Watermark Tool Online – Add Watermark to Images Instantly</h1>
-
-<p>
-Use this free image watermark tool to add text watermark to your images instantly. 
-Protect your photos and brand your content easily without any software.
-</p>
-
-<h2>How to Use</h2>
-<ul>
-<li>Upload your image</li>
-<li>Enter watermark text</li>
-<li>Adjust position and style</li>
-<li>Download watermarked image</li>
-</ul>
-
-<h2>Features</h2>
-<ul>
-<li>No upload to server (secure)</li>
-<li>Custom watermark text</li>
-<li>Adjustable opacity and size</li>
-<li>Works on all devices</li>
-</ul>
-
-<h2>FAQs</h2>
-<p><strong>Is my image safe?</strong> Yes, processing is done in your browser.</p>
-<p><strong>Is this tool free?</strong> Yes, completely free.</p>
-
+<h1>Image Watermark Tool Online</h1>
+<p>Free watermark tool.</p>
 </div>
 
+<!-- ✅ WORKING JS -->
 <script>
-function downloadImage(){
-    alert("Download working");
+const imageLoader = document.getElementById('imageLoader');
+const canvas = document.getElementById('mainCanvas');
+const ctx = canvas.getContext('2d');
+const textInput = document.getElementById('wmText');
+const placeholder = document.getElementById('placeholder');
+const downloadBtn = document.getElementById('downloadBtn');
+
+let img = new Image();
+
+imageLoader.addEventListener('change', function(e){
+    const reader = new FileReader();
+    reader.onload = function(event){
+        img.onload = function(){
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            canvas.style.display = "block";
+            placeholder.style.display = "none";
+
+            drawWatermark();
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+
+textInput.addEventListener('input', drawWatermark);
+
+function drawWatermark(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(img,0,0);
+
+    const text = textInput.value;
+
+    if(text){
+        ctx.font = "40px Arial";
+        ctx.fillStyle = "rgba(255,255,255,0.6)";
+        ctx.textAlign = "right";
+
+        ctx.fillText(text, canvas.width - 20, canvas.height - 20);
+    }
 }
+
+downloadBtn.addEventListener("click", function(){
+    const link = document.createElement("a");
+    link.download = "watermarked.png";
+    link.href = canvas.toDataURL();
+    link.click();
+});
 </script>
 
 </body>
