@@ -3,94 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Digital Tool Vault</title>
+  <title>About - Digital Tool Vault</title>
 
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      color: #111827;
     }
 
-    .about-section {
+    .about {
       padding: 60px 20px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
       text-align: center;
     }
 
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
     h1 {
-      font-size: 40px;
+      font-size: 36px;
       margin-bottom: 10px;
     }
 
     h2 {
-      font-size: 26px;
+      font-size: 22px;
       margin-bottom: 20px;
-    }
-
-    h2 span {
-      color: inherit; /* use your theme color */
-      font-weight: bold;
+      color: #2563eb;
     }
 
     p {
       font-size: 16px;
-      line-height: 1.8;
+      line-height: 1.7;
       margin-bottom: 20px;
+      color: #374151;
     }
 
+    /* Card (same feel as tools) */
     .card {
+      background: #ffffff;
       padding: 25px;
-      border-radius: 12px;
-      margin: 25px 0;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       text-align: left;
-
-      /* light shadow only (works in any theme) */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .card h3 {
-      margin-bottom: 15px;
+      margin-bottom: 12px;
+      font-size: 18px;
+      color: #2563eb;
     }
 
     ul {
+      padding-left: 0;
       list-style: none;
-      padding: 0;
     }
 
     ul li {
-      margin: 10px 0;
+      margin: 8px 0;
       font-size: 15px;
     }
 
-    .highlight {
-      font-weight: bold;
-    }
-
-    .thank-you {
-      font-weight: bold;
+    .thank {
       margin-top: 30px;
-      font-size: 18px;
+      font-weight: 600;
+      color: #2563eb;
     }
 
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
-      opacity: 0.7;
+      color: #6b7280;
     }
 
-    /* Responsive */
+    /* Mobile */
     @media (max-width: 600px) {
       h1 {
-        font-size: 28px;
+        font-size: 26px;
       }
 
       h2 {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       p {
@@ -102,86 +99,79 @@
 
 <body>
 
-  <section class="about-section">
-    <div class="container">
+<section class="about">
+  <div class="container">
 
-      <h1>About Us</h1>
-      <h2>Welcome to <span>Digital Tool Vault</span> 🚀</h2>
+    <h1>About Us</h1>
+    <h2>Welcome to Digital Tool Vault</h2>
 
-      <p>
-        Digital Tool Vault is a free online platform designed to provide simple, fast, 
-        and reliable tools that help users complete everyday tasks efficiently. 
-        Our platform is built for students, professionals, and anyone looking for 
-        quick and easy digital solutions.
-      </p>
+    <p>
+      Digital Tool Vault is a free online platform that provides useful tools 
+      to make your daily tasks easier, faster, and more efficient. 
+      Whether you need quick calculations, file conversions, or utility tools, 
+      everything is available in one place.
+    </p>
 
-      <p>
-        Instead of visiting multiple websites or installing heavy software, 
-        Digital Tool Vault allows you to access all essential tools in one place. 
-        Our goal is to save your time and make your workflow smoother.
-      </p>
+    <p>
+      Our platform is designed to eliminate the need for multiple websites 
+      by offering simple and reliable tools that work instantly without 
+      requiring downloads or sign-ups.
+    </p>
 
-      <div class="card">
-        <h3>🛠️ Our Tools</h3>
-        <p>We offer a wide range of tools, including:</p>
-        <ul>
-          <li>✔ EMI Calculator – Plan your loans effectively</li>
-          <li>✔ SIP Calculator – Estimate investment growth</li>
-          <li>✔ BMI Calculator – Track your health metrics</li>
-          <li>✔ Image Tools – Compress, resize, and optimize images</li>
-          <li>✔ PDF Tools – Convert, merge, and manage PDF files</li>
-          <li>✔ Many more tools are being added regularly</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>🎯 Our Mission</h3>
-        <p>
-          Our mission is to create a one-stop platform that provides all essential 
-          digital tools for free. We aim to deliver tools that are fast, accurate, 
-          and easy to use without requiring any technical knowledge.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>🌍 Our Vision</h3>
-        <p>
-          Our vision is to become a trusted platform where users can access all types 
-          of digital tools in one place. We continuously work to expand our services 
-          and improve user experience.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>⭐ Why Choose Us?</h3>
-        <ul>
-          <li>✔ Completely free to use</li>
-          <li>✔ Fast and user-friendly interface</li>
-          <li>✔ No login or sign-up required</li>
-          <li>✔ Works on all devices</li>
-          <li>✔ Regular updates and new tools</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>🚀 Future Plans</h3>
-        <p>
-          We are constantly improving Digital Tool Vault by adding new tools, 
-          enhancing performance, and introducing advanced features. Our goal is 
-          to provide an even better experience in the future.
-        </p>
-      </div>
-
-      <p class="thank-you">
-        Thank you for using Digital Tool Vault 💙
-      </p>
-
+    <!-- Tools -->
+    <div class="card">
+      <h3>Our Tools</h3>
+      <ul>
+        <li>✔ EMI Calculator</li>
+        <li>✔ SIP Calculator</li>
+        <li>✔ BMI Calculator</li>
+        <li>✔ Image Tools</li>
+        <li>✔ PDF Tools</li>
+        <li>✔ And many more...</li>
+      </ul>
     </div>
-  </section>
 
-  <footer>
-    Made with ❤️ | Digital Tool Vault
-  </footer>
+    <!-- Mission -->
+    <div class="card">
+      <h3>Our Mission</h3>
+      <p>
+        Our mission is to provide all essential digital tools in one place 
+        that are simple, fast, and accessible to everyone for free.
+      </p>
+    </div>
+
+    <!-- Why Choose -->
+    <div class="card">
+      <h3>Why Choose Digital Tool Vault?</h3>
+      <ul>
+        <li>✔ Fast and easy to use</li>
+        <li>✔ No login required</li>
+        <li>✔ Works on mobile and desktop</li>
+        <li>✔ Clean and simple interface</li>
+        <li>✔ Regular updates with new tools</li>
+      </ul>
+    </div>
+
+    <!-- Future -->
+    <div class="card">
+      <h3>Future Goals</h3>
+      <p>
+        We are continuously improving and adding new tools to enhance your 
+        experience and make Digital Tool Vault your go-to platform for 
+        everyday digital needs.
+      </p>
+    </div>
+
+    <p class="thank">
+      Thank you for using Digital Tool Vault
+    </p>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Digital Tool Vault
+</footer>
 
 </body>
 </html>
