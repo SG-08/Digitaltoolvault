@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Text Case Converter Online Free | Uppercase, Lowercase, Title Case Tool</title>
+
+<meta name="description" content="Free online Text Case Converter to convert text into uppercase, lowercase, title case and sentence case instantly. Fast, secure and no signup required.">
+
+<meta name="keywords" content="text case converter, uppercase converter, lowercase converter, title case converter, sentence case tool, text formatter online">
+
+<link rel="canonical" href="https://digitaltoolvault.com/text-case-converter.html">
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #ffffff;
+    --primary: #37474f; 
+    --accent: #ff5722;  
+    --muted: #94a3b8;
+    --dot-color: #d1d5db;
+    --glass: rgba(255, 255, 255, 0.9);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.vault-card {
+    width: 100%;
+    max-width: 650px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--primary);
+    padding: 40px;
+    box-shadow: 15px 15px 0px var(--primary);
+}
+
+.header {
+    font-family: 'JetBrains Mono';
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+}
+
+.brand-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-line h1 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.brand-line span { color: var(--accent); }
+
+.sys-code {
+    font-size: 9px;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.tool-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 180px;
+    border: 2px solid #e2e8f0;
+    padding: 20px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+}
+
+button {
+    border: 1px solid var(--primary);
+    padding: 12px;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'JetBrains Mono';
+}
+
+button:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.sys-footer {
+    font-size: 8px;
+    color: var(--muted);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.seo-content {
+    max-width: 900px;
+    margin-top: 60px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="vault-card">
+
+    <div class="header">
+        <div class="brand-line">
+            <h1>DigitalTool<span>Vault</span></h1>
+            <span class="sys-code">TEXT_ENGINE_V1</span>
+        </div>
+        <div class="tool-title">Text Case Converter</div>
+    </div>
+
+    <textarea id="inputText" placeholder="Enter_Text_For_Conversion..."></textarea>
+
+    <div class="button-grid">
+        <button onclick="toUpper()">UPPERCASE</button>
+        <button onclick="toLower()">LOWERCASE</button>
+        <button onclick="toTitle()">TITLE CASE</button>
+        <button onclick="toSentence()">SENTENCE CASE</button>
+    </div>
+
+    <textarea id="outputText" placeholder="Output_Text..."></textarea>
+
+    <button onclick="clearText()">Clear_Text_Buffer</button>
+
+    <div class="sys-footer">
+        PROCESSING: REALTIME_SYNC | STORAGE: NON_PERSISTENT
+    </div>
+
+</div>
+
+<!-- SEO CONTENT -->
+<div class="seo-content">
+
+<h2>Text Case Converter – Convert Text to Uppercase, Lowercase, Title Case & More</h2>
+
+<p>This free online Text Case Converter allows you to quickly format your text into uppercase, lowercase, title case, and sentence case. It works instantly in your browser without any signup.</p>
+
+<h3>Key Features</h3>
+<ul>
+<li>Convert text instantly</li>
+<li>Multiple case options</li>
+<li>Fast and simple interface</li>
+<li>No installation required</li>
+</ul>
+
+<h3>How to Use</h3>
+<ul>
+<li>Paste your text</li>
+<li>Select case type</li>
+<li>Copy output instantly</li>
+</ul>
+
+<h3>FAQs</h3>
+
+<h4>Is this tool free?</h4>
+<p>Yes, it is completely free.</p>
+
+<h4>Does it store data?</h4>
+<p>No, everything runs in your browser.</p>
+
+<h4>Can I use it on mobile?</h4>
+<p>Yes, it works on all devices.</p>
+
+</div>
+
+<script>
+function toUpper(){
+    outputText.value = inputText.value.toUpperCase();
+}
+function toLower(){
+    outputText.value = inputText.value.toLowerCase();
+}
+function toTitle(){
+    outputText.value = inputText.value.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+}
+function toSentence(){
+    let text = inputText.value.toLowerCase();
+    outputText.value = text.charAt(0).toUpperCase() + text.slice(1);
+}
+function clearText(){
+    inputText.value="";
+    outputText.value="";
+}
+</script>
+
+</body>
+</html>
