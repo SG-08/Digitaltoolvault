@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigitalToolVault | Hybrid Currency Converter</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
 <style>
 :root {
     --bg: #ffffff;
@@ -197,15 +197,41 @@ button.execute:hover { background: var(--accent); }
 <p>Use this free currency converter to convert between global currencies in real-time.</p>
 </div>
 
-<!-- ✅ WORKING SCRIPT -->
 <script>
-const currencies = ["USD","INR","EUR","GBP","JPY","AUD","CAD"];
+const currencyData = [
+  { code: "USD", country: "United States" },
+  { code: "INR", country: "India" },
+  { code: "EUR", country: "Eurozone" },
+  { code: "GBP", country: "United Kingdom" },
+  { code: "JPY", country: "Japan" },
+  { code: "AUD", country: "Australia" },
+  { code: "CAD", country: "Canada" },
+  { code: "CNY", country: "China" },
+  { code: "AED", country: "UAE" },
+  { code: "SGD", country: "Singapore" },
+  { code: "NZD", country: "New Zealand" },
+  { code: "CHF", country: "Switzerland" },
+  { code: "ZAR", country: "South Africa" },
+  { code: "SAR", country: "Saudi Arabia" },
+  { code: "RUB", country: "Russia" },
+  { code: "BRL", country: "Brazil" },
+  { code: "KRW", country: "South Korea" },
+  { code: "HKD", country: "Hong Kong" },
+  { code: "SEK", country: "Sweden" },
+  { code: "NOK", country: "Norway" },
+  { code: "DKK", country: "Denmark" },
+  { code: "PLN", country: "Poland" },
+  { code: "THB", country: "Thailand" },
+  { code: "IDR", country: "Indonesia" },
+  { code: "TRY", country: "Turkey" },
+  { code: "MXN", country: "Mexico" }
+];
 
 let from = "USD";
 let to = "INR";
 
-document.getElementById("fromSearch").value = "USD";
-document.getElementById("toSearch").value = "INR";
+document.getElementById("fromSearch").value = "USD - United States";
+document.getElementById("toSearch").value = "INR - India";
 
 function populateList(inputId, listId) {
     const input = document.getElementById(inputId);
@@ -213,13 +239,17 @@ function populateList(inputId, listId) {
 
     input.addEventListener("focus", () => {
         list.style.display = "block";
-        renderList(list, input, currencies);
+        renderList(list, input, currencyData);
     });
 
     input.addEventListener("input", () => {
-        const filtered = currencies.filter(c =>
-            c.toLowerCase().includes(input.value.toLowerCase())
+        const query = input.value.toLowerCase();
+
+        const filtered = currencyData.filter(item =>
+            item.code.toLowerCase().includes(query) ||
+            item.country.toLowerCase().includes(query)
         );
+
         renderList(list, input, filtered);
     });
 
@@ -232,16 +262,19 @@ function populateList(inputId, listId) {
 
 function renderList(list, input, items) {
     list.innerHTML = "";
+
     items.forEach(item => {
         const div = document.createElement("div");
-        div.innerText = item;
+        div.innerText = `${item.code} - ${item.country}`;
+
         div.onclick = () => {
-            input.value = item;
+            input.value = `${item.code} - ${item.country}`;
             list.style.display = "none";
 
-            if (input.id === "fromSearch") from = item;
-            else to = item;
+            if (input.id === "fromSearch") from = item.code;
+            else to = item.code;
         };
+
         list.appendChild(div);
     });
 }
