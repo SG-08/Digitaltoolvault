@@ -11,6 +11,10 @@
 
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
+<!-- ✅ Flatpickr (Calendar) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <style>
 :root {
     --bg: #ffffff;
@@ -66,6 +70,7 @@ input {
     width: 100%;
     padding: 15px;
     border: 2px solid #e2e8f0;
+    cursor: pointer;
 }
 
 .results-box {
@@ -91,7 +96,7 @@ input {
 
 <body>
 
-<!-- ✅ ONLY CALCULATOR (TOP) -->
+<!-- ✅ CALCULATOR -->
 
 <div class="vault-card">
     <div class="header">
@@ -101,7 +106,7 @@ input {
         <div class="tool-title">Age Calculator</div>
     </div>
 
-<input type="date" id="dob">
+<input type="text" id="dob" placeholder="DD-MM-YYYY" autocomplete="off">
 
 <div class="results-box">
     <p id="output-main">-- Years</p>
@@ -109,45 +114,38 @@ input {
 
 </div>
 
-<!-- ✅ SEO CONTENT (BOTTOM) -->
+<!-- ✅ SEO CONTENT -->
 
 <div class="seo">
 
 <h1>Age Calculator Online – Calculate Your Exact Age Instantly</h1>
 
 <p>
-Our free online Age Calculator helps you determine your exact age in years, months, and days within seconds. Whether you are filling out official forms, planning birthdays, or simply curious about your age, this tool provides fast and accurate results. It works smoothly across all devices without requiring any signup.
+Our free online Age Calculator helps you determine your exact age in years, months, and days within seconds. Whether you are filling out official forms, planning birthdays, or simply curious about your age, this tool provides fast and accurate results.
 </p>
 
 <p>
-Manual age calculation can be confusing and error-prone. This tool eliminates guesswork and gives you precise results instantly. Just enter your date of birth and let the calculator do the rest.
+Manual age calculation can be confusing and error-prone. This tool eliminates guesswork and delivers precise results instantly using real-time date calculations.
 </p>
 
 <h2>How to Use</h2>
 <ul>
 <li>Enter your date of birth</li>
-<li>The result updates automatically</li>
-<li>View your age in years, months, and days</li>
+<li>Select from calendar or type manually</li>
+<li>Get instant results</li>
 </ul>
 
 <h2>Features</h2>
 <ul>
 <li>Free and fast</li>
-<li>Accurate real-time calculation</li>
+<li>Accurate calculations</li>
 <li>No login required</li>
-<li>Mobile-friendly design</li>
+<li>Mobile-friendly</li>
 </ul>
 
-<h2>Why Use This Tool?</h2>
-<p>
-This calculator is useful for students, professionals, and anyone needing quick and reliable age calculations for forms, applications, or personal use.
-</p>
-
 <h2>FAQs</h2>
-
-<p><strong>Is it free?</strong> Yes, completely free.</p>
-<p><strong>Is it safe?</strong> Yes, no data is stored.</p>
-<p><strong>Does it work on mobile?</strong> Yes, fully responsive.</p>
+<p><strong>Is it free?</strong> Yes.</p>
+<p><strong>Is it safe?</strong> Yes.</p>
 
 </div>
 
@@ -155,13 +153,34 @@ This calculator is useful for students, professionals, and anyone needing quick 
 const dob = document.getElementById("dob");
 const output = document.getElementById("output-main");
 
-dob.max = new Date().toISOString().split("T")[0];
+// ✅ Calendar + typing support
+flatpickr(dob, {
+    dateFormat: "d-m-Y",
+    maxDate: "today",
+    allowInput: true
+});
 
 dob.addEventListener("input", () => {
     if (!dob.value) return;
 
-    const birth = new Date(dob.value);
+    let parts;
+
+    if (dob.value.includes("-")) {
+        parts = dob.value.split("-");
+    } else if (dob.value.includes("/")) {
+        parts = dob.value.split("/");
+    } else {
+        return;
+    }
+
+    let day = parseInt(parts[0]);
+    let month = parseInt(parts[1]) - 1;
+    let year = parseInt(parts[2]);
+
+    const birth = new Date(year, month, day);
     const today = new Date();
+
+    if (isNaN(birth)) return;
 
     let years = today.getFullYear() - birth.getFullYear();
     let months = today.getMonth() - birth.getMonth();
