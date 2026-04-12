@@ -137,3 +137,108 @@
         </div>
         <div class="tool-title">Dual Grade Engine</div>
     </div>
+
+<div class="converter-grid">
+    <div class="input-wrap">
+        <label>Academic_CGPA [10.0 Scale]</label>
+        <input type="number" id="cgpa" placeholder="0.00" step="0.01" min="0" max="10">
+    </div>
+
+    <div class="sync-icon">⇅</div>
+
+    <div class="input-wrap">
+        <label>Percentage [%]</label>
+        <input type="number" id="percent" placeholder="0.0" step="0.1" min="0" max="100">
+    </div>
+</div>
+
+<div class="formula-card">
+    Algorithm: Percentage = CGPA × 9.5<br>
+    Reverse: CGPA = Percentage / 9.5
+</div>
+
+<div class="footer">BI-DIRECTIONAL_SYNC_ACTIVE</div>
+
+</div>
+
+<!-- ✅ ONLY SEO CONTENT CHANGED -->
+
+<div class="seo">
+
+<h1>CGPA to Percentage Converter Online – Instant Academic Conversion</h1>
+
+<p>
+This free CGPA to Percentage Converter helps students instantly convert their academic scores into percentage or CGPA without any manual calculation. It is fast, accurate, and designed for Indian education systems.
+</p>
+
+<p>
+Many universities and colleges use CGPA while others require percentage, which creates confusion during applications. This tool solves that problem by providing real-time conversion using a standard formula.
+</p>
+
+<h2>How to Use</h2>
+<ul>
+<li>Enter your CGPA to get percentage</li>
+<li>Enter percentage to convert into CGPA</li>
+<li>Results update automatically</li>
+</ul>
+
+<h2>Features</h2>
+<ul>
+<li>Bi-directional conversion</li>
+<li>Instant calculation</li>
+<li>No login required</li>
+<li>Works on all devices</li>
+</ul>
+
+<h2>FAQs</h2>
+<p><strong>How to convert CGPA to percentage?</strong> Multiply CGPA by 9.5.</p>
+<p><strong>Is this tool free?</strong> Yes, it is completely free.</p>
+
+</div>
+
+<script>
+const cgpaInput = document.getElementById('cgpa');
+const percentInput = document.getElementById('percent');
+
+cgpaInput.addEventListener('input', () => {
+    const val = parseFloat(cgpaInput.value);
+    if (!isNaN(val)) {
+        if (val > 10) {
+            percentInput.value = "";
+            cgpaInput.style.borderColor = "var(--accent)";
+        } else {
+            cgpaInput.style.borderColor = "var(--primary)";
+            percentInput.value = (val * 9.5).toFixed(2);
+        }
+    } else {
+        percentInput.value = "";
+    }
+});
+
+percentInput.addEventListener('input', () => {
+    const val = parseFloat(percentInput.value);
+    if (!isNaN(val)) {
+        if (val > 100) {
+            cgpaInput.value = "";
+            percentInput.style.borderColor = "var(--accent)";
+        } else {
+            percentInput.style.borderColor = "var(--primary)";
+            cgpaInput.value = (val / 9.5).toFixed(2);
+        }
+    } else {
+        cgpaInput.value = "";
+    }
+});
+
+[cgpaInput, percentInput].forEach(el => {
+    el.addEventListener('blur', (e) => {
+        const val = parseFloat(e.target.value);
+        if (!isNaN(val)) {
+            e.target.value = val.toFixed(2);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
