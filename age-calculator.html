@@ -116,47 +116,38 @@ input {
 <h1>Age Calculator Online – Calculate Your Exact Age Instantly</h1>
 
 <p>
-Our free online Age Calculator helps you determine your exact age in years, months, and days within seconds. Whether you are filling out official forms, planning birthdays, or simply curious about your age, this tool provides fast and accurate results. Designed for ease of use, the calculator works seamlessly on mobile, tablet, and desktop devices without requiring any login or registration.
+Our free online Age Calculator helps you determine your exact age in years, months, and days within seconds. Whether you are filling out official forms, planning birthdays, or simply curious about your age, this tool provides fast and accurate results. It works smoothly across all devices without requiring any signup.
 </p>
 
 <p>
-Unlike manual calculations, which can be confusing and time-consuming, our tool instantly processes your date of birth and calculates precise results using real-time date data. It is perfect for students, professionals, and anyone who needs a quick age calculation without errors.
+Manual age calculation can be confusing and error-prone. This tool eliminates guesswork and gives you precise results instantly. Just enter your date of birth and let the calculator do the rest.
 </p>
 
-<h2>How to Use the Age Calculator</h2>
+<h2>How to Use</h2>
 <ul>
-<li>Enter your date of birth using the date picker</li>
-<li>The calculator will automatically compute your age</li>
-<li>View your exact age in years, months, and days instantly</li>
+<li>Enter your date of birth</li>
+<li>The result updates automatically</li>
+<li>View your age in years, months, and days</li>
 </ul>
 
-<h2>Key Features</h2>
+<h2>Features</h2>
 <ul>
-<li>100% free and easy to use</li>
-<li>Instant and accurate calculations</li>
-<li>No sign-up or personal data required</li>
-<li>Works on all devices and browsers</li>
-<li>Clean and user-friendly interface</li>
+<li>Free and fast</li>
+<li>Accurate real-time calculation</li>
+<li>No login required</li>
+<li>Mobile-friendly design</li>
 </ul>
 
-<h2>Why Use Our Age Calculator?</h2>
+<h2>Why Use This Tool?</h2>
 <p>
-This tool eliminates the need for manual counting and reduces the chances of mistakes. It is especially useful for official documentation, school applications, job forms, and event planning. With a simple interface and reliable performance, it ensures you always get the correct result quickly.
+This calculator is useful for students, professionals, and anyone needing quick and reliable age calculations for forms, applications, or personal use.
 </p>
 
-<h2>Frequently Asked Questions (FAQs)</h2>
+<h2>FAQs</h2>
 
-<p><strong>Is this age calculator free to use?</strong><br>
-Yes, it is completely free with no hidden charges.</p>
-
-<p><strong>Is my data safe?</strong><br>
-Absolutely. No data is stored or shared. Everything runs directly in your browser.</p>
-
-<p><strong>Can I use it on mobile?</strong><br>
-Yes, the tool is fully responsive and works perfectly on mobile devices.</p>
-
-<p><strong>Does it calculate exact age?</strong><br>
-Yes, it calculates your precise age in years, months, and days based on the current date.</p>
+<p><strong>Is it free?</strong> Yes, completely free.</p>
+<p><strong>Is it safe?</strong> Yes, no data is stored.</p>
+<p><strong>Does it work on mobile?</strong> Yes, fully responsive.</p>
 
 </div>
 
@@ -167,6 +158,8 @@ const output = document.getElementById("output-main");
 dob.max = new Date().toISOString().split("T")[0];
 
 dob.addEventListener("input", () => {
+    if (!dob.value) return;
+
     const birth = new Date(dob.value);
     const today = new Date();
 
@@ -176,7 +169,7 @@ dob.addEventListener("input", () => {
 
     if (days < 0) {
         months--;
-        days += 30;
+        days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
     }
 
     if (months < 0) {
