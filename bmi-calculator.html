@@ -4,21 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BMI Calculator Online | Check Your Body Mass Index Instantly</title>
+<title>BMI Calculator Online – Check Your Body Mass Index Instantly | DigitalToolVault</title>
 
-<meta name="description" content="Calculate your Body Mass Index (BMI) instantly. Check if you are underweight, normal or overweight with this free BMI calculator.">
-<meta name="keywords" content="BMI calculator, body mass index, health calculator, weight calculator, BMI India">
+<meta name="description" content="Free BMI Calculator – calculate your Body Mass Index instantly in kg/lb and cm/m. Check if you are underweight, normal, overweight or obese. No signup required.">
+<meta name="keywords" content="BMI calculator, body mass index calculator, BMI calculator India, calculate BMI online, BMI check, healthy weight calculator, BMI kg cm, overweight BMI, free BMI tool">
 <meta name="author" content="DigitalToolVault">
 <meta name="robots" content="index, follow">
 
-<link rel="canonical" href="https://yourdomain.com/bmi-calculator">
+<link rel="canonical" href="https://www.digitaltoolvault.com/bmi-calculator.html">
 
-<meta property="og:title" content="BMI Calculator Online | DigitalToolVault">
-<meta property="og:description" content="Check your BMI instantly with our free calculator.">
+<!-- Open Graph -->
+<meta property="og:title" content="BMI Calculator Online – DigitalToolVault">
+<meta property="og:description" content="Calculate your Body Mass Index instantly. Supports kg/lb and cm/m. Free, fast, no signup required.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://yourdomain.com/bmi-calculator">
+<meta property="og:url" content="https://www.digitaltoolvault.com/bmi-calculator.html">
+<meta property="og:site_name" content="DigitalToolVault">
 
-<meta name="twitter:card" content="summary_large_image">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BMI Calculator Online – DigitalToolVault">
+<meta name="twitter:description" content="Free BMI calculator. Check your body mass index instantly in kg/lb and cm/m. No login needed.">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "BMI Calculator",
+  "url": "https://www.digitaltoolvault.com/bmi-calculator.html",
+  "description": "Free online BMI calculator to check your Body Mass Index instantly. Supports kg/lb and cm/m units.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is BMI?",
+      "acceptedAnswer": { "@type": "Answer", "text": "BMI (Body Mass Index) is a measure of body fat based on your height and weight. It helps determine whether you have a healthy body weight for your height." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this BMI calculator free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free. No signup, login, or registration required." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. All calculations happen in your browser. No data is stored or shared with any server." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use it on mobile?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is fully responsive and works on all devices and browsers." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is BMI accurate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "BMI provides a general estimate of healthy weight. It may not fully account for muscle mass, bone density, or body composition, so it should be used alongside other health assessments." }
+    }
+  ]
+}
+</script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
 
@@ -143,11 +197,73 @@ select {
     font-weight: 600;
 }
 
+/* SEO STYLES */
 .seo {
     max-width: 800px;
     margin-top: 60px;
     line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+    color: #334155;
+    padding: 0 10px 40px;
 }
+
+.seo h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.seo h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+}
+
+.seo h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-top: 16px;
+    margin-bottom: 6px;
+}
+
+.seo p { margin-bottom: 12px; font-size: 0.92rem; }
+
+.seo ul { padding-left: 20px; margin-bottom: 12px; }
+.seo ul li { font-size: 0.92rem; margin-bottom: 6px; }
+
+.seo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.88rem;
+    font-family: 'JetBrains Mono';
+}
+
+.seo table th {
+    background: var(--primary);
+    color: white;
+    padding: 9px 12px;
+    text-align: left;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+}
+
+.seo table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #475569;
+}
+
+.seo table tr:nth-child(even) td { background: #f8fafc; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item strong { color: var(--primary); }
 </style>
 
 </head>
@@ -190,7 +306,7 @@ select {
 
 </div>
 
-<!-- ✅ FULL ORIGINAL SEO CONTENT RESTORED -->
+<!-- SEO CONTENT -->
 <div class="seo">
 
 <h1>BMI Calculator Online – Check Your Body Mass Index Instantly</h1>
@@ -225,22 +341,76 @@ Manual BMI calculation can be confusing and time-consuming. This online calculat
 <li>Simple and user-friendly interface</li>
 </ul>
 
+<h2>BMI Formula</h2>
+<p>
+BMI is calculated by dividing your weight in kilograms by the square of your height in meters:
+</p>
+<p><strong>BMI = Weight (kg) ÷ Height² (m²)</strong></p>
+
+<h3>Example Calculation</h3>
+<p>
+If your weight is <strong>70 kg</strong> and height is <strong>175 cm (1.75 m)</strong>:<br>
+BMI = 70 ÷ (1.75 × 1.75) = 70 ÷ 3.0625 = <strong>22.86 (Normal)</strong>
+</p>
+
+<h2>BMI Categories (WHO Standard)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>BMI Range</th>
+      <th>Category</th>
+      <th>Health Risk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Below 18.5</td><td>Underweight</td><td>Nutritional deficiency risk</td></tr>
+    <tr><td>18.5 – 24.9</td><td>Normal Weight</td><td>Low health risk</td></tr>
+    <tr><td>25.0 – 29.9</td><td>Overweight</td><td>Moderate health risk</td></tr>
+    <tr><td>30.0 – 34.9</td><td>Obese (Class I)</td><td>High health risk</td></tr>
+    <tr><td>35.0 – 39.9</td><td>Obese (Class II)</td><td>Very high health risk</td></tr>
+    <tr><td>40.0 and above</td><td>Obese (Class III)</td><td>Extremely high health risk</td></tr>
+  </tbody>
+</table>
+
+<h2>BMI Chart for Indian Adults</h2>
+<p>
+The World Health Organization (WHO) uses standard BMI ranges globally. However, for Asian and Indian populations, health risks can begin at lower BMI values. Many Indian health guidelines suggest the following adjusted ranges:
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>BMI Range</th>
+      <th>Category (Indian Guidelines)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Below 18.5</td><td>Underweight</td></tr>
+    <tr><td>18.5 – 22.9</td><td>Normal Weight</td></tr>
+    <tr><td>23.0 – 24.9</td><td>Overweight (At Risk)</td></tr>
+    <tr><td>25.0 – 29.9</td><td>Obese I</td></tr>
+    <tr><td>30.0 and above</td><td>Obese II</td></tr>
+  </tbody>
+</table>
+
 <h2>Why Use This BMI Calculator?</h2>
 <p>
 This tool is designed to provide quick and reliable results for anyone who wants to track their health. Whether you are managing your weight, planning a fitness routine, or monitoring your health, this BMI calculator helps you stay informed and make better decisions.
 </p>
-
 <p>
 It is especially useful for students, fitness enthusiasts, and professionals who need a quick way to calculate BMI without manual formulas.
 </p>
 
-<h2>Understanding BMI Categories</h2>
+<h2>Limitations of BMI</h2>
+<p>
+While BMI is a useful screening tool, it does have limitations. It does not directly measure body fat and may not accurately reflect health in all individuals. The following groups may get misleading BMI readings:
+</p>
 <ul>
-<li>Underweight: BMI below 18.5</li>
-<li>Normal weight: BMI between 18.5 and 24.9</li>
-<li>Overweight: BMI between 25 and 29.9</li>
-<li>Obese: BMI 30 or higher</li>
+<li><strong>Athletes and bodybuilders</strong> — High muscle mass can result in a high BMI despite low body fat</li>
+<li><strong>Elderly individuals</strong> — May have normal BMI but high body fat due to muscle loss</li>
+<li><strong>Children and teenagers</strong> — BMI needs to be interpreted using age and gender-specific charts</li>
+<li><strong>Pregnant women</strong> — BMI is not an appropriate measure during pregnancy</li>
 </ul>
+<p>Always consult a healthcare professional for a complete health assessment.</p>
 
 <h2>Benefits of Using an Online BMI Calculator</h2>
 <ul>
@@ -251,22 +421,42 @@ It is especially useful for students, fitness enthusiasts, and professionals who
 <li>No technical knowledge required</li>
 </ul>
 
-<h2>FAQs</h2>
+<h2>Frequently Asked Questions (FAQs)</h2>
 
+<div class="faq-item">
 <p><strong>What is BMI?</strong><br>
-BMI is a measure of body fat based on height and weight.</p>
+BMI (Body Mass Index) is a measure of body fat based on your height and weight. It helps determine whether you have a healthy body weight relative to your height.</p>
+</div>
 
+<div class="faq-item">
 <p><strong>Is this BMI calculator free?</strong><br>
-Yes, it is completely free to use.</p>
+Yes, completely free. No signup, login, or registration required.</p>
+</div>
 
+<div class="faq-item">
 <p><strong>Is my data safe?</strong><br>
-Yes, no data is stored or shared.</p>
+Yes. All calculations happen entirely in your browser. No data is stored or shared with any server.</p>
+</div>
 
+<div class="faq-item">
 <p><strong>Can I use it on mobile?</strong><br>
-Yes, it works on all devices.</p>
+Yes, it is fully responsive and works on all screen sizes and browsers without any installation.</p>
+</div>
 
+<div class="faq-item">
 <p><strong>Is BMI accurate?</strong><br>
-BMI provides a general estimate but may not account for muscle mass or body composition.</p>
+BMI provides a general estimate of healthy weight. It may not fully account for muscle mass, bone density, or body composition, so it should be used alongside other health assessments.</p>
+</div>
+
+<div class="faq-item">
+<p><strong>What is a healthy BMI for Indians?</strong><br>
+For Indian adults, a BMI between 18.5 and 22.9 is considered normal. A BMI of 23 or above may indicate increased health risk according to Indian health guidelines.</p>
+</div>
+
+<div class="faq-item">
+<p><strong>How often should I check my BMI?</strong><br>
+Checking your BMI every 3 to 6 months is generally sufficient for tracking weight management progress. More frequent checks are not necessary unless advised by a doctor.</p>
+</div>
 
 </div>
 
