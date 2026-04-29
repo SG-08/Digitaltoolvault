@@ -1,88 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Homepage -->
-  <url>
-    <loc>https://www.digitaltoolvault.com/</loc>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- Financial Tools -->
-  <url>
-    <loc>https://www.digitaltoolvault.com/emi-calculator.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/sip-calculator.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/bmi-calculator.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/age-calculator.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/compound-interest-calculator.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/inflation-calculator.html</loc>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Utility Tools -->
-  <url>
-    <loc>https://www.digitaltoolvault.com/currency-converter.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/binary-converter.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/cgpa-converter.html</loc>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Image & File Tools -->
-  <url>
-    <loc>https://www.digitaltoolvault.com/image-compressor.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/image-watermark.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/jpg-to-pdf.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/pdf-watermark.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/pdf-to-ppt.html</loc>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Security & Generator Tools -->
-  <url>
-    <loc>https://www.digitaltoolvault.com/password-generator.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.digitaltoolvault.com/qr-generator.html</loc>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Text Tool -->
-  <url>
-    <loc>https://www.digitaltoolvault.com/word-counter.html</loc>
-    <priority>0.9</priority>
-  </url>
-
+  <url><loc>https://digitaltoolvault.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://digitaltoolvault.com/emi-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://digitaltoolvault.com/sip-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://digitaltoolvault.com/gst-calculator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://digitaltoolvault.com/currency-converter.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://digitaltoolvault.com/image-compressor.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://digitaltoolvault.com/password-generator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://digitaltoolvault.com/qr-generator.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://digitaltoolvault.com/bmi-calculator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://digitaltoolvault.com/age-calculator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://digitaltoolvault.com/compound-interest-calculator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://digitaltoolvault.com/inflation-calculator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://digitaltoolvault.com/cgpa-converter.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://digitaltoolvault.com/word-counter.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://digitaltoolvault.com/image-watermark.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://digitaltoolvault.com/jpg-to-pdf.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://digitaltoolvault.com/pdf-watermark.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://digitaltoolvault.com/number-to-word.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://digitaltoolvault.com/text-case-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://digitaltoolvault.com/binary-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://digitaltoolvault.com/pdf-to-ppt.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://digitaltoolvault.com/about.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://digitaltoolvault.com/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://digitaltoolvault.com/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
