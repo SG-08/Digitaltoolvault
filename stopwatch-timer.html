@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stopwatch & Timer – Free Online Stopwatch and Countdown Timer | DigitalToolVault</title>
+<meta name="description" content="Free online stopwatch and countdown timer — start, stop, lap and reset with one click. Works in your browser, no app download needed. No signup required.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#37474f">
+<link rel="canonical" href="https://www.digitaltoolvault.com/stopwatch-timer.html">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DigitalToolVault">
+<meta property="og:title" content="Stopwatch & Timer – Free Online Stopwatch and Countdown Timer | DigitalToolVault">
+<meta property="og:description" content="Free online stopwatch and countdown timer — start, stop, lap and reset with one click. Works in your browser, no app download needed. No signup required.">
+<meta property="og:url" content="https://www.digitaltoolvault.com/stopwatch-timer.html">
+<meta property="og:image" content="https://www.digitaltoolvault.com/og-image.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stopwatch & Timer – Free Online Stopwatch and Countdown Timer">
+<meta name="twitter:description" content="Free online stopwatch and countdown timer — start, stop, lap and reset with one click. Works in your browser, no app download needed. No signup required.">
+<meta name="twitter:image" content="https://www.digitaltoolvault.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Stopwatch & Timer","url":"https://www.digitaltoolvault.com/stopwatch-timer.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Stopwatch & Timer","item":"https://www.digitaltoolvault.com/stopwatch-timer.html"}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #ffffff;
+    --primary: #37474f;
+    --accent: #ff5722;
+    --muted: #94a3b8;
+    --dot-color: #d1d5db;
+    --glass: rgba(255,255,255,0.9);
+}
+* { box-sizing: border-box; }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+.calculator {
+    width: 100%;
+    max-width: 480px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--primary);
+    padding: 40px;
+    box-shadow: 15px 15px 0 var(--primary);
+}
+.header {
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    font-family: 'JetBrains Mono';
+}
+.brand-line { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: 2px; font-weight: 700; color: var(--primary); }
+.logo span { color: var(--accent); }
+.sys-code { font-size: 9px; color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; }
+.tool-title { font-size: 16px; margin-top: 10px; font-weight: 600; font-family: 'JetBrains Mono'; }
+.input-grid { display: grid; gap: 15px; }
+label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 4px; }
+input, select, textarea {
+    width: 100%;
+    border: 2px solid #e2e8f0;
+    padding: 10px;
+    font-family: 'JetBrains Mono';
+    font-size: 15px;
+    background: white;
+    outline: none;
+    transition: border .15s;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--primary); }
+.calc-btn {
+    width: 100%; margin-top: 16px; padding: 13px;
+    background: var(--primary); color: #fff; border: none;
+    font-family: 'JetBrains Mono'; font-size: 11px;
+    letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: background .2s;
+}
+.calc-btn:hover { background: var(--accent); }
+.results {
+    margin-top: 20px; text-align: center; padding: 25px;
+    background: #f8fafc; border: 1px solid #e2e8f0; cursor: pointer;
+}
+.results:hover { background: #f1f5f9; }
+#output { font-family: 'JetBrains Mono'; font-size: 32px; color: var(--primary); }
+.breakdown {
+    display: flex; justify-content: space-between; margin-top: 15px;
+    font-family: 'JetBrains Mono'; font-size: 10px; color: var(--muted);
+    flex-wrap: wrap; gap: 4px;
+}
+.copy-hint { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-top: 8px; letter-spacing: 1px; }
+.seo { max-width: 800px; margin-top: 60px; width: 100%; }
+.seo h1{font-size:1.5rem;font-weight:700;color:#37474f;margin-bottom:14px;}
+.seo h2{font-size:1.1rem;font-weight:700;color:#37474f;margin:32px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
+.seo h3{font-size:.97rem;font-weight:600;color:#37474f;margin:18px 0 8px;}
+.seo p{font-size:0.93rem;margin-bottom:12px;color:#475569;line-height:1.8;}
+.seo ul,.seo ol{padding-left:22px;margin-bottom:12px;}
+.seo li{font-size:0.93rem;margin-bottom:7px;color:#475569;}
+.seo table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.87rem;}
+.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.78rem;letter-spacing:.5px;}
+.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
+.seo table tr:nth-child(even) td{background:#f8fafc;}
+.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:10px;}
+.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.93rem;}
+.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:12px 16px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#37474f;border-radius:0 8px 8px 0;}
+.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.88rem;color:#9a3412;}
+@media(max-width:520px){body{padding:12px;}.calculator{padding:24px 18px;}#output{font-size:26px;}}
+</style>
+</head>
+<body>
+<nav style="position:sticky;top:0;z-index:1000;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;">
+  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
+  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
+</nav>
+<div class="calculator">
+  <div class="header">
+    <div class="brand-line"><div class="logo">DigitalTool<span>Vault</span></div><div class="sys-code">TIMER_ENGINE</div></div>
+    <div class="tool-title">Stopwatch & Timer</div>
+  </div>
+  <div style="text-align:center;margin-bottom:18px;">
+    <div style="font-family:'JetBrains Mono';font-size:9px;color:var(--muted);margin-bottom:8px;letter-spacing:2px;">MODE</div>
+    <div style="display:flex;border:2px solid var(--primary);overflow:hidden;">
+      <button onclick="setMode('stop')" id="btn-stop" style="flex:1;padding:9px;font-family:'JetBrains Mono';font-size:10px;border:none;background:var(--primary);color:#fff;cursor:pointer;letter-spacing:1px;">STOPWATCH</button>
+      <button onclick="setMode('count')" id="btn-count" style="flex:1;padding:9px;font-family:'JetBrains Mono';font-size:10px;border:none;background:none;color:var(--primary);cursor:pointer;letter-spacing:1px;">COUNTDOWN</button>
+    </div>
+  </div>
+  <div id="sw-panel">
+    <div id="sw-display" style="font-family:'JetBrains Mono';font-size:48px;text-align:center;padding:20px 0;color:var(--primary);">00:00.00</div>
+    <div style="display:flex;gap:8px;">
+      <button class="calc-btn" onclick="swToggle()" id="sw-btn" style="margin:0;flex:2;">START</button>
+      <button class="calc-btn" onclick="swLap()" style="margin:0;flex:1;background:#94a3b8;">LAP</button>
+      <button class="calc-btn" onclick="swReset()" style="margin:0;flex:1;background:#64748b;">RESET</button>
+    </div>
+    <div id="sw-laps" style="margin-top:12px;max-height:120px;overflow-y:auto;font-family:'JetBrains Mono';font-size:11px;color:var(--muted);"></div>
+  </div>
+  <div id="cd-panel" style="display:none;">
+    <div style="display:flex;gap:8px;margin-bottom:12px;">
+      <div style="flex:1;"><label>Hours</label><input type="number" id="cd-h" min="0" max="23" value="0" placeholder="0"></div>
+      <div style="flex:1;"><label>Minutes</label><input type="number" id="cd-m" min="0" max="59" value="5" placeholder="5"></div>
+      <div style="flex:1;"><label>Seconds</label><input type="number" id="cd-s" min="0" max="59" value="0" placeholder="0"></div>
+    </div>
+    <div id="cd-display" style="font-family:'JetBrains Mono';font-size:48px;text-align:center;padding:16px 0;color:var(--primary);">05:00</div>
+    <div style="display:flex;gap:8px;">
+      <button class="calc-btn" onclick="cdToggle()" id="cd-btn" style="margin:0;flex:2;">START</button>
+      <button class="calc-btn" onclick="cdReset()" style="margin:0;flex:1;background:#64748b;">RESET</button>
+    </div>
+  </div>
+</div>
+<script>
+// STOPWATCH
+let swInt=null,swMs=0,swRunning=false,lapCount=0;
+function swToggle(){if(swRunning){clearInterval(swInt);swRunning=false;document.getElementById('sw-btn').innerText='RESUME';}else{const start=Date.now()-swMs;swInt=setInterval(()=>{swMs=Date.now()-start;updateSW();},10);swRunning=true;document.getElementById('sw-btn').innerText='PAUSE';}}
+function swReset(){clearInterval(swInt);swMs=0;swRunning=false;lapCount=0;document.getElementById('sw-btn').innerText='START';document.getElementById('sw-display').innerText='00:00.00';document.getElementById('sw-laps').innerHTML='';}
+function swLap(){if(!swRunning)return;lapCount++;const t=fmtSW(swMs);document.getElementById('sw-laps').innerHTML=`<div>Lap ${lapCount}: ${t}</div>`+document.getElementById('sw-laps').innerHTML;}
+function updateSW(){document.getElementById('sw-display').innerText=fmtSW(swMs);}
+function fmtSW(ms){const m=Math.floor(ms/60000);const s=Math.floor((ms%60000)/1000);const cs=Math.floor((ms%1000)/10);return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'.'+String(cs).padStart(2,'0');}
+// COUNTDOWN
+let cdInt=null,cdRemaining=300,cdRunning=false;
+function cdToggle(){if(cdRunning){clearInterval(cdInt);cdRunning=false;document.getElementById('cd-btn').innerText='RESUME';}else{const h=parseInt(document.getElementById('cd-h').value)||0;const m=parseInt(document.getElementById('cd-m').value)||0;const s=parseInt(document.getElementById('cd-s').value)||0;if(!cdRunning&&cdRemaining===(h*3600+m*60+s)||cdRemaining===0){cdRemaining=h*3600+m*60+s;}if(cdRemaining<=0)return;cdInt=setInterval(()=>{cdRemaining--;updateCD();if(cdRemaining<=0){clearInterval(cdInt);cdRunning=false;document.getElementById('cd-btn').innerText='START';document.getElementById('cd-display').innerText='DONE!';new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAA==').play();}},1000);cdRunning=true;document.getElementById('cd-btn').innerText='PAUSE';}}
+function cdReset(){clearInterval(cdInt);cdRunning=false;document.getElementById('cd-btn').innerText='START';const h=parseInt(document.getElementById('cd-h').value)||0;const m=parseInt(document.getElementById('cd-m').value)||0;const s=parseInt(document.getElementById('cd-s').value)||0;cdRemaining=h*3600+m*60+s;updateCD();}
+function updateCD(){const h=Math.floor(cdRemaining/3600);const m=Math.floor((cdRemaining%3600)/60);const s=cdRemaining%60;document.getElementById('cd-display').innerText=(h>0?String(h).padStart(2,'0')+':':'')+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function setMode(mode){if(mode==='stop'){document.getElementById('sw-panel').style.display='block';document.getElementById('cd-panel').style.display='none';document.getElementById('btn-stop').style.background='var(--primary)';document.getElementById('btn-stop').style.color='#fff';document.getElementById('btn-count').style.background='none';document.getElementById('btn-count').style.color='var(--primary)';}else{document.getElementById('sw-panel').style.display='none';document.getElementById('cd-panel').style.display='block';document.getElementById('btn-count').style.background='var(--primary)';document.getElementById('btn-count').style.color='#fff';document.getElementById('btn-stop').style.background='none';document.getElementById('btn-stop').style.color='var(--primary)';}}
+</script>
+<div class="seo"><h1>Online Stopwatch & Countdown Timer – Free Browser Tool</h1>
+<p>A free online stopwatch and countdown timer. Use the stopwatch to measure elapsed time with lap support, or set a countdown timer for cooking, studying, workouts and more. Works in any browser, no app needed.</p>
+<h2>Features</h2>
+<ul>
+<li><strong>Stopwatch</strong> — start, pause, resume, lap and reset with precise centisecond display</li>
+<li><strong>Lap timer</strong> — record multiple lap times for sports and fitness tracking</li>
+<li><strong>Countdown timer</strong> — set hours, minutes and seconds for any duration</li>
+<li><strong>Alert on completion</strong> — countdown notifies when time is up</li></ul>
+<h2>Common Timer Uses</h2>
+<table><tr><th>Activity</th><th>Duration</th></tr>
+<tr><td>Pomodoro work session</td><td>25 minutes</td></tr>
+<tr><td>Tea / coffee steeping</td><td>3–5 minutes</td></tr>
+<tr><td>HIIT workout round</td><td>20–45 seconds</td></tr>
+<tr><td>Presentation practice</td><td>5–20 minutes</td></tr>
+<tr><td>Exam question time</td><td>1–2 minutes each</td></tr></table>
+<div class="tip-box">💡 The Pomodoro Technique: work for 25 minutes, take a 5-minute break, repeat 4 times, then take a 15–30 minute break. Use the countdown timer to manage each session.</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><strong>Does the timer work when I switch tabs?</strong>Yes. The timer uses JavaScript intervals that continue running even when the tab is in the background. However, some browsers throttle background tabs — keep the tab visible for precise timing.</div>
+<div class="faq-item"><strong>How accurate is this stopwatch?</strong>The stopwatch updates every 10 milliseconds (centisecond precision), making it accurate enough for most uses. For professional sports timing, use a dedicated hardware stopwatch.</div>
+<div class="faq-item"><strong>Can I use this as a Pomodoro timer?</strong>Yes — set the countdown to 25:00 for your work session and 5:00 for breaks. The tool alerts you when time is up.</div></div>
+</body>
+</html>

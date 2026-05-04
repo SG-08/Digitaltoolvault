@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Eligibility Calculator – Check How Much Loan You Can Get | DigitalToolVault</title>
+<meta name="description" content="Free loan eligibility calculator — enter monthly income, expenses and interest rate to find out the maximum loan amount you are eligible for. No signup needed.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#37474f">
+<link rel="canonical" href="https://www.digitaltoolvault.com/loan-eligibility-calculator.html">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DigitalToolVault">
+<meta property="og:title" content="Loan Eligibility Calculator – Check How Much Loan You Can Get | DigitalToolVault">
+<meta property="og:description" content="Free loan eligibility calculator — enter monthly income, expenses and interest rate to find out the maximum loan amount you are eligible for. No signup needed.">
+<meta property="og:url" content="https://www.digitaltoolvault.com/loan-eligibility-calculator.html">
+<meta property="og:image" content="https://www.digitaltoolvault.com/og-image.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Loan Eligibility Calculator – Check How Much Loan You Can Get">
+<meta name="twitter:description" content="Free loan eligibility calculator — enter monthly income, expenses and interest rate to find out the maximum loan amount you are eligible for. No signup needed.">
+<meta name="twitter:image" content="https://www.digitaltoolvault.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Loan Eligibility Calculator","url":"https://www.digitaltoolvault.com/loan-eligibility-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Loan Eligibility Calculator","item":"https://www.digitaltoolvault.com/loan-eligibility-calculator.html"}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #ffffff;
+    --primary: #37474f;
+    --accent: #ff5722;
+    --muted: #94a3b8;
+    --dot-color: #d1d5db;
+    --glass: rgba(255,255,255,0.9);
+}
+* { box-sizing: border-box; }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+.calculator {
+    width: 100%;
+    max-width: 480px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--primary);
+    padding: 40px;
+    box-shadow: 15px 15px 0 var(--primary);
+}
+.header {
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    font-family: 'JetBrains Mono';
+}
+.brand-line { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: 2px; font-weight: 700; color: var(--primary); }
+.logo span { color: var(--accent); }
+.sys-code { font-size: 9px; color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; }
+.tool-title { font-size: 16px; margin-top: 10px; font-weight: 600; font-family: 'JetBrains Mono'; }
+.input-grid { display: grid; gap: 15px; }
+label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 4px; }
+input, select, textarea {
+    width: 100%;
+    border: 2px solid #e2e8f0;
+    padding: 10px;
+    font-family: 'JetBrains Mono';
+    font-size: 15px;
+    background: white;
+    outline: none;
+    transition: border .15s;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--primary); }
+.calc-btn {
+    width: 100%; margin-top: 16px; padding: 13px;
+    background: var(--primary); color: #fff; border: none;
+    font-family: 'JetBrains Mono'; font-size: 11px;
+    letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: background .2s;
+}
+.calc-btn:hover { background: var(--accent); }
+.results {
+    margin-top: 20px; text-align: center; padding: 25px;
+    background: #f8fafc; border: 1px solid #e2e8f0; cursor: pointer;
+}
+.results:hover { background: #f1f5f9; }
+#output { font-family: 'JetBrains Mono'; font-size: 32px; color: var(--primary); }
+.breakdown {
+    display: flex; justify-content: space-between; margin-top: 15px;
+    font-family: 'JetBrains Mono'; font-size: 10px; color: var(--muted);
+    flex-wrap: wrap; gap: 4px;
+}
+.copy-hint { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-top: 8px; letter-spacing: 1px; }
+.seo { max-width: 800px; margin-top: 60px; width: 100%; }
+.seo h1{font-size:1.5rem;font-weight:700;color:#37474f;margin-bottom:14px;}
+.seo h2{font-size:1.1rem;font-weight:700;color:#37474f;margin:32px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
+.seo h3{font-size:.97rem;font-weight:600;color:#37474f;margin:18px 0 8px;}
+.seo p{font-size:0.93rem;margin-bottom:12px;color:#475569;line-height:1.8;}
+.seo ul,.seo ol{padding-left:22px;margin-bottom:12px;}
+.seo li{font-size:0.93rem;margin-bottom:7px;color:#475569;}
+.seo table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.87rem;}
+.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.78rem;letter-spacing:.5px;}
+.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
+.seo table tr:nth-child(even) td{background:#f8fafc;}
+.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:10px;}
+.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.93rem;}
+.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:12px 16px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#37474f;border-radius:0 8px 8px 0;}
+.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.88rem;color:#9a3412;}
+@media(max-width:520px){body{padding:12px;}.calculator{padding:24px 18px;}#output{font-size:26px;}}
+</style>
+</head>
+<body>
+<nav style="position:sticky;top:0;z-index:1000;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;">
+  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
+  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
+</nav>
+<div class="calculator">
+  <div class="header">
+    <div class="brand-line"><div class="logo">DigitalTool<span>Vault</span></div><div class="sys-code">LOAN_ELIG_ENGINE</div></div>
+    <div class="tool-title">Loan Eligibility Calculator</div>
+  </div>
+  <div class="input-grid">
+    <div><label>Monthly_Net_Income [₹]</label><input type="number" id="le-inc" placeholder="e.g. 60000"></div>
+    <div><label>Monthly_Expenses [₹]</label><input type="number" id="le-exp" placeholder="e.g. 20000"></div>
+    <div><label>Existing_EMIs [₹]</label><input type="number" id="le-emi" placeholder="e.g. 5000" value="0"></div>
+    <div><label>Interest_Rate [% p.a.]</label><input type="number" id="le-rate" placeholder="e.g. 9" value="9"></div>
+    <div><label>Loan_Tenure [Years]</label><input type="number" id="le-yr" placeholder="e.g. 20" value="20"></div>
+  </div>
+  <button class="calc-btn" onclick="calcLE()">CHECK_ELIGIBILITY →</button>
+  <div class="results" onclick="copy('le-out')">
+    <p id="le-out">—</p>
+    <div class="breakdown"><span>Max_EMI: <b id="le-maxemi">—</b></span><span>Eligible_Amount: <b id="le-elig">—</b></span></div>
+    <div class="copy-hint">CLICK_TO_COPY</div>
+  </div>
+</div>
+<script>
+function fmt(n){return isNaN(n)?'—':Math.round(n).toLocaleString('en-IN');}
+function calcLE(){
+  const inc=parseFloat(document.getElementById('le-inc').value);
+  const exp=parseFloat(document.getElementById('le-exp').value)||0;
+  const exist=parseFloat(document.getElementById('le-emi').value)||0;
+  const rate=parseFloat(document.getElementById('le-rate').value);
+  const yr=parseFloat(document.getElementById('le-yr').value);
+  if(isNaN(inc)||isNaN(rate)||isNaN(yr)){document.getElementById('le-out').innerText='Invalid';return;}
+  const disposable=inc-exp-exist;
+  const maxEMI=disposable*0.5;
+  const r=(rate/12)/100; const n=yr*12;
+  const loan=maxEMI*((Math.pow(1+r,n)-1)/(r*Math.pow(1+r,n)));
+  document.getElementById('le-out').innerText='₹'+fmt(loan);
+  document.getElementById('le-maxemi').innerText='₹'+fmt(maxEMI)+'/mo';
+  document.getElementById('le-elig').innerText='₹'+fmt(loan);
+}
+function copy(id){const v=document.getElementById(id).innerText;if(v&&v!=='—'){navigator.clipboard.writeText(v);const el=document.getElementById(id);const o=el.innerText;el.innerText='COPIED!';setTimeout(()=>el.innerText=o,1000);}}
+document.querySelectorAll('input').forEach(i=>i.addEventListener('input',calcLE));
+</script>
+<div class="seo"><h1>Loan Eligibility Calculator – Find Your Maximum Loan Amount</h1>
+<p>This free loan eligibility calculator estimates the maximum loan amount a bank or lender may approve based on your monthly income, expenses and existing EMIs. Instant results, no signup required.</p>
+<h2>How Loan Eligibility is Calculated</h2>
+<p>Most Indian banks use the <strong>FOIR (Fixed Obligation to Income Ratio)</strong> method. Banks allow 40–60% of net monthly income for EMI payments. This calculator uses 50% FOIR — a common benchmark used by SBI, HDFC and ICICI Bank.</p>
+<div class="formula-box">Max EMI = (Net Income − Expenses − Existing EMIs) × 50%<br>Eligible Loan = Max EMI × [(1+r)ⁿ − 1] ÷ [r × (1+r)ⁿ]</div>
+<h2>Eligibility by Income Level</h2>
+<table><tr><th>Monthly Income</th><th>Approx. Max Home Loan</th><th>At 8.5% for 20 yrs</th></tr>
+<tr><td>₹30,000</td><td>₹15,000 max EMI</td><td>≈₹15.2 Lakh</td></tr>
+<tr><td>₹60,000</td><td>₹30,000 max EMI</td><td>≈₹30.4 Lakh</td></tr>
+<tr><td>₹1,00,000</td><td>₹50,000 max EMI</td><td>≈₹50.7 Lakh</td></tr>
+<tr><td>₹2,00,000</td><td>₹1,00,000 max EMI</td><td>≈₹1.01 Crore</td></tr></table>
+<div class="tip-box">💡 To increase loan eligibility: add a co-applicant (spouse's income is counted), improve your CIBIL score above 750, clear existing loans before applying, or choose a longer tenure.</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><strong>What is FOIR?</strong>FOIR (Fixed Obligation to Income Ratio) is the percentage of your income that goes toward all fixed EMI payments. Most banks cap this at 40–55%. Higher FOIR = lower loan eligibility.</div>
+<div class="faq-item"><strong>Does credit score affect eligibility?</strong>Yes. A CIBIL score above 750 qualifies you for higher loan amounts at lower rates. Below 650, most banks reject applications outright.</div>
+<div class="faq-item"><strong>Is this calculator 100% accurate?</strong>This gives an estimate based on standard FOIR norms. Actual eligibility depends on your credit score, employment type, employer, age and the specific bank's policies.</div></div>
+</body>
+</html>

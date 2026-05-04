@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Typing Speed Test – Check Your WPM & Accuracy Free Online | DigitalToolVault</title>
+<meta name="description" content="Free typing speed test — measure your typing speed in WPM (words per minute) and accuracy. Practice and improve your typing skills. No signup needed.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#37474f">
+<link rel="canonical" href="https://www.digitaltoolvault.com/typing-speed-test.html">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DigitalToolVault">
+<meta property="og:title" content="Typing Speed Test – Check Your WPM & Accuracy Free Online | DigitalToolVault">
+<meta property="og:description" content="Free typing speed test — measure your typing speed in WPM (words per minute) and accuracy. Practice and improve your typing skills. No signup needed.">
+<meta property="og:url" content="https://www.digitaltoolvault.com/typing-speed-test.html">
+<meta property="og:image" content="https://www.digitaltoolvault.com/og-image.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Typing Speed Test – Check Your WPM & Accuracy Free Online">
+<meta name="twitter:description" content="Free typing speed test — measure your typing speed in WPM (words per minute) and accuracy. Practice and improve your typing skills. No signup needed.">
+<meta name="twitter:image" content="https://www.digitaltoolvault.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Typing Speed Test","url":"https://www.digitaltoolvault.com/typing-speed-test.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Typing Speed Test","item":"https://www.digitaltoolvault.com/typing-speed-test.html"}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #ffffff;
+    --primary: #37474f;
+    --accent: #ff5722;
+    --muted: #94a3b8;
+    --dot-color: #d1d5db;
+    --glass: rgba(255,255,255,0.9);
+}
+* { box-sizing: border-box; }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+.calculator {
+    width: 100%;
+    max-width: 480px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--primary);
+    padding: 40px;
+    box-shadow: 15px 15px 0 var(--primary);
+}
+.header {
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    font-family: 'JetBrains Mono';
+}
+.brand-line { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: 2px; font-weight: 700; color: var(--primary); }
+.logo span { color: var(--accent); }
+.sys-code { font-size: 9px; color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; }
+.tool-title { font-size: 16px; margin-top: 10px; font-weight: 600; font-family: 'JetBrains Mono'; }
+.input-grid { display: grid; gap: 15px; }
+label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 4px; }
+input, select, textarea {
+    width: 100%;
+    border: 2px solid #e2e8f0;
+    padding: 10px;
+    font-family: 'JetBrains Mono';
+    font-size: 15px;
+    background: white;
+    outline: none;
+    transition: border .15s;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--primary); }
+.calc-btn {
+    width: 100%; margin-top: 16px; padding: 13px;
+    background: var(--primary); color: #fff; border: none;
+    font-family: 'JetBrains Mono'; font-size: 11px;
+    letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: background .2s;
+}
+.calc-btn:hover { background: var(--accent); }
+.results {
+    margin-top: 20px; text-align: center; padding: 25px;
+    background: #f8fafc; border: 1px solid #e2e8f0; cursor: pointer;
+}
+.results:hover { background: #f1f5f9; }
+#output { font-family: 'JetBrains Mono'; font-size: 32px; color: var(--primary); }
+.breakdown {
+    display: flex; justify-content: space-between; margin-top: 15px;
+    font-family: 'JetBrains Mono'; font-size: 10px; color: var(--muted);
+    flex-wrap: wrap; gap: 4px;
+}
+.copy-hint { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-top: 8px; letter-spacing: 1px; }
+.seo { max-width: 800px; margin-top: 60px; width: 100%; }
+.seo h1{font-size:1.5rem;font-weight:700;color:#37474f;margin-bottom:14px;}
+.seo h2{font-size:1.1rem;font-weight:700;color:#37474f;margin:32px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
+.seo h3{font-size:.97rem;font-weight:600;color:#37474f;margin:18px 0 8px;}
+.seo p{font-size:0.93rem;margin-bottom:12px;color:#475569;line-height:1.8;}
+.seo ul,.seo ol{padding-left:22px;margin-bottom:12px;}
+.seo li{font-size:0.93rem;margin-bottom:7px;color:#475569;}
+.seo table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.87rem;}
+.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.78rem;letter-spacing:.5px;}
+.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
+.seo table tr:nth-child(even) td{background:#f8fafc;}
+.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:10px;}
+.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.93rem;}
+.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:12px 16px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#37474f;border-radius:0 8px 8px 0;}
+.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.88rem;color:#9a3412;}
+@media(max-width:520px){body{padding:12px;}.calculator{padding:24px 18px;}#output{font-size:26px;}}
+</style>
+</head>
+<body>
+<nav style="position:sticky;top:0;z-index:1000;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;">
+  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
+  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
+</nav>
+<div class="calculator" style="max-width:560px;">
+  <div class="header">
+    <div class="brand-line"><div class="logo">DigitalTool<span>Vault</span></div><div class="sys-code">TYPING_TEST_ENGINE</div></div>
+    <div class="tool-title">Typing Speed Test</div>
+  </div>
+  <div id="ts-passage" style="font-family:'JetBrains Mono';font-size:13px;line-height:1.8;padding:14px;border:2px solid #e2e8f0;background:#f8fafc;margin-bottom:14px;color:#37474f;min-height:80px;"></div>
+  <div><label>Type_Here</label><textarea id="ts-input" rows="4" style="resize:none;font-size:14px;" placeholder="Start typing above text here..." oninput="checkTyping()" onpaste="return false;"></textarea></div>
+  <div style="display:flex;gap:10px;margin-top:12px;">
+    <button class="calc-btn" onclick="startTest()" style="margin:0;flex:1;">START →</button>
+    <button class="calc-btn" onclick="resetTest()" style="margin:0;flex:1;background:#94a3b8;">RESET</button>
+  </div>
+  <div class="results" style="cursor:default;margin-top:14px;">
+    <p id="ts-out" style="font-size:28px;">—</p>
+    <div class="breakdown">
+      <span>WPM: <b id="ts-wpm">0</b></span>
+      <span>Accuracy: <b id="ts-acc">100%</b></span>
+      <span>Time: <b id="ts-time">0s</b></span>
+      <span>Errors: <b id="ts-err">0</b></span>
+    </div>
+  </div>
+</div>
+<script>
+const passages=[
+  "The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs. How vexingly quick daft zebras jump.",
+  "Success is not final failure is not fatal it is the courage to continue that counts. Hard work beats talent when talent does not work hard.",
+  "Technology is best when it brings people together. The computer was born to solve problems that did not exist before. Innovation distinguishes a leader from a follower.",
+  "Reading is to the mind what exercise is to the body. A reader lives a thousand lives before he dies. The man who does not read has no advantage over the man who cannot read."
+];
+let timer=null,startTime=null,started=false;
+function loadPassage(){
+  document.getElementById('ts-passage').innerText=passages[Math.floor(Math.random()*passages.length)];
+}
+function startTest(){
+  resetTest();
+  document.getElementById('ts-input').focus();
+  loadPassage();
+}
+function resetTest(){
+  clearInterval(timer);started=false;startTime=null;
+  document.getElementById('ts-input').value='';
+  document.getElementById('ts-out').innerText='—';
+  document.getElementById('ts-wpm').innerText='0';
+  document.getElementById('ts-acc').innerText='100%';
+  document.getElementById('ts-time').innerText='0s';
+  document.getElementById('ts-err').innerText='0';
+  loadPassage();
+}
+function checkTyping(){
+  const input=document.getElementById('ts-input').value;
+  if(!started&&input.length>0){
+    started=true;startTime=Date.now();
+    timer=setInterval(updateTime,1000);
+  }
+  const passage=document.getElementById('ts-passage').innerText;
+  let errors=0;
+  for(let i=0;i<input.length;i++){if(input[i]!==passage[i])errors++;}
+  const words=input.trim().split(/\s+/).filter(w=>w).length;
+  const elapsed=(Date.now()-startTime)/60000;
+  const wpm=elapsed>0?Math.round(words/elapsed):0;
+  const acc=input.length>0?Math.round(((input.length-errors)/input.length)*100):100;
+  document.getElementById('ts-wpm').innerText=wpm;
+  document.getElementById('ts-acc').innerText=acc+'%';
+  document.getElementById('ts-err').innerText=errors;
+  if(input===passage.substring(0,input.length)&&input.length===passage.length){
+    clearInterval(timer);
+    document.getElementById('ts-out').innerText=wpm+' WPM';
+  }
+}
+function updateTime(){
+  if(startTime)document.getElementById('ts-time').innerText=Math.round((Date.now()-startTime)/1000)+'s';
+}
+loadPassage();
+</script>
+<div class="seo"><h1>Typing Speed Test – Measure Your WPM and Accuracy Online</h1>
+<p>Test your typing speed in words per minute (WPM) and accuracy percentage. Practice with different passages and track your improvement over time. Free, no signup required.</p>
+<h2>Typing Speed Benchmarks</h2>
+<table><tr><th>WPM Range</th><th>Level</th><th>Suitable For</th></tr>
+<tr><td>0–20 WPM</td><td>Beginner</td><td>New typist — needs practice</td></tr>
+<tr><td>21–40 WPM</td><td>Average</td><td>General computer use</td></tr>
+<tr><td>41–60 WPM</td><td>Good</td><td>Office work, data entry</td></tr>
+<tr><td>61–80 WPM</td><td>Fast</td><td>Professional typist</td></tr>
+<tr><td>80+ WPM</td><td>Expert</td><td>Transcription, competitive typing</td></tr></table>
+<div class="tip-box">💡 The average typing speed is 40 WPM. Professional typists average 65–75 WPM. Touch typing (without looking at keys) is the fastest method and can be learned in 2–4 weeks of daily practice.</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><strong>What is a good typing speed?</strong>40–60 WPM is considered good for everyday use. Most office jobs require 40+ WPM. Data entry jobs typically require 60+ WPM. Top competitive typists reach 120–150 WPM.</div>
+<div class="faq-item"><strong>How can I improve my typing speed?</strong>Practice touch typing — use all 10 fingers, keep eyes on screen (not keyboard). Use home row position (ASDF JKL;). Practice daily for 15–20 minutes. Sites like Typing.com and Keybr offer structured lessons.</div>
+<div class="faq-item"><strong>What is accuracy in typing?</strong>Accuracy is the percentage of correctly typed characters. 95%+ accuracy is considered good. Prioritise accuracy over speed — speed naturally increases with consistent accurate practice.</div></div>
+</body>
+</html>
