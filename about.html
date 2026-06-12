@@ -1,164 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us - Digital Tool Vault</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | DigitalToolVault – Free Online Tools for India</title>
+  <meta name="description" content="Learn about DigitalToolVault — India's free online tools platform. 30+ calculators, converters & utilities. No signup. Built for students, professionals & everyday users." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.digitaltoolvault.com/about.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --primary: #37474f;
+      --accent: #ff5722;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --border: #37474f;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      background-image: radial-gradient(#d1d5db 1.5px, transparent 1.5px);
+      background-size: 30px 30px;
+      color: var(--text);
+      min-height: 100vh;
+    }
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--primary);
+      padding: 0 24px;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .nav-logo { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: #fff; text-decoration: none; letter-spacing: 0.5px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-back { font-family: var(--font-mono); font-size: 0.8rem; color: #cfd8dc; text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
 
-<style>
+    /* HERO */
+    .hero {
+      max-width: 860px; margin: 60px auto 0; padding: 0 24px;
+      text-align: center;
+    }
+    .hero-label {
+      font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-family: var(--font-mono); font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700; color: var(--primary); line-height: 1.2; margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 1.05rem; color: var(--muted); line-height: 1.8; max-width: 620px; margin: 0 auto;
+    }
 
-/* BACKGROUND WITH DOTS (SUBTLE LIKE YOUR SITE) */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+    /* CONTENT */
+    .content { max-width: 860px; margin: 48px auto 80px; padding: 0 24px; }
+    .card {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      box-shadow: 8px 8px 0 var(--border);
+      border-radius: 4px;
+      padding: 36px 40px;
+      margin-bottom: 32px;
+    }
+    .card-label {
+      font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .card h2 {
+      font-family: var(--font-mono); font-size: 1.25rem; font-weight: 700;
+      color: var(--primary); margin-bottom: 16px;
+    }
+    .card p { font-size: 0.97rem; color: #374151; line-height: 1.85; margin-bottom: 14px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { padding-left: 20px; margin-top: 10px; }
+    .card ul li { font-size: 0.97rem; color: #374151; line-height: 1.85; margin-bottom: 8px; }
+    .card ul li strong { color: var(--primary); }
 
-  background-color: #ffffff;
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-  background-size: 20px 20px;
-}
+    /* STATS ROW */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px; margin: 48px 0 32px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      box-shadow: 5px 5px 0 var(--border);
+      border-radius: 4px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .stat-num { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .stat-desc { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
 
-/* MAIN CONTAINER */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-}
+    /* CATEGORIES */
+    .cat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin-top: 16px;
+    }
+    .cat-item {
+      background: #f9fafb; border: 1.5px solid #d1d5db; border-radius: 4px;
+      padding: 16px 18px;
+    }
+    .cat-item .cat-title { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+    .cat-item .cat-tools { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
-/* HEADINGS */
-h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
+    /* CTA */
+    .cta-section {
+      background: var(--primary); border: 2px solid var(--primary);
+      box-shadow: 8px 8px 0 var(--accent);
+      border-radius: 4px; padding: 40px 40px;
+      text-align: center; margin-top: 48px;
+    }
+    .cta-section h2 { font-family: var(--font-mono); font-size: 1.4rem; color: #fff; margin-bottom: 12px; }
+    .cta-section p { color: #cfd8dc; font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px; }
+    .cta-btn {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
+      padding: 12px 28px; border-radius: 4px; transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; }
 
-h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
-}
+    /* FOOTER */
+    footer {
+      background: var(--primary); color: #cfd8dc;
+      font-family: var(--font-mono); font-size: 0.78rem;
+      padding: 28px 24px; text-align: center; letter-spacing: 0.5px;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { margin-bottom: 10px; }
 
-/* ORANGE ACCENT LINE (LIKE YOUR SITE TOUCH) */
-.section h2 {
-  position: relative;
-  padding-left: 12px;
-}
-
-.section h2::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 4px;
-  height: 16px;
-  width: 4px;
-  background: #f97316; /* orange */
-  border-radius: 2px;
-}
-
-/* TEXT */
-p {
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 15px;
-}
-
-/* SECTIONS */
-.section {
-  margin-top: 30px;
-}
-
-/* BOX (LIGHT LIKE YOUR SITE) */
-.box {
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 6px;
-  border: 1px solid #f1f5f9;
-  background: #ffffff;
-}
-
-/* LIST */
-ul {
-  padding-left: 20px;
-}
-
-ul li {
-  margin: 6px 0;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 13px;
-  color: #666;
-}
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+    @media (max-width: 600px) {
+      .card { padding: 24px 20px; }
+      .cta-section { padding: 28px 20px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a>
+    <a class="nav-back" href="/">← ALL TOOLS</a>
+  </nav>
 
-  <h1>About Us</h1>
-  <h2>Welcome to Digital Tool Vault</h2>
-
-  <p>
-    Digital Tool Vault is a free online platform that provides useful tools 
-    to make your daily tasks easier, faster, and more efficient.
-  </p>
-
-  <p>
-    Instead of using multiple websites, you can access all essential tools 
-    in one place without any signup or installation.
-  </p>
-
-  <div class="section box">
-    <h2>Our Tools</h2>
-    <ul>
-      <li>EMI Calculator</li>
-      <li>SIP Calculator</li>
-      <li>BMI Calculator</li>
-      <li>Image Tools</li>
-      <li>PDF Tools</li>
-      <li>And many more...</li>
-    </ul>
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-label">// About Us</p>
+    <h1>Built for India.<br>Free for Everyone.</h1>
+    <p>DigitalToolVault is a free online platform that brings 30+ essential tools — calculators, converters, and utilities — to students, professionals, and everyday users across India. No signup. No fees. No clutter.</p>
   </div>
 
-  <div class="section box">
-    <h2>Our Mission</h2>
-    <p>
-      Our mission is to provide all essential digital tools in one place 
-      that are simple, fast, and completely free to use.
-    </p>
+  <!-- STATS -->
+  <div class="content">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">30+</div><div class="stat-desc">Free Tools</div></div>
+      <div class="stat-card"><div class="stat-num">0₹</div><div class="stat-desc">Cost to Use</div></div>
+      <div class="stat-card"><div class="stat-num">5</div><div class="stat-desc">Categories</div></div>
+      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-desc">Browser-Based</div></div>
+    </div>
+
+    <!-- WHO WE ARE -->
+    <div class="card">
+      <p class="card-label">// Our Story</p>
+      <h2>WHO WE ARE</h2>
+      <p>DigitalToolVault was created with a straightforward idea: everyday digital tasks — calculating a loan EMI, converting binary numbers, compressing an image before uploading — should not require expensive software, annoying sign-ups, or hunting across ten different websites.</p>
+      <p>We built this platform to be a single, reliable destination for the tools that people actually use. Whether you are a student verifying CGPA, a small business owner calculating GST, a fitness enthusiast tracking BMI, or a developer needing a quick QR code — DigitalToolVault has you covered.</p>
+      <p>Every tool on this platform runs entirely in your browser. That means your data never leaves your device. We believe privacy-respecting, fast, and free tools should be accessible to everyone — not just those with premium subscriptions or fast internet.</p>
+    </div>
+
+    <!-- WHAT WE OFFER -->
+    <div class="card">
+      <p class="card-label">// Our Tools</p>
+      <h2>WHAT WE OFFER</h2>
+      <p>We currently offer 30+ tools across five core categories, with new tools added regularly based on user demand:</p>
+      <div class="cat-grid">
+        <div class="cat-item">
+          <div class="cat-title">📊 Calculators</div>
+          <div class="cat-tools">EMI, SIP, BMI, Compound Interest, Inflation, GST, Percentage, Simple Interest, Discount, Loan Eligibility, Age</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-title">🔁 Converters</div>
+          <div class="cat-tools">Binary, CGPA, Currency, Number to Words, Text Case, Roman Numeral, Unit Converter</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-title">🖼 Media Tools</div>
+          <div class="cat-tools">Image Compressor, Image Watermark, JPG to PDF, PDF Watermark, PDF to PPT</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-title">🔬 Utilities</div>
+          <div class="cat-tools">Scientific Calculator, Password Generator, QR Generator, Word Counter, Typing Speed Test</div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-title">🎲 Fun &amp; Productivity</div>
+          <div class="cat-tools">Random Name Picker, Stopwatch &amp; Timer</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUR MISSION -->
+    <div class="card">
+      <p class="card-label">// Mission</p>
+      <h2>OUR MISSION</h2>
+      <p>Our mission is simple: <strong>democratise access to digital tools for India.</strong> Millions of people in India perform financial calculations on paper, rely on friends for unit conversions, or download suspicious apps just to compress a photo. We want to eliminate that friction.</p>
+      <p>We are committed to keeping every tool on this platform free — permanently. We fund the platform through non-intrusive advertising so that the tools remain free without paywalls or data harvesting.</p>
+      <p>We also prioritise speed and accessibility. All tools are optimised to load fast even on slower mobile connections, and every tool is fully functional on both desktop and mobile devices without any app installation required.</p>
+    </div>
+
+    <!-- WHY CHOOSE US -->
+    <div class="card">
+      <p class="card-label">// Why Us</p>
+      <h2>WHY CHOOSE DIGITALTOOLVAULT?</h2>
+      <ul>
+        <li><strong>No Account Required:</strong> Every tool works instantly without registration, login, or email verification.</li>
+        <li><strong>Privacy First:</strong> All calculations and conversions happen locally in your browser. We do not store, transmit, or share any input data you enter into our tools.</li>
+        <li><strong>India-Focused:</strong> Our financial tools are calibrated for Indian use cases — INR currency, GST rates, Indian loan structures, and CGPA grading systems used by Indian universities.</li>
+        <li><strong>Works on Any Device:</strong> Every tool is fully responsive and works on Android, iOS, Windows, and Mac — no app download needed.</li>
+        <li><strong>Always Free:</strong> DigitalToolVault will never charge users for access. The platform is sustained through ads, not subscriptions.</li>
+        <li><strong>Regular Updates:</strong> We actively maintain and improve existing tools and regularly add new ones based on user requests.</li>
+        <li><strong>Clean Interface:</strong> No distracting pop-ups, no aggressive ads in the middle of tools, no redirects to unrelated sites.</li>
+      </ul>
+    </div>
+
+    <!-- COMMITMENT -->
+    <div class="card">
+      <p class="card-label">// Our Commitment</p>
+      <h2>OUR COMMITMENT TO ACCURACY</h2>
+      <p>We take accuracy seriously, especially for financial tools like the EMI Calculator, SIP Calculator, and GST Calculator, which are used to make real monetary decisions. All formulas used in our calculators follow standard mathematical models:</p>
+      <ul>
+        <li>EMI uses the standard reducing-balance formula: EMI = [P × r × (1+r)^n] / [(1+r)^n – 1]</li>
+        <li>SIP returns use the standard future-value formula with monthly compounding</li>
+        <li>Compound Interest calculations follow the standard CI formula with user-defined compounding frequency</li>
+        <li>GST calculations follow the current GST Council slabs applicable in India</li>
+      </ul>
+      <p>While we strive for accuracy, please note that all tools are for informational and planning purposes. For critical financial decisions, we recommend consulting a qualified financial advisor.</p>
+    </div>
+
+    <!-- FUTURE -->
+    <div class="card">
+      <p class="card-label">// Roadmap</p>
+      <h2>WHAT'S COMING NEXT</h2>
+      <p>We are actively working on expanding the DigitalToolVault platform. Here are some of the tools and features in our pipeline:</p>
+      <ul>
+        <li><strong>Tax Calculator (New Tax Regime vs Old):</strong> Compare your income tax liability under both regimes for FY 2024-25.</li>
+        <li><strong>FD &amp; RD Calculator:</strong> Calculate maturity amounts for Fixed Deposits and Recurring Deposits from major Indian banks.</li>
+        <li><strong>Resume Builder:</strong> A simple, no-frills resume builder that exports clean PDF resumes.</li>
+        <li><strong>Invoice Generator:</strong> Create professional GST-compliant invoices for freelancers and small businesses.</li>
+        <li><strong>More Image Tools:</strong> Image resizer, background remover, and format converter.</li>
+        <li><strong>Dark Mode:</strong> A full dark mode toggle for comfortable use at night.</li>
+      </ul>
+      <p>Have a tool you'd like us to add? We actively consider user suggestions. Reach out via our <a href="/contact.html" style="color: var(--accent);">Contact page</a>.</p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>START USING FREE TOOLS</h2>
+      <p>No account needed. No install required. Just open a tool and start working. Everything runs instantly in your browser.</p>
+      <a class="cta-btn" href="/">← BROWSE ALL TOOLS</a>
+    </div>
+
   </div>
 
-  <div class="section box">
-    <h2>Why Choose Us?</h2>
-    <ul>
-      <li>Fast and easy to use</li>
-      <li>No login required</li>
-      <li>Works on all devices</li>
-      <li>Clean and simple interface</li>
-      <li>Regular updates</li>
-    </ul>
-  </div>
-
-  <div class="section box">
-    <h2>Future Goals</h2>
-    <p>
-      We are continuously working on adding new tools and improving 
-      user experience to make this platform even more useful.
-    </p>
-  </div>
-
-  <p style="margin-top:30px;">
-    Thank you for using Digital Tool Vault
-  </p>
-
-</div>
-
-<div class="footer">
-  © 2026 Digital Tool Vault
-</div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    © 2026 DigitalToolVault — Free online tools, no signup required.
+  </footer>
 
 </body>
 </html>
