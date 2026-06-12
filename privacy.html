@@ -1,147 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy - Digital Tool Vault</title>
-
-<style>
-
-/* SAME BACKGROUND AS YOUR SITE */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* CONTAINER */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-/* HEADINGS */
-h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-
-/* ORANGE ACCENT */
-.section h2 {
-  position: relative;
-  padding-left: 12px;
-}
-
-.section h2::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 4px;
-  height: 16px;
-  width: 4px;
-  background: #f97316;
-  border-radius: 2px;
-}
-
-/* TEXT */
-p {
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 15px;
-}
-
-/* SECTIONS */
-.section {
-  margin-top: 30px;
-}
-
-/* BOX STYLE */
-.box {
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 6px;
-  border: 1px solid #f1f5f9;
-  background: #ffffff;
-}
-
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 13px;
-  color: #666;
-}
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | DigitalToolVault</title>
+  <meta name="description" content="DigitalToolVault Privacy Policy — learn how we handle your data, cookies, and advertising. We collect minimal data and never sell your personal information." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.digitaltoolvault.com/privacy.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f9fafb; --card-bg: #ffffff; --primary: #37474f;
+      --accent: #ff5722; --text: #1a1a2e; --muted: #6b7280;
+      --border: #37474f; --font-body: 'Inter', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    }
+    body {
+      font-family: var(--font-body); background-color: var(--bg);
+      background-image: radial-gradient(#d1d5db 1.5px, transparent 1.5px);
+      background-size: 30px 30px; color: var(--text); min-height: 100vh;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100; background: var(--primary);
+      padding: 0 24px; height: 56px; display: flex; align-items: center;
+      justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .nav-logo { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: #fff; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-back { font-family: var(--font-mono); font-size: 0.8rem; color: #cfd8dc; text-decoration: none; letter-spacing: 1px; }
+    .nav-back:hover { color: var(--accent); }
+    .hero { max-width: 860px; margin: 60px auto 0; padding: 0 24px; text-align: center; }
+    .hero-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .hero h1 { font-family: var(--font-mono); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: var(--primary); margin-bottom: 14px; }
+    .hero p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
+    .content { max-width: 860px; margin: 40px auto 80px; padding: 0 24px; }
+    .card {
+      background: var(--card-bg); border: 2px solid var(--border);
+      box-shadow: 8px 8px 0 var(--border); border-radius: 4px;
+      padding: 36px 40px; margin-bottom: 28px;
+    }
+    .card-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .card h2 { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 14px; }
+    .card p { font-size: 0.95rem; color: #374151; line-height: 1.85; margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { padding-left: 20px; margin-top: 8px; margin-bottom: 12px; }
+    .card ul li { font-size: 0.95rem; color: #374151; line-height: 1.85; margin-bottom: 6px; }
+    .card a { color: var(--accent); }
+    .updated-badge {
+      display: inline-block; background: #ecfdf5; border: 1.5px solid #6ee7b7;
+      color: #065f46; font-family: var(--font-mono); font-size: 0.75rem;
+      padding: 4px 12px; border-radius: 4px; margin-bottom: 32px;
+    }
+    footer {
+      background: var(--primary); color: #cfd8dc; font-family: var(--font-mono);
+      font-size: 0.78rem; padding: 28px 24px; text-align: center; letter-spacing: 0.5px;
+    }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+    .footer-links { margin-bottom: 10px; }
+    @media (max-width: 600px) { .card { padding: 24px 20px; } }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <nav>
+    <a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a>
+    <a class="nav-back" href="/">← ALL TOOLS</a>
+  </nav>
 
-  <h1>Privacy Policy</h1>
-  <h2>Digital Tool Vault</h2>
-
-  <p>
-    At Digital Tool Vault, we respect your privacy and are committed to protecting it.
-  </p>
-
-  <div class="section box">
-    <h2>Information We Collect</h2>
-    <p>
-      We do not collect any personal information from users unless you contact us directly.
-    </p>
+  <div class="hero">
+    <p class="hero-label">// Legal</p>
+    <h1>PRIVACY POLICY</h1>
+    <p>How we collect, use, and protect your information when you use DigitalToolVault.</p>
   </div>
 
-  <div class="section box">
-    <h2>Use of Cookies</h2>
-    <p>
-      We may use third-party services such as Google AdSense, which may use cookies to display relevant advertisements.
-    </p>
-    <p>
-      Google may use cookies to serve ads based on your previous visits to this website or other websites.
-    </p>
+  <div class="content">
+    <div class="updated-badge">Last Updated: June 2026</div>
+
+    <div class="card">
+      <p class="card-label">// Overview</p>
+      <h2>INTRODUCTION</h2>
+      <p>Welcome to DigitalToolVault ("we", "our", or "us"). We operate the website located at <strong>www.digitaltoolvault.com</strong> (the "Site"). This Privacy Policy explains what information we collect, why we collect it, how we use it, and the choices you have.</p>
+      <p>We are committed to protecting your privacy. DigitalToolVault is designed so that the vast majority of our tools process all data <strong>locally in your browser</strong> — meaning the numbers, text, or files you enter into our calculators, converters, and utilities are never sent to our servers.</p>
+      <p>By using this Site, you agree to the collection and use of information as described in this Privacy Policy. If you do not agree with any part of this policy, please discontinue use of the Site.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-label">// Data Collection</p>
+      <h2>INFORMATION WE COLLECT</h2>
+      <p><strong>1. Tool Input Data:</strong> All tools on DigitalToolVault (calculators, converters, image tools, etc.) run entirely within your browser. Input values such as loan amounts, age, income, or uploaded images are processed locally on your device. We do not transmit or store this data on our servers.</p>
+      <p><strong>2. Usage Data (Analytics):</strong> We use Google Analytics to understand how visitors use our site. Google Analytics collects anonymised data including pages visited, time on site, device type, browser type, and approximate geographic location (at the country/region level). This data is aggregated and does not personally identify you.</p>
+      <p><strong>3. Contact Form Data:</strong> If you contact us via our Contact page, we collect your name and email address solely to respond to your enquiry. We do not add you to any mailing list without explicit consent.</p>
+      <p><strong>4. Cookies:</strong> See our Cookie section below for a detailed breakdown of how cookies are used on this Site.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-label">// Cookies</p>
+      <h2>COOKIES &amp; TRACKING</h2>
+      <p>We use the following types of cookies on this Site:</p>
+      <ul>
+        <li><strong>Analytics Cookies (Google Analytics):</strong> These cookies help us understand how users interact with our site — which tools are most popular, which pages have high bounce rates, and how users navigate. This data helps us improve the platform. Google Analytics data is anonymised and does not personally identify individual users.</li>
+        <li><strong>Advertising Cookies (Google AdSense):</strong> We serve ads through Google AdSense to fund the free operation of this platform. Google AdSense may use cookies to serve ads based on your prior visits to this website or other websites. These cookies allow Google to personalise ads to your interests.</li>
+        <li><strong>No Tracking of Tool Inputs:</strong> We do not place any cookies that capture or transmit the data you enter into our tools.</li>
+      </ul>
+      <p><strong>Managing Cookies:</strong> You can control and/or delete cookies from your browser settings at any time. You may also opt out of personalised advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ads Settings</a> or by using the <a href="https://optout.aboutads.info" target="_blank" rel="noopener">Digital Advertising Alliance opt-out tool</a>.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-label">// Advertising</p>
+      <h2>GOOGLE ADSENSE &amp; THIRD-PARTY ADS</h2>
+      <p>DigitalToolVault is monetised through Google AdSense (Publisher ID: ca-pub-7874772257919446). Google, as a third-party vendor, uses cookies to serve ads based on users' prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this and/or other websites on the internet.</p>
+      <p>You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ad Settings</a>. Alternatively, you can opt out of third-party vendor use of cookies for personalised advertising by visiting <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener">www.aboutads.info/choices</a>.</p>
+      <p>We do not control the content of ads served by Google AdSense. We are not responsible for third-party privacy policies related to advertising partners.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-label">// Third-Party Services</p>
+      <h2>THIRD-PARTY SERVICES WE USE</h2>
+      <ul>
+        <li><strong>Google Analytics:</strong> For anonymised usage analytics. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy →</a></li>
+        <li><strong>Google AdSense:</strong> For serving non-intrusive advertisements. <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Advertising Policy →</a></li>
+        <li><strong>Google Fonts:</strong> We use Google Fonts (Inter and JetBrains Mono) to render text. Google Fonts may log requests to serve fonts. <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts Privacy →</a></li>
+        <li><strong>Currency Exchange API:</strong> Our Currency Converter tool fetches live exchange rates from a public API. This request is made from your browser and does not include any personally identifiable data.</li>
+      </ul>
+      <p>We are not responsible for the privacy practices of these third-party services. We encourage you to review their respective privacy policies.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-label">// Your Rights</p>
+      <h2>YOUR RIGHTS &amp; CHOICES</h2>
+      <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+      <ul>
+        <li><strong>Right to Access:</strong> You may request a copy of any personal data we hold about you.</li>
+        <li><strong>Right to Deletion:</strong> You may request that we delete any personal data we hold (e.g., if you contacted us via our contact form).</li>
+        <li><strong>Right to Opt-Out of Personalised Ads:</strong> You can opt out of personalised advertising at any time via Google Ads Settings.</li>
+        <li><strong>Right to Manage Cookies:</strong> You can delete or block cookies via your browser settings at any time.</li>
+      </ul>
+      <p>Since we do not collect or store tool input data, there is no personal data from tool usage for us to provide or delete.</p>
+      <p>To exercise any of the above rights, contact us at the address provided on our <a href="/contact.html">Contact page</a>.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-label">// Data Security</p>
+      <h2>DATA SECURITY</h2>
+      <p>We take reasonable technical and organisational measures to protect the information we do collect. Our website is served over HTTPS, which encrypts data transmitted between your browser and our servers.</p>
+      <p>As noted above, tool input data (your financial figures, uploaded images, etc.) is processed locally in your browser and is not transmitted to our servers, which inherently limits any exposure risk on our end.</p>
+      <p>No method of electronic transmission or storage is 100% secure. While we strive to use commercially acceptable means to protect your data, we cannot guarantee absolute security.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-label">// Children</p>
+      <h2>CHILDREN'S PRIVACY</h2>
+      <p>DigitalToolVault is a general-purpose tools platform and is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us and we will take steps to delete such information.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-label">// Changes</p>
+      <h2>CHANGES TO THIS POLICY</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this page. We encourage you to review this Privacy Policy periodically to stay informed about how we are protecting your information.</p>
+      <p>Continued use of the Site after any changes to this Privacy Policy constitutes your acceptance of the revised policy.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-label">// Contact</p>
+      <h2>CONTACT US</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us via our <a href="/contact.html">Contact page</a>.</p>
+      <p><strong>Website:</strong> www.digitaltoolvault.com<br/>
+      <strong>Jurisdiction:</strong> India</p>
+    </div>
+
   </div>
 
-  <div class="section box">
-    <h2>Advertising Partners</h2>
-    <p>
-      Users may opt out of personalized advertising by visiting Google Ads Settings.
-    </p>
-  </div>
-
-  <div class="section box">
-    <h2>Third-Party Privacy Policies</h2>
-    <p>
-      Digital Tool Vault does not control or take responsibility for the privacy policies of third-party websites or services.
-    </p>
-  </div>
-
-  <div class="section box">
-    <h2>Consent</h2>
-    <p>
-      By using our website, you hereby consent to our Privacy Policy and agree to its terms.
-    </p>
-  </div>
-
-  <p style="margin-top:30px;">
-    If you have any questions regarding this Privacy Policy, feel free to contact us.
-  </p>
-
-</div>
-
-<div class="footer">
-  © 2026 Digital Tool Vault
-</div>
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    © 2026 DigitalToolVault — Free online tools, no signup required.
+  </footer>
 
 </body>
 </html>
