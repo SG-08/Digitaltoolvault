@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPF Calculator Online – Calculate Public Provident Fund Maturity | DigitalToolVault</title>
+  <meta name="description" content="Free PPF Calculator. Calculate PPF maturity amount, total interest earned, and year-by-year growth on your Public Provident Fund investment. Current rate 7.1% p.a. No signup." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.digitaltoolvault.com/ppf-calculator.html" />
+  <meta property="og:title" content="PPF Calculator Online – Calculate Public Provident Fund Maturity | DigitalToolVault" />
+  <meta property="og:description" content="Free PPF Calculator. Calculate PPF maturity amount, total interest earned, and year-by-year growth. Current rate 7.1% p.a. Instant results, no signup." />
+  <meta property="og:url" content="https://www.digitaltoolvault.com/ppf-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DigitalToolVault" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f9fafb; --card-bg: #ffffff; --primary: #37474f;
+      --accent: #ff5722; --text: #1a1a2e; --muted: #6b7280;
+      --border: #37474f; --font-body: 'Inter', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    }
+    body { font-family: var(--font-body); background: var(--bg);
+      background-image: radial-gradient(#d1d5db 1.5px, transparent 1.5px);
+      background-size: 30px 30px; color: var(--text); min-height: 100vh; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--primary);
+      padding: 0 24px; height: 56px; display: flex; align-items: center;
+      justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .nav-logo { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: #fff; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-back { font-family: var(--font-mono); font-size: .8rem; color: #cfd8dc; text-decoration: none; letter-spacing: 1px; }
+    .nav-back:hover { color: var(--accent); }
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    .tool-hero { text-align: center; padding: 52px 0 36px; }
+    .tool-tag { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .tool-hero h1 { font-family: var(--font-mono); font-size: clamp(1.5rem,4vw,2.2rem);
+      font-weight: 700; color: var(--primary); margin-bottom: 10px; line-height: 1.25; }
+    .tool-hero p { font-size: .97rem; color: var(--muted); line-height: 1.8; max-width: 580px; margin: 0 auto; }
+    .tool-card { background: var(--card-bg); border: 2px solid var(--border);
+      box-shadow: 15px 15px 0 var(--border); border-radius: 4px;
+      padding: 36px 40px; margin-bottom: 32px; }
+    .tool-card input, .tool-card select {
+      width: 100%; padding: 11px 14px; font-family: var(--font-body); font-size: .93rem;
+      color: var(--text); background: #f9fafb; border: 2px solid #d1d5db;
+      border-radius: 4px; outline: none; margin-bottom: 14px; transition: border-color .2s; }
+    .tool-card input:focus, .tool-card select:focus { border-color: var(--accent); background: #fff; }
+    .field-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+    .btn { background: var(--accent); color: #fff; border: none; cursor: pointer;
+      font-family: var(--font-mono); font-size: .82rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; padding: 12px 28px;
+      border-radius: 4px; transition: opacity .2s; }
+    .btn:hover { opacity: .85; }
+    .btn-full { width: 100%; padding: 14px; }
+
+    /* RESULT SUMMARY CARDS */
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 20px; }
+    .result-card { background: #f0f4f8; border: 2px solid #cfd8dc; border-radius: 4px; padding: 16px 18px; text-align: center; }
+    .result-card.highlight { background: var(--primary); border-color: var(--primary); }
+    .result-card.highlight .rc-val { color: var(--accent); }
+    .result-card.highlight .rc-label { color: #cfd8dc; }
+    .rc-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .rc-val { font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+
+    /* YEAR TABLE */
+    .table-wrap { overflow-x: auto; margin-top: 20px; border: 2px solid #d1d5db; border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: .78rem; }
+    thead { background: var(--primary); color: #fff; }
+    thead th { padding: 10px 14px; text-align: right; letter-spacing: .5px; font-weight: 600; }
+    thead th:first-child { text-align: center; }
+    tbody tr { border-bottom: 1px solid #e5e7eb; }
+    tbody tr:last-child { border-bottom: none; background: #fff5f2; font-weight: 700; }
+    tbody td { padding: 9px 14px; text-align: right; color: #374151; }
+    tbody td:first-child { text-align: center; color: var(--accent); font-weight: 700; }
+    tbody tr:hover { background: #f9fafb; }
+
+    /* SECTIONS */
+    .section { margin-bottom: 28px; }
+    .section-card { background: var(--card-bg); border: 2px solid var(--border);
+      box-shadow: 6px 6px 0 var(--border); border-radius: 4px; padding: 28px 32px; }
+    .section-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .section-card h2 { font-family: var(--font-mono); font-size: 1.08rem; font-weight: 700;
+      color: var(--primary); margin-bottom: 14px; }
+    .section-card p { font-size: .95rem; color: #374151; line-height: 1.85; margin-bottom: 12px; }
+    .section-card p:last-child { margin-bottom: 0; }
+    .section-card ul, .section-card ol { padding-left: 20px; margin-bottom: 12px; }
+    .section-card li { font-size: .95rem; color: #374151; line-height: 1.85; margin-bottom: 6px; }
+    .section-card strong { color: var(--primary); }
+
+    /* HIGHLIGHT BOX */
+    .info-box { background: #fff5f2; border: 2px solid #ff5722; border-radius: 4px; padding: 14px 18px; margin-bottom: 14px; }
+    .info-box p { font-size: .88rem; color: #374151; margin: 0; line-height: 1.7; }
+    .info-box strong { color: var(--accent); }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1.5px solid #e5e7eb; padding: 14px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-family: var(--font-mono); font-size: .85rem; font-weight: 700;
+      color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::after { content: '+'; color: var(--accent); font-size: 1.2rem; }
+    .faq-q.open::after { content: '−'; }
+    .faq-a { font-size: .93rem; color: #374151; line-height: 1.8; margin-top: 8px; display: none; }
+
+    /* RELATED */
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+    .related-link { display: block; background: #f9fafb; border: 1.5px solid #d1d5db;
+      border-radius: 4px; padding: 12px 14px; font-family: var(--font-mono); font-size: .78rem;
+      color: var(--primary); text-decoration: none; font-weight: 600; transition: all .2s; }
+    .related-link:hover { border-color: var(--accent); color: var(--accent); background: #fff5f2; }
+
+    footer { background: var(--primary); color: #cfd8dc; font-family: var(--font-mono);
+      font-size: .78rem; padding: 28px 24px; text-align: center; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+    .footer-links { margin-bottom: 10px; }
+    @media(max-width:600px) { .tool-card { padding: 20px 16px; } .section-card { padding: 20px 16px; } }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PPF Calculator",
+    "description": "Free PPF Calculator. Calculate Public Provident Fund maturity amount, total interest earned, and year-by-year growth at the current 7.1% interest rate.",
+    "url": "https://www.digitaltoolvault.com/ppf-calculator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "provider": { "@type": "Organization", "name": "DigitalToolVault", "url": "https://www.digitaltoolvault.com" }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a>
+    <a class="nav-back" href="/">&#8592; ALL TOOLS</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <!-- HERO -->
+    <div class="tool-hero">
+      <p class="tool-tag">// Free Online Tool</p>
+      <h1>PPF Calculator</h1>
+      <p>Calculate your Public Provident Fund maturity amount, total interest earned, and see a year-by-year breakdown of your PPF account growth.</p>
+    </div>
+
+    <!-- TOOL CARD -->
+    <div class="tool-card">
+
+      <div class="info-box">
+        <p>&#128220; <strong>Current PPF Interest Rate: 7.1% p.a.</strong> (compounded annually, as per Government of India notification for Q1 FY 2025-26). Rate is subject to quarterly revision.</p>
+      </div>
+
+      <label class="field-label">YEARLY DEPOSIT AMOUNT (&#8377;)</label>
+      <input type="number" id="ppf_deposit" placeholder="e.g. 150000 (max ₹1,50,000/year)" min="500" max="150000" value="150000" />
+
+      <label class="field-label">INVESTMENT TENURE (YEARS)</label>
+      <select id="ppf_tenure">
+        <option value="15" selected>15 Years (Minimum / Lock-in)</option>
+        <option value="20">20 Years (1 Extension)</option>
+        <option value="25">25 Years (2 Extensions)</option>
+        <option value="30">30 Years (3 Extensions)</option>
+      </select>
+
+      <label class="field-label">INTEREST RATE (% P.A.)</label>
+      <input type="number" id="ppf_rate" value="7.1" step="0.1" min="1" max="20" />
+
+      <button class="btn btn-full" onclick="calcPPF()">CALCULATE PPF MATURITY</button>
+
+      <div class="result-grid" id="ppf_results" style="display:none;">
+        <div class="result-card highlight">
+          <div class="rc-label">Maturity Amount</div>
+          <div class="rc-val" id="res_maturity">—</div>
+        </div>
+        <div class="result-card">
+          <div class="rc-label">Total Invested</div>
+          <div class="rc-val" id="res_invested">—</div>
+        </div>
+        <div class="result-card">
+          <div class="rc-label">Total Interest</div>
+          <div class="rc-val" id="res_interest">—</div>
+        </div>
+        <div class="result-card">
+          <div class="rc-label">Wealth Gained</div>
+          <div class="rc-val" id="res_wealth">—</div>
+        </div>
+      </div>
+
+      <!-- YEAR BY YEAR TABLE -->
+      <div id="ppf_table_wrap" style="display:none;">
+        <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin:24px 0 10px;">// Year-by-Year Breakdown</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Opening Balance</th>
+                <th>Deposit</th>
+                <th>Interest Earned</th>
+                <th>Closing Balance</th>
+              </tr>
+            </thead>
+            <tbody id="ppf_tbody"></tbody>
+          </table>
+        </div>
+        <p style="font-size:.78rem;color:var(--muted);font-family:var(--font-mono);margin-top:10px;">* Interest is calculated on the minimum balance between 5th and end of month. Above table uses simplified annual compounding for illustration.</p>
+      </div>
+
+    </div>
+
+    <!-- WHAT IS PPF -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Overview</p>
+        <h2>WHAT IS A PPF CALCULATOR?</h2>
+        <p>A PPF Calculator is a financial planning tool that computes the maturity amount of a Public Provident Fund (PPF) account based on your annual deposit, investment tenure, and the applicable interest rate. It shows you exactly how much your PPF account will be worth at maturity, how much interest you will earn, and how your wealth grows year by year through the power of compounding.</p>
+        <p>The Public Provident Fund is a long-term savings scheme backed by the Government of India, available at all post offices and major banks including SBI, HDFC, ICICI, Axis, and Bank of Baroda. PPF is one of the most popular investment instruments in India because it offers a combination of guaranteed returns, complete safety, and significant tax benefits — making it an EEE (Exempt-Exempt-Exempt) instrument under the Income Tax Act.</p>
+        <p>PPF has a mandatory lock-in period of 15 years, after which it can be extended in blocks of 5 years any number of times. The current interest rate is 7.1% per annum, compounded annually, and is set by the Government of India every quarter. This calculator uses the standard annual compounding method to give you accurate maturity estimates.</p>
+      </div>
+    </div>
+
+    <!-- HOW TO USE -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Guide</p>
+        <h2>HOW TO USE THIS PPF CALCULATOR</h2>
+        <ol>
+          <li><strong>Enter yearly deposit amount</strong> — the amount you plan to deposit each year. PPF allows a minimum of &#8377;500 and a maximum of &#8377;1,50,000 per financial year.</li>
+          <li><strong>Select investment tenure</strong> — PPF has a minimum 15-year lock-in. You can extend in 5-year blocks. Choose 15, 20, 25, or 30 years based on your goal.</li>
+          <li><strong>Enter interest rate</strong> — pre-filled with the current 7.1% p.a. You can change it to model different rate scenarios.</li>
+          <li><strong>Click "Calculate PPF Maturity"</strong> — instantly see your maturity amount, total invested, total interest earned, and a complete year-by-year breakdown table.</li>
+        </ol>
+        <p>Try different deposit amounts and tenures to find the right PPF contribution strategy for your retirement or long-term savings goal.</p>
+      </div>
+    </div>
+
+    <!-- FORMULA -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Formula</p>
+        <h2>PPF MATURITY FORMULA</h2>
+        <p>PPF maturity is calculated using the Future Value of an Annuity Due formula (since deposits made at the beginning of each year earn interest for the full year):</p>
+        <p><strong>M = P &times; [((1 + r)^n &minus; 1) / r] &times; (1 + r)</strong></p>
+        <p>Where:</p>
+        <ul>
+          <li><strong>M</strong> = Maturity amount</li>
+          <li><strong>P</strong> = Annual deposit amount (&#8377;)</li>
+          <li><strong>r</strong> = Annual interest rate (as decimal, e.g. 7.1% = 0.071)</li>
+          <li><strong>n</strong> = Number of years</li>
+        </ul>
+        <p><strong>Example:</strong> Depositing &#8377;1,50,000/year for 15 years at 7.1% p.a.:</p>
+        <p>M = 1,50,000 &times; [((1.071)^15 &minus; 1) / 0.071] &times; 1.071 &#8776; <strong>&#8377;40.68 lakhs</strong></p>
+        <p>Total invested = 15 &times; &#8377;1,50,000 = &#8377;22.5 lakhs. Interest earned &#8776; &#8377;18.18 lakhs — more than 80% of your principal in tax-free interest!</p>
+      </div>
+    </div>
+
+    <!-- PPF RULES -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Rules &amp; Features</p>
+        <h2>PPF ACCOUNT RULES YOU MUST KNOW</h2>
+        <ul>
+          <li><strong>Minimum deposit:</strong> &#8377;500 per financial year (account becomes inactive if not deposited)</li>
+          <li><strong>Maximum deposit:</strong> &#8377;1,50,000 per financial year (across all PPF accounts combined)</li>
+          <li><strong>Lock-in period:</strong> 15 years (partial withdrawal allowed from Year 7)</li>
+          <li><strong>Extension:</strong> Can be extended in 5-year blocks any number of times after maturity</li>
+          <li><strong>Interest rate:</strong> Currently 7.1% p.a., compounded annually, revised by Government quarterly</li>
+          <li><strong>Interest credit:</strong> Interest is calculated monthly on minimum balance between 5th and last day of each month, but credited annually on March 31</li>
+          <li><strong>Loan facility:</strong> Available from Year 3 to Year 6 (up to 25% of balance at end of 2nd preceding year)</li>
+          <li><strong>Partial withdrawal:</strong> Available from Year 7 (up to 50% of balance at end of 4th preceding year)</li>
+          <li><strong>Account holders:</strong> One PPF account per individual (except one account for a minor child)</li>
+          <li><strong>NRI status:</strong> Existing accounts can continue but new accounts cannot be opened by NRIs</li>
+          <li><strong>Nomination:</strong> Nomination facility available; account cannot be held jointly</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TAX BENEFITS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Tax Benefits</p>
+        <h2>PPF TAX BENEFITS — EEE STATUS</h2>
+        <p>PPF is one of the very few investments in India with <strong>EEE (Exempt-Exempt-Exempt)</strong> tax status — meaning all three stages of investment are tax-free:</p>
+        <ul>
+          <li><strong>Exempt at Investment:</strong> Deposits up to &#8377;1,50,000/year qualify for deduction under Section 80C of the Income Tax Act, reducing your taxable income.</li>
+          <li><strong>Exempt during Growth:</strong> Interest earned every year is completely tax-free. You don't pay any tax on the annual interest credited to your PPF account.</li>
+          <li><strong>Exempt at Maturity:</strong> The entire maturity amount — principal + interest — is tax-free. No TDS, no capital gains tax, nothing.</li>
+        </ul>
+        <p>For someone in the 30% tax bracket depositing &#8377;1,50,000/year, the Section 80C deduction alone saves &#8377;45,000 in tax annually (&#8377;46,800 including cess). Over 15 years, that's over &#8377;6.75 lakhs in tax savings — in addition to the compounding returns.</p>
+        <p><strong>Note:</strong> The 80C deduction is available only under the Old Tax Regime. Under the New Tax Regime, Section 80C deductions are not available, though interest and maturity remain tax-free under both regimes.</p>
+      </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Benefits</p>
+        <h2>WHY INVEST IN PPF?</h2>
+        <ul>
+          <li><strong>Government-backed safety:</strong> PPF is a sovereign guarantee — the Government of India backs every rupee in your PPF account. Zero default risk, unlike corporate bonds or even bank FDs (which have DICGC insurance only up to &#8377;5 lakhs).</li>
+          <li><strong>Triple tax exemption:</strong> EEE status makes PPF one of the most tax-efficient instruments available to Indian retail investors.</li>
+          <li><strong>Guaranteed returns:</strong> Unlike equity mutual funds or stocks, PPF returns are guaranteed and immune to market volatility — ideal for risk-averse investors and for the debt portion of a balanced portfolio.</li>
+          <li><strong>Inflation-beating potential:</strong> At 7.1% tax-free, PPF often beats post-tax returns from FDs (which are fully taxable), especially for those in higher tax brackets.</li>
+          <li><strong>Forced savings discipline:</strong> The 15-year lock-in acts as a forced savings mechanism, preventing impulsive withdrawals and helping build long-term wealth.</li>
+          <li><strong>Partial withdrawal flexibility:</strong> From Year 7 onwards, partial withdrawals are allowed, providing some liquidity without fully liquidating the account.</li>
+          <li><strong>Loan against PPF:</strong> You can take a loan against your PPF balance from Year 3 to Year 6 at a low interest rate, useful for short-term financial needs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- USE CASES -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Use Cases</p>
+        <h2>WHO SHOULD USE THE PPF CALCULATOR?</h2>
+        <p>The PPF Calculator is useful for a wide range of financial planning scenarios across different life stages:</p>
+        <ul>
+          <li><strong>Salaried professionals:</strong> Planning how much to invest in PPF to maximise Section 80C tax savings and build a tax-free retirement corpus.</li>
+          <li><strong>Self-employed and business owners:</strong> PPF is one of the few tax-saving options available without employer contribution, making it critical for freelancers and entrepreneurs.</li>
+          <li><strong>Parents:</strong> Opening a PPF account in a minor child's name and calculating how much it will grow by the time the child turns 18-20 for college funding.</li>
+          <li><strong>Retirement planners:</strong> Calculating PPF maturity alongside EPF to estimate total retirement corpus.</li>
+          <li><strong>First-time investors:</strong> Understanding how even small annual contributions grow significantly over 15-30 years through compounding.</li>
+          <li><strong>Tax planners:</strong> Comparing post-tax returns from PPF vs FDs, ELSS, NPS, and other Section 80C instruments.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PPF VS FD -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Comparison</p>
+        <h2>PPF VS BANK FD — WHICH IS BETTER?</h2>
+        <p>A common question is whether PPF or a bank Fixed Deposit is the better investment. The answer depends on your tax bracket and investment horizon:</p>
+        <ul>
+          <li><strong>Tax-free interest:</strong> PPF interest is fully tax-free. FD interest is added to income and taxed at your slab rate. For someone in the 30% bracket, a 7.1% PPF is equivalent to a ~10.2% pre-tax FD return.</li>
+          <li><strong>Safety:</strong> PPF has a sovereign guarantee — backed by the Government of India. Bank FDs have DICGC insurance only up to &#8377;5 lakhs per bank.</li>
+          <li><strong>Liquidity:</strong> FDs offer more flexibility — premature withdrawal is possible (with penalty). PPF has a 15-year lock-in with limited partial withdrawal.</li>
+          <li><strong>Returns:</strong> Current PPF rate is 7.1% p.a. SBI's 5-year FD rate is around 6.5% (pre-tax). Post-tax FD return for a 30% bracket taxpayer = ~4.55%.</li>
+          <li><strong>Verdict:</strong> For long-term (15+ years) investors in the 20-30% tax bracket, PPF is significantly better than FD on a post-tax basis. For short-term needs or lower tax brackets, FDs may be more suitable due to their liquidity.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TIPS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Pro Tips</p>
+        <h2>PPF INVESTMENT TIPS TO MAXIMISE RETURNS</h2>
+        <ul>
+          <li><strong>Deposit before the 5th of April:</strong> PPF interest is calculated on the minimum balance between the 5th and the last day of each month. Depositing on or before April 5 ensures you earn interest for the full April month — gaining an extra month's interest each year.</li>
+          <li><strong>Deposit the full &#8377;1,50,000 in one go:</strong> Rather than spreading deposits across the year, depositing the maximum at the start of April earns more interest compared to spreading monthly.</li>
+          <li><strong>Always extend after 15 years:</strong> Extending PPF with continued deposits for another 5 years (to 20 years) dramatically increases the maturity amount due to compounding on a larger base.</li>
+          <li><strong>Open a PPF account for your child:</strong> You can open a PPF account for a minor child and deposits count within the parent's &#8377;1,50,000 limit. But the account matures when the child is 18 + 15 years, building a substantial corpus for education or marriage.</li>
+          <li><strong>Don't withdraw unnecessarily:</strong> Partial withdrawals reduce the compounding base and significantly reduce your final maturity amount.</li>
+          <li><strong>Combine with ELSS:</strong> Use PPF for the safe, guaranteed portion of your 80C investments and ELSS (Equity Linked Savings Scheme) for the equity growth portion to balance safety and higher returns.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// FAQ</p>
+        <h2>FREQUENTLY ASKED QUESTIONS</h2>
+
+        <div class="faq-item">
+          <div class="faq-q">What is the current PPF interest rate in 2025?</div>
+          <div class="faq-a">The current PPF interest rate is 7.1% per annum, compounded annually. This rate has been unchanged since April 2020. The Government of India reviews and announces PPF rates every quarter. Check the official India Post or Finance Ministry website for the latest rate notification.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What is the maximum amount I can invest in PPF per year?</div>
+          <div class="faq-a">The maximum deposit allowed in a PPF account is &#8377;1,50,000 per financial year (April to March). This limit applies to the combined total across all PPF accounts held by you, including any account for a minor child. Deposits exceeding this limit do not earn interest and are returned without any benefit.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I withdraw from PPF before 15 years?</div>
+          <div class="faq-a">Full withdrawal is not allowed before 15 years. However, partial withdrawals are allowed from Year 7 onwards — you can withdraw up to 50% of the balance at the end of the 4th preceding year. Additionally, premature closure is allowed after 5 years in specific circumstances such as life-threatening illness of the account holder or their family, or for children's higher education.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How is PPF interest calculated?</div>
+          <div class="faq-a">PPF interest is calculated monthly on the minimum balance between the 5th and the last day of each month. However, the interest is credited to the account only once a year — on March 31. This means deposits made before the 5th of each month earn interest for that month, while deposits made after the 5th do not count for that month's interest calculation.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is PPF better than ELSS for tax saving?</div>
+          <div class="faq-a">PPF and ELSS serve different purposes. PPF offers guaranteed returns (7.1% p.a.) with zero risk, while ELSS invests in equity mutual funds and historically returns 12-15% p.a. but with market risk. PPF has a 15-year lock-in; ELSS has only 3 years. A balanced approach is to use both: PPF for the safe debt component and ELSS for the equity growth component of your 80C investments.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What happens to my PPF account after 15 years?</div>
+          <div class="faq-a">After 15 years, you have three options: (1) Withdraw the full maturity amount and close the account. (2) Extend the account in 5-year blocks with continued deposits — you can continue making deposits and earning interest. (3) Extend without deposits — the account continues to earn interest at the prevailing rate without any new contributions, and you can make one withdrawal per year. Option 2 with continued deposits is generally the best choice if you don't need the funds immediately.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can NRIs open a PPF account?</div>
+          <div class="faq-a">No. NRIs cannot open new PPF accounts. However, if someone already had a PPF account before becoming an NRI, they can continue operating it until maturity at the prevailing interest rate (currently 7.1% p.a.). They cannot extend it after maturity. Upon maturity, the amount can be repatriated.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is PPF interest taxable?</div>
+          <div class="faq-a">No. PPF has EEE (Exempt-Exempt-Exempt) tax status. The annual interest earned is completely tax-free — it does not need to be declared as income in your ITR. The maturity amount is also entirely tax-free. This makes PPF one of the most tax-efficient savings instruments in India.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED TOOLS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Related Tools</p>
+        <h2>RELATED TOOLS YOU MAY LIKE</h2>
+        <div class="related-grid">
+          <a class="related-link" href="/sip-calculator.html">SIP Calculator</a>
+          <a class="related-link" href="/emi-calculator.html">EMI Calculator</a>
+          <a class="related-link" href="/compound-interest-calculator.html">Compound Interest</a>
+          <a class="related-link" href="/simple-interest-calculator.html">Simple Interest</a>
+          <a class="related-link" href="/inflation-calculator.html">Inflation Calculator</a>
+          <a class="related-link" href="/loan-eligibility-calculator.html">Loan Eligibility</a>
+          <a class="related-link" href="/gst-calculator.html">GST Calculator</a>
+          <a class="related-link" href="/percentage-calculator.html">Percentage Calculator</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    &#169; 2026 DigitalToolVault &#8212; Free online tools, no signup required.
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(function(q) {
+      q.addEventListener('click', function() {
+        q.classList.toggle('open');
+        var a = q.nextElementSibling;
+        a.style.display = a.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    function fmt(n) {
+      return '&#8377;' + Math.round(n).toLocaleString('en-IN');
+    }
+
+    function calcPPF() {
+      var P = parseFloat(document.getElementById('ppf_deposit').value);
+      var n = parseInt(document.getElementById('ppf_tenure').value);
+      var r = parseFloat(document.getElementById('ppf_rate').value) / 100;
+
+      if (!P || P < 500 || P > 150000) {
+        alert('Please enter a yearly deposit between \u20B9500 and \u20B91,50,000.');
+        return;
+      }
+      if (!r || r <= 0) {
+        alert('Please enter a valid interest rate.');
+        return;
+      }
+
+      // Build year-by-year table
+      var tbody = document.getElementById('ppf_tbody');
+      tbody.innerHTML = '';
+      var balance = 0;
+      var totalInterest = 0;
+
+      for (var yr = 1; yr <= n; yr++) {
+        var opening = balance;
+        var deposit = P;
+        var interest = (opening + deposit) * r;
+        balance = opening + deposit + interest;
+        totalInterest += interest;
+
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td>Yr ' + yr + '</td>' +
+          '<td>' + Math.round(opening).toLocaleString('en-IN') + '</td>' +
+          '<td>' + Math.round(deposit).toLocaleString('en-IN') + '</td>' +
+          '<td>' + Math.round(interest).toLocaleString('en-IN') + '</td>' +
+          '<td>' + Math.round(balance).toLocaleString('en-IN') + '</td>';
+        tbody.appendChild(tr);
+      }
+
+      // Totals row
+      var totalInvested = P * n;
+      var maturity = balance;
+      var wealthRatio = ((maturity / totalInvested) * 100).toFixed(0);
+
+      var trTotal = document.createElement('tr');
+      trTotal.innerHTML =
+        '<td>TOTAL</td>' +
+        '<td>—</td>' +
+        '<td>' + Math.round(totalInvested).toLocaleString('en-IN') + '</td>' +
+        '<td>' + Math.round(totalInterest).toLocaleString('en-IN') + '</td>' +
+        '<td>' + Math.round(maturity).toLocaleString('en-IN') + '</td>';
+      tbody.appendChild(trTotal);
+
+      // Summary cards
+      document.getElementById('res_maturity').innerHTML = fmt(maturity);
+      document.getElementById('res_invested').innerHTML = fmt(totalInvested);
+      document.getElementById('res_interest').innerHTML = fmt(totalInterest);
+      document.getElementById('res_wealth').innerHTML = wealthRatio + '% of invested';
+
+      document.getElementById('ppf_results').style.display = 'grid';
+      document.getElementById('ppf_table_wrap').style.display = 'block';
+
+      // Smooth scroll to results
+      document.getElementById('ppf_results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+
+</body>
+</html>
