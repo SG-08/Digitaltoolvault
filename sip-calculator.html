@@ -1,387 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>SIP Calculator – Calculate SIP Returns & Maturity Amount | DigitalToolVault</title>
-<meta name="theme-color" content="#37474f">
-<meta name="robots" content="index, follow">
-    <meta name="description" content="Free SIP calculator — calculate Systematic Investment Plan returns instantly. Enter monthly investment, expected return and duration to see your maturity amount.">
-    <meta name="keywords" content="SIP Calculator, Step-up SIP, Mutual Fund Calculator, Financial Planning, Investment Projector, DigitalToolVault">
-    <meta name="author" content="DigitalToolVault">
-    <link rel="canonical" href="https://digitaltoolvault.com/sip-calculator.html">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #ffffff;
-            --primary: #37474f; 
-            --accent: #ff5722;  
-            --muted: #94a3b8;
-            --dot-color: #d1d5db;
-            --glass: rgba(255, 255, 255, 0.9);
-        }
-
-        * { box-sizing: border-box; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .vault-card {
-            width: 100%;
-            max-width: 480px;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--primary);
-            padding: 40px;
-            position: relative;
-            box-shadow: 15px 15px 0px var(--primary);
-        }
-
-        .header {
-            font-family: 'JetBrains Mono', monospace;
-            border-bottom: 2px solid var(--primary);
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-        }
-
-        .brand-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800; color: var(--primary); }
-        .brand-line h1 span { color: var(--accent); }
-        .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
-
-        .tool-title { font-size: 16px; font-weight: 600; text-transform: uppercase; margin-top: 10px; color: var(--primary); }
-
-        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        .full-width { grid-column: span 2; }
-
-        label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; letter-spacing: 1px; }
-
-        input {
-            width: 100%;
-            border: 2px solid #e2e8f0;
-            padding: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 15px;
-            outline: none;
-            border-radius: 0;
-            background: #fff;
-            color: var(--primary);
-        }
-
-        input:focus { border-color: var(--primary); background: #fafafa; }
-
-        .stepup-toggle {
-            display: flex;
-            background: #f1f5f9;
-            margin-bottom: 15px;
-            padding: 4px;
-        }
-
-        .toggle-btn {
-            flex: 1;
-            padding: 8px;
-            font-size: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            text-align: center;
-            cursor: pointer;
-            color: var(--muted);
-        }
-
-        .toggle-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .results-box {
-            text-align: center;
-            padding: 25px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            cursor: pointer;
-        }
-
-        .results-box:hover { border-color: var(--primary); background: #ffffff; }
-
-        #output-main { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 500; margin: 0; color: var(--primary); }
-
-        .breakdown {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 9px;
-            color: var(--muted);
-            text-transform: uppercase;
-        }
-
-        .breakdown b { color: var(--primary); }
-        .breakdown b.gain { color: var(--accent); }
-
-        .seo-content {
-            max-width: 900px;
-            margin-top: 60px;
-        }
-    </style>
-<!-- Open Graph + Twitter -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="SIP Calculator – Calculate SIP Returns & Maturity Amount | DigitalToolVault">
-<meta property="og:description" content="Free SIP calculator — calculate Systematic Investment Plan returns instantly. Enter monthly investment, expected return and duration to see your maturity amount.">
-<meta property="og:url" content="https://digitaltoolvault.com/sip-calculator.html">
-<meta property="og:image" content="https://digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SIP Calculator – Calculate SIP Returns & Maturity Amount | DigitalToolVault">
-<meta name="twitter:description" content="Free SIP calculator — calculate Systematic Investment Plan returns instantly. Enter monthly investment, expected return and duration to see your maturity amount.">
-<meta name="twitter:image" content="https://digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SIP Calculator","url":"https://digitaltoolvault.com/sip-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is SIP?","acceptedAnswer":{"@type":"Answer","text":"SIP (Systematic Investment Plan) is investing a fixed amount regularly in mutual funds to build wealth over time."}},{"@type":"Question","name":"How does the SIP calculator work?","acceptedAnswer":{"@type":"Answer","text":"Enter monthly investment, expected annual return rate and duration. The calculator shows total investment, expected returns and maturity amount."}},{"@type":"Question","name":"Is SIP better than lump sum?","acceptedAnswer":{"@type":"Answer","text":"SIP averages out market volatility through rupee cost averaging, ideal for regular investors."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"SIP Calculator","item":"https://digitaltoolvault.com/sip-calculator.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
-
-<style>
-.seo{max-width:820px;margin:60px auto 40px;padding:0 20px 60px;font-family:'Inter',sans-serif;color:#334155;line-height:1.8;}
-.seo h1{font-size:1.6rem;font-weight:700;color:#37474f;margin-bottom:14px;font-family:'Inter',sans-serif;}
-.seo h2{font-size:1.15rem;font-weight:700;color:#37474f;margin:36px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:1rem;font-weight:600;color:#37474f;margin:20px 0 8px;}
-.seo p{font-size:0.94rem;margin-bottom:14px;color:#475569;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:14px;}
-.seo ul li,.seo ol li{font-size:0.94rem;margin-bottom:8px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:18px 0;font-size:0.88rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.8rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:12px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.95rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:14px 18px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:0.88rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:0.9rem;color:#9a3412;}
-</style>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIP Calculator Online – Calculate Mutual Fund Returns | DigitalToolVault</title>
+  <meta name="description" content="Free SIP Calculator. Calculate returns on your Systematic Investment Plan. Enter monthly investment, expected return & tenure to see your wealth growth instantly." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.digitaltoolvault.com/sip-calculator.html" />
+  <meta property="og:title" content="SIP Calculator Online – Calculate Mutual Fund Returns | DigitalToolVault" />
+  <meta property="og:description" content="Free SIP Calculator. Calculate returns on your Systematic Investment Plan. Enter monthly investment, expected return & tenure to see your wealth growth instantly." />
+  <meta property="og:url" content="https://www.digitaltoolvault.com/sip-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DigitalToolVault" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f9fafb; --card-bg: #ffffff; --primary: #37474f;
+      --accent: #ff5722; --text: #1a1a2e; --muted: #6b7280;
+      --border: #37474f; --font-body: 'Inter', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    }
+    body { font-family: var(--font-body); background: var(--bg);
+      background-image: radial-gradient(#d1d5db 1.5px, transparent 1.5px);
+      background-size: 30px 30px; color: var(--text); min-height: 100vh; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--primary);
+      padding: 0 24px; height: 56px; display: flex; align-items: center;
+      justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .nav-logo { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: #fff; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-back { font-family: var(--font-mono); font-size: .8rem; color: #cfd8dc; text-decoration: none; letter-spacing: 1px; }
+    .nav-back:hover { color: var(--accent); }
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    /* TOOL CARD */
+    .tool-hero { text-align: center; padding: 52px 0 36px; }
+    .tool-tag { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .tool-hero h1 { font-family: var(--font-mono); font-size: clamp(1.5rem,4vw,2.2rem);
+      font-weight: 700; color: var(--primary); margin-bottom: 10px; line-height: 1.25; }
+    .tool-hero p { font-size: .97rem; color: var(--muted); line-height: 1.8; max-width: 580px; margin: 0 auto; }
+    .tool-card { background: var(--card-bg); border: 2px solid var(--border);
+      box-shadow: 15px 15px 0 var(--border); border-radius: 4px;
+      padding: 36px 40px; margin-bottom: 32px; }
+    .tool-card input, .tool-card select, .tool-card textarea {
+      width: 100%; padding: 11px 14px; font-family: var(--font-body); font-size: .93rem;
+      color: var(--text); background: #f9fafb; border: 2px solid #d1d5db;
+      border-radius: 4px; outline: none; margin-bottom: 14px; transition: border-color .2s; }
+    .tool-card input:focus, .tool-card select:focus, .tool-card textarea:focus { border-color: var(--accent); background: #fff; }
+    .field-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+    .btn { background: var(--accent); color: #fff; border: none; cursor: pointer;
+      font-family: var(--font-mono); font-size: .82rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; padding: 12px 28px;
+      border-radius: 4px; transition: opacity .2s; }
+    .btn:hover { opacity: .85; }
+    .btn-full { width: 100%; padding: 14px; }
+    .result-box { background: #f0f4f8; border: 2px solid #cfd8dc; border-radius: 4px;
+      padding: 18px 20px; margin-top: 18px; font-family: var(--font-mono); font-size: 1rem;
+      color: var(--primary); font-weight: 600; min-height: 54px; }
+    .result-box span { color: var(--accent); }
+    /* CONTENT SECTIONS */
+    .section { margin-bottom: 28px; }
+    .section-card { background: var(--card-bg); border: 2px solid var(--border);
+      box-shadow: 6px 6px 0 var(--border); border-radius: 4px; padding: 28px 32px; }
+    .section-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .section-card h2 { font-family: var(--font-mono); font-size: 1.08rem; font-weight: 700;
+      color: var(--primary); margin-bottom: 14px; }
+    .section-card h3 { font-family: var(--font-mono); font-size: .9rem; font-weight: 700;
+      color: var(--primary); margin: 16px 0 8px; }
+    .section-card p { font-size: .95rem; color: #374151; line-height: 1.85; margin-bottom: 12px; }
+    .section-card p:last-child { margin-bottom: 0; }
+    .section-card ul, .section-card ol { padding-left: 20px; margin-bottom: 12px; }
+    .section-card li { font-size: .95rem; color: #374151; line-height: 1.85; margin-bottom: 6px; }
+    .faq-item { border-bottom: 1.5px solid #e5e7eb; padding: 14px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-family: var(--font-mono); font-size: .85rem; font-weight: 700;
+      color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::after { content: '+'; color: var(--accent); font-size: 1.2rem; }
+    .faq-q.open::after { content: '−'; }
+    .faq-a { font-size: .93rem; color: #374151; line-height: 1.8; margin-top: 8px; display: none; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+    .related-link { display: block; background: #f9fafb; border: 1.5px solid #d1d5db;
+      border-radius: 4px; padding: 12px 14px; font-family: var(--font-mono); font-size: .78rem;
+      color: var(--primary); text-decoration: none; font-weight: 600; transition: all .2s; }
+    .related-link:hover { border-color: var(--accent); color: var(--accent); background: #fff5f2; }
+    footer { background: var(--primary); color: #cfd8dc; font-family: var(--font-mono);
+      font-size: .78rem; padding: 28px 24px; text-align: center; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+    .footer-links { margin-bottom: 10px; }
+    @media(max-width:600px){ .tool-card{padding:20px 16px;} .section-card{padding:20px 16px;} }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SIP Calculator Online – Calculate Mutual Fund Returns | DigitalToolVault",
+    "description": "Free SIP Calculator. Calculate returns on your Systematic Investment Plan. Enter monthly investment, expected return & tenure to see your wealth growth instantly.",
+    "url": "https://www.digitaltoolvault.com/sip-calculator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"},
+    "provider": {"@type": "Organization", "name": "DigitalToolVault", "url": "https://www.digitaltoolvault.com"}
+  }
+  </script>
 </head>
-
 <body>
-<nav style="position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
 
-<!-- ===== ORIGINAL CALCULATOR (UNCHANGED) ===== -->
-<div class="vault-card">
-    <!-- EXACT SAME CALCULATOR FROM YOUR FILE -->
+  <nav>
+    <a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a>
+    <a class="nav-back" href="/">← ALL TOOLS</a>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="tool-hero">
+      <p class="tool-tag">// Free Online Tool</p>
+      <h1>SIP Calculator</h1>
+      <p>Calculate how much wealth your monthly SIP investment will grow to. See invested amount, estimated returns, and total maturity value instantly.</p>
+    </div>
+
+    <!-- TOOL -->
+    <div class="tool-card">
+      
+      <label class="field-label">MONTHLY INVESTMENT AMOUNT (₹)</label>
+      <input type="number" id="sip_amount" placeholder="e.g. 5000" min="100" />
+      <label class="field-label">EXPECTED ANNUAL RETURN (%)</label>
+      <input type="number" id="sip_rate" placeholder="e.g. 12" step="0.1" min="0" />
+      <label class="field-label">INVESTMENT TENURE (YEARS)</label>
+      <input type="number" id="sip_years" placeholder="e.g. 10" min="1" />
+      <button class="btn btn-full" onclick="calcSIP()">CALCULATE RETURNS</button>
+      <div class="result-box" id="sipResult">Your SIP result will appear here.</div>
     
-    <!-- (PASTE SAME CONTENT — already included below) -->
-
-    <div class="header">
-        <div class="brand-line">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2px;color:#37474f;">DigitalTool<span style="color:#ff5722;">Vault</span></div>
-            <span class="sys-code">STEPUP_PROJ_V2</span>
-        </div>
-        <div class="tool-title">Step-Up SIP Engine</div>
     </div>
 
-    <div class="input-grid">
-        <div class="full-width">
-            <label>Monthly_Initial_SIP</label>
-            <input type="number" id="monthly" placeholder="10000" value="10000">
-        </div>
-
-        <div>
-            <label>Expected_Return [%]</label>
-            <input type="number" id="rate" placeholder="12" step="0.1" value="12">
-        </div>
-        <div>
-            <label>Time_Horizon [Y]</label>
-            <input type="number" id="years" placeholder="10" value="10">
-        </div>
-
-        <div class="full-width">
-            <label>Step_Up_Configuration</label>
-            <div class="stepup-toggle">
-                <div class="toggle-btn active" id="mode-percent" onclick="setMode('percent')">PERCENTAGE (%)</div>
-                <div class="toggle-btn" id="mode-money" onclick="setMode('money')">FIXED MONEY (₹)</div>
-            </div>
-            <input type="number" id="stepValue" placeholder="Annual % Increase" value="10">
-        </div>
+    <!-- WHAT IS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Overview</p>
+        <h2>WHAT IS THE SIP CALCULATOR?</h2>
+        <p>A SIP (Systematic Investment Plan) Calculator helps you estimate the future value of your regular monthly investments in a mutual fund. SIP is one of the most popular and disciplined ways to invest in India, allowing you to invest a fixed amount every month regardless of market conditions.</p>
+<p>The SIP calculator uses compound interest mathematics to show you how your money grows over time through the power of compounding. Even small monthly amounts, invested consistently over long periods, can grow into substantial wealth thanks to compounding returns.</p>
+<p>India's mutual fund industry (tracked by AMFI) has seen explosive growth in SIP investments, with over 8 crore active SIP accounts. Understanding how SIP returns work is essential for anyone building long-term financial goals like retirement, children's education, or buying a home.</p>
+      </div>
     </div>
 
-    <div class="results-box" id="copyArea">
-        <div style="font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-bottom: 8px;">TOTAL_ESTIMATED_VALUE:</div>
-        <p id="output-main">0.00</p>
-        <div class="breakdown">
-            <span>Total_Invested: <b id="total-invested">0</b></span>
-            <span>Wealth_Gain: <b id="wealth-gain" class="gain">0</b></span>
-        </div>
-        <div style="font-size: 8px; color: var(--muted); margin-top: 10px; font-family: 'JetBrains Mono';">CLICK_TO_COPY</div>
+    <!-- HOW TO USE -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Guide</p>
+        <h2>HOW TO USE THIS TOOL</h2>
+        <ol>
+<li><strong>Enter monthly investment amount</strong> — the fixed amount you plan to invest each month (minimum ₹100 for most mutual funds).</li>
+<li><strong>Enter expected annual return</strong> — historical average returns for equity mutual funds in India range from 10–15% p.a. Use 12% as a conservative estimate.</li>
+<li><strong>Enter investment tenure in years</strong> — the longer you stay invested, the more powerful compounding becomes.</li>
+<li><strong>Click "Calculate Returns"</strong> — see your maturity value, total amount invested, and estimated returns.</li>
+</ol>
+      </div>
     </div>
-</div>
 
-<!-- ===== SEO CONTENT ===== -->
-<div class="seo-content">
+    
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Formula</p>
+        <h2>THE FORMULA EXPLAINED</h2>
+        <p>SIP maturity value is calculated using the Future Value of an Annuity formula:</p>
+<p><strong>FV = P × [(1+r)^n – 1] / r × (1+r)</strong></p>
+<p>Where P = Monthly investment, r = Monthly interest rate (Annual rate ÷ 12 ÷ 100), n = Number of months.</p>
+<p>Example: ₹5,000/month for 10 years at 12% p.a. → FV ≈ ₹11.6 lakhs invested, maturity ≈ ₹23.2 lakhs — nearly doubling your money.</p>
+      </div>
+    </div>
 
-<h2>Step-Up SIP Calculator – Smart Investment Planning Tool</h2>
-<p>
-The Step-Up SIP Calculator helps you calculate your future investment value by increasing your SIP amount every year. It is ideal for long-term wealth creation.
-</p>
-
-<h3>What is Step-Up SIP?</h3>
-<p>
-Step-Up SIP allows you to increase your monthly investment periodically, helping you generate higher returns compared to a fixed SIP.
-</p>
-
-<h3>Benefits</h3>
-<ul>
-<li>Higher wealth creation</li>
-<li>Matches income growth</li>
-<li>Beats inflation</li>
-<li>Disciplined investing</li>
+    <!-- BENEFITS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Benefits</p>
+        <h2>KEY BENEFITS</h2>
+        <ul>
+<li><strong>Visualise wealth creation:</strong> See exactly how small monthly investments grow into large sums over time.</li>
+<li><strong>Goal planning:</strong> Work backwards from a goal amount to find the SIP needed.</li>
+<li><strong>Compare tenures:</strong> See why starting 5 years earlier can make a dramatic difference to final wealth.</li>
+<li><strong>Understand compounding:</strong> The calculator makes the magic of compounding visually clear.</li>
+<li><strong>100% free, no signup needed.</strong></li>
 </ul>
+      </div>
+    </div>
 
-<h3>How to Use</h3>
-<ul>
-<li>Enter SIP amount</li>
-<li>Enter expected return</li>
-<li>Select years</li>
-<li>Choose step-up type</li>
+    <!-- USE CASES -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Use Cases</p>
+        <h2>WHO USES THIS TOOL?</h2>
+        <ul>
+<li>First-time investors planning their first mutual fund SIP</li>
+<li>Salaried employees calculating how much to save for retirement</li>
+<li>Parents planning a SIP for their child's college education</li>
+<li>Millennials building a house down-payment corpus</li>
+<li>Financial advisors presenting investment projections to clients</li>
 </ul>
+      </div>
+    </div>
 
-</div>
+    <!-- TIPS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Pro Tips</p>
+        <h2>TIPS &amp; BEST PRACTICES</h2>
+        <ul>
+<li><strong>Start early:</strong> A 25-year-old investing ₹5,000/month for 35 years will accumulate significantly more than a 35-year-old investing ₹10,000/month for 25 years — because time beats amount.</li>
+<li><strong>Step-up your SIP:</strong> Increase your SIP amount by 10–15% every year as your income grows.</li>
+<li><strong>Stay invested during downturns:</strong> SIP benefits from rupee cost averaging — you buy more units when markets fall.</li>
+<li><strong>Use 12% for equity, 7% for debt:</strong> These are reasonable long-term return assumptions for Indian mutual funds.</li>
+<li><strong>Keep a 3-month emergency fund</strong> before starting a SIP so you never have to redeem early.</li>
+</ul>
+      </div>
+    </div>
 
-<!-- ===== ORIGINAL SCRIPT ===== -->
-<script>
-let currentMode = 'percent';
-const mIn = document.getElementById('monthly');
-const rIn = document.getElementById('rate');
-const yIn = document.getElementById('years');
-const sIn = document.getElementById('stepValue');
-const outMain = document.getElementById('output-main');
-const outInv = document.getElementById('total-invested');
-const outGain = document.getElementById('wealth-gain');
+    <!-- FAQ -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// FAQ</p>
+        <h2>FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="faq-item">
+          <div class="faq-q">What is SIP?</div>
+          <div class="faq-a">SIP (Systematic Investment Plan) is a method of investing a fixed amount in a mutual fund at regular intervals (usually monthly). It promotes disciplined investing and benefits from rupee cost averaging and the power of compounding.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">Is SIP calculator result guaranteed?</div>
+          <div class="faq-a">No. The SIP calculator gives estimated returns based on an assumed fixed rate of return. Actual mutual fund returns vary depending on market conditions, fund performance, and the type of fund. Use this as a planning tool, not a guarantee.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">What return rate should I use for SIP calculation?</div>
+          <div class="faq-a">For equity mutual funds (large-cap), 10–12% p.a. is a reasonable long-term assumption. For mid/small-cap funds, 12–15%. For debt funds, 6–8%. For ELSS (tax-saving), 10–12%.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">What is the minimum SIP amount in India?</div>
+          <div class="faq-a">Most mutual funds in India allow SIPs starting from ₹100–₹500 per month. Some funds like Axis, Mirae Asset, and Parag Parikh accept ₹500 minimums.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">Is SIP good for long-term investment?</div>
+          <div class="faq-a">Yes, SIP is widely considered one of the best long-term wealth-building strategies for retail investors in India. The combination of disciplined investing, rupee cost averaging, and compound growth makes it powerful over 10+ year periods.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">Can I stop a SIP anytime?</div>
+          <div class="faq-a">Yes. Most mutual funds allow you to pause or stop your SIP without any penalty, giving you flexibility unlike fixed deposits or insurance endowment plans.</div>
+        </div>
+      </div>
+    </div>
 
-function setMode(mode) {
-    currentMode = mode;
-    document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(`mode-${mode}`).classList.add('active');
-    sIn.placeholder = mode === 'percent' ? "Annual % Increase" : "Annual Fixed Increase";
-    calculate();
-}
+    <!-- RELATED -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Related Tools</p>
+        <h2>RELATED TOOLS YOU MAY LIKE</h2>
+        <div class="related-grid"><a class="related-link" href="/emi-calculator.html">EMI Calculator</a><a class="related-link" href="/compound-interest-calculator.html">Compound Interest</a><a class="related-link" href="/inflation-calculator.html">Inflation Calculator</a><a class="related-link" href="/simple-interest-calculator.html">Simple Interest</a><a class="related-link" href="/loan-eligibility-calculator.html">Loan Eligibility</a><a class="related-link" href="/percentage-calculator.html">Percentage Calculator</a></div>
+      </div>
+    </div>
 
-[mIn, rIn, yIn, sIn].forEach(input => input.addEventListener('input', calculate));
+  </div>
 
-function calculate() {
-    const initialSIP = parseFloat(mIn.value) || 0;
-    const annualRate = parseFloat(rIn.value) || 0;
-    const years = parseFloat(yIn.value) || 0;
-    const stepVal = parseFloat(sIn.value) || 0;
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    © 2026 DigitalToolVault — Free online tools, no signup required.
+  </footer>
 
-    if (initialSIP > 0 && annualRate > 0 && years > 0) {
-        let totalMaturity = 0;
-        let totalInvested = 0;
-        let currentMonthlySIP = initialSIP;
-        const monthlyRate = (annualRate / 100) / 12;
-
-        for (let i = 1; i <= (years * 12); i++) {
-            totalInvested += currentMonthlySIP;
-            const monthsRemaining = (years * 12) - i + 1;
-            totalMaturity += currentMonthlySIP * Math.pow(1 + monthlyRate, monthsRemaining);
-
-            if (i % 12 === 0 && i !== (years * 12)) {
-                if (currentMode === 'percent') {
-                    currentMonthlySIP += (currentMonthlySIP * (stepVal / 100));
-                } else {
-                    currentMonthlySIP += stepVal;
-                }
-            }
-        }
-
-        outMain.innerText = Math.round(totalMaturity).toLocaleString();
-        outInv.innerText = Math.round(totalInvested).toLocaleString();
-        outGain.innerText = Math.round(totalMaturity - totalInvested).toLocaleString();
-    } else {
-        outMain.innerText = "0.00";
-        outInv.innerText = "0";
-        outGain.innerText = "0";
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('open');
+        const a = q.nextElementSibling;
+        a.style.display = a.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+    
+    function calcSIP() {
+      const P = parseFloat(document.getElementById('sip_amount').value);
+      const r = parseFloat(document.getElementById('sip_rate').value) / 100 / 12;
+      const n = parseInt(document.getElementById('sip_years').value) * 12;
+      if (!P || !r || !n) { document.getElementById('sipResult').innerHTML = 'Please fill all fields.'; return; }
+      const fv = P * ((Math.pow(1+r,n)-1)/r) * (1+r);
+      const invested = P * n;
+      const returns = fv - invested;
+      document.getElementById('sipResult').innerHTML =
+        'Maturity Value: <span>₹' + Math.round(fv).toLocaleString('en-IN') + '</span><br>' +
+        'Total Invested: <span>₹' + Math.round(invested).toLocaleString('en-IN') + '</span><br>' +
+        'Estimated Returns: <span>₹' + Math.round(returns).toLocaleString('en-IN') + '</span>';
     }
-}
+    
+  </script>
 
-document.getElementById('copyArea').addEventListener('click', () => {
-    const value = outMain.innerText.replace(/,/g, '');
-    if (value !== "0.00") {
-        navigator.clipboard.writeText(value);
-        const originalText = outMain.innerText;
-        outMain.innerText = "COPIED";
-        setTimeout(() => {
-            outMain.innerText = originalText;
-        }, 800);
-    }
-});
-
-calculate();
-</script>
-
-
-<div class="seo">
-<h1>SIP Calculator – Calculate SIP Returns and Maturity Amount</h1>
-<p>Use this free SIP calculator to estimate the returns on your Systematic Investment Plan. Enter your monthly investment amount, expected annual return rate and investment duration to instantly see your total invested amount, estimated returns and final maturity value. No signup required.</p>
-
-<h2>What is SIP?</h2>
-<p>A <strong>Systematic Investment Plan (SIP)</strong> is a method of investing a fixed amount of money at regular intervals — usually monthly — into a mutual fund scheme. SIP helps you build wealth gradually through disciplined investing, without needing a large lump sum upfront. It works on the principle of <strong>rupee cost averaging</strong>: you buy more units when prices are low and fewer when prices are high, reducing the average cost of investment over time.</p>
-
-<h2>SIP Return Formula</h2>
-<div class="formula-box">M = P × [(1 + r)ⁿ – 1] ÷ r × (1 + r)</div>
-<p>Where:</p>
-<ul>
-<li><strong>M</strong> = Maturity amount (total corpus at end of investment period)</li>
-<li><strong>P</strong> = Monthly SIP investment amount (₹)</li>
-<li><strong>r</strong> = Monthly return rate = Expected annual return ÷ 12 ÷ 100</li>
-<li><strong>n</strong> = Total number of months of investment</li>
-</ul>
-
-<h2>SIP Growth Examples</h2>
-<table>
-<tr><th>Monthly SIP (₹)</th><th>Duration</th><th>Expected Return</th><th>Total Invested</th><th>Maturity Value</th></tr>
-<tr><td>5,000</td><td>5 yrs</td><td>12%</td><td>₹3,00,000</td><td>≈₹4,08,348</td></tr>
-<tr><td>10,000</td><td>10 yrs</td><td>12%</td><td>₹12,00,000</td><td>≈₹23,23,391</td></tr>
-<tr><td>15,000</td><td>15 yrs</td><td>12%</td><td>₹27,00,000</td><td>≈₹75,97,848</td></tr>
-<tr><td>20,000</td><td>20 yrs</td><td>12%</td><td>₹48,00,000</td><td>≈₹1,99,82,458</td></tr>
-</table>
-
-<h2>Why Invest via SIP?</h2>
-<ul>
-<li><strong>No timing needed</strong> — invest every month regardless of market conditions</li>
-<li><strong>Rupee cost averaging</strong> — automatically buy more units at lower prices</li>
-<li><strong>Power of compounding</strong> — returns compound over time, accelerating wealth growth</li>
-<li><strong>Flexible</strong> — start with as little as ₹500/month, increase anytime</li>
-<li><strong>Disciplined savings</strong> — auto-debit ensures you invest before spending</li>
-</ul>
-<div class="tip-box">💡 The longer you invest, the more powerful compounding becomes. A ₹10,000/month SIP for 20 years at 12% returns nearly 4× more than the same SIP for 10 years. Start early, even with a small amount.</div>
-
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>What return rate should I use in the SIP calculator?</strong>Indian equity mutual funds have historically delivered 12–15% annualised returns over 10+ year periods. Debt funds typically return 6–8%. Use 10–12% for a balanced estimate. This calculator gives an estimate — actual returns vary based on market performance.</div>
-<div class="faq-item"><strong>Can I pause or stop a SIP?</strong>Yes, most mutual funds allow you to pause SIP for up to 3 months or stop it anytime without penalty. Your existing units remain invested.</div>
-<div class="faq-item"><strong>Is SIP better than lump sum investing?</strong>SIP is better for regular investors as it reduces timing risk through rupee cost averaging. Lump sum can outperform SIP if invested at a market low. For most individuals, SIP is the safer and more practical approach.</div>
-<div class="faq-item"><strong>Are SIP returns taxable?</strong>Equity mutual fund SIP returns held for over 1 year are taxed at 10% LTCG (Long Term Capital Gains) on gains above ₹1 lakh per year. Short-term gains (under 1 year) are taxed at 15%.</div>
-<div class="faq-item"><strong>What is Step-Up SIP?</strong>Step-Up SIP (also called Top-Up SIP) lets you increase your monthly investment amount every year (e.g. by 10% annually), aligning with salary hikes and boosting your final corpus significantly.</div>
-</div>
 </body>
 </html>

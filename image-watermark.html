@@ -1,323 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Watermark – Add Text Watermark to Images Online Free | DigitalToolVault</title>
-<meta name="theme-color" content="#37474f">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://digitaltoolvault.com/image-watermark.html">
-<meta name="description" content="Free online image watermark tool — add custom text watermarks to your photos instantly. Protect your work without uploading to any server.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --bg: #ffffff;
-    --primary: #37474f; 
-    --accent: #ff5722;  
-    --muted: #94a3b8;
-    --dot-color: #d1d5db;
-    --glass: rgba(255, 255, 255, 0.9);
-}
-
-* { box-sizing: border-box; transition: all 0.2s ease; }
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-    background-size: 30px 30px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.vault-card {
-    width: 100%;
-    max-width: 600px;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--primary);
-    padding: 40px;
-    position: relative;
-    box-shadow: 15px 15px 0px var(--primary);
-}
-
-.header {
-    font-family: 'JetBrains Mono', monospace;
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-}
-
-.brand-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800; color: var(--primary); }
-.brand-line h1 span { color: var(--accent); }
-.sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
-
-.tool-title { font-size: 18px; font-weight: 600; text-transform: uppercase; margin-top: 10px; color: var(--primary); }
-
-.preview-stage {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 10px;
-    margin-bottom: 25px;
-    min-height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-canvas { max-width: 100%; display: none; }
-
-.control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-.full-width { grid-column: span 2; }
-
-label { font-size: 9px; color: var(--muted); margin-bottom: 8px; display: block; }
-
-input, select {
-    width: 100%;
-    border: 2px solid #e2e8f0;
-    padding: 10px;
-}
-
-button {
-    width: 100%;
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 18px;
-    cursor: pointer;
-}
-
-.sys-footer {
-    font-size: 8px;
-    color: var(--muted);
-    margin-top: 25px;
-    text-align: center;
-}
-
-/* SEO */
-.seo {
-    max-width: 800px;
-    margin-top: 60px;
-    line-height: 1.6;
-}
-</style>
-
-<!-- Open Graph + Twitter -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="Image Watermark – Add Text Watermark to Images Online Free | DigitalToolVault">
-<meta property="og:description" content="Free online image watermark tool — add custom text watermarks to your photos instantly. Protect your work without uploading to any server.">
-<meta property="og:url" content="https://digitaltoolvault.com/image-watermark.html">
-<meta property="og:image" content="https://digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Image Watermark – Add Text Watermark to Images Online Free | DigitalToolVault">
-<meta name="twitter:description" content="Free online image watermark tool — add custom text watermarks to your photos instantly. Protect your work without uploading to any server.">
-<meta name="twitter:image" content="https://digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Image Watermark Tool","url":"https://digitaltoolvault.com/image-watermark.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I customise the watermark?","acceptedAnswer":{"@type":"Answer","text":"Yes — set the text, font size, colour, opacity and position of the watermark."}},{"@type":"Question","name":"Is my image uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Processing happens entirely in your browser. Images are private."}},{"@type":"Question","name":"What formats can I watermark?","acceptedAnswer":{"@type":"Answer","text":"JPG, PNG and WebP images are supported."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Image Watermark","item":"https://digitaltoolvault.com/image-watermark.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
-
-<style>
-.seo{max-width:820px;margin:60px auto 40px;padding:0 20px 60px;font-family:'Inter',sans-serif;color:#334155;line-height:1.8;}
-.seo h1{font-size:1.6rem;font-weight:700;color:#37474f;margin-bottom:14px;font-family:'Inter',sans-serif;}
-.seo h2{font-size:1.15rem;font-weight:700;color:#37474f;margin:36px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:1rem;font-weight:600;color:#37474f;margin:20px 0 8px;}
-.seo p{font-size:0.94rem;margin-bottom:14px;color:#475569;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:14px;}
-.seo ul li,.seo ol li{font-size:0.94rem;margin-bottom:8px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:18px 0;font-size:0.88rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.8rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:12px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.95rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:14px 18px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:0.88rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:0.9rem;color:#9a3412;}
-</style>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Image Watermark Tool – Add Text Watermark to Photos | DigitalToolVault</title>
+<meta name="description" content="Free Image Watermark Tool. Add custom text watermarks to photos in your browser. Protect images from unauthorized use. No signup required."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.digitaltoolvault.com/image-watermark.html"/>
+<meta property="og:title" content="Image Watermark Tool – Add Text Watermark to Photos | DigitalToolVault"/>
+<meta property="og:description" content="Free Image Watermark Tool. Add custom text watermarks to photos in your browser. Protect images from unauthorized use. No signup required."/>
+<meta property="og:url" content="https://www.digitaltoolvault.com/image-watermark.html"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" /><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f9fafb;--card-bg:#ffffff;--primary:#37474f;--accent:#ff5722;--text:#1a1a2e;--muted:#6b7280;--border:#37474f;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace}
+body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(#d1d5db 1.5px,transparent 1.5px);background-size:30px 30px;color:var(--text);min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.nav-logo{font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-back{font-family:var(--font-mono);font-size:.8rem;color:#cfd8dc;text-decoration:none;letter-spacing:1px}
+.nav-back:hover{color:var(--accent)}
+.pw{max-width:900px;margin:0 auto;padding:0 20px 80px}
+.th{text-align:center;padding:52px 0 36px}
+.tt{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.th h1{font-family:var(--font-mono);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.25}
+.th p{font-size:.97rem;color:var(--muted);line-height:1.8;max-width:580px;margin:0 auto}
+.tc{background:var(--card-bg);border:2px solid var(--border);box-shadow:15px 15px 0 var(--border);border-radius:4px;padding:36px 40px;margin-bottom:32px}
+.tc input,.tc select,.tc textarea{width:100%;padding:11px 14px;font-family:var(--font-body);font-size:.93rem;color:var(--text);background:#f9fafb;border:2px solid #d1d5db;border-radius:4px;outline:none;margin-bottom:14px;transition:border-color .2s}
+.tc input:focus,.tc select:focus,.tc textarea:focus{border-color:var(--accent);background:#fff}
+.fl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.btn{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.bf{width:100%;padding:14px}
+.rb{background:#f0f4f8;border:2px solid #cfd8dc;border-radius:4px;padding:18px 20px;margin-top:18px;font-family:var(--font-mono);font-size:1rem;color:var(--primary);font-weight:600;min-height:54px}
+.rb span{color:var(--accent)}
+.sec{margin-bottom:28px}
+.sc{background:var(--card-bg);border:2px solid var(--border);box-shadow:6px 6px 0 var(--border);border-radius:4px;padding:28px 32px}
+.sl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sc h2{font-family:var(--font-mono);font-size:1.08rem;font-weight:700;color:var(--primary);margin-bottom:14px}
+.sc p{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:12px}
+.sc p:last-child{margin-bottom:0}
+.sc ul,.sc ol{padding-left:20px;margin-bottom:12px}
+.sc li{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:6px}
+.fi{border-bottom:1.5px solid #e5e7eb;padding:14px 0}
+.fi:last-child{border-bottom:none}
+.fq{font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fq::after{content:'+';color:var(--accent);font-size:1.2rem}
+.fq.open::after{content:'-'}
+.fa{font-size:.93rem;color:#374151;line-height:1.8;margin-top:8px;display:none}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.rl{display:block;background:#f9fafb;border:1.5px solid #d1d5db;border-radius:4px;padding:12px 14px;font-family:var(--font-mono);font-size:.78rem;color:var(--primary);text-decoration:none;font-weight:600;transition:all .2s}
+.rl:hover{border-color:var(--accent);color:var(--accent);background:#fff5f2}
+footer{background:var(--primary);color:#cfd8dc;font-family:var(--font-mono);font-size:.78rem;padding:28px 24px;text-align:center}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+.fln{margin-bottom:10px}
+@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Watermark Tool – Add Text Watermark to Photos | DigitalToolVault","description":"Free Image Watermark Tool. Add custom text watermarks to photos in your browser. Protect images from unauthorized use. No signup required.","url":"https://www.digitaltoolvault.com/image-watermark.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com"}}</script>
 </head>
-
 <body>
-<nav style="position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
-
-<!-- ✅ ORIGINAL UI -->
-
-<div class="vault-card">
-    <div class="header">
-        <div class="brand-line">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2px;color:#37474f;">DigitalTool<span style="color:#ff5722;">Vault</span></div>
-            <span class="sys-code">IMG_WM_SYNTH_V1</span>
-        </div>
-        <div class="tool-title">Image Watermark Generator</div>
-    </div>
-
-    <div class="preview-stage">
-        <div id="placeholder">AWAITING_IMAGE_BUFFER</div>
-        <canvas id="mainCanvas"></canvas>
-    </div>
-
-    <input type="file" id="imageLoader">
-    <input type="text" id="wmText" placeholder="ENTER TEXT">
-
-    <!-- ✅ ONLY ADD THIS -->
-    <label>Font Size</label>
-    <input type="range" id="fontSize" min="10" max="100" value="40">
-
-    <label>Watermark Color</label>
-    <input type="color" id="wmColor" value="#ffffff">
-
-    <button id="downloadBtn">Download</button>
-
-    <div class="sys-footer">PROCESSING: BROWSER_CANVAS_API</div>
+<nav><a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a><a class="nav-back" href="/">&#8592; ALL TOOLS</a></nav>
+<div class="pw">
+<div class="th"><p class="tt">// Free Online Tool</p><h1>Image Watermark Tool</h1><p>Add a custom text watermark to any image. Set text, position, and opacity. Your image stays in your browser — nothing is uploaded to any server.</p></div>
+<div class="tc"><div style="background:#f9fafb;border:2px dashed #d1d5db;border-radius:4px;padding:40px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:.9rem;"><div style="font-size:2rem;margin-bottom:10px;">&#128193;</div>Select a file to begin.<br/><small>All processing is local in your browser.</small></div><p style="font-size:.82rem;color:var(--muted);margin-top:12px;text-align:center;font-family:var(--font-mono);">&#128274; Your files never leave your device &mdash; 100% private.</p></div>
+<div class="sec"><div class="sc"><p class="sl">// Overview</p><h2>ABOUT THE WATERMARK TOOL</h2><p>The Image Watermark Tool adds custom text overlays to photos directly in your browser. Watermarking protects photographers, content creators, businesses, and anyone sharing images online from having their work used without credit or permission.</p><p>Image theft is widespread in India on social media and WhatsApp. Adding a watermark with your name, Instagram handle, or brand makes it hard for others to use your images without attribution. Even if someone screenshots your watermarked image, your name remains visible.</p><p>All processing happens locally — images are never uploaded to our servers, ensuring privacy for personal and business photos.</p></div></div><div class="sec"><div class="sc"><p class="sl">// Use Cases</p><h2>WHO NEEDS WATERMARKS</h2><ul><li>Photographers protecting portfolio images on Instagram</li><li>Businesses branding product photos for marketplaces</li><li>Artists protecting artwork on social media</li><li>Real estate agents branding property listing photos</li><li>Tutors protecting study materials from copying</li></ul></div></div><div class="sec"><div class="sc"><p class="sl">// Tips</p><h2>WATERMARK TIPS</h2><ul><li>Place watermarks where they cannot easily be cropped out</li><li>50-70% opacity balances visibility and aesthetics</li><li>Include your website URL or Instagram handle</li><li>For client previews use larger prominent watermarks, removed after payment</li></ul></div></div>
+<div class="sec"><div class="sc"><p class="sl">// FAQ</p><h2>FREQUENTLY ASKED QUESTIONS</h2><div class="fi"><div class="fq">Can I add a logo watermark?</div><div class="fa">Text watermarks only. For logo/image watermarks use Canva or Adobe Express.</div></div><div class="fi"><div class="fq">Will watermark affect image quality?</div><div class="fa">No. The watermark is a text overlay — image quality is unchanged.</div></div><div class="fi"><div class="fq">Is the watermarked image saved anywhere?</div><div class="fa">No. All processing is local. The image is downloaded directly to your device.</div></div><div class="fi"><div class="fq">Can I watermark multiple images?</div><div class="fa">Currently one image at a time.</div></div></div></div>
+<div class="sec"><div class="sc"><p class="sl">// Related Tools</p><h2>RELATED TOOLS YOU MAY LIKE</h2><div class="rg"><a class="rl" href="/image-compressor.html">Image Compressor</a><a class="rl" href="/jpg-to-pdf.html">JPG to PDF</a><a class="rl" href="/pdf-watermark.html">PDF Watermark</a><a class="rl" href="/qr-generator.html">QR Generator</a><a class="rl" href="/password-generator.html">Password Generator</a><a class="rl" href="/word-counter.html">Word Counter</a></div></div></div>
 </div>
-
-<!-- ✅ SEO CONTENT SAME (NOT REMOVED) -->
-<div class="seo">
-
-<h1>Image Watermark – Add Watermark to Your Images Instantly</h1>
-
-<p>
-Use this free image watermark tool to add text watermark to your images instantly. 
-Protect your photos and brand your content easily without any software.
-</p>
-
-<h2>How to Use</h2>
-<ul>
-<li>Upload your image</li>
-<li>Enter watermark text</li>
-<li>Adjust position and style</li>
-<li>Download watermarked image</li>
-</ul>
-
-<h2>Features</h2>
-<ul>
-<li>No upload to server (secure)</li>
-<li>Custom watermark text</li>
-<li>Adjustable opacity and size</li>
-<li>Works on all devices</li>
-</ul>
-
-<h2>FAQs</h2>
-<p><strong>Is my image safe?</strong> Yes, processing is done in your browser.</p>
-<p><strong>Is this tool free?</strong> Yes, completely free.</p>
-
-</div>
-
-<!-- ✅ JS ONLY -->
+<footer><div class="fln"><a href="/">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div>&#169; 2026 DigitalToolVault &#8212; Free online tools, no signup required.</footer>
 <script>
-const imageLoader = document.getElementById('imageLoader');
-const canvas = document.getElementById('mainCanvas');
-const ctx = canvas.getContext('2d');
-const textInput = document.getElementById('wmText');
-const placeholder = document.getElementById('placeholder');
-const downloadBtn = document.getElementById('downloadBtn');
-const fontSize = document.getElementById('fontSize');
-const wmColor = document.getElementById('wmColor');
+document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('open');var a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';});});
 
-let img = new Image();
-
-imageLoader.addEventListener('change', function(e){
-    const reader = new FileReader();
-    reader.onload = function(event){
-        img.onload = function(){
-            canvas.width = img.width;
-            canvas.height = img.height;
-
-            canvas.style.display = "block";
-            placeholder.style.display = "none";
-
-            drawWatermark();
-        }
-        img.src = event.target.result;
-    }
-    reader.readAsDataURL(e.target.files[0]);
-});
-
-textInput.addEventListener('input', drawWatermark);
-fontSize.addEventListener('input', drawWatermark);
-wmColor.addEventListener('input', drawWatermark);
-
-function drawWatermark(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.drawImage(img,0,0);
-
-    const text = textInput.value;
-    const size = fontSize.value;
-    const color = wmColor.value;
-
-    if(text){
-        ctx.font = size + "px Arial";
-        ctx.fillStyle = color;
-        ctx.globalAlpha = 0.6;
-        ctx.textAlign = "right";
-
-        ctx.fillText(text, canvas.width - 20, canvas.height - 20);
-    }
-}
-
-downloadBtn.addEventListener("click", function(){
-    const link = document.createElement("a");
-    link.download = "watermarked.png";
-    link.href = canvas.toDataURL();
-    link.click();
-});
 </script>
-
-
-<div class="seo">
-<h2>Image Watermark – Add Text Watermark to Your Images Free</h2>
-<p>Add custom text watermarks to your photos and images online for free. Adjust font size, colour, opacity and position. All processing happens in your browser — your images are never uploaded to any server. No signup required.</p>
-
-<h2>Why Watermark Your Images?</h2>
-<p>A <strong>watermark</strong> is a visible or subtle overlay on an image that identifies its owner or source. Watermarking is the simplest way to protect your visual content from being used without permission — and to ensure credit reaches you even if the image is shared without attribution.</p>
-
-<h2>Who Needs Image Watermarking?</h2>
-<ul>
-<li><strong>Photographers</strong> — protect portfolio images from being used without licensing</li>
-<li><strong>Content creators</strong> — brand social media images with your handle or logo</li>
-<li><strong>E-commerce sellers</strong> — prevent product photos from being stolen by competitors</li>
-<li><strong>Businesses</strong> — brand all visual content before sharing online</li>
-<li><strong>Educators</strong> — mark worksheets, presentations and documents with institution name</li>
-<li><strong>Real estate agents</strong> — watermark property listing photos</li>
-</ul>
-
-<h2>Watermark Best Practices</h2>
-<table>
-<tr><th>Factor</th><th>Best Practice</th></tr>
-<tr><td>Position</td><td>Bottom-right or centre — most visible but least disruptive</td></tr>
-<tr><td>Opacity</td><td>40–70% — visible but not overpowering the main image</td></tr>
-<tr><td>Font size</td><td>Large enough to be readable but not dominating</td></tr>
-<tr><td>Text content</td><td>Website URL, @handle, brand name, or copyright notice</td></tr>
-<tr><td>Colour</td><td>White or black with partial opacity works on most image backgrounds</td></tr>
-</table>
-<div class="tip-box">💡 For professional photography, place a semi-transparent watermark diagonally across the centre of the image — this prevents cropping-based removal while keeping the subject visible.</div>
-
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>Can someone remove my watermark?</strong>Simple text watermarks can be cropped or cloned out using editing tools. For high-value images, consider placing the watermark across the centre of the subject — this makes removal much harder without damaging the image.</div>
-<div class="faq-item"><strong>Is my original image safe?</strong>Yes. Processing happens entirely in your browser. Your original image is not modified — a new watermarked copy is generated for download. The original stays on your device.</div>
-<div class="faq-item"><strong>What file formats are supported?</strong>JPG, PNG and WebP images are supported. The watermarked output can be downloaded as JPG or PNG.</div>
-<div class="faq-item"><strong>Can I add a logo instead of text?</strong>This tool adds text watermarks. For logo watermarks, you would need an image editing tool like Canva, Photoshop or GIMP.</div>
-</div>
-</body>
-</html>
+</body></html>

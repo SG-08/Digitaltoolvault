@@ -1,180 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Interest Calculator – Calculate SI Instantly Free | DigitalToolVault</title>
-<meta name="description" content="Free simple interest calculator — enter principal, rate and time to instantly calculate simple interest and total amount. No signup needed.">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#37474f">
-<link rel="canonical" href="https://www.digitaltoolvault.com/simple-interest-calculator.html">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="Simple Interest Calculator – Calculate SI Instantly Free | DigitalToolVault">
-<meta property="og:description" content="Free simple interest calculator — enter principal, rate and time to instantly calculate simple interest and total amount. No signup needed.">
-<meta property="og:url" content="https://www.digitaltoolvault.com/simple-interest-calculator.html">
-<meta property="og:image" content="https://www.digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Simple Interest Calculator – Calculate SI Instantly Free">
-<meta name="twitter:description" content="Free simple interest calculator — enter principal, rate and time to instantly calculate simple interest and total amount. No signup needed.">
-<meta name="twitter:image" content="https://www.digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Simple Interest Calculator","url":"https://www.digitaltoolvault.com/simple-interest-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Simple Interest Calculator","item":"https://www.digitaltoolvault.com/simple-interest-calculator.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root {
-    --bg: #ffffff;
-    --primary: #37474f;
-    --accent: #ff5722;
-    --muted: #94a3b8;
-    --dot-color: #d1d5db;
-    --glass: rgba(255,255,255,0.9);
-}
-* { box-sizing: border-box; }
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-    background-size: 30px 30px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-.calculator {
-    width: 100%;
-    max-width: 480px;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--primary);
-    padding: 40px;
-    box-shadow: 15px 15px 0 var(--primary);
-}
-.header {
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    font-family: 'JetBrains Mono';
-}
-.brand-line { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: 2px; font-weight: 700; color: var(--primary); }
-.logo span { color: var(--accent); }
-.sys-code { font-size: 9px; color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; }
-.tool-title { font-size: 16px; margin-top: 10px; font-weight: 600; font-family: 'JetBrains Mono'; }
-.input-grid { display: grid; gap: 15px; }
-label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 4px; }
-input, select, textarea {
-    width: 100%;
-    border: 2px solid #e2e8f0;
-    padding: 10px;
-    font-family: 'JetBrains Mono';
-    font-size: 15px;
-    background: white;
-    outline: none;
-    transition: border .15s;
-}
-input:focus, select:focus, textarea:focus { border-color: var(--primary); }
-.calc-btn {
-    width: 100%; margin-top: 16px; padding: 13px;
-    background: var(--primary); color: #fff; border: none;
-    font-family: 'JetBrains Mono'; font-size: 11px;
-    letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: background .2s;
-}
-.calc-btn:hover { background: var(--accent); }
-.results {
-    margin-top: 20px; text-align: center; padding: 25px;
-    background: #f8fafc; border: 1px solid #e2e8f0; cursor: pointer;
-}
-.results:hover { background: #f1f5f9; }
-#output { font-family: 'JetBrains Mono'; font-size: 32px; color: var(--primary); }
-.breakdown {
-    display: flex; justify-content: space-between; margin-top: 15px;
-    font-family: 'JetBrains Mono'; font-size: 10px; color: var(--muted);
-    flex-wrap: wrap; gap: 4px;
-}
-.copy-hint { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-top: 8px; letter-spacing: 1px; }
-.seo { max-width: 800px; margin-top: 60px; width: 100%; }
-.seo h1{font-size:1.5rem;font-weight:700;color:#37474f;margin-bottom:14px;}
-.seo h2{font-size:1.1rem;font-weight:700;color:#37474f;margin:32px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:.97rem;font-weight:600;color:#37474f;margin:18px 0 8px;}
-.seo p{font-size:0.93rem;margin-bottom:12px;color:#475569;line-height:1.8;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:12px;}
-.seo li{font-size:0.93rem;margin-bottom:7px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.87rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.78rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:10px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.93rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:12px 16px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.88rem;color:#9a3412;}
-@media(max-width:520px){body{padding:12px;}.calculator{padding:24px 18px;}#output{font-size:26px;}}
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Simple Interest Calculator Online | DigitalToolVault</title>
+<meta name="description" content="Free Simple Interest Calculator. Enter principal, rate and time to calculate interest and final amount. No signup required."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.digitaltoolvault.com/simple-interest-calculator.html"/>
+<meta property="og:title" content="Simple Interest Calculator Online | DigitalToolVault"/>
+<meta property="og:description" content="Free Simple Interest Calculator. Enter principal, rate and time to calculate interest and final amount. No signup required."/>
+<meta property="og:url" content="https://www.digitaltoolvault.com/simple-interest-calculator.html"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" /><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f9fafb;--card-bg:#ffffff;--primary:#37474f;--accent:#ff5722;--text:#1a1a2e;--muted:#6b7280;--border:#37474f;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace}
+body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(#d1d5db 1.5px,transparent 1.5px);background-size:30px 30px;color:var(--text);min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.nav-logo{font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-back{font-family:var(--font-mono);font-size:.8rem;color:#cfd8dc;text-decoration:none;letter-spacing:1px}
+.nav-back:hover{color:var(--accent)}
+.pw{max-width:900px;margin:0 auto;padding:0 20px 80px}
+.th{text-align:center;padding:52px 0 36px}
+.tt{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.th h1{font-family:var(--font-mono);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.25}
+.th p{font-size:.97rem;color:var(--muted);line-height:1.8;max-width:580px;margin:0 auto}
+.tc{background:var(--card-bg);border:2px solid var(--border);box-shadow:15px 15px 0 var(--border);border-radius:4px;padding:36px 40px;margin-bottom:32px}
+.tc input,.tc select,.tc textarea{width:100%;padding:11px 14px;font-family:var(--font-body);font-size:.93rem;color:var(--text);background:#f9fafb;border:2px solid #d1d5db;border-radius:4px;outline:none;margin-bottom:14px;transition:border-color .2s}
+.tc input:focus,.tc select:focus,.tc textarea:focus{border-color:var(--accent);background:#fff}
+.fl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.btn{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.bf{width:100%;padding:14px}
+.rb{background:#f0f4f8;border:2px solid #cfd8dc;border-radius:4px;padding:18px 20px;margin-top:18px;font-family:var(--font-mono);font-size:1rem;color:var(--primary);font-weight:600;min-height:54px}
+.rb span{color:var(--accent)}
+.sec{margin-bottom:28px}
+.sc{background:var(--card-bg);border:2px solid var(--border);box-shadow:6px 6px 0 var(--border);border-radius:4px;padding:28px 32px}
+.sl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sc h2{font-family:var(--font-mono);font-size:1.08rem;font-weight:700;color:var(--primary);margin-bottom:14px}
+.sc p{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:12px}
+.sc p:last-child{margin-bottom:0}
+.sc ul,.sc ol{padding-left:20px;margin-bottom:12px}
+.sc li{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:6px}
+.fi{border-bottom:1.5px solid #e5e7eb;padding:14px 0}
+.fi:last-child{border-bottom:none}
+.fq{font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fq::after{content:'+';color:var(--accent);font-size:1.2rem}
+.fq.open::after{content:'-'}
+.fa{font-size:.93rem;color:#374151;line-height:1.8;margin-top:8px;display:none}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.rl{display:block;background:#f9fafb;border:1.5px solid #d1d5db;border-radius:4px;padding:12px 14px;font-family:var(--font-mono);font-size:.78rem;color:var(--primary);text-decoration:none;font-weight:600;transition:all .2s}
+.rl:hover{border-color:var(--accent);color:var(--accent);background:#fff5f2}
+footer{background:var(--primary);color:#cfd8dc;font-family:var(--font-mono);font-size:.78rem;padding:28px 24px;text-align:center}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+.fln{margin-bottom:10px}
+@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Simple Interest Calculator Online | DigitalToolVault","description":"Free Simple Interest Calculator. Enter principal, rate and time to calculate interest and final amount. No signup required.","url":"https://www.digitaltoolvault.com/simple-interest-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com"}}</script>
 </head>
 <body>
-<nav style="position:sticky;top:0;z-index:1000;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
-<div class="calculator">
-  <div class="header">
-    <div class="brand-line"><div class="logo">DigitalTool<span>Vault</span></div><div class="sys-code">SI_CALC_ENGINE</div></div>
-    <div class="tool-title">Simple Interest Calculator</div>
-  </div>
-  <div class="input-grid">
-    <div><label>Principal_Amount [₹]</label><input type="number" id="si-p" placeholder="e.g. 50000"></div>
-    <div><label>Annual_Rate [%]</label><input type="number" id="si-r" placeholder="e.g. 8"></div>
-    <div><label>Time_Period [Years]</label><input type="number" id="si-t" placeholder="e.g. 3"></div>
-  </div>
-  <button class="calc-btn" onclick="calcSI()">CALCULATE →</button>
-  <div class="results" onclick="copy('si-out')">
-    <p id="si-out">—</p>
-    <div class="breakdown"><span>Simple_Interest: <b id="si-int">—</b></span><span>Total_Amount: <b id="si-amt">—</b></span></div>
-    <div class="copy-hint">CLICK_TO_COPY</div>
-  </div>
+<nav><a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a><a class="nav-back" href="/">&#8592; ALL TOOLS</a></nav>
+<div class="pw">
+<div class="th"><p class="tt">// Free Online Tool</p><h1>Simple Interest Calculator</h1><p>Calculate simple interest on any principal. Enter principal, annual rate and time period to get total interest and final amount instantly.</p></div>
+<div class="tc"><label class="fl">PRINCIPAL (&#8377;)</label>
+<input type="number" id="si_p" placeholder="e.g. 50000"/>
+<label class="fl">ANNUAL RATE (%)</label>
+<input type="number" id="si_r" placeholder="e.g. 7.5" step="0.1"/>
+<label class="fl">TIME (YEARS)</label>
+<input type="number" id="si_t" placeholder="e.g. 3"/>
+<button class="btn bf" onclick="csi()">CALCULATE</button>
+<div class="rb" id="sir">Result will appear here.</div></div>
+<div class="sec"><div class="sc"><p class="sl">// Overview</p><h2>WHAT IS SIMPLE INTEREST?</h2><p>Simple Interest (SI) is calculated only on the original principal, never on previously earned interest. Formula: SI = (P x R x T) / 100. It is used in short-term personal loans, chit funds, and informal lending.</p><p>Unlike compound interest where returns compound over time, simple interest grows linearly. For the same rate, SI will always be less than CI over periods longer than one compounding period. This makes SI better when borrowing (you pay less interest) and CI better when investing (you earn more).</p><p>Common Indian uses: calculating interest on informal personal loans between family or friends, estimating returns on post office savings certificates, and academic problems in school and competitive exam preparation.</p></div></div><div class="sec"><div class="sc"><p class="sl">// Formula</p><h2>SI FORMULA AND EXAMPLE</h2><p><strong>SI = (P x R x T) / 100</strong></p><p><strong>Total Amount = P + SI</strong></p><p>Example: Rs 50,000 at 8% p.a. for 3 years: SI = (50,000 x 8 x 3)/100 = Rs 12,000. Total = Rs 62,000.</p><p>For periods less than 1 year, convert to fractions: 6 months = 0.5 years.</p></div></div><div class="sec"><div class="sc"><p class="sl">// Use Cases</p><h2>USE CASES</h2><ul><li>Students solving bank exam and school maths problems</li><li>Comparing simple vs compound interest loans</li><li>Chit fund and informal loan calculations</li><li>Post Office savings scheme estimations</li></ul></div></div>
+<div class="sec"><div class="sc"><p class="sl">// FAQ</p><h2>FREQUENTLY ASKED QUESTIONS</h2><div class="fi"><div class="fq">What is the difference between SI and CI?</div><div class="fa">SI is on principal only. CI is on principal plus previously earned interest. For Rs 1 lakh at 10% for 5 years: SI = Rs 50,000; CI (annual compounding) = Rs 61,051.</div></div><div class="fi"><div class="fq">Is simple interest used in bank FDs?</div><div class="fa">No. Bank FDs use compound interest. SI is mainly used in short-term informal lending.</div></div><div class="fi"><div class="fq">How do I calculate SI for 6 months?</div><div class="fa">T = 0.5 years. SI = P x R x 0.5 / 100.</div></div><div class="fi"><div class="fq">What is SI on Rs 1 lakh at 9% for 2 years?</div><div class="fa">SI = (1,00,000 x 9 x 2)/100 = Rs 18,000. Total = Rs 1,18,000.</div></div></div></div>
+<div class="sec"><div class="sc"><p class="sl">// Related Tools</p><h2>RELATED TOOLS YOU MAY LIKE</h2><div class="rg"><a class="rl" href="/emi-calculator.html">EMI Calculator</a><a class="rl" href="/compound-interest-calculator.html">Compound Interest</a><a class="rl" href="/sip-calculator.html">SIP Calculator</a><a class="rl" href="/gst-calculator.html">GST Calculator</a><a class="rl" href="/discount-calculator.html">Discount Calculator</a><a class="rl" href="/inflation-calculator.html">Inflation Calculator</a></div></div></div>
 </div>
+<footer><div class="fln"><a href="/">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div>&#169; 2026 DigitalToolVault &#8212; Free online tools, no signup required.</footer>
 <script>
-function fmt(n){return isNaN(n)?'—':parseFloat(n.toFixed(2)).toLocaleString('en-IN');}
-function calcSI(){
-  const P=parseFloat(document.getElementById('si-p').value);
-  const R=parseFloat(document.getElementById('si-r').value);
-  const T=parseFloat(document.getElementById('si-t').value);
-  if(isNaN(P)||isNaN(R)||isNaN(T)){document.getElementById('si-out').innerText='Invalid';return;}
-  const SI=(P*R*T)/100; const A=P+SI;
-  document.getElementById('si-out').innerText='₹'+fmt(SI);
-  document.getElementById('si-int').innerText='₹'+fmt(SI);
-  document.getElementById('si-amt').innerText='₹'+fmt(A);
-}
-function copy(id){const v=document.getElementById(id).innerText;if(v&&v!=='—'){navigator.clipboard.writeText(v);const el=document.getElementById(id);const o=el.innerText;el.innerText='COPIED!';setTimeout(()=>el.innerText=o,1000);}}
-document.querySelectorAll('input').forEach(i=>i.addEventListener('input',calcSI));
+document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('open');var a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';});});
+function csi(){var P=parseFloat(document.getElementById('si_p').value),R=parseFloat(document.getElementById('si_r').value),T=parseFloat(document.getElementById('si_t').value);if(!P||!R||!T){document.getElementById('sir').innerHTML='Please fill all fields.';return;}var SI=P*R*T/100,A=P+SI;document.getElementById('sir').innerHTML='Simple Interest: <span>&#8377;'+SI.toLocaleString('en-IN',{maximumFractionDigits:2})+'</span><br>Total Amount: <span>&#8377;'+A.toLocaleString('en-IN',{maximumFractionDigits:2})+'</span>';}
 </script>
-<div class="seo"><h1>Simple Interest Calculator – Calculate SI and Total Amount Instantly</h1>
-<p>Use this free simple interest calculator to find the interest earned or paid on a principal amount at a fixed rate over a specific time period. Instant results, no signup required.</p>
-<h2>Simple Interest Formula</h2>
-<div class="formula-box">SI = (P × R × T) ÷ 100 &nbsp;|&nbsp; Total Amount = P + SI</div>
-<p>Where P = Principal, R = Annual Rate (%), T = Time (Years)</p>
-<h2>Simple vs Compound Interest</h2>
-<table><tr><th>Feature</th><th>Simple Interest</th><th>Compound Interest</th></tr>
-<tr><td>Calculated on</td><td>Principal only</td><td>Principal + accumulated interest</td></tr>
-<tr><td>Growth</td><td>Linear</td><td>Exponential</td></tr>
-<tr><td>Used in</td><td>Short-term loans, some FDs</td><td>Most savings, mutual funds</td></tr></table>
-<h2>Examples</h2>
-<table><tr><th>Principal</th><th>Rate</th><th>Time</th><th>SI</th><th>Total</th></tr>
-<tr><td>₹10,000</td><td>8%</td><td>2 yrs</td><td>₹1,600</td><td>₹11,600</td></tr>
-<tr><td>₹50,000</td><td>10%</td><td>3 yrs</td><td>₹15,000</td><td>₹65,000</td></tr>
-<tr><td>₹1,00,000</td><td>7.5%</td><td>5 yrs</td><td>₹37,500</td><td>₹1,37,500</td></tr></table>
-<div class="tip-box">💡 Simple interest is commonly used in vehicle loans, personal loans under 1 year and government bonds. For longer durations, most banks switch to compound interest which increases the cost of borrowing.</div>
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>What is simple interest?</strong>Simple interest is calculated only on the original principal amount, not on accumulated interest. Formula: SI = (P × R × T) / 100.</div>
-<div class="faq-item"><strong>When is simple interest used in India?</strong>Simple interest is used in certain car loans, gold loans, short-term personal loans and government savings schemes like NSC (National Savings Certificate).</div>
-<div class="faq-item"><strong>Is simple interest better for borrowers?</strong>Yes. Since interest is charged only on the original principal, total interest paid under simple interest is always less than compound interest for the same rate and duration.</div></div>
-</body>
-</html>
+</body></html>

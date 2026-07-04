@@ -1,354 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Counter – Count Words, Characters & Sentences Online Free | DigitalToolVault</title>
-<meta name="theme-color" content="#37474f">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://digitaltoolvault.com/word-counter.html">
-<meta name="description" content="Free online word counter — instantly count words, characters (with and without spaces), sentences and paragraphs. Great for essays, blogs and social media.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #ffffff;
-            --primary: #37474f; 
-            --accent: #ff5722;  
-            --muted: #94a3b8;
-            --dot-color: #d1d5db;
-            --glass: rgba(255, 255, 255, 0.9);
-        }
-
-        * { box-sizing: border-box; transition: all 0.2s ease; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
-            margin: 0;
-            display: flex;
-            flex-direction: column; /* ONLY added for SEO stacking */
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .vault-card {
-            width: 100%;
-            max-width: 650px;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--primary);
-            padding: 40px;
-            position: relative;
-            box-shadow: 15px 15px 0px var(--primary);
-        }
-
-        .header {
-            font-family: 'JetBrains Mono', monospace;
-            border-bottom: 2px solid var(--primary);
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-        }
-
-        .brand-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800; color: var(--primary); }
-        .brand-line h1 span { color: var(--accent); }
-        .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
-
-        .tool-title { font-size: 18px; font-weight: 600; text-transform: uppercase; margin-top: 10px; color: var(--primary); }
-
-        textarea {
-            width: 100%;
-            height: 200px;
-            border: 2px solid #e2e8f0;
-            padding: 20px;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            line-height: 1.6;
-            outline: none;
-            resize: vertical;
-            background: #fff;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        textarea:focus { border-color: var(--primary); background: #fafafa; }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .stat-card {
-            padding: 15px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            text-align: center;
-        }
-
-        .stat-val {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 20px;
-            font-weight: 600;
-            display: block;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 8px;
-            color: var(--muted);
-            text-transform: uppercase;
-            margin-top: 5px;
-        }
-
-        .reading-meter {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            background: var(--primary);
-            color: white;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            text-transform: uppercase;
-        }
-
-        .reading-meter span { color: var(--accent); font-weight: bold; }
-
-        button {
-            width: 100%;
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 12px;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        button:hover { background: #f1f5f9; border-color: var(--accent); color: var(--accent); }
-
-        .sys-footer {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 8px;
-            color: var(--muted);
-            margin-top: 25px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        /* SEO section */
-        .seo-content {
-            max-width: 900px;
-            margin-top: 60px;
-        }
-    </style>
-<!-- Open Graph + Twitter -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="Word Counter – Count Words, Characters & Sentences Online Free | DigitalToolVault">
-<meta property="og:description" content="Free online word counter — instantly count words, characters (with and without spaces), sentences and paragraphs. Great for essays, blogs and social media.">
-<meta property="og:url" content="https://digitaltoolvault.com/word-counter.html">
-<meta property="og:image" content="https://digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Word Counter – Count Words, Characters & Sentences Online Free | DigitalToolVault">
-<meta name="twitter:description" content="Free online word counter — instantly count words, characters (with and without spaces), sentences and paragraphs. Great for essays, blogs and social media.">
-<meta name="twitter:image" content="https://digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Word Counter","url":"https://digitaltoolvault.com/word-counter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the word counter track?","acceptedAnswer":{"@type":"Answer","text":"Total words, characters (with/without spaces), sentences and paragraphs."}},{"@type":"Question","name":"Is there a character limit?","acceptedAnswer":{"@type":"Answer","text":"No limit — paste as much text as you need."}},{"@type":"Question","name":"Can I use this for social media limits?","acceptedAnswer":{"@type":"Answer","text":"Yes — track character counts for Twitter (280), Instagram captions and LinkedIn posts."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Word Counter","item":"https://digitaltoolvault.com/word-counter.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
-
-<style>
-.seo{max-width:820px;margin:60px auto 40px;padding:0 20px 60px;font-family:'Inter',sans-serif;color:#334155;line-height:1.8;}
-.seo h1{font-size:1.6rem;font-weight:700;color:#37474f;margin-bottom:14px;font-family:'Inter',sans-serif;}
-.seo h2{font-size:1.15rem;font-weight:700;color:#37474f;margin:36px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:1rem;font-weight:600;color:#37474f;margin:20px 0 8px;}
-.seo p{font-size:0.94rem;margin-bottom:14px;color:#475569;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:14px;}
-.seo ul li,.seo ol li{font-size:0.94rem;margin-bottom:8px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:18px 0;font-size:0.88rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.8rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:12px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.95rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:14px 18px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:0.88rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:0.9rem;color:#9a3412;}
-</style>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Word Counter – Count Words, Characters & Reading Time | DigitalToolVault</title>
+<meta name="description" content="Free Word Counter. Count words, characters, sentences and reading time in real time. Paste your text and get instant statistics. No signup."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.digitaltoolvault.com/word-counter.html"/>
+<meta property="og:title" content="Word Counter – Count Words, Characters & Reading Time | DigitalToolVault"/>
+<meta property="og:description" content="Free Word Counter. Count words, characters, sentences and reading time in real time. Paste your text and get instant statistics. No signup."/>
+<meta property="og:url" content="https://www.digitaltoolvault.com/word-counter.html"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" /><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f9fafb;--card-bg:#ffffff;--primary:#37474f;--accent:#ff5722;--text:#1a1a2e;--muted:#6b7280;--border:#37474f;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace}
+body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(#d1d5db 1.5px,transparent 1.5px);background-size:30px 30px;color:var(--text);min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.nav-logo{font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-back{font-family:var(--font-mono);font-size:.8rem;color:#cfd8dc;text-decoration:none;letter-spacing:1px}
+.nav-back:hover{color:var(--accent)}
+.pw{max-width:900px;margin:0 auto;padding:0 20px 80px}
+.th{text-align:center;padding:52px 0 36px}
+.tt{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.th h1{font-family:var(--font-mono);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.25}
+.th p{font-size:.97rem;color:var(--muted);line-height:1.8;max-width:580px;margin:0 auto}
+.tc{background:var(--card-bg);border:2px solid var(--border);box-shadow:15px 15px 0 var(--border);border-radius:4px;padding:36px 40px;margin-bottom:32px}
+.tc input,.tc select,.tc textarea{width:100%;padding:11px 14px;font-family:var(--font-body);font-size:.93rem;color:var(--text);background:#f9fafb;border:2px solid #d1d5db;border-radius:4px;outline:none;margin-bottom:14px;transition:border-color .2s}
+.tc input:focus,.tc select:focus,.tc textarea:focus{border-color:var(--accent);background:#fff}
+.fl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.btn{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.bf{width:100%;padding:14px}
+.rb{background:#f0f4f8;border:2px solid #cfd8dc;border-radius:4px;padding:18px 20px;margin-top:18px;font-family:var(--font-mono);font-size:1rem;color:var(--primary);font-weight:600;min-height:54px}
+.rb span{color:var(--accent)}
+.sec{margin-bottom:28px}
+.sc{background:var(--card-bg);border:2px solid var(--border);box-shadow:6px 6px 0 var(--border);border-radius:4px;padding:28px 32px}
+.sl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sc h2{font-family:var(--font-mono);font-size:1.08rem;font-weight:700;color:var(--primary);margin-bottom:14px}
+.sc p{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:12px}
+.sc p:last-child{margin-bottom:0}
+.sc ul,.sc ol{padding-left:20px;margin-bottom:12px}
+.sc li{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:6px}
+.fi{border-bottom:1.5px solid #e5e7eb;padding:14px 0}
+.fi:last-child{border-bottom:none}
+.fq{font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fq::after{content:'+';color:var(--accent);font-size:1.2rem}
+.fq.open::after{content:'-'}
+.fa{font-size:.93rem;color:#374151;line-height:1.8;margin-top:8px;display:none}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.rl{display:block;background:#f9fafb;border:1.5px solid #d1d5db;border-radius:4px;padding:12px 14px;font-family:var(--font-mono);font-size:.78rem;color:var(--primary);text-decoration:none;font-weight:600;transition:all .2s}
+.rl:hover{border-color:var(--accent);color:var(--accent);background:#fff5f2}
+footer{background:var(--primary);color:#cfd8dc;font-family:var(--font-mono);font-size:.78rem;padding:28px 24px;text-align:center}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+.fln{margin-bottom:10px}
+@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Counter – Count Words, Characters & Reading Time | DigitalToolVault","description":"Free Word Counter. Count words, characters, sentences and reading time in real time. Paste your text and get instant statistics. No signup.","url":"https://www.digitaltoolvault.com/word-counter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com"}}</script>
 </head>
 <body>
-<nav style="position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
-
-<!-- ===== ORIGINAL TOOL (UNCHANGED) ===== -->
-<div class="vault-card">
-    <div class="header">
-        <div class="brand-line">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2px;color:#37474f;">DigitalTool<span style="color:#ff5722;">Vault</span></div>
-            <span class="sys-code">LEX_ANALYTICS_V1</span>
-        </div>
-        <div class="tool-title">Word Counter Engine</div>
-    </div>
-
-    <textarea id="textInput" placeholder="Enter_Text_For_Analysis..."></textarea>
-
-    <div class="stats-grid">
-        <div class="stat-card">
-            <span class="stat-val" id="wordCount">0</span>
-            <span class="stat-label">Words</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-val" id="charCount">0</span>
-            <span class="stat-label">Chars</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-val" id="sentenceCount">0</span>
-            <span class="stat-label">Sentences</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-val" id="charNoSpace">0</span>
-            <span class="stat-label">No_Spaces</span>
-        </div>
-    </div>
-
-    <div class="reading-meter">
-        Estimated_Reading_Time: <span id="readTime">0m 0s</span>
-    </div>
-
-    <button onclick="clearBuffer()">Clear_Text_Buffer</button>
-
-    <div class="sys-footer">PROCESSING: REALTIME_SYNC | STORAGE: NON_PERSISTENT</div>
+<nav><a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a><a class="nav-back" href="/">&#8592; ALL TOOLS</a></nav>
+<div class="pw">
+<div class="th"><p class="tt">// Free Online Tool</p><h1>Word Counter</h1><p>Count words, characters, sentences and paragraphs in real time. See estimated reading time. Paste any text and statistics update instantly as you type.</p></div>
+<div class="tc"><label class="fl">PASTE OR TYPE YOUR TEXT</label>
+<textarea id="wt" placeholder="Paste or type text here..." style="min-height:180px;" oninput="cw()"></textarea>
+<div class="rb" id="wr">Start typing to see statistics.</div></div>
+<div class="sec"><div class="sc"><p class="sl">// Overview</p><h2>ABOUT THE WORD COUNTER</h2><p>The Word Counter provides real-time text statistics — words, characters (with and without spaces), sentences, and reading time — updating live as you type without any button click needed. This is invaluable for students, writers, content creators, and social media managers working with text content.</p><p>Word count requirements appear everywhere: college assignments (minimum 1,000 words), blog articles (1,500-2,500 words for SEO), LinkedIn posts (optimal 1,500-2,000 for engagement), government tender documents (character limits), and social media captions (platform-specific limits).</p><p>Reading time is estimated at 200 words per minute — average reading speed for non-technical English content. For technical or academic content actual reading time may be higher.</p></div></div><div class="sec"><div class="sc"><p class="sl">// Platform Limits</p><h2>CHARACTER LIMITS QUICK REFERENCE</h2><ul><li>Twitter/X: 280 characters</li><li>Instagram caption: 2,200 characters (125 before truncation in feed)</li><li>LinkedIn post: 3,000 characters</li><li>Google meta description: 155-160 characters</li><li>WhatsApp: 65,536 characters</li><li>SMS: 160 characters (GSM) / 70 characters (Unicode/Hindi)</li></ul></div></div><div class="sec"><div class="sc"><p class="sl">// Use Cases</p><h2>USE CASES</h2><ul><li>Students checking assignments meet minimum word count</li><li>Content writers ensuring articles hit target word counts for SEO</li><li>Social media managers verifying caption character limits</li><li>Translators counting source words for project pricing</li><li>Authors tracking manuscript word count progress</li></ul></div></div>
+<div class="sec"><div class="sc"><p class="sl">// FAQ</p><h2>FREQUENTLY ASKED QUESTIONS</h2><div class="fi"><div class="fq">How many words is a 5-minute read?</div><div class="fa">At 200 wpm, a 5-minute read is approximately 1,000 words.</div></div><div class="fi"><div class="fq">What counts as a word?</div><div class="fa">Any sequence of characters separated by whitespace. 'Hello World' = 2 words.</div></div><div class="fi"><div class="fq">Does the word counter work offline?</div><div class="fa">Yes — once the page loads, it runs entirely in your browser.</div></div><div class="fi"><div class="fq">What is the ideal blog length for SEO?</div><div class="fa">1,500-2,500 words is optimal for most SEO purposes. Quality matters more than length.</div></div></div></div>
+<div class="sec"><div class="sc"><p class="sl">// Related Tools</p><h2>RELATED TOOLS YOU MAY LIKE</h2><div class="rg"><a class="rl" href="/text-case-converter.html">Text Case Converter</a><a class="rl" href="/number-to-word.html">Number to Words</a><a class="rl" href="/typing-speed-test.html">Typing Speed Test</a><a class="rl" href="/password-generator.html">Password Generator</a><a class="rl" href="/random-name-picker.html">Random Name Picker</a><a class="rl" href="/qr-generator.html">QR Generator</a></div></div></div>
 </div>
-
-<!-- ===== SEO CONTENT ===== -->
-<div class="seo-content">
-
-<h2>Word Counter Tool – Count Words, Characters & Reading Time Instantly</h2>
-<p>
-This free online Word Counter helps you analyze your text in real-time. It provides accurate word count, character count, sentence count, and estimated reading time.
-</p>
-
-<h3>What Does This Tool Do?</h3>
-<p>
-The tool instantly calculates the number of words, characters (with and without spaces), and sentences in your text. It also estimates how long it will take to read the content.
-</p>
-
-<h3>Key Features</h3>
-<ul>
-<li>Real-time word and character count</li>
-<li>Sentence detection</li>
-<li>Reading time estimation</li>
-<li>Clean and distraction-free interface</li>
-</ul>
-
-<h3>Who Can Use This Tool?</h3>
-<ul>
-<li>Students writing assignments</li>
-<li>Content writers and bloggers</li>
-<li>SEO professionals</li>
-<li>Anyone needing quick text analysis</li>
-</ul>
-
-<h3>How to Use</h3>
-<ul>
-<li>Paste or type your text</li>
-<li>View stats instantly</li>
-<li>Clear text using the button</li>
-</ul>
-
-</div>
-
-<!-- ===== ORIGINAL SCRIPT ===== -->
+<footer><div class="fln"><a href="/">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div>&#169; 2026 DigitalToolVault &#8212; Free online tools, no signup required.</footer>
 <script>
-const textInput = document.getElementById('textInput');
-const wordCount = document.getElementById('wordCount');
-const charCount = document.getElementById('charCount');
-const sentenceCount = document.getElementById('sentenceCount');
-const charNoSpace = document.getElementById('charNoSpace');
-const readTime = document.getElementById('readTime');
-
-textInput.addEventListener('input', () => {
-    const text = textInput.value;
-    
-    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-    wordCount.innerText = words;
-
-    charCount.innerText = text.length;
-    charNoSpace.innerText = text.replace(/\s/g, '').length;
-
-    const sentences = text.split(/[.!?]+/).filter(Boolean).length;
-    sentenceCount.innerText = sentences;
-
-    const totalSeconds = Math.floor((words / 200) * 60);
-    const m = Math.floor(totalSeconds / 60);
-    const s = totalSeconds % 60;
-    readTime.innerText = `${m}m ${s}s`;
-});
-
-function clearBuffer() {
-    textInput.value = '';
-    textInput.dispatchEvent(new Event('input'));
-    textInput.focus();
-}
+document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('open');var a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';});});
+function cw(){var t=document.getElementById('wt').value,w=t.trim()===''?0:t.trim().split(/\s+/).length,c=t.length,cn=t.replace(/\s/g,'').length,s=t.trim()===''?0:t.split(/[.!?]+/).filter(function(x){return x.trim().length>0;}).length,rm=Math.ceil(w/200);document.getElementById('wr').innerHTML='Words: <span>'+w.toLocaleString()+'</span> | Chars: <span>'+c.toLocaleString()+'</span><br>Chars (no spaces): <span>'+cn.toLocaleString()+'</span> | Sentences: <span>'+s+'</span><br>Reading time: <span>~'+rm+' min</span>';}
 </script>
-
-
-<div class="seo">
-<h1>Word Counter – Count Words, Characters and Sentences in Your Text</h1>
-<p>Instantly count words, characters (with and without spaces), sentences and paragraphs in any text. Paste your content and get real-time counts — great for essays, articles, blog posts and social media. Free, no signup required.</p>
-
-<h2>Why Word Count Matters</h2>
-<p>Whether you are writing an academic essay, a blog post, an SEO article or a social media caption, staying within the required word or character count is essential. Different platforms and use cases have different requirements — this tool gives you all the key metrics instantly.</p>
-
-<h2>Word & Character Limits by Platform</h2>
-<table>
-<tr><th>Platform / Use Case</th><th>Limit</th><th>Notes</th></tr>
-<tr><td>Twitter / X post</td><td>280 characters</td><td>Including spaces</td></tr>
-<tr><td>Instagram caption</td><td>2,200 characters</td><td>Only first 125 visible before "more"</td></tr>
-<tr><td>LinkedIn post</td><td>3,000 characters</td><td>First 210 shown before truncation</td></tr>
-<tr><td>WhatsApp message</td><td>65,536 characters</td><td>Practically unlimited</td></tr>
-<tr><td>Meta description (SEO)</td><td>150–160 characters</td><td>Critical for Google search snippets</td></tr>
-<tr><td>Title tag (SEO)</td><td>50–60 characters</td><td>Longer titles get truncated in results</td></tr>
-<tr><td>UPSC essay</td><td>1,000–1,200 words</td><td>Varies by paper</td></tr>
-<tr><td>College admission essay</td><td>250–650 words</td><td>Most US universities</td></tr>
-</table>
-
-<h2>Word Count Guide for Blog Posts & SEO</h2>
-<ul>
-<li><strong>News articles</strong> — 300–600 words: concise, factual, to the point</li>
-<li><strong>Blog posts</strong> — 1,000–1,500 words: informative, good for most topics</li>
-<li><strong>SEO-focused content</strong> — 1,500–2,500 words: more depth helps rank for competitive keywords</li>
-<li><strong>Pillar content / ultimate guides</strong> — 3,000–5,000+ words: comprehensive resource pages</li>
-<li><strong>Academic papers</strong> — defined by institution; typically 3,000–10,000 words</li>
-</ul>
-<div class="tip-box">💡 For SEO, word count alone does not determine rankings — content quality, relevance and structure matter more. However, longer, well-structured content tends to earn more backlinks and rank for more keyword variations.</div>
-
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>How does the word counter count words?</strong>Words are counted by splitting text on whitespace (spaces, tabs, newlines) and counting non-empty segments. "Hello, world!" counts as 2 words.</div>
-<div class="faq-item"><strong>Does it count characters with or without spaces?</strong>Both. The tool shows character count with spaces (total characters) and without spaces (only letters, numbers and punctuation).</div>
-<div class="faq-item"><strong>How are sentences counted?</strong>Sentences are identified by sentence-ending punctuation: full stops, exclamation marks and question marks. Multiple punctuation marks (e.g. "!!!") count as one sentence end.</div>
-<div class="faq-item"><strong>Is there a text length limit?</strong>No — paste any amount of text. The counter works in real-time regardless of text length.</div>
-</div>
-</body>
-</html>
+</body></html>

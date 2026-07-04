@@ -1,240 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit Converter – Convert Length, Weight, Temperature & More Free | DigitalToolVault</title>
-<meta name="description" content="Free unit converter — convert length (km, miles, feet), weight (kg, lbs, grams), temperature (°C, °F, K) and area instantly. No signup needed.">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#37474f">
-<link rel="canonical" href="https://www.digitaltoolvault.com/unit-converter.html">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="Unit Converter – Convert Length, Weight, Temperature & More Free | DigitalToolVault">
-<meta property="og:description" content="Free unit converter — convert length (km, miles, feet), weight (kg, lbs, grams), temperature (°C, °F, K) and area instantly. No signup needed.">
-<meta property="og:url" content="https://www.digitaltoolvault.com/unit-converter.html">
-<meta property="og:image" content="https://www.digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Unit Converter – Convert Length, Weight, Temperature & More Free">
-<meta name="twitter:description" content="Free unit converter — convert length (km, miles, feet), weight (kg, lbs, grams), temperature (°C, °F, K) and area instantly. No signup needed.">
-<meta name="twitter:image" content="https://www.digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Unit Converter","url":"https://www.digitaltoolvault.com/unit-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Unit Converter","item":"https://www.digitaltoolvault.com/unit-converter.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root {
-    --bg: #ffffff;
-    --primary: #37474f;
-    --accent: #ff5722;
-    --muted: #94a3b8;
-    --dot-color: #d1d5db;
-    --glass: rgba(255,255,255,0.9);
-}
-* { box-sizing: border-box; }
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-    background-size: 30px 30px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-.calculator {
-    width: 100%;
-    max-width: 480px;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--primary);
-    padding: 40px;
-    box-shadow: 15px 15px 0 var(--primary);
-}
-.header {
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    font-family: 'JetBrains Mono';
-}
-.brand-line { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: 2px; font-weight: 700; color: var(--primary); }
-.logo span { color: var(--accent); }
-.sys-code { font-size: 9px; color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; }
-.tool-title { font-size: 16px; margin-top: 10px; font-weight: 600; font-family: 'JetBrains Mono'; }
-.input-grid { display: grid; gap: 15px; }
-label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 4px; }
-input, select, textarea {
-    width: 100%;
-    border: 2px solid #e2e8f0;
-    padding: 10px;
-    font-family: 'JetBrains Mono';
-    font-size: 15px;
-    background: white;
-    outline: none;
-    transition: border .15s;
-}
-input:focus, select:focus, textarea:focus { border-color: var(--primary); }
-.calc-btn {
-    width: 100%; margin-top: 16px; padding: 13px;
-    background: var(--primary); color: #fff; border: none;
-    font-family: 'JetBrains Mono'; font-size: 11px;
-    letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: background .2s;
-}
-.calc-btn:hover { background: var(--accent); }
-.results {
-    margin-top: 20px; text-align: center; padding: 25px;
-    background: #f8fafc; border: 1px solid #e2e8f0; cursor: pointer;
-}
-.results:hover { background: #f1f5f9; }
-#output { font-family: 'JetBrains Mono'; font-size: 32px; color: var(--primary); }
-.breakdown {
-    display: flex; justify-content: space-between; margin-top: 15px;
-    font-family: 'JetBrains Mono'; font-size: 10px; color: var(--muted);
-    flex-wrap: wrap; gap: 4px;
-}
-.copy-hint { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-top: 8px; letter-spacing: 1px; }
-.seo { max-width: 800px; margin-top: 60px; width: 100%; }
-.seo h1{font-size:1.5rem;font-weight:700;color:#37474f;margin-bottom:14px;}
-.seo h2{font-size:1.1rem;font-weight:700;color:#37474f;margin:32px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:.97rem;font-weight:600;color:#37474f;margin:18px 0 8px;}
-.seo p{font-size:0.93rem;margin-bottom:12px;color:#475569;line-height:1.8;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:12px;}
-.seo li{font-size:0.93rem;margin-bottom:7px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.87rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.78rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:10px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.93rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:12px 16px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.88rem;color:#9a3412;}
-@media(max-width:520px){body{padding:12px;}.calculator{padding:24px 18px;}#output{font-size:26px;}}
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Unit Converter – Length, Weight, Temperature, Area, Speed | DigitalToolVault</title>
+<meta name="description" content="Free Unit Converter. Convert length, weight, temperature, area and speed between metric and imperial units. Instant results, no signup required."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.digitaltoolvault.com/unit-converter.html"/>
+<meta property="og:title" content="Unit Converter – Length, Weight, Temperature, Area, Speed | DigitalToolVault"/>
+<meta property="og:description" content="Free Unit Converter. Convert length, weight, temperature, area and speed between metric and imperial units. Instant results, no signup required."/>
+<meta property="og:url" content="https://www.digitaltoolvault.com/unit-converter.html"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" /><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f9fafb;--card-bg:#ffffff;--primary:#37474f;--accent:#ff5722;--text:#1a1a2e;--muted:#6b7280;--border:#37474f;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace}
+body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(#d1d5db 1.5px,transparent 1.5px);background-size:30px 30px;color:var(--text);min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.nav-logo{font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-back{font-family:var(--font-mono);font-size:.8rem;color:#cfd8dc;text-decoration:none;letter-spacing:1px}
+.nav-back:hover{color:var(--accent)}
+.pw{max-width:900px;margin:0 auto;padding:0 20px 80px}
+.th{text-align:center;padding:52px 0 36px}
+.tt{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.th h1{font-family:var(--font-mono);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.25}
+.th p{font-size:.97rem;color:var(--muted);line-height:1.8;max-width:580px;margin:0 auto}
+.tc{background:var(--card-bg);border:2px solid var(--border);box-shadow:15px 15px 0 var(--border);border-radius:4px;padding:36px 40px;margin-bottom:32px}
+.tc input,.tc select,.tc textarea{width:100%;padding:11px 14px;font-family:var(--font-body);font-size:.93rem;color:var(--text);background:#f9fafb;border:2px solid #d1d5db;border-radius:4px;outline:none;margin-bottom:14px;transition:border-color .2s}
+.tc input:focus,.tc select:focus,.tc textarea:focus{border-color:var(--accent);background:#fff}
+.fl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.btn{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.bf{width:100%;padding:14px}
+.rb{background:#f0f4f8;border:2px solid #cfd8dc;border-radius:4px;padding:18px 20px;margin-top:18px;font-family:var(--font-mono);font-size:1rem;color:var(--primary);font-weight:600;min-height:54px}
+.rb span{color:var(--accent)}
+.sec{margin-bottom:28px}
+.sc{background:var(--card-bg);border:2px solid var(--border);box-shadow:6px 6px 0 var(--border);border-radius:4px;padding:28px 32px}
+.sl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sc h2{font-family:var(--font-mono);font-size:1.08rem;font-weight:700;color:var(--primary);margin-bottom:14px}
+.sc p{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:12px}
+.sc p:last-child{margin-bottom:0}
+.sc ul,.sc ol{padding-left:20px;margin-bottom:12px}
+.sc li{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:6px}
+.fi{border-bottom:1.5px solid #e5e7eb;padding:14px 0}
+.fi:last-child{border-bottom:none}
+.fq{font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fq::after{content:'+';color:var(--accent);font-size:1.2rem}
+.fq.open::after{content:'-'}
+.fa{font-size:.93rem;color:#374151;line-height:1.8;margin-top:8px;display:none}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.rl{display:block;background:#f9fafb;border:1.5px solid #d1d5db;border-radius:4px;padding:12px 14px;font-family:var(--font-mono);font-size:.78rem;color:var(--primary);text-decoration:none;font-weight:600;transition:all .2s}
+.rl:hover{border-color:var(--accent);color:var(--accent);background:#fff5f2}
+footer{background:var(--primary);color:#cfd8dc;font-family:var(--font-mono);font-size:.78rem;padding:28px 24px;text-align:center}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+.fln{margin-bottom:10px}
+@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Unit Converter – Length, Weight, Temperature, Area, Speed | DigitalToolVault","description":"Free Unit Converter. Convert length, weight, temperature, area and speed between metric and imperial units. Instant results, no signup required.","url":"https://www.digitaltoolvault.com/unit-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com"}}</script>
 </head>
 <body>
-<nav style="position:sticky;top:0;z-index:1000;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
-<div class="calculator">
-  <div class="header">
-    <div class="brand-line"><div class="logo">DigitalTool<span>Vault</span></div><div class="sys-code">UNIT_CONV_ENGINE</div></div>
-    <div class="tool-title">Unit Converter</div>
-  </div>
-  <div class="input-grid">
-    <div>
-      <label>Category</label>
-      <select id="uc-cat" onchange="updateUnits()">
-        <option value="length">Length</option>
-        <option value="weight">Weight</option>
-        <option value="temp">Temperature</option>
-        <option value="area">Area</option>
-        <option value="speed">Speed</option>
-        <option value="data">Data Storage</option>
-      </select>
-    </div>
-    <div><label>Value</label><input type="number" id="uc-val" placeholder="Enter value"></div>
-    <div>
-      <label>From</label>
-      <select id="uc-from"></select>
-    </div>
-    <div>
-      <label>To</label>
-      <select id="uc-to"></select>
-    </div>
-  </div>
-  <button class="calc-btn" onclick="calcUnit()">CONVERT →</button>
-  <div class="results" onclick="copy('uc-out')">
-    <p id="uc-out">—</p>
-    <div class="breakdown"><span id="uc-sub"></span></div>
-    <div class="copy-hint">CLICK_TO_COPY</div>
-  </div>
+<nav><a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a><a class="nav-back" href="/">&#8592; ALL TOOLS</a></nav>
+<div class="pw">
+<div class="th"><p class="tt">// Free Online Tool</p><h1>Unit Converter</h1><p>Convert between units of length, weight, temperature, area and speed. Supports metric and imperial units. Instant results in your browser.</p></div>
+<div class="tc"><label class="fl">CATEGORY</label>
+<select id="uc" onchange="uuc()">
+<option value="length">Length</option>
+<option value="weight">Weight / Mass</option>
+<option value="temperature">Temperature</option>
+<option value="area">Area</option>
+<option value="speed">Speed</option>
+</select>
+<label class="fl">VALUE</label>
+<input type="number" id="uv" placeholder="Enter value" step="any"/>
+<div style="display:flex;gap:10px;">
+<div style="flex:1;"><label class="fl">FROM</label><select id="uf"></select></div>
+<div style="flex:1;"><label class="fl">TO</label><select id="ut"></select></div>
 </div>
+<button class="btn bf" onclick="cunit()">CONVERT</button>
+<div class="rb" id="ur">Result will appear here.</div></div>
+<div class="sec"><div class="sc"><p class="sl">// Overview</p><h2>ABOUT THE UNIT CONVERTER</h2><p>The Unit Converter handles length, weight, temperature, area, and speed conversions between metric (SI) and imperial units. India officially uses the metric system but informal use of imperial units (feet/inches for height, pounds in some communities) is widespread, making unit conversion a frequent everyday need.</p><p>Temperature conversion is important for cooking (Fahrenheit in imported recipes), medicine (body temperature), and weather (international forecasts). Area conversion is critical for real estate — properties are listed in square feet, square yards, acres, or square metres depending on the region and seller.</p></div></div><div class="sec"><div class="sc"><p class="sl">// Common Conversions</p><h2>EVERYDAY CONVERSIONS</h2><ul><li>5 ft 7 in = 170 cm</li><li>70 kg = 154.3 lbs</li><li>37C = 98.6F (normal body temperature)</li><li>1 km = 0.621 miles</li><li>1 acre = 4,047 sq metres = 43,560 sq feet</li><li>100 km/h = 62.1 mph</li></ul></div></div><div class="sec"><div class="sc"><p class="sl">// Use Cases</p><h2>USE CASES</h2><ul><li>Students solving physics and chemistry problems</li><li>Home cooks adapting foreign recipes</li><li>Real estate buyers comparing area in different units</li><li>Travellers converting km to miles abroad</li><li>Engineers with mixed metric/imperial specifications</li></ul></div></div>
+<div class="sec"><div class="sc"><p class="sl">// FAQ</p><h2>FREQUENTLY ASKED QUESTIONS</h2><div class="fi"><div class="fq">How many cm in 1 foot?</div><div class="fa">1 foot = 30.48 cm.</div></div><div class="fi"><div class="fq">What is 100C in Fahrenheit?</div><div class="fa">(100 x 9/5) + 32 = 212F — boiling point of water.</div></div><div class="fi"><div class="fq">How many kg in 1 pound?</div><div class="fa">1 lb = 0.4536 kg. 1 kg = 2.2046 lbs.</div></div><div class="fi"><div class="fq">What is 1 acre in sq feet?</div><div class="fa">1 acre = 43,560 sq feet = 4,047 sq metres.</div></div></div></div>
+<div class="sec"><div class="sc"><p class="sl">// Related Tools</p><h2>RELATED TOOLS YOU MAY LIKE</h2><div class="rg"><a class="rl" href="/percentage-calculator.html">Percentage Calculator</a><a class="rl" href="/bmi-calculator.html">BMI Calculator</a><a class="rl" href="/currency-converter.html">Currency Converter</a><a class="rl" href="/binary-converter.html">Binary Converter</a><a class="rl" href="/scientific-calculator.html">Scientific Calculator</a><a class="rl" href="/number-to-word.html">Number to Words</a></div></div></div>
+</div>
+<footer><div class="fln"><a href="/">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div>&#169; 2026 DigitalToolVault &#8212; Free online tools, no signup required.</footer>
 <script>
-const UNITS={
-  length:{Kilometer:1000,Meter:1,'Centimeter':0.01,'Millimeter':0.001,'Mile':1609.344,'Yard':0.9144,'Foot':0.3048,'Inch':0.0254},
-  weight:{Kilogram:1,Gram:0.001,Milligram:0.000001,'Pound':0.453592,'Ounce':0.028349,'Quintal':100,'Metric Ton':1000},
-  area:{Sq_Meter:1,Sq_Kilometer:1e6,Sq_Foot:0.092903,Sq_Inch:0.000645,'Acre':4046.86,'Hectare':10000,'Sq_Yard':0.836127},
-  speed:{Km_per_hr:1,'Mile_per_hr':1.60934,'Meter_per_sec':3.6,'Knot':1.852,'Foot_per_sec':1.09728},
-  data:{Byte:1,Kilobyte:1024,Megabyte:1048576,Gigabyte:1073741824,Terabyte:1.099511628e12}
-};
-function updateUnits(){
-  const cat=document.getElementById('uc-cat').value;
-  const from=document.getElementById('uc-from');
-  const to=document.getElementById('uc-to');
-  from.innerHTML=''; to.innerHTML='';
-  if(cat==='temp'){
-    ['Celsius','Fahrenheit','Kelvin'].forEach(u=>{
-      from.innerHTML+=`<option>${u}</option>`;
-      to.innerHTML+=`<option>${u}</option>`;
-    });
-    to.value='Fahrenheit';
-  } else {
-    Object.keys(UNITS[cat]).forEach(u=>{
-      from.innerHTML+=`<option>${u}</option>`;
-      to.innerHTML+=`<option>${u}</option>`;
-    });
-    to.selectedIndex=1;
-  }
-}
-function calcUnit(){
-  const cat=document.getElementById('uc-cat').value;
-  const val=parseFloat(document.getElementById('uc-val').value);
-  const from=document.getElementById('uc-from').value;
-  const to=document.getElementById('uc-to').value;
-  if(isNaN(val)){document.getElementById('uc-out').innerText='Invalid';return;}
-  let result;
-  if(cat==='temp'){
-    let c;
-    if(from==='Celsius')c=val;
-    else if(from==='Fahrenheit')c=(val-32)*5/9;
-    else c=val-273.15;
-    if(to==='Celsius')result=c;
-    else if(to==='Fahrenheit')result=c*9/5+32;
-    else result=c+273.15;
-  } else {
-    const base=val*UNITS[cat][from];
-    result=base/UNITS[cat][to];
-  }
-  const fmt=parseFloat(result.toFixed(6)).toLocaleString('en-IN');
-  document.getElementById('uc-out').innerText=fmt+' '+to;
-  document.getElementById('uc-sub').innerText=val+' '+from+' = '+fmt+' '+to;
-}
-function copy(id){const v=document.getElementById(id).innerText;if(v&&v!=='—'){navigator.clipboard.writeText(v);const el=document.getElementById(id);const o=el.innerText;el.innerText='COPIED!';setTimeout(()=>el.innerText=o,1000);}}
-document.querySelectorAll('input,select').forEach(i=>i.addEventListener('change',calcUnit));
-document.getElementById('uc-val').addEventListener('input',calcUnit);
-updateUnits();
+document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('open');var a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';});});
+var UD={length:{Metre:1,Kilometre:0.001,Centimetre:100,Millimetre:1000,Mile:0.000621371,Yard:1.09361,Foot:3.28084,Inch:39.3701},weight:{Kilogram:1,Gram:1000,Milligram:1000000,Tonne:0.001,Pound:2.20462,Ounce:35.274},area:{SqMetre:1,SqKilometre:0.000001,SqFoot:10.7639,SqYard:1.19599,Acre:0.000247105,Hectare:0.0001},speed:{KmH:1,MpH:0.621371,Knot:0.539957}};
+function uuc(){var c=document.getElementById('uc').value,fs=document.getElementById('uf'),ts=document.getElementById('ut');fs.innerHTML='';ts.innerHTML='';if(c==='temperature'){['Celsius','Fahrenheit','Kelvin'].forEach(function(u,i){fs.innerHTML+='<option value="'+u+'">'+u+'</option>';ts.innerHTML+='<option value="'+u+'"'+(i===1?' selected':'')+'>'+u+'</option>';});}else{Object.keys(UD[c]).forEach(function(u,i){fs.innerHTML+='<option value="'+u+'">'+u+'</option>';ts.innerHTML+='<option value="'+u+'"'+(i===1?' selected':'')+'>'+u+'</option>';});}}
+function cunit(){var c=document.getElementById('uc').value,v=parseFloat(document.getElementById('uv').value),f=document.getElementById('uf').value,t=document.getElementById('ut').value;if(isNaN(v)){document.getElementById('ur').innerHTML='Please enter a value.';return;}var r;if(c==='temperature'){var cel;if(f==='Celsius')cel=v;else if(f==='Fahrenheit')cel=(v-32)*5/9;else cel=v-273.15;if(t==='Celsius')r=cel;else if(t==='Fahrenheit')r=cel*9/5+32;else r=cel+273.15;}else{r=(v/UD[c][f])*UD[c][t];}document.getElementById('ur').innerHTML=v+' '+f+' = <span>'+parseFloat(r.toFixed(6))+' '+t+'</span>';}
+uuc();
 </script>
-<div class="seo"><h1>Unit Converter – Convert Length, Weight, Temperature and More</h1>
-<p>Convert between units of length, weight, temperature, area, speed and data storage instantly. Free online unit converter with no signup required.</p>
-<h2>Categories Supported</h2>
-<table><tr><th>Category</th><th>Units</th></tr>
-<tr><td>Length</td><td>Kilometer, Meter, Mile, Foot, Inch, Yard, Cm, Mm</td></tr>
-<tr><td>Weight</td><td>Kilogram, Gram, Pound, Ounce, Ton, Quintal</td></tr>
-<tr><td>Temperature</td><td>Celsius, Fahrenheit, Kelvin</td></tr>
-<tr><td>Area</td><td>Sq Meter, Acre, Hectare, Sq Foot, Sq Yard</td></tr>
-<tr><td>Speed</td><td>Km/h, Miles/h, Knots, m/s</td></tr>
-<tr><td>Data</td><td>Byte, KB, MB, GB, TB</td></tr></table>
-<h2>Common Conversions</h2>
-<table><tr><th>From</th><th>To</th><th>Multiply by</th></tr>
-<tr><td>1 Mile</td><td>Kilometers</td><td>× 1.60934</td></tr>
-<tr><td>1 Kg</td><td>Pounds</td><td>× 2.20462</td></tr>
-<tr><td>1 Foot</td><td>Meters</td><td>× 0.3048</td></tr>
-<tr><td>1 Acre</td><td>Sq Meters</td><td>× 4046.86</td></tr>
-<tr><td>0°C</td><td>Fahrenheit</td><td>= 32°F</td></tr></table>
-<div class="formula-box">°F = (°C × 9/5) + 32 &nbsp;|&nbsp; °C = (°F − 32) × 5/9 &nbsp;|&nbsp; K = °C + 273.15</div>
-<div class="tip-box">💡 For Indian real estate: 1 Bigha varies by state (1,333–6,771 sq m). For standard conversions, use Acres or Sq Meters which are universally accepted.</div>
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>How many km in a mile?</strong>1 mile = 1.60934 kilometers. So 10 miles = 16.09 km and 100 km = 62.14 miles.</div>
-<div class="faq-item"><strong>How to convert Celsius to Fahrenheit?</strong>°F = (°C × 9/5) + 32. So 37°C (body temperature) = (37 × 1.8) + 32 = 98.6°F.</div>
-<div class="faq-item"><strong>How many grams in a pound?</strong>1 pound = 453.592 grams. 1 kg = 2.20462 pounds.</div></div>
-</body>
-</html>
+</body></html>

@@ -1,322 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EMI Calculator – Calculate Monthly Loan EMI Instantly | DigitalToolVault</title>
-<meta name="theme-color" content="#37474f">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://digitaltoolvault.com/emi-calculator.html">
-<meta name="description" content="Free EMI calculator — enter loan amount, interest rate and tenure to instantly calculate your monthly EMI, total interest paid and total payment. No signup needed.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --bg: #ffffff;
-    --primary: #37474f;
-    --accent: #ff5722;
-    --muted: #94a3b8;
-    --dot-color: #d1d5db;
-    --glass: rgba(255,255,255,0.9);
-}
-
-* { box-sizing: border-box; }
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-    background-size: 30px 30px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-/* CARD */
-.calculator {
-    width: 100%;
-    max-width: 480px;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--primary);
-    padding: 40px;
-    box-shadow: 15px 15px 0 var(--primary);
-}
-
-/* HEADER */
-.header {
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    font-family: 'JetBrains Mono';
-}
-
-.brand-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.brand-line h1 {
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin: 0;
-}
-
-.brand-line span {
-    color: var(--accent);
-}
-
-.sys-code {
-    font-size: 9px;
-    color: var(--accent);
-    font-weight: bold;
-}
-
-.tool-title {
-    font-size: 16px;
-    margin-top: 10px;
-    font-weight: 600;
-}
-
-/* INPUT */
-.input-grid {
-    display: grid;
-    gap: 15px;
-}
-
-label {
-    font-family: 'JetBrains Mono';
-    font-size: 9px;
-    color: var(--muted);
-    text-transform: uppercase;
-}
-
-input {
-    width: 100%;
-    border: 2px solid #e2e8f0;
-    padding: 10px;
-    font-family: 'JetBrains Mono';
-    font-size: 15px;
-    background: white;
-}
-
-input:focus {
-    border-color: var(--primary);
-}
-
-/* RESULT */
-.results {
-    margin-top: 20px;
-    text-align: center;
-    padding: 25px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    cursor: pointer;
-}
-
-#output {
-    font-family: 'JetBrains Mono';
-    font-size: 32px;
-}
-
-.breakdown {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    font-family: 'JetBrains Mono';
-    font-size: 10px;
-}
-
-/* SEO */
-.seo {
-    max-width: 800px;
-    margin-top: 60px;
-}
-</style>
-<!-- Open Graph + Twitter -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="EMI Calculator – Calculate Monthly Loan EMI Instantly | DigitalToolVault">
-<meta property="og:description" content="Free EMI calculator — enter loan amount, interest rate and tenure to instantly calculate your monthly EMI, total interest paid and total payment. No signup needed.">
-<meta property="og:url" content="https://digitaltoolvault.com/emi-calculator.html">
-<meta property="og:image" content="https://digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EMI Calculator – Calculate Monthly Loan EMI Instantly | DigitalToolVault">
-<meta name="twitter:description" content="Free EMI calculator — enter loan amount, interest rate and tenure to instantly calculate your monthly EMI, total interest paid and total payment. No signup needed.">
-<meta name="twitter:image" content="https://digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"EMI Calculator","url":"https://digitaltoolvault.com/emi-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is EMI?","acceptedAnswer":{"@type":"Answer","text":"EMI (Equated Monthly Installment) is a fixed monthly payment made to repay a loan, covering both principal and interest."}},{"@type":"Question","name":"How is EMI calculated?","acceptedAnswer":{"@type":"Answer","text":"EMI = P × r × (1+r)^n / ((1+r)^n - 1), where P is principal, r is monthly interest rate and n is tenure in months."}},{"@type":"Question","name":"Is this EMI calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup required."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"EMI Calculator","item":"https://digitaltoolvault.com/emi-calculator.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
-
-<style>
-.seo{max-width:820px;margin:60px auto 40px;padding:0 20px 60px;font-family:'Inter',sans-serif;color:#334155;line-height:1.8;}
-.seo h1{font-size:1.6rem;font-weight:700;color:#37474f;margin-bottom:14px;font-family:'Inter',sans-serif;}
-.seo h2{font-size:1.15rem;font-weight:700;color:#37474f;margin:36px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:1rem;font-weight:600;color:#37474f;margin:20px 0 8px;}
-.seo p{font-size:0.94rem;margin-bottom:14px;color:#475569;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:14px;}
-.seo ul li,.seo ol li{font-size:0.94rem;margin-bottom:8px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:18px 0;font-size:0.88rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.8rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:12px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.95rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:14px 18px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:0.88rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:0.9rem;color:#9a3412;}
-</style>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMI Calculator Online – Calculate Monthly Loan EMI Instantly | DigitalToolVault</title>
+  <meta name="description" content="Free EMI Calculator online. Calculate monthly EMI for home loan, car loan, personal loan. Enter principal, interest rate & tenure — get instant results. No signup." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.digitaltoolvault.com/emi-calculator.html" />
+  <meta property="og:title" content="EMI Calculator Online – Calculate Monthly Loan EMI Instantly | DigitalToolVault" />
+  <meta property="og:description" content="Free EMI Calculator online. Calculate monthly EMI for home loan, car loan, personal loan. Enter principal, interest rate & tenure — get instant results. No signup." />
+  <meta property="og:url" content="https://www.digitaltoolvault.com/emi-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DigitalToolVault" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f9fafb; --card-bg: #ffffff; --primary: #37474f;
+      --accent: #ff5722; --text: #1a1a2e; --muted: #6b7280;
+      --border: #37474f; --font-body: 'Inter', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    }
+    body { font-family: var(--font-body); background: var(--bg);
+      background-image: radial-gradient(#d1d5db 1.5px, transparent 1.5px);
+      background-size: 30px 30px; color: var(--text); min-height: 100vh; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--primary);
+      padding: 0 24px; height: 56px; display: flex; align-items: center;
+      justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .nav-logo { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: #fff; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-back { font-family: var(--font-mono); font-size: .8rem; color: #cfd8dc; text-decoration: none; letter-spacing: 1px; }
+    .nav-back:hover { color: var(--accent); }
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    /* TOOL CARD */
+    .tool-hero { text-align: center; padding: 52px 0 36px; }
+    .tool-tag { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .tool-hero h1 { font-family: var(--font-mono); font-size: clamp(1.5rem,4vw,2.2rem);
+      font-weight: 700; color: var(--primary); margin-bottom: 10px; line-height: 1.25; }
+    .tool-hero p { font-size: .97rem; color: var(--muted); line-height: 1.8; max-width: 580px; margin: 0 auto; }
+    .tool-card { background: var(--card-bg); border: 2px solid var(--border);
+      box-shadow: 15px 15px 0 var(--border); border-radius: 4px;
+      padding: 36px 40px; margin-bottom: 32px; }
+    .tool-card input, .tool-card select, .tool-card textarea {
+      width: 100%; padding: 11px 14px; font-family: var(--font-body); font-size: .93rem;
+      color: var(--text); background: #f9fafb; border: 2px solid #d1d5db;
+      border-radius: 4px; outline: none; margin-bottom: 14px; transition: border-color .2s; }
+    .tool-card input:focus, .tool-card select:focus, .tool-card textarea:focus { border-color: var(--accent); background: #fff; }
+    .field-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+    .btn { background: var(--accent); color: #fff; border: none; cursor: pointer;
+      font-family: var(--font-mono); font-size: .82rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; padding: 12px 28px;
+      border-radius: 4px; transition: opacity .2s; }
+    .btn:hover { opacity: .85; }
+    .btn-full { width: 100%; padding: 14px; }
+    .result-box { background: #f0f4f8; border: 2px solid #cfd8dc; border-radius: 4px;
+      padding: 18px 20px; margin-top: 18px; font-family: var(--font-mono); font-size: 1rem;
+      color: var(--primary); font-weight: 600; min-height: 54px; }
+    .result-box span { color: var(--accent); }
+    /* CONTENT SECTIONS */
+    .section { margin-bottom: 28px; }
+    .section-card { background: var(--card-bg); border: 2px solid var(--border);
+      box-shadow: 6px 6px 0 var(--border); border-radius: 4px; padding: 28px 32px; }
+    .section-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .section-card h2 { font-family: var(--font-mono); font-size: 1.08rem; font-weight: 700;
+      color: var(--primary); margin-bottom: 14px; }
+    .section-card h3 { font-family: var(--font-mono); font-size: .9rem; font-weight: 700;
+      color: var(--primary); margin: 16px 0 8px; }
+    .section-card p { font-size: .95rem; color: #374151; line-height: 1.85; margin-bottom: 12px; }
+    .section-card p:last-child { margin-bottom: 0; }
+    .section-card ul, .section-card ol { padding-left: 20px; margin-bottom: 12px; }
+    .section-card li { font-size: .95rem; color: #374151; line-height: 1.85; margin-bottom: 6px; }
+    .faq-item { border-bottom: 1.5px solid #e5e7eb; padding: 14px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-family: var(--font-mono); font-size: .85rem; font-weight: 700;
+      color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::after { content: '+'; color: var(--accent); font-size: 1.2rem; }
+    .faq-q.open::after { content: '−'; }
+    .faq-a { font-size: .93rem; color: #374151; line-height: 1.8; margin-top: 8px; display: none; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+    .related-link { display: block; background: #f9fafb; border: 1.5px solid #d1d5db;
+      border-radius: 4px; padding: 12px 14px; font-family: var(--font-mono); font-size: .78rem;
+      color: var(--primary); text-decoration: none; font-weight: 600; transition: all .2s; }
+    .related-link:hover { border-color: var(--accent); color: var(--accent); background: #fff5f2; }
+    footer { background: var(--primary); color: #cfd8dc; font-family: var(--font-mono);
+      font-size: .78rem; padding: 28px 24px; text-align: center; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+    .footer-links { margin-bottom: 10px; }
+    @media(max-width:600px){ .tool-card{padding:20px 16px;} .section-card{padding:20px 16px;} }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EMI Calculator Online – Calculate Monthly Loan EMI Instantly | DigitalToolVault",
+    "description": "Free EMI Calculator online. Calculate monthly EMI for home loan, car loan, personal loan. Enter principal, interest rate & tenure — get instant results. No signup.",
+    "url": "https://www.digitaltoolvault.com/emi-calculator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"},
+    "provider": {"@type": "Organization", "name": "DigitalToolVault", "url": "https://www.digitaltoolvault.com"}
+  }
+  </script>
 </head>
-
 <body>
-<nav style="position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
 
-<div class="calculator">
+  <nav>
+    <a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a>
+    <a class="nav-back" href="/">← ALL TOOLS</a>
+  </nav>
 
-<div class="header">
-    <div class="brand-line">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2px;color:#37474f;">DigitalTool<span style="color:#ff5722;">Vault</span></div>
-        <div class="sys-code">EMI_PRCSN_ENGINE</div>
+  <div class="page-wrap">
+    <div class="tool-hero">
+      <p class="tool-tag">// Free Online Tool</p>
+      <h1>EMI Calculator</h1>
+      <p>Calculate your monthly loan EMI instantly. Enter principal, interest rate, and tenure to see your EMI, total interest, and total payment amount.</p>
     </div>
 
-    <!-- ✅ IMPORTANT HEADING (FIXED) -->
-    <div class="tool-title">EMI Calculator Engine</div>
-</div>
+    <!-- TOOL -->
+    <div class="tool-card">
+      
+      <label class="field-label">PRINCIPAL LOAN AMOUNT (₹)</label>
+      <input type="number" id="principal" placeholder="e.g. 500000" min="0" />
+      <label class="field-label">ANNUAL INTEREST RATE (%)</label>
+      <input type="number" id="rate" placeholder="e.g. 8.5" step="0.1" min="0" />
+      <label class="field-label">LOAN TENURE (MONTHS)</label>
+      <input type="number" id="tenure" placeholder="e.g. 60" min="1" />
+      <button class="btn btn-full" onclick="calcEMI()">CALCULATE EMI</button>
+      <div class="result-box" id="emiResult">Your EMI result will appear here.</div>
+    
+    </div>
 
-<div class="input-grid">
+    <!-- WHAT IS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Overview</p>
+        <h2>WHAT IS THE EMI CALCULATOR?</h2>
+        <p>An EMI (Equated Monthly Instalment) Calculator is a financial tool that helps you determine the fixed monthly amount you need to pay to repay a loan over a specified period. Whether you're planning to take a home loan, car loan, personal loan, or education loan, the EMI calculator gives you a clear picture of your monthly financial commitment before you even apply.</p>
+<p>The EMI is calculated based on three key inputs: the principal loan amount (how much you borrow), the annual interest rate (the rate charged by the bank), and the loan tenure (how many months you'll take to repay). Our online EMI calculator uses the standard reducing-balance formula to give you accurate results in seconds.</p>
+<p>Understanding your EMI before taking a loan is essential for responsible financial planning. It helps you assess whether the monthly payment fits within your budget, compare offers from different lenders, and choose a tenure that balances your monthly outgo and total interest paid.</p>
+      </div>
+    </div>
 
-<div>
-<label>Principal_Loan_Amount</label>
-<input type="number" id="principal">
-</div>
+    <!-- HOW TO USE -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Guide</p>
+        <h2>HOW TO USE THIS TOOL</h2>
+        <ol>
+<li><strong>Enter the principal loan amount</strong> — the total amount you wish to borrow in Indian Rupees (₹).</li>
+<li><strong>Enter the annual interest rate</strong> — the rate offered by your bank or NBFC (e.g., 8.5% for a home loan).</li>
+<li><strong>Enter the loan tenure in months</strong> — e.g., 240 months for a 20-year home loan, 60 months for a 5-year car loan.</li>
+<li><strong>Click "Calculate EMI"</strong> — instantly see your monthly EMI, total interest payable, and total payment amount.</li>
+</ol>
+<p>Try different tenure values to find the ideal balance between a manageable EMI and lower total interest cost.</p>
+      </div>
+    </div>
 
-<div>
-<label>Annual_Interest_Rate [%]</label>
-<input type="number" id="rate">
-</div>
-
-<div>
-<label>Tenure_Duration [Months]</label>
-<input type="number" id="tenure">
-</div>
-
-</div>
-
-<div class="results" onclick="copyResult()">
-<p id="output">0.00</p>
-
-<div class="breakdown">
-<span>Total_Interest: <b id="total-interest">0</b></span>
-<span>Total_Payment: <b id="total-amt">0</b></span>
-</div>
-</div>
-
-</div>
-
-<script>
-const pInput = document.getElementById('principal');
-const rInput = document.getElementById('rate');
-const tInput = document.getElementById('tenure');
-const output = document.getElementById('output');
-const interestOutput = document.getElementById('total-interest');
-const totalAmtOutput = document.getElementById('total-amt');
-
-[pInput, rInput, tInput].forEach(el => {
-    el.addEventListener('input', calculateEMI);
-});
-
-function calculateEMI() {
-    const P = parseFloat(pInput.value);
-    const annualRate = parseFloat(rInput.value);
-    const N = parseFloat(tInput.value);
-
-    if (pInput.value && rInput.value && tInput.value) {
-        const R = (annualRate / 12) / 100;
-        const emi = P * R * Math.pow(1 + R, N) / (Math.pow(1 + R, N) - 1);
-
-        const totalPayment = emi * N;
-        const totalInterest = totalPayment - P;
-
-        output.innerText = emi.toLocaleString(undefined, {maximumFractionDigits: 2});
-        interestOutput.innerText = Math.round(totalInterest).toLocaleString();
-        totalAmtOutput.innerText = Math.round(totalPayment).toLocaleString();
-    }
-}
-
-function copyResult() {
-    if (output.innerText !== "0.00") {
-        navigator.clipboard.writeText(output.innerText);
-    }
-}
-</script>
-
-
-<div class="seo">
-<h1>EMI Calculator – Calculate Your Monthly Loan EMI Instantly</h1>
-<p>Planning a home loan, car loan or personal loan? Use this free EMI calculator to instantly find out your Equated Monthly Installment (EMI), total interest payable and total repayment amount. Just enter three values — loan amount, interest rate and tenure — and get instant results with no signup or app download needed.</p>
-
-<h2>What is EMI?</h2>
-<p>EMI stands for <strong>Equated Monthly Installment</strong>. It is the fixed amount a borrower pays to a lender every month until the loan is fully repaid. Each EMI consists of two parts: the <strong>principal repayment</strong> (the original loan amount) and the <strong>interest charge</strong> (the cost of borrowing). In the early months of a loan, a larger portion of the EMI goes toward interest. Over time, as the outstanding principal reduces, more of each payment goes toward the principal.</p>
-
-<h2>EMI Formula</h2>
-<div class="formula-box">EMI = P × r × (1 + r)ⁿ ÷ [(1 + r)ⁿ – 1]</div>
+    
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Formula</p>
+        <h2>THE FORMULA EXPLAINED</h2>
+        <p>The EMI is calculated using the standard reducing-balance (flat-rate) formula:</p>
+<p><strong>EMI = [P × r × (1+r)^n] / [(1+r)^n – 1]</strong></p>
 <p>Where:</p>
 <ul>
-<li><strong>P</strong> = Principal loan amount (₹)</li>
+<li><strong>P</strong> = Principal loan amount</li>
 <li><strong>r</strong> = Monthly interest rate = Annual rate ÷ 12 ÷ 100</li>
 <li><strong>n</strong> = Loan tenure in months</li>
 </ul>
-<p><strong>Example:</strong> Loan of ₹10,00,000 at 9% per annum for 5 years (60 months):<br>r = 9 ÷ 12 ÷ 100 = 0.0075 | EMI ≈ ₹20,758 | Total Interest ≈ ₹2,45,480</p>
+<p>For example, for a ₹5,00,000 loan at 10% p.a. for 5 years (60 months): r = 10/12/100 = 0.00833. EMI = [5,00,000 × 0.00833 × (1.00833)^60] / [(1.00833)^60 – 1] ≈ ₹10,624/month.</p>
+      </div>
+    </div>
 
-<h2>How to Use This EMI Calculator</h2>
-<ol>
-<li>Enter your <strong>loan amount</strong> (principal) in rupees</li>
-<li>Enter the <strong>annual interest rate</strong> offered by your bank or lender</li>
-<li>Enter the <strong>loan tenure</strong> in months (e.g. 60 for 5 years, 240 for 20 years)</li>
-<li>The EMI, total interest and total payment appear instantly</li>
-<li>Click the result box to copy the EMI to your clipboard</li>
-</ol>
-
-<h2>Common Loan EMI Examples</h2>
-<table>
-<tr><th>Loan Type</th><th>Amount (₹)</th><th>Rate (p.a.)</th><th>Tenure</th><th>Approx. EMI</th></tr>
-<tr><td>Home Loan</td><td>50,00,000</td><td>8.5%</td><td>20 yrs</td><td>₹43,391</td></tr>
-<tr><td>Car Loan</td><td>8,00,000</td><td>9.5%</td><td>5 yrs</td><td>₹16,775</td></tr>
-<tr><td>Personal Loan</td><td>3,00,000</td><td>14%</td><td>3 yrs</td><td>₹10,249</td></tr>
-<tr><td>Education Loan</td><td>15,00,000</td><td>10%</td><td>7 yrs</td><td>₹24,649</td></tr>
-</table>
-
-<h2>Tips to Reduce Your EMI</h2>
-<ul>
-<li><strong>Larger down payment</strong> — reduces principal, lowering EMI directly</li>
-<li><strong>Longer tenure</strong> — spreads the loan over more months, reducing each EMI (but increases total interest)</li>
-<li><strong>Better credit score</strong> — score above 750 often qualifies for lower interest rates</li>
-<li><strong>Compare lenders</strong> — even a 0.5% difference in rate can save thousands over 20 years</li>
-<li><strong>Part-prepayment</strong> — paying extra principal mid-loan reduces outstanding balance and EMI</li>
+    <!-- BENEFITS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Benefits</p>
+        <h2>KEY BENEFITS</h2>
+        <ul>
+<li><strong>Plan your finances:</strong> Know your exact monthly obligation before signing any loan agreement.</li>
+<li><strong>Compare lenders:</strong> Enter different interest rates to compare EMIs from different banks and NBFCs.</li>
+<li><strong>Choose the right tenure:</strong> Shorter tenure = higher EMI but lower total interest. Longer tenure = lower EMI but higher total interest. Find your sweet spot.</li>
+<li><strong>100% free & instant:</strong> No login required, no waiting — results in milliseconds.</li>
+<li><strong>Privacy safe:</strong> All calculations happen in your browser. We never see your financial data.</li>
+<li><strong>Mobile friendly:</strong> Works perfectly on Android and iOS — calculate on the go.</li>
 </ul>
+      </div>
+    </div>
 
-<div class="tip-box">💡 Pro Tip: A lower EMI does not always mean a better deal. A longer tenure reduces monthly burden but significantly increases total interest paid. Use this calculator to compare different tenure options before deciding.</div>
+    <!-- USE CASES -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Use Cases</p>
+        <h2>WHO USES THIS TOOL?</h2>
+        <p>The EMI Calculator is used across India by a wide range of people:</p>
+<ul>
+<li><strong>Home loan seekers:</strong> Comparing home loan offers from SBI, HDFC, ICICI, Axis and deciding how much to borrow.</li>
+<li><strong>Car buyers:</strong> Planning a two-wheeler or four-wheeler loan before visiting the showroom.</li>
+<li><strong>Personal loan applicants:</strong> Checking if a personal loan EMI fits within their monthly salary.</li>
+<li><strong>Students & parents:</strong> Planning education loans for college or professional courses.</li>
+<li><strong>Small business owners:</strong> Evaluating business loan affordability before applying.</li>
+<li><strong>Financial advisors:</strong> Quickly demonstrating loan scenarios to clients.</li>
+</ul>
+      </div>
+    </div>
 
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>What is the difference between flat rate and reducing balance EMI?</strong>In a flat rate EMI, interest is calculated on the original principal throughout the tenure. In reducing balance (used by most Indian banks), interest is calculated on the outstanding balance each month — so you pay less interest overall. This calculator uses the reducing balance method.</div>
-<div class="faq-item"><strong>Can I calculate EMI for a home loan with a floating rate?</strong>This calculator uses a fixed rate. For floating rate loans, calculate EMI at the current rate and recalculate whenever your bank revises the rate.</div>
-<div class="faq-item"><strong>What happens if I miss an EMI payment?</strong>Missing an EMI results in a late payment penalty (usually 1–2% per month on overdue amount), a negative impact on your CIBIL score and possible legal action if multiple EMIs are missed.</div>
-<div class="faq-item"><strong>Is this EMI calculator accurate?</strong>Yes, it uses the standard reducing balance formula used by all major Indian banks and RBI-regulated NBFCs. Results may vary slightly due to rounding but are within ₹1–2 of actual bank calculations.</div>
-<div class="faq-item"><strong>Can I use this for car loan, home loan and personal loan?</strong>Yes. This calculator works for all loan types — home loan, car loan, personal loan, education loan, gold loan — as long as you enter the correct principal, rate and tenure.</div>
-</div>
+    <!-- TIPS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Pro Tips</p>
+        <h2>TIPS &amp; BEST PRACTICES</h2>
+        <ul>
+<li><strong>Always check the processing fee</strong> — it adds to your effective loan cost even though it doesn't change EMI.</li>
+<li><strong>Consider prepayment options</strong> — many loans allow prepayment without penalty, which can significantly reduce total interest.</li>
+<li><strong>Keep EMI below 40% of income</strong> — most financial advisors recommend your total EMI obligations not exceed 40% of your monthly take-home salary.</li>
+<li><strong>Compare flat rate vs. reducing balance</strong> — always confirm your bank uses reducing-balance method, which is more transparent than flat-rate interest.</li>
+<li><strong>Factor in insurance</strong> — home and car loans often come with bundled insurance; factor this into your actual monthly cost.</li>
+</ul>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// FAQ</p>
+        <h2>FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="faq-item">
+          <div class="faq-q">What is EMI?</div>
+          <div class="faq-a">EMI stands for Equated Monthly Instalment. It is the fixed amount you pay to the lender every month until the loan is fully repaid. Each EMI comprises a portion of the principal and the interest charged on the outstanding balance.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">Is this EMI calculator free to use?</div>
+          <div class="faq-a">Yes, completely free. No registration, no subscription, no hidden charges. DigitalToolVault's EMI Calculator is free for everyone.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">What types of loans can I calculate EMI for?</div>
+          <div class="faq-a">You can use this calculator for any loan — home loan, car loan, personal loan, education loan, business loan, or two-wheeler loan. Just enter the applicable principal, rate, and tenure.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">How accurate is this EMI calculator?</div>
+          <div class="faq-a">Our calculator uses the standard reducing-balance EMI formula used by all major Indian banks and RBI-regulated lenders. Results are highly accurate for term loans with fixed interest rates.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">What is the difference between flat rate and reducing balance EMI?</div>
+          <div class="faq-a">In a reducing-balance loan (used by most banks), interest is calculated on the outstanding principal each month, which decreases over time. In a flat-rate loan, interest is calculated on the original principal throughout — making flat-rate loans significantly more expensive.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">Can I calculate EMI for a home loan with a floating interest rate?</div>
+          <div class="faq-a">This calculator works best for fixed-rate loans. For floating-rate loans, you can use the current rate to estimate your EMI, but note that your actual EMI may change when the interest rate is revised by your bank.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">What happens if I increase the loan tenure?</div>
+          <div class="faq-a">Increasing the tenure reduces your monthly EMI but increases the total interest you pay over the loan lifetime. It's a trade-off between monthly affordability and long-term cost.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Related Tools</p>
+        <h2>RELATED TOOLS YOU MAY LIKE</h2>
+        <div class="related-grid"><a class="related-link" href="/sip-calculator.html">SIP Calculator</a><a class="related-link" href="/simple-interest-calculator.html">Simple Interest Calculator</a><a class="related-link" href="/compound-interest-calculator.html">Compound Interest</a><a class="related-link" href="/loan-eligibility-calculator.html">Loan Eligibility</a><a class="related-link" href="/gst-calculator.html">GST Calculator</a><a class="related-link" href="/discount-calculator.html">Discount Calculator</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    © 2026 DigitalToolVault — Free online tools, no signup required.
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('open');
+        const a = q.nextElementSibling;
+        a.style.display = a.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+    
+    function calcEMI() {
+      const P = parseFloat(document.getElementById('principal').value);
+      const r = parseFloat(document.getElementById('rate').value) / 12 / 100;
+      const n = parseInt(document.getElementById('tenure').value);
+      if (!P || !r || !n) { document.getElementById('emiResult').innerHTML = 'Please fill all fields.'; return; }
+      const emi = (P * r * Math.pow(1+r,n)) / (Math.pow(1+r,n)-1);
+      const total = emi * n;
+      const interest = total - P;
+      document.getElementById('emiResult').innerHTML =
+        'Monthly EMI: <span>₹' + emi.toFixed(2) + '</span><br>' +
+        'Total Interest: <span>₹' + interest.toFixed(2) + '</span><br>' +
+        'Total Payment: <span>₹' + total.toFixed(2) + '</span>';
+    }
+    
+  </script>
+
 </body>
 </html>

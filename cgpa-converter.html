@@ -1,375 +1,85 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CGPA to Percentage Converter – Convert CGPA Free Online | DigitalToolVault</title>
-<meta name="theme-color" content="#37474f">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Free CGPA to percentage converter — convert your CGPA to percentage or percentage to CGPA instantly. Supports 10-point and 4-point grading scales.">
-    <meta name="keywords" content="CGPA to percentage converter, percentage to CGPA, CGPA calculator, convert CGPA to percentage, CGPA percentage formula, academic grade converter, CGPA 10 point scale, India CGPA converter">
-    <meta name="author" content="DigitalToolVault">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://digitaltoolvault.com/cgpa-converter.html">
-
-    <!-- Open Graph -->
-                    
-    <!-- Twitter Card -->
-            
-    <!-- Schema.org -->
-    <!-- FAQ Schema -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #ffffff;
-            --primary: #37474f; 
-            --accent: #ff5722;  
-            --muted: #94a3b8;
-            --dot-color: #d1d5db;
-            --glass: rgba(255, 255, 255, 0.9);
-        }
-
-        * { box-sizing: border-box; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .vault-card {
-            width: 100%;
-            max-width: 440px;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--primary);
-            padding: 40px;
-            position: relative;
-            box-shadow: 15px 15px 0px var(--primary);
-        }
-
-        .header {
-            font-family: 'JetBrains Mono', monospace;
-            border-bottom: 2px solid var(--primary);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-        }
-
-        .brand-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-line h1 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 800; color: var(--primary); }
-        .brand-line h1 span { color: var(--accent); }
-        .sys-code { font-size: 9px; color: var(--accent); font-weight: bold; }
-
-        .tool-title { font-size: 18px; font-weight: 600; text-transform: uppercase; margin-top: 10px; color: var(--primary); }
-
-        .converter-grid { display: flex; flex-direction: column; gap: 25px; }
-
-        .input-wrap { position: relative; }
-
-        label { 
-            font-family: 'JetBrains Mono', monospace; 
-            font-size: 9px; 
-            text-transform: uppercase; 
-            color: var(--muted); 
-            display: block; 
-            margin-bottom: 8px; 
-            letter-spacing: 1px; 
-        }
-
-        input {
-            width: 100%;
-            border: 2px solid #e2e8f0;
-            padding: 15px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 24px;
-            outline: none;
-            border-radius: 0;
-            background: #fff;
-            color: var(--primary);
-            text-align: center;
-        }
-
-        input:focus { border-color: var(--primary); background: #fafafa; }
-        
-        .sync-icon {
-            text-align: center;
-            color: var(--accent);
-            font-size: 20px;
-            margin: -10px 0;
-            user-select: none;
-        }
-
-        .formula-card {
-            margin-top: 30px;
-            padding: 15px;
-            background: #f8fafc;
-            border-left: 3px solid var(--accent);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            color: var(--muted);
-            text-transform: uppercase;
-        }
-
-        .footer {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 8px;
-            color: var(--muted);
-            margin-top: 25px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        /* SEO STYLES */
-        .seo {
-            max-width: 800px;
-            margin-top: 60px;
-            line-height: 1.6;
-            font-family: 'Inter', sans-serif;
-            color: #334155;
-            padding: 0 10px 40px;
-        }
-
-        .seo h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .seo h2 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-top: 30px;
-            margin-bottom: 10px;
-            border-left: 3px solid var(--accent);
-            padding-left: 10px;
-        }
-
-        .seo h3 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-top: 16px;
-            margin-bottom: 6px;
-        }
-
-        .seo p { margin-bottom: 12px; font-size: 0.92rem; }
-
-        .seo ul { padding-left: 20px; margin-bottom: 12px; }
-        .seo ul li { font-size: 0.92rem; margin-bottom: 6px; }
-
-        .seo table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 0.88rem;
-            font-family: 'JetBrains Mono';
-        }
-
-        .seo table th {
-            background: var(--primary);
-            color: white;
-            padding: 9px 12px;
-            text-align: left;
-            font-size: 0.78rem;
-            letter-spacing: 1px;
-        }
-
-        .seo table td {
-            padding: 8px 12px;
-            border-bottom: 1px solid #e2e8f0;
-            color: #475569;
-        }
-
-        .seo table tr:nth-child(even) td { background: #f8fafc; }
-
-        .faq-item { margin-bottom: 16px; }
-        .faq-item strong { color: var(--primary); }
-</style>
-
-<!-- Open Graph + Twitter -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="CGPA to Percentage Converter – Convert CGPA Free Online | DigitalToolVault">
-<meta property="og:description" content="Free CGPA to percentage converter — convert your CGPA to percentage or percentage to CGPA instantly. Supports 10-point and 4-point grading scales.">
-<meta property="og:url" content="https://digitaltoolvault.com/cgpa-converter.html">
-<meta property="og:image" content="https://digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CGPA to Percentage Converter – Convert CGPA Free Online | DigitalToolVault">
-<meta name="twitter:description" content="Free CGPA to percentage converter — convert your CGPA to percentage or percentage to CGPA instantly. Supports 10-point and 4-point grading scales.">
-<meta name="twitter:image" content="https://digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CGPA Converter","url":"https://digitaltoolvault.com/cgpa-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How to convert CGPA to percentage?","acceptedAnswer":{"@type":"Answer","text":"Percentage = CGPA × 9.5 (standard formula for 10-point scale, as per CBSE and most Indian universities)."}},{"@type":"Question","name":"What is CGPA?","acceptedAnswer":{"@type":"Answer","text":"CGPA (Cumulative Grade Point Average) measures academic performance, typically on a 10-point or 4-point scale."}},{"@type":"Question","name":"Which scales are supported?","acceptedAnswer":{"@type":"Answer","text":"Both 10-point (Indian universities) and 4-point (US universities) scales are supported."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"CGPA Converter","item":"https://digitaltoolvault.com/cgpa-converter.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
-
-<style>
-.seo{max-width:820px;margin:60px auto 40px;padding:0 20px 60px;font-family:'Inter',sans-serif;color:#334155;line-height:1.8;}
-.seo h1{font-size:1.6rem;font-weight:700;color:#37474f;margin-bottom:14px;font-family:'Inter',sans-serif;}
-.seo h2{font-size:1.15rem;font-weight:700;color:#37474f;margin:36px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:1rem;font-weight:600;color:#37474f;margin:20px 0 8px;}
-.seo p{font-size:0.94rem;margin-bottom:14px;color:#475569;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:14px;}
-.seo ul li,.seo ol li{font-size:0.94rem;margin-bottom:8px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:18px 0;font-size:0.88rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.8rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:12px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.95rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:14px 18px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:0.88rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:14px 18px;margin:16px 0;font-size:0.9rem;color:#9a3412;}
-</style>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>CGPA to Percentage Calculator – VTU, Mumbai, Anna University | DigitalToolVault</title>
+<meta name="description" content="Free CGPA to Percentage Converter for India. Supports VTU, Mumbai University, Anna University and standard formulas. Instant conversion, no signup."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.digitaltoolvault.com/cgpa-converter.html"/>
+<meta property="og:title" content="CGPA to Percentage Calculator – VTU, Mumbai, Anna University | DigitalToolVault"/>
+<meta property="og:description" content="Free CGPA to Percentage Converter for India. Supports VTU, Mumbai University, Anna University and standard formulas. Instant conversion, no signup."/>
+<meta property="og:url" content="https://www.digitaltoolvault.com/cgpa-converter.html"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" /><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f9fafb;--card-bg:#ffffff;--primary:#37474f;--accent:#ff5722;--text:#1a1a2e;--muted:#6b7280;--border:#37474f;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace}
+body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(#d1d5db 1.5px,transparent 1.5px);background-size:30px 30px;color:var(--text);min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.nav-logo{font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-back{font-family:var(--font-mono);font-size:.8rem;color:#cfd8dc;text-decoration:none;letter-spacing:1px}
+.nav-back:hover{color:var(--accent)}
+.pw{max-width:900px;margin:0 auto;padding:0 20px 80px}
+.th{text-align:center;padding:52px 0 36px}
+.tt{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.th h1{font-family:var(--font-mono);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.25}
+.th p{font-size:.97rem;color:var(--muted);line-height:1.8;max-width:580px;margin:0 auto}
+.tc{background:var(--card-bg);border:2px solid var(--border);box-shadow:15px 15px 0 var(--border);border-radius:4px;padding:36px 40px;margin-bottom:32px}
+.tc input,.tc select,.tc textarea{width:100%;padding:11px 14px;font-family:var(--font-body);font-size:.93rem;color:var(--text);background:#f9fafb;border:2px solid #d1d5db;border-radius:4px;outline:none;margin-bottom:14px;transition:border-color .2s}
+.tc input:focus,.tc select:focus,.tc textarea:focus{border-color:var(--accent);background:#fff}
+.fl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.btn{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.bf{width:100%;padding:14px}
+.rb{background:#f0f4f8;border:2px solid #cfd8dc;border-radius:4px;padding:18px 20px;margin-top:18px;font-family:var(--font-mono);font-size:1rem;color:var(--primary);font-weight:600;min-height:54px}
+.rb span{color:var(--accent)}
+.sec{margin-bottom:28px}
+.sc{background:var(--card-bg);border:2px solid var(--border);box-shadow:6px 6px 0 var(--border);border-radius:4px;padding:28px 32px}
+.sl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sc h2{font-family:var(--font-mono);font-size:1.08rem;font-weight:700;color:var(--primary);margin-bottom:14px}
+.sc p{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:12px}
+.sc p:last-child{margin-bottom:0}
+.sc ul,.sc ol{padding-left:20px;margin-bottom:12px}
+.sc li{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:6px}
+.fi{border-bottom:1.5px solid #e5e7eb;padding:14px 0}
+.fi:last-child{border-bottom:none}
+.fq{font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fq::after{content:'+';color:var(--accent);font-size:1.2rem}
+.fq.open::after{content:'-'}
+.fa{font-size:.93rem;color:#374151;line-height:1.8;margin-top:8px;display:none}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.rl{display:block;background:#f9fafb;border:1.5px solid #d1d5db;border-radius:4px;padding:12px 14px;font-family:var(--font-mono);font-size:.78rem;color:var(--primary);text-decoration:none;font-weight:600;transition:all .2s}
+.rl:hover{border-color:var(--accent);color:var(--accent);background:#fff5f2}
+footer{background:var(--primary);color:#cfd8dc;font-family:var(--font-mono);font-size:.78rem;padding:28px 24px;text-align:center}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+.fln{margin-bottom:10px}
+@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CGPA to Percentage Calculator – VTU, Mumbai, Anna University | DigitalToolVault","description":"Free CGPA to Percentage Converter for India. Supports VTU, Mumbai University, Anna University and standard formulas. Instant conversion, no signup.","url":"https://www.digitaltoolvault.com/cgpa-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com"}}</script>
 </head>
 <body>
-<nav style="position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
-
-<div class="vault-card">
-    <div class="header">
-        <div class="brand-line">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2px;color:#37474f;">DigitalTool<span style="color:#ff5722;">Vault</span></div>
-            <span class="sys-code">ACAD_SYNC_V2.0</span>
-        </div>
-        <div class="tool-title">Dual Grade Engine</div>
-    </div>
-
-<div class="converter-grid">
-    <div class="input-wrap">
-        <label>Academic_CGPA [10.0 Scale]</label>
-        <input type="number" id="cgpa" placeholder="0.00" step="0.01" min="0" max="10">
-    </div>
-
-    <div class="sync-icon">⇅</div>
-
-    <div class="input-wrap">
-        <label>Percentage [%]</label>
-        <input type="number" id="percent" placeholder="0.0" step="0.1" min="0" max="100">
-    </div>
+<nav><a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a><a class="nav-back" href="/">&#8592; ALL TOOLS</a></nav>
+<div class="pw">
+<div class="th"><p class="tt">// Free Online Tool</p><h1>CGPA to Percentage Converter</h1><p>Convert CGPA to percentage for job applications, government forms, and admissions. Supports VTU, Mumbai University, Anna University, and standard formulas.</p></div>
+<div class="tc"><label class="fl">YOUR CGPA (0-10)</label>
+<input type="number" id="cgv" placeholder="e.g. 8.5" step="0.01" min="0" max="10"/>
+<label class="fl">UNIVERSITY FORMULA</label>
+<select id="cgf">
+<option value="std">Standard (CGPA x 10) - CBSE, DU, most universities</option>
+<option value="vtu">VTU Karnataka: (CGPA - 0.5) x 10</option>
+<option value="mum">Mumbai University: 7.1 x CGPA + 11</option>
+<option value="anna">Anna University TN: 10 x CGPA - 7.5</option>
+</select>
+<button class="btn bf" onclick="ccgpa()">CONVERT</button>
+<div class="rb" id="cgr">Result will appear here.</div></div>
+<div class="sec"><div class="sc"><p class="sl">// Overview</p><h2>CGPA IN INDIA</h2><p>CGPA (Cumulative Grade Point Average) is the standard grading system used by most Indian universities. Converting CGPA to percentage is essential for job applications, government exam forms, higher education admissions, and scholarships — as these require percentage rather than CGPA.</p><p>Different universities use different conversion formulas. The standard (CGPA x 10) is used by CBSE, Delhi University, and most private universities. VTU, Mumbai University, and Anna University each have specific official formulas.</p><p>Always verify the correct formula with your university's official notification before using it in official applications such as UPSC, bank job forms, or study abroad applications where the wrong conversion could disqualify your application.</p></div></div><div class="sec"><div class="sc"><p class="sl">// Formulas</p><h2>UNIVERSITY-WISE FORMULAS</h2><ul><li><strong>Standard (CBSE, DU, most):</strong> CGPA x 10</li><li><strong>VTU Karnataka:</strong> (CGPA - 0.5) x 10</li><li><strong>Mumbai University:</strong> 7.1 x CGPA + 11</li><li><strong>Anna University TN:</strong> 10 x CGPA - 7.5</li></ul></div></div><div class="sec"><div class="sc"><p class="sl">// Use Cases</p><h2>WHEN YOU NEED CONVERSION</h2><ul><li>Job application forms requiring percentage</li><li>UPSC and state PSC applications</li><li>MBA and PGDM admissions requiring percentage for merit</li><li>Study abroad applications to foreign universities</li><li>Bank PO and SSC eligibility checks</li></ul></div></div>
+<div class="sec"><div class="sc"><p class="sl">// FAQ</p><h2>FREQUENTLY ASKED QUESTIONS</h2><div class="fi"><div class="fq">What is CGPA?</div><div class="fa">CGPA = Sum of (Credit x Grade Point) / Total Credits across all semesters.</div></div><div class="fi"><div class="fq">VTU CGPA 7.8 — what is percentage?</div><div class="fa">(7.8 - 0.5) x 10 = 73%.</div></div><div class="fi"><div class="fq">Mumbai University CGPA 8.0 — percentage?</div><div class="fa">7.1 x 8.0 + 11 = 56.8 + 11 = 67.8%.</div></div><div class="fi"><div class="fq">Is CGPA always on a 10-point scale?</div><div class="fa">Most Indian universities use 10-point CGPA. Some private colleges model on the US 4-point scale.</div></div></div></div>
+<div class="sec"><div class="sc"><p class="sl">// Related Tools</p><h2>RELATED TOOLS YOU MAY LIKE</h2><div class="rg"><a class="rl" href="/percentage-calculator.html">Percentage Calculator</a><a class="rl" href="/word-counter.html">Word Counter</a><a class="rl" href="/binary-converter.html">Binary Converter</a><a class="rl" href="/roman-numeral-converter.html">Roman Numeral Converter</a><a class="rl" href="/number-to-word.html">Number to Words</a><a class="rl" href="/text-case-converter.html">Text Case Converter</a></div></div></div>
 </div>
-
-<div class="formula-card">
-    Algorithm: Percentage = CGPA × 9.5<br>
-    Reverse: CGPA = Percentage / 9.5
-</div>
-
-<div class="footer">BI-DIRECTIONAL_SYNC_ACTIVE</div>
-
-</div>
-
+<footer><div class="fln"><a href="/">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div>&#169; 2026 DigitalToolVault &#8212; Free online tools, no signup required.</footer>
 <script>
-const cgpaInput = document.getElementById('cgpa');
-const percentInput = document.getElementById('percent');
-
-cgpaInput.addEventListener('input', () => {
-    const val = parseFloat(cgpaInput.value);
-    if (!isNaN(val)) {
-        if (val > 10) {
-            percentInput.value = "";
-            cgpaInput.style.borderColor = "var(--accent)";
-        } else {
-            cgpaInput.style.borderColor = "var(--primary)";
-            percentInput.value = (val * 9.5).toFixed(2);
-        }
-    } else {
-        percentInput.value = "";
-    }
-});
-
-percentInput.addEventListener('input', () => {
-    const val = parseFloat(percentInput.value);
-    if (!isNaN(val)) {
-        if (val > 100) {
-            cgpaInput.value = "";
-            percentInput.style.borderColor = "var(--accent)";
-        } else {
-            percentInput.style.borderColor = "var(--primary)";
-            cgpaInput.value = (val / 9.5).toFixed(2);
-        }
-    } else {
-        cgpaInput.value = "";
-    }
-});
-
-[cgpaInput, percentInput].forEach(el => {
-    el.addEventListener('blur', (e) => {
-        const val = parseFloat(e.target.value);
-        if (!isNaN(val)) {
-            e.target.value = val.toFixed(2);
-        }
-    });
-});
+document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('open');var a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';});});
+function ccgpa(){var c=parseFloat(document.getElementById('cgv').value),f=document.getElementById('cgf').value;if(!c||c<0||c>10){document.getElementById('cgr').innerHTML='Please enter a valid CGPA (0-10).';return;}var p;if(f==='std')p=c*10;else if(f==='vtu')p=(c-0.5)*10;else if(f==='mum')p=7.1*c+11;else p=10*c-7.5;document.getElementById('cgr').innerHTML='CGPA: <span>'+c+'</span><br>Percentage: <span>'+p.toFixed(2)+'%</span>';}
 </script>
-
-
-<div class="seo">
-<h1>CGPA to Percentage Converter – Convert Your Grade Instantly</h1>
-<p>Convert CGPA to percentage or percentage to CGPA instantly using standard Indian university formulas. Supports both 10-point and 4-point grading scales. Free, no signup required.</p>
-
-<h2>What is CGPA?</h2>
-<p><strong>CGPA (Cumulative Grade Point Average)</strong> is a grading system used by universities and schools to assess overall academic performance. Unlike a simple percentage, CGPA averages all your subject grade points over a semester or full course. Different institutions use different scales — most Indian universities use a 10-point scale, while US universities use a 4-point scale.</p>
-
-<h2>CGPA to Percentage Formulas</h2>
-<table>
-<tr><th>Institution / Board</th><th>Formula</th></tr>
-<tr><td>CBSE (Class 10)</td><td>Percentage = CGPA × 9.5</td></tr>
-<tr><td>Most Indian Universities (10-point)</td><td>Percentage = CGPA × 9.5</td></tr>
-<tr><td>Anna University</td><td>Percentage = (CGPA − 0.5) × 10</td></tr>
-<tr><td>VTU (Visvesvaraya Tech)</td><td>Percentage = (CGPA − 0.75) × 10</td></tr>
-<tr><td>US Universities (4-point GPA)</td><td>Percentage ≈ GPA × 25</td></tr>
-</table>
-
-<h2>CGPA to Percentage Conversion Table (10-point scale, ×9.5)</h2>
-<table>
-<tr><th>CGPA</th><th>Percentage (×9.5)</th><th>Grade</th></tr>
-<tr><td>10.0</td><td>95%</td><td>O (Outstanding)</td></tr>
-<tr><td>9.0</td><td>85.5%</td><td>A+ (Excellent)</td></tr>
-<tr><td>8.0</td><td>76%</td><td>A (Very Good)</td></tr>
-<tr><td>7.0</td><td>66.5%</td><td>B+ (Good)</td></tr>
-<tr><td>6.0</td><td>57%</td><td>B (Above Average)</td></tr>
-<tr><td>5.0</td><td>47.5%</td><td>C (Average)</td></tr>
-</table>
-
-<h2>GPA Scale (US 4-Point System)</h2>
-<table>
-<tr><th>Letter Grade</th><th>GPA Points</th><th>Percentage Equivalent</th></tr>
-<tr><td>A+</td><td>4.0</td><td>93–100%</td></tr>
-<tr><td>A</td><td>4.0</td><td>90–92%</td></tr>
-<tr><td>A−</td><td>3.7</td><td>87–89%</td></tr>
-<tr><td>B+</td><td>3.3</td><td>83–86%</td></tr>
-<tr><td>B</td><td>3.0</td><td>80–82%</td></tr>
-<tr><td>C</td><td>2.0</td><td>70–79%</td></tr>
-</table>
-<div class="tip-box">💡 Always check your specific university's grade conversion policy before converting. Employers and foreign universities may have their own conversion formulas — when in doubt, attach your official transcript.</div>
-
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>Why do different universities use different conversion formulas?</strong>Each university calibrates its grading relative to its own difficulty and marking standards. The ×9.5 formula is a CBSE standard — other universities have independently developed their own scales.</div>
-<div class="faq-item"><strong>What CGPA is needed for higher studies abroad?</strong>Most US universities require a minimum GPA of 3.0/4.0 (equivalent to ~75% or CGPA of 7.5–8.0/10 in India) for master's programmes. Top universities like MIT, Stanford prefer 3.5+/4.0.</div>
-<div class="faq-item"><strong>How do I calculate my CGPA from grades?</strong>CGPA = Sum of (Grade Point × Credit Hours) for all subjects ÷ Total Credit Hours. Each subject's grade point is multiplied by the number of credits it carries.</div>
-<div class="faq-item"><strong>Is CGPA better than percentage?</strong>CGPA provides a standardised measure that accounts for different subject difficulty levels and credit weightings. Percentage is simpler and more universally understood. Both are used depending on the institution.</div>
-</div>
-</body>
-</html>
+</body></html>

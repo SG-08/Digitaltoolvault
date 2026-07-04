@@ -1,183 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loan Eligibility Calculator – Check How Much Loan You Can Get | DigitalToolVault</title>
-<meta name="description" content="Free loan eligibility calculator — enter monthly income, expenses and interest rate to find out the maximum loan amount you are eligible for. No signup needed.">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#37474f">
-<link rel="canonical" href="https://www.digitaltoolvault.com/loan-eligibility-calculator.html">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="Loan Eligibility Calculator – Check How Much Loan You Can Get | DigitalToolVault">
-<meta property="og:description" content="Free loan eligibility calculator — enter monthly income, expenses and interest rate to find out the maximum loan amount you are eligible for. No signup needed.">
-<meta property="og:url" content="https://www.digitaltoolvault.com/loan-eligibility-calculator.html">
-<meta property="og:image" content="https://www.digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Loan Eligibility Calculator – Check How Much Loan You Can Get">
-<meta name="twitter:description" content="Free loan eligibility calculator — enter monthly income, expenses and interest rate to find out the maximum loan amount you are eligible for. No signup needed.">
-<meta name="twitter:image" content="https://www.digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Loan Eligibility Calculator","url":"https://www.digitaltoolvault.com/loan-eligibility-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Loan Eligibility Calculator","item":"https://www.digitaltoolvault.com/loan-eligibility-calculator.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root {
-    --bg: #ffffff;
-    --primary: #37474f;
-    --accent: #ff5722;
-    --muted: #94a3b8;
-    --dot-color: #d1d5db;
-    --glass: rgba(255,255,255,0.9);
-}
-* { box-sizing: border-box; }
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-    background-size: 30px 30px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-.calculator {
-    width: 100%;
-    max-width: 480px;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--primary);
-    padding: 40px;
-    box-shadow: 15px 15px 0 var(--primary);
-}
-.header {
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    font-family: 'JetBrains Mono';
-}
-.brand-line { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: 2px; font-weight: 700; color: var(--primary); }
-.logo span { color: var(--accent); }
-.sys-code { font-size: 9px; color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; }
-.tool-title { font-size: 16px; margin-top: 10px; font-weight: 600; font-family: 'JetBrains Mono'; }
-.input-grid { display: grid; gap: 15px; }
-label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 4px; }
-input, select, textarea {
-    width: 100%;
-    border: 2px solid #e2e8f0;
-    padding: 10px;
-    font-family: 'JetBrains Mono';
-    font-size: 15px;
-    background: white;
-    outline: none;
-    transition: border .15s;
-}
-input:focus, select:focus, textarea:focus { border-color: var(--primary); }
-.calc-btn {
-    width: 100%; margin-top: 16px; padding: 13px;
-    background: var(--primary); color: #fff; border: none;
-    font-family: 'JetBrains Mono'; font-size: 11px;
-    letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: background .2s;
-}
-.calc-btn:hover { background: var(--accent); }
-.results {
-    margin-top: 20px; text-align: center; padding: 25px;
-    background: #f8fafc; border: 1px solid #e2e8f0; cursor: pointer;
-}
-.results:hover { background: #f1f5f9; }
-#output { font-family: 'JetBrains Mono'; font-size: 32px; color: var(--primary); }
-.breakdown {
-    display: flex; justify-content: space-between; margin-top: 15px;
-    font-family: 'JetBrains Mono'; font-size: 10px; color: var(--muted);
-    flex-wrap: wrap; gap: 4px;
-}
-.copy-hint { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-top: 8px; letter-spacing: 1px; }
-.seo { max-width: 800px; margin-top: 60px; width: 100%; }
-.seo h1{font-size:1.5rem;font-weight:700;color:#37474f;margin-bottom:14px;}
-.seo h2{font-size:1.1rem;font-weight:700;color:#37474f;margin:32px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:.97rem;font-weight:600;color:#37474f;margin:18px 0 8px;}
-.seo p{font-size:0.93rem;margin-bottom:12px;color:#475569;line-height:1.8;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:12px;}
-.seo li{font-size:0.93rem;margin-bottom:7px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.87rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.78rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:10px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.93rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:12px 16px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.88rem;color:#9a3412;}
-@media(max-width:520px){body{padding:12px;}.calculator{padding:24px 18px;}#output{font-size:26px;}}
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Loan Eligibility Calculator India – Check Maximum Loan Amount | DigitalToolVault</title>
+<meta name="description" content="Free Loan Eligibility Calculator India. Enter income, existing EMIs and interest rate to find the maximum loan you can get. Uses 50% FOIR norm. No signup."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.digitaltoolvault.com/loan-eligibility-calculator.html"/>
+<meta property="og:title" content="Loan Eligibility Calculator India – Check Maximum Loan Amount | DigitalToolVault"/>
+<meta property="og:description" content="Free Loan Eligibility Calculator India. Enter income, existing EMIs and interest rate to find the maximum loan you can get. Uses 50% FOIR norm. No signup."/>
+<meta property="og:url" content="https://www.digitaltoolvault.com/loan-eligibility-calculator.html"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" /><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f9fafb;--card-bg:#ffffff;--primary:#37474f;--accent:#ff5722;--text:#1a1a2e;--muted:#6b7280;--border:#37474f;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace}
+body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(#d1d5db 1.5px,transparent 1.5px);background-size:30px 30px;color:var(--text);min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.nav-logo{font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-back{font-family:var(--font-mono);font-size:.8rem;color:#cfd8dc;text-decoration:none;letter-spacing:1px}
+.nav-back:hover{color:var(--accent)}
+.pw{max-width:900px;margin:0 auto;padding:0 20px 80px}
+.th{text-align:center;padding:52px 0 36px}
+.tt{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.th h1{font-family:var(--font-mono);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.25}
+.th p{font-size:.97rem;color:var(--muted);line-height:1.8;max-width:580px;margin:0 auto}
+.tc{background:var(--card-bg);border:2px solid var(--border);box-shadow:15px 15px 0 var(--border);border-radius:4px;padding:36px 40px;margin-bottom:32px}
+.tc input,.tc select,.tc textarea{width:100%;padding:11px 14px;font-family:var(--font-body);font-size:.93rem;color:var(--text);background:#f9fafb;border:2px solid #d1d5db;border-radius:4px;outline:none;margin-bottom:14px;transition:border-color .2s}
+.tc input:focus,.tc select:focus,.tc textarea:focus{border-color:var(--accent);background:#fff}
+.fl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.btn{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.bf{width:100%;padding:14px}
+.rb{background:#f0f4f8;border:2px solid #cfd8dc;border-radius:4px;padding:18px 20px;margin-top:18px;font-family:var(--font-mono);font-size:1rem;color:var(--primary);font-weight:600;min-height:54px}
+.rb span{color:var(--accent)}
+.sec{margin-bottom:28px}
+.sc{background:var(--card-bg);border:2px solid var(--border);box-shadow:6px 6px 0 var(--border);border-radius:4px;padding:28px 32px}
+.sl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sc h2{font-family:var(--font-mono);font-size:1.08rem;font-weight:700;color:var(--primary);margin-bottom:14px}
+.sc p{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:12px}
+.sc p:last-child{margin-bottom:0}
+.sc ul,.sc ol{padding-left:20px;margin-bottom:12px}
+.sc li{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:6px}
+.fi{border-bottom:1.5px solid #e5e7eb;padding:14px 0}
+.fi:last-child{border-bottom:none}
+.fq{font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fq::after{content:'+';color:var(--accent);font-size:1.2rem}
+.fq.open::after{content:'-'}
+.fa{font-size:.93rem;color:#374151;line-height:1.8;margin-top:8px;display:none}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.rl{display:block;background:#f9fafb;border:1.5px solid #d1d5db;border-radius:4px;padding:12px 14px;font-family:var(--font-mono);font-size:.78rem;color:var(--primary);text-decoration:none;font-weight:600;transition:all .2s}
+.rl:hover{border-color:var(--accent);color:var(--accent);background:#fff5f2}
+footer{background:var(--primary);color:#cfd8dc;font-family:var(--font-mono);font-size:.78rem;padding:28px 24px;text-align:center}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+.fln{margin-bottom:10px}
+@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Loan Eligibility Calculator India – Check Maximum Loan Amount | DigitalToolVault","description":"Free Loan Eligibility Calculator India. Enter income, existing EMIs and interest rate to find the maximum loan you can get. Uses 50% FOIR norm. No signup.","url":"https://www.digitaltoolvault.com/loan-eligibility-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com"}}</script>
 </head>
 <body>
-<nav style="position:sticky;top:0;z-index:1000;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
-<div class="calculator">
-  <div class="header">
-    <div class="brand-line"><div class="logo">DigitalTool<span>Vault</span></div><div class="sys-code">LOAN_ELIG_ENGINE</div></div>
-    <div class="tool-title">Loan Eligibility Calculator</div>
-  </div>
-  <div class="input-grid">
-    <div><label>Monthly_Net_Income [₹]</label><input type="number" id="le-inc" placeholder="e.g. 60000"></div>
-    <div><label>Monthly_Expenses [₹]</label><input type="number" id="le-exp" placeholder="e.g. 20000"></div>
-    <div><label>Existing_EMIs [₹]</label><input type="number" id="le-emi" placeholder="e.g. 5000" value="0"></div>
-    <div><label>Interest_Rate [% p.a.]</label><input type="number" id="le-rate" placeholder="e.g. 9" value="9"></div>
-    <div><label>Loan_Tenure [Years]</label><input type="number" id="le-yr" placeholder="e.g. 20" value="20"></div>
-  </div>
-  <button class="calc-btn" onclick="calcLE()">CHECK_ELIGIBILITY →</button>
-  <div class="results" onclick="copy('le-out')">
-    <p id="le-out">—</p>
-    <div class="breakdown"><span>Max_EMI: <b id="le-maxemi">—</b></span><span>Eligible_Amount: <b id="le-elig">—</b></span></div>
-    <div class="copy-hint">CLICK_TO_COPY</div>
-  </div>
+<nav><a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a><a class="nav-back" href="/">&#8592; ALL TOOLS</a></nav>
+<div class="pw">
+<div class="th"><p class="tt">// Free Online Tool</p><h1>Loan Eligibility Calculator</h1><p>Find the maximum loan amount you can borrow based on your monthly income, existing EMIs, interest rate and tenure. Uses the 50% FOIR norm used by Indian banks.</p></div>
+<div class="tc"><label class="fl">NET MONTHLY INCOME (&#8377;)</label>
+<input type="number" id="li" placeholder="e.g. 60000"/>
+<label class="fl">EXISTING EMI OBLIGATIONS (&#8377;/month, 0 if none)</label>
+<input type="number" id="le" value="0"/>
+<label class="fl">ANNUAL INTEREST RATE (%)</label>
+<input type="number" id="lr" placeholder="e.g. 8.5" step="0.1"/>
+<label class="fl">LOAN TENURE (MONTHS)</label>
+<input type="number" id="lt" placeholder="e.g. 240"/>
+<button class="btn bf" onclick="cle()">CHECK ELIGIBILITY</button>
+<div class="rb" id="ler">Result will appear here.</div></div>
+<div class="sec"><div class="sc"><p class="sl">// Overview</p><h2>HOW BANKS CALCULATE ELIGIBILITY</h2><p>Loan eligibility is primarily determined by your income, existing obligations, CIBIL score, and employment type. The key metric is FOIR (Fixed Obligation to Income Ratio) — total EMIs as a percentage of monthly income. Most Indian banks use 40-55% FOIR.</p><p>Example: Net income Rs 60,000, existing EMI Rs 5,000. At 50% FOIR, max permissible new EMI = Rs 30,000 - Rs 5,000 = Rs 25,000. At 8.5% for 20 years this gives approximately Rs 25 lakhs eligibility.</p><p>Other key factors: CIBIL score (minimum 700-750 for most banks), employment stability (2+ years in current job), age (determines maximum tenure), and additional income sources including rental income and freelance earnings.</p></div></div><div class="sec"><div class="sc"><p class="sl">// Boost Eligibility</p><h2>HOW TO INCREASE YOUR ELIGIBILITY</h2><ul><li>Add a co-applicant (spouse) to combine income</li><li>Close existing loans before applying for a new large loan</li><li>Improve CIBIL score by paying all dues on time for 6+ months</li><li>Opt for longer tenure to increase the eligible amount</li><li>Show all income sources including rent and freelance earnings</li></ul></div></div><div class="sec"><div class="sc"><p class="sl">// Use Cases</p><h2>USE CASES</h2><ul><li>Home loan planning before visiting a bank</li><li>Car loan eligibility check</li><li>Personal loan eligibility for medical or education expenses</li><li>Business loan assessment for SMEs</li></ul></div></div>
+<div class="sec"><div class="sc"><p class="sl">// FAQ</p><h2>FREQUENTLY ASKED QUESTIONS</h2><div class="fi"><div class="fq">What FOIR do Indian banks use?</div><div class="fa">Most banks use 40-55% FOIR. PSU banks like SBI allow up to 50%. Private banks may allow 55% for high-income applicants.</div></div><div class="fi"><div class="fq">Can I get a home loan on Rs 30,000 salary?</div><div class="fa">At Rs 30,000 net income, max EMI at 50% FOIR = Rs 15,000. At 8.5% for 20 years, eligible loan = approximately Rs 15 lakhs. A co-applicant doubles this.</div></div><div class="fi"><div class="fq">Does CIBIL score affect eligibility?</div><div class="fa">Yes. Most banks require 700-750+ CIBIL. Lower scores may result in rejection or higher interest rates.</div></div><div class="fi"><div class="fq">Does tenure affect eligible loan amount?</div><div class="fa">Yes. Longer tenure means lower EMI so you can borrow more for the same income.</div></div></div></div>
+<div class="sec"><div class="sc"><p class="sl">// Related Tools</p><h2>RELATED TOOLS YOU MAY LIKE</h2><div class="rg"><a class="rl" href="/emi-calculator.html">EMI Calculator</a><a class="rl" href="/sip-calculator.html">SIP Calculator</a><a class="rl" href="/compound-interest-calculator.html">Compound Interest</a><a class="rl" href="/gst-calculator.html">GST Calculator</a><a class="rl" href="/simple-interest-calculator.html">Simple Interest</a><a class="rl" href="/inflation-calculator.html">Inflation Calculator</a></div></div></div>
 </div>
+<footer><div class="fln"><a href="/">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div>&#169; 2026 DigitalToolVault &#8212; Free online tools, no signup required.</footer>
 <script>
-function fmt(n){return isNaN(n)?'—':Math.round(n).toLocaleString('en-IN');}
-function calcLE(){
-  const inc=parseFloat(document.getElementById('le-inc').value);
-  const exp=parseFloat(document.getElementById('le-exp').value)||0;
-  const exist=parseFloat(document.getElementById('le-emi').value)||0;
-  const rate=parseFloat(document.getElementById('le-rate').value);
-  const yr=parseFloat(document.getElementById('le-yr').value);
-  if(isNaN(inc)||isNaN(rate)||isNaN(yr)){document.getElementById('le-out').innerText='Invalid';return;}
-  const disposable=inc-exp-exist;
-  const maxEMI=disposable*0.5;
-  const r=(rate/12)/100; const n=yr*12;
-  const loan=maxEMI*((Math.pow(1+r,n)-1)/(r*Math.pow(1+r,n)));
-  document.getElementById('le-out').innerText='₹'+fmt(loan);
-  document.getElementById('le-maxemi').innerText='₹'+fmt(maxEMI)+'/mo';
-  document.getElementById('le-elig').innerText='₹'+fmt(loan);
-}
-function copy(id){const v=document.getElementById(id).innerText;if(v&&v!=='—'){navigator.clipboard.writeText(v);const el=document.getElementById(id);const o=el.innerText;el.innerText='COPIED!';setTimeout(()=>el.innerText=o,1000);}}
-document.querySelectorAll('input').forEach(i=>i.addEventListener('input',calcLE));
+document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('open');var a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';});});
+function cle(){var i=parseFloat(document.getElementById('li').value),e=parseFloat(document.getElementById('le').value)||0,r=parseFloat(document.getElementById('lr').value)/12/100,n=parseInt(document.getElementById('lt').value);if(!i||!r||!n){document.getElementById('ler').innerHTML='Please fill all required fields.';return;}var mx=i*0.5-e;if(mx<=0){document.getElementById('ler').innerHTML='Existing EMIs exceed 50% of income. Eligibility is very limited.';return;}var el=mx*(Math.pow(1+r,n)-1)/(r*Math.pow(1+r,n));document.getElementById('ler').innerHTML='Max Eligible Loan: <span>&#8377;'+Math.round(el).toLocaleString('en-IN')+'</span><br>Max EMI Allowed: <span>&#8377;'+Math.round(mx).toLocaleString('en-IN')+'/month</span><br><small style="color:var(--muted);font-size:.75rem;">Based on 50% FOIR used by most Indian banks</small>';}
 </script>
-<div class="seo"><h1>Loan Eligibility Calculator – Find Your Maximum Loan Amount</h1>
-<p>This free loan eligibility calculator estimates the maximum loan amount a bank or lender may approve based on your monthly income, expenses and existing EMIs. Instant results, no signup required.</p>
-<h2>How Loan Eligibility is Calculated</h2>
-<p>Most Indian banks use the <strong>FOIR (Fixed Obligation to Income Ratio)</strong> method. Banks allow 40–60% of net monthly income for EMI payments. This calculator uses 50% FOIR — a common benchmark used by SBI, HDFC and ICICI Bank.</p>
-<div class="formula-box">Max EMI = (Net Income − Expenses − Existing EMIs) × 50%<br>Eligible Loan = Max EMI × [(1+r)ⁿ − 1] ÷ [r × (1+r)ⁿ]</div>
-<h2>Eligibility by Income Level</h2>
-<table><tr><th>Monthly Income</th><th>Approx. Max Home Loan</th><th>At 8.5% for 20 yrs</th></tr>
-<tr><td>₹30,000</td><td>₹15,000 max EMI</td><td>≈₹15.2 Lakh</td></tr>
-<tr><td>₹60,000</td><td>₹30,000 max EMI</td><td>≈₹30.4 Lakh</td></tr>
-<tr><td>₹1,00,000</td><td>₹50,000 max EMI</td><td>≈₹50.7 Lakh</td></tr>
-<tr><td>₹2,00,000</td><td>₹1,00,000 max EMI</td><td>≈₹1.01 Crore</td></tr></table>
-<div class="tip-box">💡 To increase loan eligibility: add a co-applicant (spouse's income is counted), improve your CIBIL score above 750, clear existing loans before applying, or choose a longer tenure.</div>
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>What is FOIR?</strong>FOIR (Fixed Obligation to Income Ratio) is the percentage of your income that goes toward all fixed EMI payments. Most banks cap this at 40–55%. Higher FOIR = lower loan eligibility.</div>
-<div class="faq-item"><strong>Does credit score affect eligibility?</strong>Yes. A CIBIL score above 750 qualifies you for higher loan amounts at lower rates. Below 650, most banks reject applications outright.</div>
-<div class="faq-item"><strong>Is this calculator 100% accurate?</strong>This gives an estimate based on standard FOIR norms. Actual eligibility depends on your credit score, employment type, employer, age and the specific bank's policies.</div></div>
-</body>
-</html>
+</body></html>

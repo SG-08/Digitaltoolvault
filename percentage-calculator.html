@@ -1,512 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Percentage Calculator – Calculate Percentages Instantly Free | DigitalToolVault</title>
-<meta name="description" content="Free percentage calculator — calculate what percent of a number is, percentage change, discount prices, exam marks percentage and more. Instant results, no signup needed.">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#37474f">
-<link rel="canonical" href="https://www.digitaltoolvault.com/percentage-calculator.html">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="Percentage Calculator – Calculate Percentages Instantly | DigitalToolVault">
-<meta property="og:description" content="Free percentage calculator — what percent of a number, percentage change, discount, marks percentage and more. No signup required.">
-<meta property="og:url" content="https://www.digitaltoolvault.com/percentage-calculator.html">
-<meta property="og:image" content="https://www.digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Percentage Calculator – DigitalToolVault">
-<meta name="twitter:description" content="Calculate percentages, discounts, percentage change and more — free and instant.">
-<meta name="twitter:image" content="https://www.digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Percentage Calculator","url":"https://www.digitaltoolvault.com/percentage-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate percentage of a number?","acceptedAnswer":{"@type":"Answer","text":"To find X% of Y: multiply Y by X and divide by 100. Example: 20% of 500 = (500 × 20) ÷ 100 = 100."}},{"@type":"Question","name":"How do I calculate percentage change?","acceptedAnswer":{"@type":"Answer","text":"Percentage change = ((New Value - Old Value) ÷ Old Value) × 100. A positive result is an increase, negative is a decrease."}},{"@type":"Question","name":"How do I calculate my percentage in exams?","acceptedAnswer":{"@type":"Answer","text":"Exam percentage = (Marks Obtained ÷ Total Marks) × 100. Example: 450 out of 600 = (450 ÷ 600) × 100 = 75%."}},{"@type":"Question","name":"How do I calculate discount percentage?","acceptedAnswer":{"@type":"Answer","text":"Discount % = ((Original Price - Sale Price) ÷ Original Price) × 100. Sale Price = Original Price × (1 - Discount% ÷ 100)."}},{"@type":"Question","name":"Is this percentage calculator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup or registration required."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Percentage Calculator","item":"https://www.digitaltoolvault.com/percentage-calculator.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4M99EKVCD5',{'anonymize_ip':true});</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --bg: #ffffff;
-    --primary: #37474f;
-    --accent: #ff5722;
-    --muted: #94a3b8;
-    --dot-color: #d1d5db;
-    --glass: rgba(255,255,255,0.9);
-}
-
-* { box-sizing: border-box; }
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-    background-size: 30px 30px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-/* CARD — identical to EMI tool */
-.calculator {
-    width: 100%;
-    max-width: 480px;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--primary);
-    padding: 40px;
-    box-shadow: 15px 15px 0 var(--primary);
-}
-
-/* HEADER */
-.header {
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    font-family: 'JetBrains Mono';
-}
-
-.brand-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.brand-line .logo {
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin: 0;
-    font-weight: 700;
-    color: var(--primary);
-}
-
-.brand-line .logo span { color: var(--accent); }
-
-.sys-code {
-    font-size: 9px;
-    color: var(--accent);
-    font-weight: bold;
-    font-family: 'JetBrains Mono';
-}
-
-.tool-title {
-    font-size: 16px;
-    margin-top: 10px;
-    font-weight: 600;
-    font-family: 'JetBrains Mono';
-}
-
-/* MODE SELECTOR TABS */
-.mode-tabs {
-    display: flex;
-    gap: 0;
-    border: 2px solid var(--primary);
-    margin-bottom: 22px;
-    overflow: hidden;
-}
-
-.mode-tab {
-    flex: 1;
-    padding: 8px 4px;
-    font-size: 9px;
-    font-family: 'JetBrains Mono';
-    background: none;
-    border: none;
-    color: var(--muted);
-    cursor: pointer;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-    border-right: 1px solid var(--primary);
-    transition: all .15s;
-    text-align: center;
-}
-.mode-tab:last-child { border-right: none; }
-.mode-tab.active { background: var(--primary); color: var(--bg); }
-.mode-tab:hover:not(.active) { color: var(--primary); }
-
-/* INPUT */
-.input-grid {
-    display: grid;
-    gap: 15px;
-}
-
-.panel { display: none; }
-.panel.active { display: block; }
-
-label {
-    font-family: 'JetBrains Mono';
-    font-size: 9px;
-    color: var(--muted);
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 4px;
-}
-
-input[type=number] {
-    width: 100%;
-    border: 2px solid #e2e8f0;
-    padding: 10px;
-    font-family: 'JetBrains Mono';
-    font-size: 15px;
-    background: white;
-    outline: none;
-    transition: border .15s;
-}
-
-input[type=number]:focus { border-color: var(--primary); }
-
-/* CALCULATE BUTTON */
-.calc-btn {
-    width: 100%;
-    margin-top: 16px;
-    padding: 13px;
-    background: var(--primary);
-    color: #fff;
-    border: none;
-    font-family: 'JetBrains Mono';
-    font-size: 11px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background .2s;
-}
-.calc-btn:hover { background: var(--accent); }
-
-/* RESULT — identical to EMI tool */
-.results {
-    margin-top: 20px;
-    text-align: center;
-    padding: 25px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    cursor: pointer;
-    transition: background .15s;
-}
-.results:hover { background: #f1f5f9; }
-
-#output {
-    font-family: 'JetBrains Mono';
-    font-size: 32px;
-    color: var(--primary);
-}
-
-.breakdown {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    font-family: 'JetBrains Mono';
-    font-size: 10px;
-    color: var(--muted);
-    flex-wrap: wrap;
-    gap: 4px;
-}
-
-.copy-hint {
-    font-family: 'JetBrains Mono';
-    font-size: 9px;
-    color: var(--muted);
-    margin-top: 8px;
-    letter-spacing: 1px;
-}
-
-/* SEO */
-.seo {
-    max-width: 800px;
-    margin-top: 60px;
-    width: 100%;
-}
-
-.seo h1{font-size:1.5rem;font-weight:700;color:#37474f;margin-bottom:14px;}
-.seo h2{font-size:1.1rem;font-weight:700;color:#37474f;margin:32px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:.97rem;font-weight:600;color:#37474f;margin:18px 0 8px;}
-.seo p{font-size:0.93rem;margin-bottom:12px;color:#475569;line-height:1.8;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:12px;}
-.seo ul li,.seo ol li{font-size:0.93rem;margin-bottom:7px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.87rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.78rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:10px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.93rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:12px 16px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.88rem;color:#9a3412;}
-
-@media(max-width:520px){
-    body { padding: 12px; }
-    .calculator { padding: 24px 18px; }
-    .mode-tab { font-size: 8px; padding: 8px 2px; }
-    #output { font-size: 26px; }
-}
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Percentage Calculator Online – Calculate % of a Number | DigitalToolVault</title>
+  <meta name="description" content="Free Percentage Calculator. Find what % of a number is, calculate percentage change, or find what percentage one number is of another. Instant results." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.digitaltoolvault.com/percentage-calculator.html" />
+  <meta property="og:title" content="Percentage Calculator Online – Calculate % of a Number | DigitalToolVault" />
+  <meta property="og:description" content="Free Percentage Calculator. Find what % of a number is, calculate percentage change, or find what percentage one number is of another. Instant results." />
+  <meta property="og:url" content="https://www.digitaltoolvault.com/percentage-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="DigitalToolVault" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f9fafb; --card-bg: #ffffff; --primary: #37474f;
+      --accent: #ff5722; --text: #1a1a2e; --muted: #6b7280;
+      --border: #37474f; --font-body: 'Inter', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    }
+    body { font-family: var(--font-body); background: var(--bg);
+      background-image: radial-gradient(#d1d5db 1.5px, transparent 1.5px);
+      background-size: 30px 30px; color: var(--text); min-height: 100vh; }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--primary);
+      padding: 0 24px; height: 56px; display: flex; align-items: center;
+      justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .nav-logo { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: #fff; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-back { font-family: var(--font-mono); font-size: .8rem; color: #cfd8dc; text-decoration: none; letter-spacing: 1px; }
+    .nav-back:hover { color: var(--accent); }
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+    /* TOOL CARD */
+    .tool-hero { text-align: center; padding: 52px 0 36px; }
+    .tool-tag { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .tool-hero h1 { font-family: var(--font-mono); font-size: clamp(1.5rem,4vw,2.2rem);
+      font-weight: 700; color: var(--primary); margin-bottom: 10px; line-height: 1.25; }
+    .tool-hero p { font-size: .97rem; color: var(--muted); line-height: 1.8; max-width: 580px; margin: 0 auto; }
+    .tool-card { background: var(--card-bg); border: 2px solid var(--border);
+      box-shadow: 15px 15px 0 var(--border); border-radius: 4px;
+      padding: 36px 40px; margin-bottom: 32px; }
+    .tool-card input, .tool-card select, .tool-card textarea {
+      width: 100%; padding: 11px 14px; font-family: var(--font-body); font-size: .93rem;
+      color: var(--text); background: #f9fafb; border: 2px solid #d1d5db;
+      border-radius: 4px; outline: none; margin-bottom: 14px; transition: border-color .2s; }
+    .tool-card input:focus, .tool-card select:focus, .tool-card textarea:focus { border-color: var(--accent); background: #fff; }
+    .field-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+    .btn { background: var(--accent); color: #fff; border: none; cursor: pointer;
+      font-family: var(--font-mono); font-size: .82rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; padding: 12px 28px;
+      border-radius: 4px; transition: opacity .2s; }
+    .btn:hover { opacity: .85; }
+    .btn-full { width: 100%; padding: 14px; }
+    .result-box { background: #f0f4f8; border: 2px solid #cfd8dc; border-radius: 4px;
+      padding: 18px 20px; margin-top: 18px; font-family: var(--font-mono); font-size: 1rem;
+      color: var(--primary); font-weight: 600; min-height: 54px; }
+    .result-box span { color: var(--accent); }
+    /* CONTENT SECTIONS */
+    .section { margin-bottom: 28px; }
+    .section-card { background: var(--card-bg); border: 2px solid var(--border);
+      box-shadow: 6px 6px 0 var(--border); border-radius: 4px; padding: 28px 32px; }
+    .section-label { font-family: var(--font-mono); font-size: 9px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .section-card h2 { font-family: var(--font-mono); font-size: 1.08rem; font-weight: 700;
+      color: var(--primary); margin-bottom: 14px; }
+    .section-card h3 { font-family: var(--font-mono); font-size: .9rem; font-weight: 700;
+      color: var(--primary); margin: 16px 0 8px; }
+    .section-card p { font-size: .95rem; color: #374151; line-height: 1.85; margin-bottom: 12px; }
+    .section-card p:last-child { margin-bottom: 0; }
+    .section-card ul, .section-card ol { padding-left: 20px; margin-bottom: 12px; }
+    .section-card li { font-size: .95rem; color: #374151; line-height: 1.85; margin-bottom: 6px; }
+    .faq-item { border-bottom: 1.5px solid #e5e7eb; padding: 14px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-family: var(--font-mono); font-size: .85rem; font-weight: 700;
+      color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::after { content: '+'; color: var(--accent); font-size: 1.2rem; }
+    .faq-q.open::after { content: '−'; }
+    .faq-a { font-size: .93rem; color: #374151; line-height: 1.8; margin-top: 8px; display: none; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+    .related-link { display: block; background: #f9fafb; border: 1.5px solid #d1d5db;
+      border-radius: 4px; padding: 12px 14px; font-family: var(--font-mono); font-size: .78rem;
+      color: var(--primary); text-decoration: none; font-weight: 600; transition: all .2s; }
+    .related-link:hover { border-color: var(--accent); color: var(--accent); background: #fff5f2; }
+    footer { background: var(--primary); color: #cfd8dc; font-family: var(--font-mono);
+      font-size: .78rem; padding: 28px 24px; text-align: center; }
+    footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+    .footer-links { margin-bottom: 10px; }
+    @media(max-width:600px){ .tool-card{padding:20px 16px;} .section-card{padding:20px 16px;} }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Percentage Calculator Online – Calculate % of a Number | DigitalToolVault",
+    "description": "Free Percentage Calculator. Find what % of a number is, calculate percentage change, or find what percentage one number is of another. Instant results.",
+    "url": "https://www.digitaltoolvault.com/percentage-calculator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"},
+    "provider": {"@type": "Organization", "name": "DigitalToolVault", "url": "https://www.digitaltoolvault.com"}
+  }
+  </script>
 </head>
-
 <body>
 
-<!-- NAV — identical to other tools -->
-<nav style="position:sticky;top:0;z-index:1000;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
+  <nav>
+    <a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a>
+    <a class="nav-back" href="/">← ALL TOOLS</a>
+  </nav>
 
-<div class="calculator">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="brand-line">
-      <div class="logo">DigitalTool<span>Vault</span></div>
-      <div class="sys-code">PCT_CALC_ENGINE</div>
+  <div class="page-wrap">
+    <div class="tool-hero">
+      <p class="tool-tag">// Free Online Tool</p>
+      <h1>Percentage Calculator</h1>
+      <p>Calculate percentages instantly — find X% of Y, what % X is of Y, or the percentage increase/decrease between two values.</p>
     </div>
-    <div class="tool-title">Percentage Calculator</div>
-  </div>
 
-  <!-- MODE TABS -->
-  <div class="mode-tabs">
-    <button class="mode-tab active" onclick="switchMode(0,this)">% OF</button>
-    <button class="mode-tab" onclick="switchMode(1,this)">WHAT_%</button>
-    <button class="mode-tab" onclick="switchMode(2,this)">% CHANGE</button>
-    <button class="mode-tab" onclick="switchMode(3,this)">DISCOUNT</button>
-    <button class="mode-tab" onclick="switchMode(4,this)">MARKS_%</button>
-  </div>
+    <!-- TOOL -->
+    <div class="tool-card">
+      
+      <label class="field-label">WHAT IS X% OF Y?</label>
+      <div style="display:flex;gap:10px;margin-bottom:14px;">
+        <input type="number" id="pct_x" placeholder="X (percent)" style="margin-bottom:0;" />
+        <input type="number" id="pct_y" placeholder="Y (number)" style="margin-bottom:0;" />
+      </div>
+      <button class="btn" onclick="calcPctOf()">CALCULATE</button>
+      <div class="result-box" id="pctOfResult" style="margin-top:12px;margin-bottom:20px;font-size:.9rem;"></div>
 
-  <!-- PANEL 0: X% of Y -->
-  <div class="panel active" id="panel-0">
-    <div class="input-grid">
-      <div>
-        <label>Percentage_Value [X%]</label>
-        <input type="number" id="p0a" placeholder="e.g. 20">
+      <label class="field-label">PERCENTAGE CHANGE (FROM → TO)</label>
+      <div style="display:flex;gap:10px;margin-bottom:14px;">
+        <input type="number" id="pct_from" placeholder="From value" style="margin-bottom:0;" />
+        <input type="number" id="pct_to" placeholder="To value" style="margin-bottom:0;" />
       </div>
-      <div>
-        <label>Of_Number [Y]</label>
-        <input type="number" id="p0b" placeholder="e.g. 500">
-      </div>
+      <button class="btn" onclick="calcPctChange()">CALCULATE CHANGE</button>
+      <div class="result-box" id="pctChangeResult" style="margin-top:12px;font-size:.9rem;"></div>
+    
     </div>
-    <button class="calc-btn" onclick="calc(0)">CALCULATE →</button>
-  </div>
 
-  <!-- PANEL 1: X is what % of Y -->
-  <div class="panel" id="panel-1">
-    <div class="input-grid">
-      <div>
-        <label>Value [X]</label>
-        <input type="number" id="p1a" placeholder="e.g. 75">
-      </div>
-      <div>
-        <label>Total_Value [Y]</label>
-        <input type="number" id="p1b" placeholder="e.g. 300">
+    <!-- WHAT IS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Overview</p>
+        <h2>WHAT IS THE PERCENTAGE CALCULATOR?</h2>
+        <p>A Percentage Calculator is a multipurpose arithmetic tool that handles the most common percentage calculations people need in daily life. Whether you're calculating exam marks, figuring out a discount, working out your salary hike percentage, or understanding GST on a product, percentage calculations are everywhere.</p>
+<p>Our calculator handles three common scenarios: finding what X% of a number Y is (e.g., "what is 18% of ₹5,000?"), and calculating the percentage change between two values (e.g., "my salary went from ₹40,000 to ₹48,000 — what percentage increase is that?").</p>
+<p>Percentages are used in finance (interest rates, returns), academics (marks, grades), commerce (discounts, markup), taxation (GST, income tax slabs), and everyday life. Understanding how to compute them accurately is a fundamental life skill.</p>
       </div>
     </div>
-    <button class="calc-btn" onclick="calc(1)">CALCULATE →</button>
-  </div>
 
-  <!-- PANEL 2: % Change -->
-  <div class="panel" id="panel-2">
-    <div class="input-grid">
-      <div>
-        <label>Old_Value</label>
-        <input type="number" id="p2a" placeholder="e.g. 800">
-      </div>
-      <div>
-        <label>New_Value</label>
-        <input type="number" id="p2b" placeholder="e.g. 1000">
+    <!-- HOW TO USE -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Guide</p>
+        <h2>HOW TO USE THIS TOOL</h2>
+        <ol>
+<li><strong>"What is X% of Y"</strong> — Enter the percentage (X) and the base number (Y). Example: 15% of 2000 = 300.</li>
+<li><strong>Percentage change</strong> — Enter the original value and the new value. The calculator shows whether it's an increase or decrease and by how much.</li>
+</ol>
       </div>
     </div>
-    <button class="calc-btn" onclick="calc(2)">CALCULATE →</button>
-  </div>
 
-  <!-- PANEL 3: Discount -->
-  <div class="panel" id="panel-3">
-    <div class="input-grid">
-      <div>
-        <label>Original_Price [₹]</label>
-        <input type="number" id="p3a" placeholder="e.g. 1999">
-      </div>
-      <div>
-        <label>Discount_Percent [%]</label>
-        <input type="number" id="p3b" placeholder="e.g. 30" min="0" max="100">
+    
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Formula</p>
+        <h2>THE FORMULA EXPLAINED</h2>
+        <p><strong>X% of Y = (X ÷ 100) × Y</strong></p>
+<p><strong>Percentage Change = [(New – Old) ÷ |Old|] × 100</strong></p>
+<p>Positive result = percentage increase. Negative result = percentage decrease.</p>
       </div>
     </div>
-    <button class="calc-btn" onclick="calc(3)">CALCULATE →</button>
-  </div>
 
-  <!-- PANEL 4: Marks % -->
-  <div class="panel" id="panel-4">
-    <div class="input-grid">
-      <div>
-        <label>Marks_Obtained</label>
-        <input type="number" id="p4a" placeholder="e.g. 450">
-      </div>
-      <div>
-        <label>Total_Marks</label>
-        <input type="number" id="p4b" placeholder="e.g. 600">
+    <!-- BENEFITS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Benefits</p>
+        <h2>KEY BENEFITS</h2>
+        <ul><li>Multiple calculation modes in one tool</li><li>Handles both percentage-of and percentage-change calculations</li><li>Accurate to 4 decimal places</li><li>Instant, no login</li><li>Great for students, shoppers, and professionals alike</li></ul>
       </div>
     </div>
-    <button class="calc-btn" onclick="calc(4)">CALCULATE →</button>
-  </div>
 
-  <!-- RESULT BOX — same style as EMI tool -->
-  <div class="results" onclick="copyResult()">
-    <p id="output">—</p>
-    <div class="breakdown">
-      <span id="b1"></span>
-      <span id="b2"></span>
+    <!-- USE CASES -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Use Cases</p>
+        <h2>WHO USES THIS TOOL?</h2>
+        <ul><li>Students calculating exam percentage from marks obtained</li><li>Shoppers calculating discounted price during sales</li><li>Employees calculating salary hike or increment percentage</li><li>Business owners calculating profit margin or markup</li><li>Tax calculations — finding what % of income goes to tax</li></ul>
+      </div>
     </div>
-    <div class="copy-hint">CLICK_TO_COPY</div>
+
+    <!-- TIPS -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Pro Tips</p>
+        <h2>TIPS &amp; BEST PRACTICES</h2>
+        <ul><li>To find what % A is of B: (A ÷ B) × 100</li><li>To increase a number by X%: Number × (1 + X/100)</li><li>To decrease a number by X%: Number × (1 – X/100)</li><li>A 50% decrease followed by a 50% increase does NOT return to original — it gives 75% of original</li></ul>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// FAQ</p>
+        <h2>FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="faq-item">
+          <div class="faq-q">How do I calculate percentage of marks?</div>
+          <div class="faq-a">Percentage = (Marks obtained ÷ Total marks) × 100. For example, 450/500 × 100 = 90%.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">How do I find a percentage increase?</div>
+          <div class="faq-a">Percentage increase = [(New value – Old value) ÷ Old value] × 100. Example: salary from ₹40,000 to ₹46,000 → [(46000–40000) ÷ 40000] × 100 = 15% increase.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">What is 20% of 500?</div>
+          <div class="faq-a">20% of 500 = (20/100) × 500 = 100.</div>
+        </div><div class="faq-item">
+          <div class="faq-q">How do I calculate profit percentage?</div>
+          <div class="faq-a">Profit % = (Profit ÷ Cost Price) × 100. If CP = ₹200 and SP = ₹250: Profit = ₹50, Profit % = (50/200) × 100 = 25%.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED -->
+    <div class="section">
+      <div class="section-card">
+        <p class="section-label">// Related Tools</p>
+        <h2>RELATED TOOLS YOU MAY LIKE</h2>
+        <div class="related-grid"><a class="related-link" href="/gst-calculator.html">GST Calculator</a><a class="related-link" href="/discount-calculator.html">Discount Calculator</a><a class="related-link" href="/simple-interest-calculator.html">Simple Interest</a><a class="related-link" href="/emi-calculator.html">EMI Calculator</a><a class="related-link" href="/cgpa-converter.html">CGPA Converter</a><a class="related-link" href="/number-to-word.html">Number to Words</a></div>
+      </div>
+    </div>
+
   </div>
 
-</div>
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    © 2026 DigitalToolVault — Free online tools, no signup required.
+  </footer>
 
-<!-- SEO CONTENT -->
-<div class="seo">
-<h1>Percentage Calculator – Calculate Any Percentage Instantly</h1>
-<p>This free percentage calculator covers 5 types of percentage calculations — finding a percentage of a number, what percentage one number is of another, percentage increase or decrease, discount prices and exam marks percentage. All calculations run instantly in your browser with no signup required.</p>
-
-<h2>What is a Percentage?</h2>
-<p>A <strong>percentage</strong> is a way of expressing a number as a fraction of 100. The word comes from the Latin <em>per centum</em>, meaning "per hundred." Percentages are used everywhere — exam scores, tax rates, discounts, interest rates and data analysis.</p>
-
-<h2>The 5 Calculations This Tool Covers</h2>
-<h3>1. What is X% of Y?</h3>
-<div class="formula-box">Result = (X ÷ 100) × Y &nbsp;|&nbsp; Example: 20% of 500 = 100</div>
-<p>Use this for GST on a price, salary hike value, tip amount or discount amount.</p>
-
-<h3>2. X is What Percentage of Y?</h3>
-<div class="formula-box">Percentage = (X ÷ Y) × 100 &nbsp;|&nbsp; Example: 75 of 300 = 25%</div>
-<p>Use this to find exam percentage, market share or budget utilisation.</p>
-
-<h3>3. Percentage Change</h3>
-<div class="formula-box">Change% = ((New − Old) ÷ Old) × 100 &nbsp;|&nbsp; Example: 800→1000 = +25%</div>
-<p>Use this for price changes, salary hikes, stock returns or growth rates.</p>
-
-<h3>4. Discount Calculator</h3>
-<div class="formula-box">Sale Price = Original × (1 − Discount% ÷ 100) &nbsp;|&nbsp; Example: ₹1999 at 30% off = ₹1399.30</div>
-<p>Instantly find what you actually pay after a discount during sales on Amazon, Flipkart or any store.</p>
-
-<h3>5. Exam Marks Percentage</h3>
-<div class="formula-box">Percentage = (Marks Obtained ÷ Total Marks) × 100 &nbsp;|&nbsp; Example: 450/600 = 75%</div>
-<p>Use for board exams, semester results, competitive tests or any scored assessment.</p>
-
-<h2>Common Percentage Examples</h2>
-<table>
-<tr><th>Calculation</th><th>Formula</th><th>Result</th></tr>
-<tr><td>18% GST on ₹5,000</td><td>(18 ÷ 100) × 5000</td><td>₹900</td></tr>
-<tr><td>40% off ₹2,499</td><td>2499 × (1 − 0.40)</td><td>₹1,499.40</td></tr>
-<tr><td>Salary ₹50,000 → ₹60,000</td><td>((60000−50000) ÷ 50000) × 100</td><td>+20%</td></tr>
-<tr><td>Exam: 378 out of 500</td><td>(378 ÷ 500) × 100</td><td>75.6%</td></tr>
-<tr><td>25 is what % of 80?</td><td>(25 ÷ 80) × 100</td><td>31.25%</td></tr>
-<tr><td>10% TDS on ₹25,000</td><td>(10 ÷ 100) × 25000</td><td>₹2,500</td></tr>
-</table>
-
-<div class="tip-box">💡 Quick mental maths: To find 10% of any number, move the decimal one place left. 10% of ₹3,500 = ₹350. For 5%, halve it = ₹175. For 20%, double it = ₹700.</div>
-
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>How do I calculate percentage of a number?</strong>Multiply the number by the percentage and divide by 100. Example: 20% of 500 = (500 × 20) ÷ 100 = 100. Or multiply by the decimal: 500 × 0.20 = 100.</div>
-<div class="faq-item"><strong>How do I calculate percentage increase?</strong>Percentage increase = ((New Value − Old Value) ÷ Old Value) × 100. Salary from ₹40,000 to ₹48,000 = ((48000−40000) ÷ 40000) × 100 = 20%.</div>
-<div class="faq-item"><strong>How do I calculate my exam percentage?</strong>Divide marks obtained by total marks and multiply by 100. Example: 368 out of 500 = (368 ÷ 500) × 100 = 73.6%.</div>
-<div class="faq-item"><strong>How do I find the original price before discount?</strong>Original Price = Sale Price ÷ (1 − Discount% ÷ 100). Example: Paid ₹700 after 30% off → original = 700 ÷ 0.70 = ₹1,000.</div>
-<div class="faq-item"><strong>What is 1% of 1 crore?</strong>1% of 1,00,00,000 = ₹1,00,000 (one lakh).</div>
-</div>
-
-<script>
-let activeMode = 0;
-
-function switchMode(idx, btn) {
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.mode-tab').forEach(b => b.classList.remove('active'));
-    document.getElementById('panel-' + idx).classList.add('active');
-    btn.classList.add('active');
-    activeMode = idx;
-    // Reset result
-    document.getElementById('output').innerText = '—';
-    document.getElementById('b1').innerText = '';
-    document.getElementById('b2').innerText = '';
-}
-
-function fmt(n) {
-    if (isNaN(n) || !isFinite(n)) return null;
-    return parseFloat(n.toFixed(4)).toLocaleString('en-IN');
-}
-
-function setResult(main, b1, b2) {
-    document.getElementById('output').innerText = main || '—';
-    document.getElementById('b1').innerText = b1 || '';
-    document.getElementById('b2').innerText = b2 || '';
-}
-
-function calc(mode) {
-    if (mode === 0) {
-        const x = parseFloat(document.getElementById('p0a').value);
-        const y = parseFloat(document.getElementById('p0b').value);
-        if (isNaN(x) || isNaN(y)) { setResult('Invalid input', '', ''); return; }
-        const res = (x / 100) * y;
-        setResult(fmt(res), `${fmt(x)}% of ${fmt(y)}`, `= ${fmt(res)}`);
-    }
-    else if (mode === 1) {
-        const x = parseFloat(document.getElementById('p1a').value);
-        const y = parseFloat(document.getElementById('p1b').value);
-        if (isNaN(x) || isNaN(y) || y === 0) { setResult('Invalid input', '', ''); return; }
-        const res = (x / y) * 100;
-        setResult(fmt(res) + '%', `${fmt(x)} is ${fmt(res)}%`, `of ${fmt(y)}`);
-    }
-    else if (mode === 2) {
-        const oldV = parseFloat(document.getElementById('p2a').value);
-        const newV = parseFloat(document.getElementById('p2b').value);
-        if (isNaN(oldV) || isNaN(newV) || oldV === 0) { setResult('Invalid input', '', ''); return; }
-        const res = ((newV - oldV) / oldV) * 100;
-        const sign = res >= 0 ? '+' : '';
-        const label = res >= 0 ? 'Increase' : 'Decrease';
-        setResult(sign + fmt(res) + '%', label + `: ${fmt(oldV)} → ${fmt(newV)}`, '');
-    }
-    else if (mode === 3) {
-        const price = parseFloat(document.getElementById('p3a').value);
-        const disc = parseFloat(document.getElementById('p3b').value);
-        if (isNaN(price) || isNaN(disc) || disc < 0 || disc > 100) { setResult('Invalid input', '', ''); return; }
-        const sale = price * (1 - disc / 100);
-        const saving = price - sale;
-        setResult('₹' + fmt(sale), `You save: ₹${fmt(saving)}`, `On: ₹${fmt(price)} at ${fmt(disc)}% off`);
-    }
-    else if (mode === 4) {
-        const got = parseFloat(document.getElementById('p4a').value);
-        const total = parseFloat(document.getElementById('p4b').value);
-        if (isNaN(got) || isNaN(total) || total === 0 || got > total) { setResult('Invalid input', '', ''); return; }
-        const res = (got / total) * 100;
-        let grade = res >= 90 ? 'Grade: A+ (Distinction)' :
-                    res >= 75 ? 'Grade: A (First Class)' :
-                    res >= 60 ? 'Grade: B (Second Class)' :
-                    res >= 45 ? 'Grade: C (Pass)' : 'Grade: F (Fail)';
-        setResult(fmt(res) + '%', `${fmt(got)} / ${fmt(total)}`, grade);
-    }
-}
-
-// Enter key support
-document.querySelectorAll('input[type=number]').forEach(inp => {
-    inp.addEventListener('keydown', e => {
-        if (e.key === 'Enter') calc(activeMode);
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('open');
+        const a = q.nextElementSibling;
+        a.style.display = a.style.display === 'block' ? 'none' : 'block';
+      });
     });
-    inp.addEventListener('input', () => calc(activeMode));
-});
-
-function copyResult() {
-    const val = document.getElementById('output').innerText;
-    if (val && val !== '—' && val !== 'Invalid input') {
-        navigator.clipboard.writeText(val).then(() => {
-            const el = document.getElementById('output');
-            const orig = el.innerText;
-            el.innerText = 'COPIED!';
-            setTimeout(() => el.innerText = orig, 1000);
-        });
+    
+    function calcPctOf() {
+      const x = parseFloat(document.getElementById('pct_x').value);
+      const y = parseFloat(document.getElementById('pct_y').value);
+      if (isNaN(x) || isNaN(y)) { document.getElementById('pctOfResult').innerHTML = 'Please fill both fields.'; return; }
+      const result = (x/100)*y;
+      document.getElementById('pctOfResult').innerHTML = x + '% of ' + y + ' = <span>' + result.toFixed(4).replace(/\.?0+$/,'') + '</span>';
     }
-}
-</script>
+    function calcPctChange() {
+      const from = parseFloat(document.getElementById('pct_from').value);
+      const to = parseFloat(document.getElementById('pct_to').value);
+      if (isNaN(from) || isNaN(to) || from === 0) { document.getElementById('pctChangeResult').innerHTML = 'Please fill both fields.'; return; }
+      const change = ((to-from)/Math.abs(from))*100;
+      const word = change >= 0 ? 'Increase' : 'Decrease';
+      document.getElementById('pctChangeResult').innerHTML = 'Percentage ' + word + ': <span>' + Math.abs(change).toFixed(2) + '%</span>';
+    }
+    
+  </script>
 
 </body>
 </html>

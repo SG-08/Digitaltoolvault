@@ -1,203 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roman Numeral Converter – Convert Numbers to Roman Numerals Free | DigitalToolVault</title>
-<meta name="description" content="Free Roman numeral converter — instantly convert numbers to Roman numerals or Roman numerals to numbers. Supports 1 to 3999. No signup needed.">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#37474f">
-<link rel="canonical" href="https://www.digitaltoolvault.com/roman-numeral-converter.html">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DigitalToolVault">
-<meta property="og:title" content="Roman Numeral Converter – Convert Numbers to Roman Numerals Free | DigitalToolVault">
-<meta property="og:description" content="Free Roman numeral converter — instantly convert numbers to Roman numerals or Roman numerals to numbers. Supports 1 to 3999. No signup needed.">
-<meta property="og:url" content="https://www.digitaltoolvault.com/roman-numeral-converter.html">
-<meta property="og:image" content="https://www.digitaltoolvault.com/og-image.png">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roman Numeral Converter – Convert Numbers to Roman Numerals Free">
-<meta name="twitter:description" content="Free Roman numeral converter — instantly convert numbers to Roman numerals or Roman numerals to numbers. Supports 1 to 3999. No signup needed.">
-<meta name="twitter:image" content="https://www.digitaltoolvault.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Roman Numeral Converter","url":"https://www.digitaltoolvault.com/roman-numeral-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com/"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.digitaltoolvault.com/"},{"@type":"ListItem","position":2,"name":"Roman Numeral Converter","item":"https://www.digitaltoolvault.com/roman-numeral-converter.html"}]}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4M99EKVCD5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-4M99EKVCD5",{"anonymize_ip":true});</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root {
-    --bg: #ffffff;
-    --primary: #37474f;
-    --accent: #ff5722;
-    --muted: #94a3b8;
-    --dot-color: #d1d5db;
-    --glass: rgba(255,255,255,0.9);
-}
-* { box-sizing: border-box; }
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-    background-size: 30px 30px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-.calculator {
-    width: 100%;
-    max-width: 480px;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--primary);
-    padding: 40px;
-    box-shadow: 15px 15px 0 var(--primary);
-}
-.header {
-    border-bottom: 2px solid var(--primary);
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    font-family: 'JetBrains Mono';
-}
-.brand-line { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'JetBrains Mono'; font-size: 12px; letter-spacing: 2px; font-weight: 700; color: var(--primary); }
-.logo span { color: var(--accent); }
-.sys-code { font-size: 9px; color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; }
-.tool-title { font-size: 16px; margin-top: 10px; font-weight: 600; font-family: 'JetBrains Mono'; }
-.input-grid { display: grid; gap: 15px; }
-label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 4px; }
-input, select, textarea {
-    width: 100%;
-    border: 2px solid #e2e8f0;
-    padding: 10px;
-    font-family: 'JetBrains Mono';
-    font-size: 15px;
-    background: white;
-    outline: none;
-    transition: border .15s;
-}
-input:focus, select:focus, textarea:focus { border-color: var(--primary); }
-.calc-btn {
-    width: 100%; margin-top: 16px; padding: 13px;
-    background: var(--primary); color: #fff; border: none;
-    font-family: 'JetBrains Mono'; font-size: 11px;
-    letter-spacing: 2px; cursor: pointer; text-transform: uppercase; transition: background .2s;
-}
-.calc-btn:hover { background: var(--accent); }
-.results {
-    margin-top: 20px; text-align: center; padding: 25px;
-    background: #f8fafc; border: 1px solid #e2e8f0; cursor: pointer;
-}
-.results:hover { background: #f1f5f9; }
-#output { font-family: 'JetBrains Mono'; font-size: 32px; color: var(--primary); }
-.breakdown {
-    display: flex; justify-content: space-between; margin-top: 15px;
-    font-family: 'JetBrains Mono'; font-size: 10px; color: var(--muted);
-    flex-wrap: wrap; gap: 4px;
-}
-.copy-hint { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--muted); margin-top: 8px; letter-spacing: 1px; }
-.seo { max-width: 800px; margin-top: 60px; width: 100%; }
-.seo h1{font-size:1.5rem;font-weight:700;color:#37474f;margin-bottom:14px;}
-.seo h2{font-size:1.1rem;font-weight:700;color:#37474f;margin:32px 0 12px;padding-left:12px;border-left:3px solid #ff5722;}
-.seo h3{font-size:.97rem;font-weight:600;color:#37474f;margin:18px 0 8px;}
-.seo p{font-size:0.93rem;margin-bottom:12px;color:#475569;line-height:1.8;}
-.seo ul,.seo ol{padding-left:22px;margin-bottom:12px;}
-.seo li{font-size:0.93rem;margin-bottom:7px;color:#475569;}
-.seo table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.87rem;}
-.seo table th{background:#37474f;color:#fff;padding:10px 14px;text-align:left;font-size:0.78rem;letter-spacing:.5px;}
-.seo table td{padding:9px 14px;border-bottom:1px solid #e2e8f0;color:#475569;}
-.seo table tr:nth-child(even) td{background:#f8fafc;}
-.seo .faq-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 18px;margin-bottom:10px;}
-.seo .faq-item strong{display:block;color:#37474f;margin-bottom:6px;font-size:0.93rem;}
-.seo .formula-box{background:#f1f5f9;border-left:4px solid #ff5722;padding:12px 16px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#37474f;border-radius:0 8px 8px 0;}
-.seo .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:0.88rem;color:#9a3412;}
-@media(max-width:520px){body{padding:12px;}.calculator{padding:24px 18px;}#output{font-size:26px;}}
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7874772257919446" crossorigin="anonymous"></script>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Roman Numeral Converter – Numbers to Roman Numerals | DigitalToolVault</title>
+<meta name="description" content="Free Roman Numeral Converter. Convert numbers to Roman numerals and back. Supports 1-3999. Instant results, no signup required."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.digitaltoolvault.com/roman-numeral-converter.html"/>
+<meta property="og:title" content="Roman Numeral Converter – Numbers to Roman Numerals | DigitalToolVault"/>
+<meta property="og:description" content="Free Roman Numeral Converter. Convert numbers to Roman numerals and back. Supports 1-3999. Instant results, no signup required."/>
+<meta property="og:url" content="https://www.digitaltoolvault.com/roman-numeral-converter.html"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" /><style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f9fafb;--card-bg:#ffffff;--primary:#37474f;--accent:#ff5722;--text:#1a1a2e;--muted:#6b7280;--border:#37474f;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace}
+body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(#d1d5db 1.5px,transparent 1.5px);background-size:30px 30px;color:var(--text);min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.nav-logo{font-family:var(--font-mono);font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-back{font-family:var(--font-mono);font-size:.8rem;color:#cfd8dc;text-decoration:none;letter-spacing:1px}
+.nav-back:hover{color:var(--accent)}
+.pw{max-width:900px;margin:0 auto;padding:0 20px 80px}
+.th{text-align:center;padding:52px 0 36px}
+.tt{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.th h1{font-family:var(--font-mono);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.25}
+.th p{font-size:.97rem;color:var(--muted);line-height:1.8;max-width:580px;margin:0 auto}
+.tc{background:var(--card-bg);border:2px solid var(--border);box-shadow:15px 15px 0 var(--border);border-radius:4px;padding:36px 40px;margin-bottom:32px}
+.tc input,.tc select,.tc textarea{width:100%;padding:11px 14px;font-family:var(--font-body);font-size:.93rem;color:var(--text);background:#f9fafb;border:2px solid #d1d5db;border-radius:4px;outline:none;margin-bottom:14px;transition:border-color .2s}
+.tc input:focus,.tc select:focus,.tc textarea:focus{border-color:var(--accent);background:#fff}
+.fl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.btn{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.bf{width:100%;padding:14px}
+.rb{background:#f0f4f8;border:2px solid #cfd8dc;border-radius:4px;padding:18px 20px;margin-top:18px;font-family:var(--font-mono);font-size:1rem;color:var(--primary);font-weight:600;min-height:54px}
+.rb span{color:var(--accent)}
+.sec{margin-bottom:28px}
+.sc{background:var(--card-bg);border:2px solid var(--border);box-shadow:6px 6px 0 var(--border);border-radius:4px;padding:28px 32px}
+.sl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sc h2{font-family:var(--font-mono);font-size:1.08rem;font-weight:700;color:var(--primary);margin-bottom:14px}
+.sc p{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:12px}
+.sc p:last-child{margin-bottom:0}
+.sc ul,.sc ol{padding-left:20px;margin-bottom:12px}
+.sc li{font-size:.95rem;color:#374151;line-height:1.85;margin-bottom:6px}
+.fi{border-bottom:1.5px solid #e5e7eb;padding:14px 0}
+.fi:last-child{border-bottom:none}
+.fq{font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.fq::after{content:'+';color:var(--accent);font-size:1.2rem}
+.fq.open::after{content:'-'}
+.fa{font-size:.93rem;color:#374151;line-height:1.8;margin-top:8px;display:none}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.rl{display:block;background:#f9fafb;border:1.5px solid #d1d5db;border-radius:4px;padding:12px 14px;font-family:var(--font-mono);font-size:.78rem;color:var(--primary);text-decoration:none;font-weight:600;transition:all .2s}
+.rl:hover{border-color:var(--accent);color:var(--accent);background:#fff5f2}
+footer{background:var(--primary);color:#cfd8dc;font-family:var(--font-mono);font-size:.78rem;padding:28px 24px;text-align:center}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+.fln{margin-bottom:10px}
+@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Roman Numeral Converter – Numbers to Roman Numerals | DigitalToolVault","description":"Free Roman Numeral Converter. Convert numbers to Roman numerals and back. Supports 1-3999. Instant results, no signup required.","url":"https://www.digitaltoolvault.com/roman-numeral-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com"}}</script>
 </head>
 <body>
-<nav style="position:sticky;top:0;z-index:1000;width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#ffffff;border-bottom:1.5px solid rgba(55,71,79,0.12);font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:20px;">
-  <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#37474f;text-decoration:none;letter-spacing:-0.5px;">DigitalTool<span style="color:#ff5722;">Vault</span></a>
-  <a href="/" style="font-size:13px;color:#94a3b8;text-decoration:none;">&#8592; All Tools</a>
-</nav>
-<div class="calculator">
-  <div class="header">
-    <div class="brand-line"><div class="logo">DigitalTool<span>Vault</span></div><div class="sys-code">ROMAN_CONV_ENGINE</div></div>
-    <div class="tool-title">Roman Numeral Converter</div>
-  </div>
-  <div class="input-grid">
-    <div>
-      <label>Mode</label>
-      <select id="rm-mode">
-        <option value="toRoman">Number → Roman</option>
-        <option value="fromRoman">Roman → Number</option>
-      </select>
-    </div>
-    <div><label>Input_Value</label><input type="text" id="rm-val" placeholder="e.g. 2024 or XIV"></div>
-  </div>
-  <button class="calc-btn" onclick="calcRoman()">CONVERT →</button>
-  <div class="results" onclick="copy('rm-out')">
-    <p id="rm-out">—</p>
-    <div class="breakdown"><span id="rm-sub"></span></div>
-    <div class="copy-hint">CLICK_TO_COPY</div>
-  </div>
+<nav><a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a><a class="nav-back" href="/">&#8592; ALL TOOLS</a></nav>
+<div class="pw">
+<div class="th"><p class="tt">// Free Online Tool</p><h1>Roman Numeral Converter</h1><p>Convert between Arabic numbers and Roman numerals instantly. Supports 1 to 3,999. Perfect for students, designers, and movie sequel fans.</p></div>
+<div class="tc"><label class="fl">ENTER NUMBER OR ROMAN NUMERAL</label>
+<input type="text" id="ri" placeholder="e.g. 2024 or MMXXIV"/>
+<div style="display:flex;gap:10px;margin-bottom:14px;">
+<button class="btn" onclick="tor()">NUMBER TO ROMAN</button>
+<button class="btn" style="background:var(--primary);" onclick="fromr()">ROMAN TO NUMBER</button>
 </div>
+<div class="rb" id="rr">Result will appear here.</div></div>
+<div class="sec"><div class="sc"><p class="sl">// Overview</p><h2>ABOUT ROMAN NUMERALS</h2><p>Roman numerals use Latin letters (I, V, X, L, C, D, M) to represent numbers. Though the decimal system has replaced them in most practical applications, Roman numerals remain common on clock faces, book chapter numbering, movie sequels, Super Bowl numbering, building cornerstones, and formal event programmes.</p><p>Roman numerals represent integers from 1 (I) to 3,999 (MMMCMXCIX). The system uses subtractive notation — IV (4) is I before V, not IIII. Roman numerals are part of the maths curriculum in Indian schools (Class 5-6).</p></div></div><div class="sec"><div class="sc"><p class="sl">// Reference</p><h2>ROMAN NUMERAL VALUES</h2><ul><li>I=1, V=5, X=10, L=50, C=100, D=500, M=1000</li><li>Subtractive: IV=4, IX=9, XL=40, XC=90, CD=400, CM=900</li></ul></div></div><div class="sec"><div class="sc"><p class="sl">// Use Cases</p><h2>WHEN ROMAN NUMERALS ARE USED</h2><ul><li>Clock and watch faces</li><li>Movie sequels and series (Rocky IV, Fast X)</li><li>Super Bowl numbering</li><li>Book chapters, appendices, prefaces</li><li>Monarchs and Popes (King Charles III)</li><li>Class 5-6 school maths in India</li></ul></div></div>
+<div class="sec"><div class="sc"><p class="sl">// FAQ</p><h2>FREQUENTLY ASKED QUESTIONS</h2><div class="fi"><div class="fq">What is 2024 in Roman numerals?</div><div class="fa">MMXXIV (MM=2000, XX=20, IV=4).</div></div><div class="fi"><div class="fq">What is XLII in numbers?</div><div class="fa">XL=40, II=2. XLII=42.</div></div><div class="fi"><div class="fq">Why no zero in Roman numerals?</div><div class="fa">Roman numerals predate zero, which was developed in ancient India.</div></div><div class="fi"><div class="fq">What is the largest Roman numeral?</div><div class="fa">MMMCMXCIX = 3,999.</div></div></div></div>
+<div class="sec"><div class="sc"><p class="sl">// Related Tools</p><h2>RELATED TOOLS YOU MAY LIKE</h2><div class="rg"><a class="rl" href="/binary-converter.html">Binary Converter</a><a class="rl" href="/number-to-word.html">Number to Words</a><a class="rl" href="/cgpa-converter.html">CGPA Converter</a><a class="rl" href="/scientific-calculator.html">Scientific Calculator</a><a class="rl" href="/percentage-calculator.html">Percentage Calculator</a><a class="rl" href="/text-case-converter.html">Text Case Converter</a></div></div></div>
+</div>
+<footer><div class="fln"><a href="/">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div>&#169; 2026 DigitalToolVault &#8212; Free online tools, no signup required.</footer>
 <script>
-const vals=[1000,900,500,400,100,90,50,40,10,9,5,4,1];
-const syms=['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
-function toRoman(n){
-  if(n<1||n>3999)return'Out of range (1–3999)';
-  let r='';
-  for(let i=0;i<vals.length;i++){while(n>=vals[i]){r+=syms[i];n-=vals[i];}}
-  return r;
-}
-function fromRoman(s){
-  s=s.toUpperCase().trim();
-  const map={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
-  let r=0;
-  for(let i=0;i<s.length;i++){
-    const cur=map[s[i]],next=map[s[i+1]];
-    if(!cur)return'Invalid Roman numeral';
-    if(next&&cur<next){r+=next-cur;i++;}else r+=cur;
-  }
-  return r;
-}
-function calcRoman(){
-  const mode=document.getElementById('rm-mode').value;
-  const val=document.getElementById('rm-val').value.trim();
-  let result;
-  if(mode==='toRoman'){result=toRoman(parseInt(val));document.getElementById('rm-sub').innerText=val+' in Roman = '+result;}
-  else{result=fromRoman(val);document.getElementById('rm-sub').innerText=val+' in decimal = '+result;}
-  document.getElementById('rm-out').innerText=result;
-}
-function copy(id){const v=document.getElementById(id).innerText;if(v&&v!=='—'){navigator.clipboard.writeText(v);const el=document.getElementById(id);const o=el.innerText;el.innerText='COPIED!';setTimeout(()=>el.innerText=o,1000);}}
-document.getElementById('rm-val').addEventListener('input',calcRoman);
-document.getElementById('rm-mode').addEventListener('change',calcRoman);
+document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('open');var a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';});});
+var RV=[['M',1000],['CM',900],['D',500],['CD',400],['C',100],['XC',90],['L',50],['XL',40],['X',10],['IX',9],['V',5],['IV',4],['I',1]];
+function tor(){var n=parseInt(document.getElementById('ri').value);if(isNaN(n)||n<1||n>3999){document.getElementById('rr').innerHTML='Enter a number 1-3,999.';return;}var r='';for(var i=0;i<RV.length;i++)while(n>=RV[i][1]){r+=RV[i][0];n-=RV[i][1];}document.getElementById('rr').innerHTML='Roman Numeral: <span>'+r+'</span>';}
+function fromr(){var s=document.getElementById('ri').value.toUpperCase().trim(),mp={I:1,V:5,X:10,L:50,C:100,D:500,M:1000},res=0;for(var i=0;i<s.length;i++){var c=mp[s[i]],nx=mp[s[i+1]];if(!c){document.getElementById('rr').innerHTML='Invalid Roman numeral.';return;}if(nx&&c<nx)res-=c;else res+=c;}document.getElementById('rr').innerHTML='Arabic Number: <span>'+res+'</span>';}
 </script>
-<div class="seo"><h1>Roman Numeral Converter – Convert Numbers to Roman Numerals Instantly</h1>
-<p>Convert any number (1–3999) to Roman numerals or convert Roman numerals back to decimal numbers. Free, instant, no signup required.</p>
-<h2>Roman Numeral Reference Table</h2>
-<table><tr><th>Roman</th><th>Decimal</th><th>Roman</th><th>Decimal</th></tr>
-<tr><td>I</td><td>1</td><td>L</td><td>50</td></tr>
-<tr><td>V</td><td>5</td><td>C</td><td>100</td></tr>
-<tr><td>X</td><td>10</td><td>D</td><td>500</td></tr>
-<tr><td>IV</td><td>4</td><td>M</td><td>1000</td></tr>
-<tr><td>IX</td><td>9</td><td>CM</td><td>900</td></tr>
-<tr><td>XL</td><td>40</td><td>CD</td><td>400</td></tr></table>
-<h2>Common Roman Numerals</h2>
-<table><tr><th>Number</th><th>Roman</th><th>Number</th><th>Roman</th></tr>
-<tr><td>2024</td><td>MMXXIV</td><td>100</td><td>C</td></tr>
-<tr><td>2025</td><td>MMXXV</td><td>500</td><td>D</td></tr>
-<tr><td>1999</td><td>MCMXCIX</td><td>1000</td><td>M</td></tr>
-<tr><td>14</td><td>XIV</td><td>42</td><td>XLII</td></tr></table>
-<div class="tip-box">💡 Roman numerals are still used today for clock faces, book chapters, movie sequels (Rocky IV), Olympic Games years, and Super Bowl numbering (Super Bowl LIX).</div>
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item"><strong>What is the Roman numeral for 2025?</strong>2025 in Roman numerals is MMXXV. M=1000, M=1000, X=10, X=10, V=5.</div>
-<div class="faq-item"><strong>Why is 4 written as IV and not IIII?</strong>IV uses the subtractive notation — placing a smaller numeral before a larger one means subtract. IV = 5 − 1 = 4. This rule applies to IX (9), XL (40), XC (90), CD (400), CM (900).</div>
-<div class="faq-item"><strong>What is the largest Roman numeral?</strong>The standard Roman numeral system goes up to 3,999 (MMMCMXCIX). Numbers beyond this require special notations not covered in standard usage.</div></div>
-</body>
-</html>
+</body></html>
