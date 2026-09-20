@@ -32,6 +32,8 @@ nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;h
 .fl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
 .btn{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;transition:opacity .2s}
 .btn:hover{opacity:.85}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-outline{background:#fff;color:var(--primary);border:2px solid var(--border)}
 .bf{width:100%;padding:14px}
 .rb{background:#f0f4f8;border:2px solid #cfd8dc;border-radius:4px;padding:18px 20px;margin-top:18px;font-family:var(--font-mono);font-size:1rem;color:var(--primary);font-weight:600;min-height:54px}
 .rb span{color:var(--accent)}
@@ -55,15 +57,83 @@ nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;h
 footer{background:var(--primary);color:#cfd8dc;font-family:var(--font-mono);font-size:.78rem;padding:28px 24px;text-align:center}
 footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 .fln{margin-bottom:10px}
-@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}}
+/* --- compressor specific --- */
+.dz{background:#f9fafb;border:2px dashed #d1d5db;border-radius:4px;padding:40px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:.9rem;cursor:pointer;transition:border-color .2s,background .2s}
+.dz:hover,.dz.drag{border-color:var(--accent);background:#fff5f2}
+.dz-icon{font-size:2rem;margin-bottom:10px}
+#fileInput{display:none}
+.hidden{display:none !important}
+.controls-row{display:flex;align-items:center;gap:14px;margin:18px 0 6px}
+.controls-row label{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);white-space:nowrap;margin:0}
+#qualityRange{margin:0;flex:1;accent-color:var(--accent)}
+#qualityVal{font-family:var(--font-mono);font-weight:700;color:var(--primary);min-width:38px;text-align:right}
+.fmt-row{display:flex;gap:8px;margin:14px 0}
+.fmt-btn{flex:1;padding:9px 6px;font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:#f9fafb;border:2px solid #d1d5db;border-radius:4px;cursor:pointer;color:var(--primary);transition:all .15s}
+.fmt-btn.active{border-color:var(--accent);background:#fff5f2;color:var(--accent)}
+.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.preview-box{border:2px solid #d1d5db;border-radius:4px;overflow:hidden;background:#f9fafb}
+.preview-box img{width:100%;height:180px;object-fit:contain;display:block;background:repeating-conic-gradient(#eceff1 0% 25%,#f9fafb 0% 50%) 50%/16px 16px}
+.preview-label{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 10px;border-bottom:1.5px solid #e5e7eb;color:var(--muted);display:flex;justify-content:space-between}
+.preview-label b{color:var(--primary)}
+.stat-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;flex-wrap:wrap;gap:10px}
+.reduction-badge{font-family:var(--font-mono);font-weight:700;color:#2e7d32;background:#e8f5e9;border:1.5px solid #a5d6a7;border-radius:4px;padding:6px 12px;font-size:.85rem}
+.action-row{display:flex;gap:10px;margin-top:16px}
+.action-row .btn{flex:1}
+@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}.preview-grid{grid-template-columns:1fr}}
 </style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Compressor Online – Reduce Image File Size Free | DigitalToolVault","description":"Free Image Compressor. Reduce JPG and PNG file size without losing quality. Browser-based, no upload to server. No signup required.","url":"https://www.digitaltoolvault.com/image-compressor.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com"}}</script>
 </head>
 <body>
 <nav><a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a><a class="nav-back" href="/">&#8592; ALL TOOLS</a></nav>
 <div class="pw">
 <div class="th"><p class="tt">// Free Online Tool</p><h1>Image Compressor</h1><p>Reduce image file size without noticeable quality loss. Compress JPG and PNG images directly in your browser — files never uploaded to any server.</p></div>
-<div class="tc"><div style="background:#f9fafb;border:2px dashed #d1d5db;border-radius:4px;padding:40px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:.9rem;"><div style="font-size:2rem;margin-bottom:10px;">&#128193;</div>Select a file to begin.<br/><small>All processing is local in your browser.</small></div><p style="font-size:.82rem;color:var(--muted);margin-top:12px;text-align:center;font-family:var(--font-mono);">&#128274; Your files never leave your device &mdash; 100% private.</p></div>
+
+<div class="tc">
+  <div id="dropzone" class="dz">
+    <div class="dz-icon">&#128193;</div>
+    Click to select an image, or drag & drop it here.<br/>
+    <small>JPG, PNG, or WebP &middot; processed locally in your browser</small>
+  </div>
+  <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp"/>
+  <p style="font-size:.82rem;color:var(--muted);margin-top:12px;text-align:center;font-family:var(--font-mono);">&#128274; Your files never leave your device &mdash; 100% private.</p>
+
+  <div id="editorPanel" class="hidden">
+    <div class="fmt-row">
+      <button type="button" class="fmt-btn active" data-fmt="image/jpeg">JPG</button>
+      <button type="button" class="fmt-btn" data-fmt="image/webp">WebP</button>
+      <button type="button" class="fmt-btn" data-fmt="image/png">PNG</button>
+    </div>
+
+    <div class="controls-row">
+      <label for="qualityRange">Quality</label>
+      <input type="range" id="qualityRange" min="1" max="100" value="80"/>
+      <span id="qualityVal">80%</span>
+    </div>
+
+    <div class="preview-grid">
+      <div class="preview-box">
+        <div class="preview-label"><span>Original</span><b id="origSize">–</b></div>
+        <img id="origImg" alt="Original preview"/>
+      </div>
+      <div class="preview-box">
+        <div class="preview-label"><span>Compressed</span><b id="compSize">–</b></div>
+        <img id="compImg" alt="Compressed preview"/>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <span id="reductionBadge" class="reduction-badge hidden">– smaller</span>
+      <span id="dimsText" style="font-family:var(--font-mono);font-size:.8rem;color:var(--muted)"></span>
+    </div>
+
+    <div class="action-row">
+      <button type="button" id="downloadBtn" class="btn" disabled>Download Compressed Image</button>
+      <button type="button" id="resetBtn" class="btn btn-outline">Choose Another</button>
+    </div>
+  </div>
+</div>
+
 <div class="sec"><div class="sc"><p class="sl">// Overview</p><h2>ABOUT THE IMAGE COMPRESSOR</h2><p>The Image Compressor reduces JPG, PNG, and WebP file sizes using the HTML5 Canvas API, entirely in your browser. Images are never uploaded to any server — ensuring complete privacy, especially important for sensitive documents like Aadhaar, mark sheets, and personal photos.</p><p>Large images cause problems everywhere: government portals reject photos above 50-100 KB, WhatsApp sends compressed images slowly on weak connections, and email attachment limits are easily hit. Our compressor reduces file size while maintaining visually acceptable quality — at 75-85% quality JPG compression is virtually invisible to the human eye.</p></div></div><div class="sec"><div class="sc"><p class="sl">// Why Compress</p><h2>WHY FILE SIZE MATTERS</h2><ul><li>Government portals (UPSC, SSC, banking forms) require photos under 50 KB</li><li>WhatsApp — compressed images send faster on slow 3G/4G connections</li><li>Email — reduce attachment sizes to stay within limits</li><li>Websites — images are 50-70% of page weight; smaller images load faster</li></ul></div></div><div class="sec"><div class="sc"><p class="sl">// Tips</p><h2>COMPRESSION TIPS</h2><ul><li>For government form photos: target under 50 KB in JPG format</li><li>For WhatsApp: 200-500 KB balances quality and speed</li><li>Quality 75-85% is virtually indistinguishable from original for photos</li><li>PNG is better for screenshots with text; JPG is better for photos</li></ul></div></div>
+
 <div class="sec"><div class="sc"><p class="sl">// FAQ</p><h2>FREQUENTLY ASKED QUESTIONS</h2><div class="fi"><div class="fq">Will compression make my image blurry?</div><div class="fa">At 75-85% quality, compression is invisible. Below 50% you may see pixellation.</div></div><div class="fi"><div class="fq">Can I compress Aadhaar images for government portals?</div><div class="fa">Yes — one of the most common use cases. Compress to under 50-100 KB as required.</div></div><div class="fi"><div class="fq">How much size reduction can I expect?</div><div class="fa">Typically 40-70% reduction at 80% quality with minimal visible quality loss.</div></div><div class="fi"><div class="fq">What formats are supported?</div><div class="fa">JPG, PNG, and WebP.</div></div></div></div>
 <div class="sec"><div class="sc"><p class="sl">// Related Tools</p><h2>RELATED TOOLS YOU MAY LIKE</h2><div class="rg"><a class="rl" href="/image-watermark.html">Image Watermark</a><a class="rl" href="/jpg-to-pdf.html">JPG to PDF</a><a class="rl" href="/qr-generator.html">QR Generator</a><a class="rl" href="/password-generator.html">Password Generator</a><a class="rl" href="/pdf-watermark.html">PDF Watermark</a><a class="rl" href="/word-counter.html">Word Counter</a></div></div></div>
 </div>
@@ -71,5 +141,179 @@ footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 <script>
 document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('open');var a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';});});
 
+/* ---------- Image Compressor logic ---------- */
+(function(){
+  var dropzone   = document.getElementById('dropzone');
+  var fileInput  = document.getElementById('fileInput');
+  var editorPanel= document.getElementById('editorPanel');
+  var origImg    = document.getElementById('origImg');
+  var compImg    = document.getElementById('compImg');
+  var origSizeEl = document.getElementById('origSize');
+  var compSizeEl = document.getElementById('compSize');
+  var qualityRange = document.getElementById('qualityRange');
+  var qualityVal  = document.getElementById('qualityVal');
+  var reductionBadge = document.getElementById('reductionBadge');
+  var dimsText   = document.getElementById('dimsText');
+  var downloadBtn= document.getElementById('downloadBtn');
+  var resetBtn   = document.getElementById('resetBtn');
+  var fmtBtns    = document.querySelectorAll('.fmt-btn');
+
+  var state = {
+    originalFile: null,
+    originalUrl: null,
+    img: null,
+    width: 0,
+    height: 0,
+    format: 'image/jpeg',
+    compressedBlob: null,
+    debounceTimer: null
+  };
+
+  function fmtBytes(bytes){
+    if(bytes === 0) return '0 KB';
+    if(bytes < 1024) return bytes + ' B';
+    var kb = bytes / 1024;
+    if(kb < 1024) return kb.toFixed(kb < 10 ? 1 : 0) + ' KB';
+    return (kb/1024).toFixed(2) + ' MB';
+  }
+
+  function openFileDialog(){ fileInput.click(); }
+  dropzone.addEventListener('click', openFileDialog);
+  dropzone.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') openFileDialog(); });
+
+  ['dragenter','dragover'].forEach(function(evt){
+    dropzone.addEventListener(evt, function(e){ e.preventDefault(); e.stopPropagation(); dropzone.classList.add('drag'); });
+  });
+  ['dragleave','drop'].forEach(function(evt){
+    dropzone.addEventListener(evt, function(e){ e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('drag'); });
+  });
+  dropzone.addEventListener('drop', function(e){
+    var files = e.dataTransfer.files;
+    if(files && files.length) handleFile(files[0]);
+  });
+
+  fileInput.addEventListener('change', function(e){
+    if(e.target.files && e.target.files.length) handleFile(e.target.files[0]);
+  });
+
+  function handleFile(file){
+    if(!file.type.match(/^image\/(jpeg|png|webp)$/)){
+      alert('Please select a JPG, PNG, or WebP image.');
+      return;
+    }
+    state.originalFile = file;
+    if(state.originalUrl) URL.revokeObjectURL(state.originalUrl);
+    state.originalUrl = URL.createObjectURL(file);
+
+    var img = new Image();
+    img.onload = function(){
+      state.img = img;
+      state.width = img.naturalWidth;
+      state.height = img.naturalHeight;
+      origImg.src = state.originalUrl;
+      origSizeEl.textContent = fmtBytes(file.size);
+      dimsText.textContent = state.width + ' × ' + state.height + ' px';
+      editorPanel.classList.remove('hidden');
+
+      // Default the format toggle to match the uploaded file's type when sensible
+      fmtBtns.forEach(function(b){ b.classList.remove('active'); });
+      var matchBtn = Array.prototype.find.call(fmtBtns, function(b){ return b.dataset.fmt === file.type; }) 
+                      || Array.prototype.find.call(fmtBtns, function(b){ return b.dataset.fmt === 'image/jpeg'; });
+      matchBtn.classList.add('active');
+      state.format = matchBtn.dataset.fmt;
+
+      compress();
+    };
+    img.onerror = function(){ alert('Could not read that image. Please try another file.'); };
+    img.src = state.originalUrl;
+  }
+
+  fmtBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      fmtBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      state.format = btn.dataset.fmt;
+      compress();
+    });
+  });
+
+  qualityRange.addEventListener('input', function(){
+    qualityVal.textContent = qualityRange.value + '%';
+    clearTimeout(state.debounceTimer);
+    state.debounceTimer = setTimeout(compress, 120);
+  });
+
+  function compress(){
+    if(!state.img) return;
+    var canvas = document.createElement('canvas');
+    canvas.width = state.width;
+    canvas.height = state.height;
+    var ctx = canvas.getContext('2d');
+
+    // PNG has no alpha issue, but JPG needs an opaque background
+    if(state.format === 'image/jpeg'){
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+    }
+    ctx.drawImage(state.img, 0, 0, canvas.width, canvas.height);
+
+    var quality = Number(qualityRange.value) / 100;
+    // PNG ignores the quality argument (lossless), so we just re-encode it
+    canvas.toBlob(function(blob){
+      if(!blob){ alert('Compression failed. Try a smaller image or a different browser.'); return; }
+      state.compressedBlob = blob;
+      var url = URL.createObjectURL(blob);
+      if(compImg.dataset.prevUrl) URL.revokeObjectURL(compImg.dataset.prevUrl);
+      compImg.src = url;
+      compImg.dataset.prevUrl = url;
+      compSizeEl.textContent = fmtBytes(blob.size);
+
+      var origSize = state.originalFile.size;
+      var diffPct = ((origSize - blob.size) / origSize) * 100;
+      reductionBadge.classList.remove('hidden');
+      if(diffPct > 0){
+        reductionBadge.textContent = diffPct.toFixed(0) + '% smaller';
+        reductionBadge.style.color = '#2e7d32';
+        reductionBadge.style.background = '#e8f5e9';
+        reductionBadge.style.borderColor = '#a5d6a7';
+      } else {
+        reductionBadge.textContent = Math.abs(diffPct).toFixed(0) + '% larger';
+        reductionBadge.style.color = '#c62828';
+        reductionBadge.style.background = '#ffebee';
+        reductionBadge.style.borderColor = '#ef9a9a';
+      }
+      downloadBtn.disabled = false;
+    }, state.format, quality);
+  }
+
+  downloadBtn.addEventListener('click', function(){
+    if(!state.compressedBlob) return;
+    var ext = state.format === 'image/png' ? 'png' : (state.format === 'image/webp' ? 'webp' : 'jpg');
+    var baseName = (state.originalFile.name || 'image').replace(/\.[^/.]+$/, '');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(state.compressedBlob);
+    a.download = baseName + '-compressed.' + ext;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+
+  resetBtn.addEventListener('click', function(){
+    state.originalFile = null;
+    state.img = null;
+    state.compressedBlob = null;
+    fileInput.value = '';
+    editorPanel.classList.add('hidden');
+    origImg.src = '';
+    compImg.src = '';
+    origSizeEl.textContent = '–';
+    compSizeEl.textContent = '–';
+    reductionBadge.classList.add('hidden');
+    dimsText.textContent = '';
+    downloadBtn.disabled = true;
+    qualityRange.value = 80;
+    qualityVal.textContent = '80%';
+  });
+})();
 </script>
 </body></html>
