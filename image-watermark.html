@@ -32,6 +32,8 @@ nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;h
 .fl{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
 .btn{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:var(--font-mono);font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;transition:opacity .2s}
 .btn:hover{opacity:.85}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-outline{background:#fff;color:var(--primary);border:2px solid var(--border)}
 .bf{width:100%;padding:14px}
 .rb{background:#f0f4f8;border:2px solid #cfd8dc;border-radius:4px;padding:18px 20px;margin-top:18px;font-family:var(--font-mono);font-size:1rem;color:var(--primary);font-weight:600;min-height:54px}
 .rb span{color:var(--accent)}
@@ -55,14 +57,140 @@ nav{position:sticky;top:0;z-index:100;background:var(--primary);padding:0 24px;h
 footer{background:var(--primary);color:#cfd8dc;font-family:var(--font-mono);font-size:.78rem;padding:28px 24px;text-align:center}
 footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 .fln{margin-bottom:10px}
-@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}}
+/* --- watermark tool specific --- */
+.dz{background:#f9fafb;border:2px dashed #d1d5db;border-radius:4px;padding:40px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:.9rem;cursor:pointer;transition:border-color .2s,background .2s}
+.dz:hover,.dz.drag{border-color:var(--accent);background:#fff5f2}
+.dz-icon{font-size:2rem;margin-bottom:10px}
+#fileInput{display:none}
+.hidden{display:none !important}
+.canvas-wrap{margin-top:20px;border:2px solid #d1d5db;border-radius:4px;background:repeating-conic-gradient(#eceff1 0% 25%,#f9fafb 0% 50%) 50%/18px 18px;padding:10px;text-align:center}
+#previewCanvas{max-width:100%;height:auto;display:block;margin:0 auto;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.opt-grid > div{min-width:0}
+.opt-grid input,.opt-grid select{margin-bottom:0 !important}
+.full{grid-column:1 / -1}
+.slider-row{display:flex;align-items:center;gap:12px}
+.slider-row input[type=range]{flex:1;margin:0 !important;padding:0 !important;border:none !important;background:transparent !important;accent-color:var(--accent)}
+.slider-val{font-family:var(--font-mono);font-size:.8rem;font-weight:700;color:var(--primary);min-width:44px;text-align:right}
+.pos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.pos-btn{padding:9px 4px;font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:#f9fafb;border:2px solid #d1d5db;border-radius:4px;cursor:pointer;color:var(--primary);transition:all .15s}
+.pos-btn.active{border-color:var(--accent);background:#fff5f2;color:var(--accent)}
+.color-row{display:flex;gap:8px;align-items:center}
+.color-row input[type=color]{width:52px;height:42px;padding:3px;margin-bottom:0 !important;cursor:pointer}
+.chk-row{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.78rem;color:var(--primary);font-weight:600}
+.chk-row input[type=checkbox]{width:auto !important;margin:0 !important;accent-color:var(--accent)}
+.action-row{display:flex;gap:10px;margin-top:20px}
+.action-row .btn{flex:1}
+.status{margin-top:12px;font-family:var(--font-mono);font-size:.78rem;color:var(--muted);text-align:center;min-height:16px}
+@media(max-width:600px){.tc{padding:20px 16px}.sc{padding:20px 16px}.opt-grid{grid-template-columns:1fr}.action-row{flex-direction:column}}
 </style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Watermark Tool – Add Text Watermark to Photos | DigitalToolVault","description":"Free Image Watermark Tool. Add custom text watermarks to photos in your browser. Protect images from unauthorized use. No signup required.","url":"https://www.digitaltoolvault.com/image-watermark.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"DigitalToolVault","url":"https://www.digitaltoolvault.com"}}</script>
 </head>
 <body>
 <nav><a class="nav-logo" href="/">Digital<span>Tool</span>Vault</a><a class="nav-back" href="/">&#8592; ALL TOOLS</a></nav>
 <div class="pw">
 <div class="th"><p class="tt">// Free Online Tool</p><h1>Image Watermark Tool</h1><p>Add a custom text watermark to any image. Set text, position, and opacity. Your image stays in your browser — nothing is uploaded to any server.</p></div>
-<div class="tc"><div style="background:#f9fafb;border:2px dashed #d1d5db;border-radius:4px;padding:40px;text-align:center;color:var(--muted);font-family:var(--font-mono);font-size:.9rem;"><div style="font-size:2rem;margin-bottom:10px;">&#128193;</div>Select a file to begin.<br/><small>All processing is local in your browser.</small></div><p style="font-size:.82rem;color:var(--muted);margin-top:12px;text-align:center;font-family:var(--font-mono);">&#128274; Your files never leave your device &mdash; 100% private.</p></div>
+
+<div class="tc">
+  <div id="dropzone" class="dz">
+    <div class="dz-icon">&#128193;</div>
+    Click to select an image, or drag &amp; drop it here.<br/>
+    <small>JPG, PNG, or WebP &middot; processed locally in your browser</small>
+  </div>
+  <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp"/>
+  <p style="font-size:.82rem;color:var(--muted);margin-top:12px;text-align:center;font-family:var(--font-mono);">&#128274; Your files never leave your device &mdash; 100% private.</p>
+
+  <div id="editorPanel" class="hidden">
+    <div class="canvas-wrap"><canvas id="previewCanvas"></canvas></div>
+
+    <div class="opt-grid">
+      <div class="full">
+        <label class="fl" for="wmText">Watermark text</label>
+        <input type="text" id="wmText" value="© Your Name" maxlength="80" placeholder="© Your Name / @handle / yoursite.com"/>
+      </div>
+
+      <div class="full">
+        <label class="fl">Position</label>
+        <div class="pos-grid">
+          <button type="button" class="pos-btn" data-pos="tl">Top Left</button>
+          <button type="button" class="pos-btn" data-pos="tc">Top</button>
+          <button type="button" class="pos-btn" data-pos="tr">Top Right</button>
+          <button type="button" class="pos-btn" data-pos="ml">Left</button>
+          <button type="button" class="pos-btn" data-pos="mc">Center</button>
+          <button type="button" class="pos-btn" data-pos="mr">Right</button>
+          <button type="button" class="pos-btn" data-pos="bl">Bottom Left</button>
+          <button type="button" class="pos-btn" data-pos="bc">Bottom</button>
+          <button type="button" class="pos-btn active" data-pos="br">Bottom Right</button>
+        </div>
+      </div>
+
+      <div>
+        <label class="fl" for="wmSize">Text size</label>
+        <div class="slider-row">
+          <input type="range" id="wmSize" min="1" max="20" step="0.5" value="5"/>
+          <span class="slider-val" id="wmSizeVal">5%</span>
+        </div>
+      </div>
+
+      <div>
+        <label class="fl" for="wmOpacity">Opacity</label>
+        <div class="slider-row">
+          <input type="range" id="wmOpacity" min="5" max="100" value="60"/>
+          <span class="slider-val" id="wmOpacityVal">60%</span>
+        </div>
+      </div>
+
+      <div>
+        <label class="fl" for="wmRotate">Rotation</label>
+        <div class="slider-row">
+          <input type="range" id="wmRotate" min="-90" max="90" value="0"/>
+          <span class="slider-val" id="wmRotateVal">0°</span>
+        </div>
+      </div>
+
+      <div>
+        <label class="fl" for="wmFont">Font</label>
+        <select id="wmFont">
+          <option value="Inter, Arial, sans-serif" selected>Sans-serif</option>
+          <option value="Georgia, 'Times New Roman', serif">Serif</option>
+          <option value="'JetBrains Mono', Consolas, monospace">Monospace</option>
+          <option value="'Brush Script MT', cursive">Script</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="fl" for="wmColor">Text colour</label>
+        <div class="color-row">
+          <input type="color" id="wmColor" value="#ffffff"/>
+          <select id="wmShadow">
+            <option value="1" selected>With shadow</option>
+            <option value="0">No shadow</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="fl">Tile watermark</label>
+        <label class="chk-row"><input type="checkbox" id="wmTile"/> Repeat across whole image</label>
+      </div>
+
+      <div>
+        <label class="fl" for="outFormat">Output format</label>
+        <select id="outFormat">
+          <option value="image/jpeg" selected>JPG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp">WebP</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button type="button" id="downloadBtn" class="btn">Download Watermarked Image</button>
+      <button type="button" id="resetBtn" class="btn btn-outline">Choose Another</button>
+    </div>
+    <div id="status" class="status"></div>
+  </div>
+</div>
+
 <div class="sec"><div class="sc"><p class="sl">// Overview</p><h2>ABOUT THE WATERMARK TOOL</h2><p>The Image Watermark Tool adds custom text overlays to photos directly in your browser. Watermarking protects photographers, content creators, businesses, and anyone sharing images online from having their work used without credit or permission.</p><p>Image theft is widespread in India on social media and WhatsApp. Adding a watermark with your name, Instagram handle, or brand makes it hard for others to use your images without attribution. Even if someone screenshots your watermarked image, your name remains visible.</p><p>All processing happens locally — images are never uploaded to our servers, ensuring privacy for personal and business photos.</p></div></div><div class="sec"><div class="sc"><p class="sl">// Use Cases</p><h2>WHO NEEDS WATERMARKS</h2><ul><li>Photographers protecting portfolio images on Instagram</li><li>Businesses branding product photos for marketplaces</li><li>Artists protecting artwork on social media</li><li>Real estate agents branding property listing photos</li><li>Tutors protecting study materials from copying</li></ul></div></div><div class="sec"><div class="sc"><p class="sl">// Tips</p><h2>WATERMARK TIPS</h2><ul><li>Place watermarks where they cannot easily be cropped out</li><li>50-70% opacity balances visibility and aesthetics</li><li>Include your website URL or Instagram handle</li><li>For client previews use larger prominent watermarks, removed after payment</li></ul></div></div>
 <div class="sec"><div class="sc"><p class="sl">// FAQ</p><h2>FREQUENTLY ASKED QUESTIONS</h2><div class="fi"><div class="fq">Can I add a logo watermark?</div><div class="fa">Text watermarks only. For logo/image watermarks use Canva or Adobe Express.</div></div><div class="fi"><div class="fq">Will watermark affect image quality?</div><div class="fa">No. The watermark is a text overlay — image quality is unchanged.</div></div><div class="fi"><div class="fq">Is the watermarked image saved anywhere?</div><div class="fa">No. All processing is local. The image is downloaded directly to your device.</div></div><div class="fi"><div class="fq">Can I watermark multiple images?</div><div class="fa">Currently one image at a time.</div></div></div></div>
 <div class="sec"><div class="sc"><p class="sl">// Related Tools</p><h2>RELATED TOOLS YOU MAY LIKE</h2><div class="rg"><a class="rl" href="/image-compressor.html">Image Compressor</a><a class="rl" href="/jpg-to-pdf.html">JPG to PDF</a><a class="rl" href="/pdf-watermark.html">PDF Watermark</a><a class="rl" href="/qr-generator.html">QR Generator</a><a class="rl" href="/password-generator.html">Password Generator</a><a class="rl" href="/word-counter.html">Word Counter</a></div></div></div>
@@ -71,5 +199,207 @@ footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 <script>
 document.querySelectorAll('.fq').forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('open');var a=q.nextElementSibling;a.style.display=a.style.display==='block'?'none':'block';});});
 
+/* ---------- Image Watermark logic ---------- */
+(function(){
+  var dropzone    = document.getElementById('dropzone');
+  var fileInput   = document.getElementById('fileInput');
+  var editorPanel = document.getElementById('editorPanel');
+  var canvas      = document.getElementById('previewCanvas');
+  var ctx         = canvas.getContext('2d');
+  var downloadBtn = document.getElementById('downloadBtn');
+  var resetBtn    = document.getElementById('resetBtn');
+  var statusEl    = document.getElementById('status');
+
+  var wmText    = document.getElementById('wmText');
+  var wmSize    = document.getElementById('wmSize');
+  var wmOpacity = document.getElementById('wmOpacity');
+  var wmRotate  = document.getElementById('wmRotate');
+  var wmFont    = document.getElementById('wmFont');
+  var wmColor   = document.getElementById('wmColor');
+  var wmShadow  = document.getElementById('wmShadow');
+  var wmTile    = document.getElementById('wmTile');
+  var outFormat = document.getElementById('outFormat');
+  var posBtns   = document.querySelectorAll('.pos-btn');
+
+  var state = { file:null, url:null, img:null, w:0, h:0, pos:'br' };
+
+  /* ---- file intake ---- */
+  dropzone.addEventListener('click', function(){ fileInput.click(); });
+
+  ['dragenter','dragover'].forEach(function(e){
+    dropzone.addEventListener(e, function(ev){ ev.preventDefault(); ev.stopPropagation(); dropzone.classList.add('drag'); });
+  });
+  ['dragleave','drop'].forEach(function(e){
+    dropzone.addEventListener(e, function(ev){ ev.preventDefault(); ev.stopPropagation(); dropzone.classList.remove('drag'); });
+  });
+  dropzone.addEventListener('drop', function(ev){
+    if(ev.dataTransfer.files && ev.dataTransfer.files.length) handleFile(ev.dataTransfer.files[0]);
+  });
+  fileInput.addEventListener('change', function(ev){
+    if(ev.target.files && ev.target.files.length) handleFile(ev.target.files[0]);
+  });
+
+  function handleFile(file){
+    if(!/^image\/(jpeg|png|webp)$/.test(file.type)){
+      alert('Please select a JPG, PNG, or WebP image.');
+      return;
+    }
+    state.file = file;
+    if(state.url) URL.revokeObjectURL(state.url);
+    state.url = URL.createObjectURL(file);
+
+    var img = new Image();
+    img.onload = function(){
+      state.img = img;
+      state.w = img.naturalWidth;
+      state.h = img.naturalHeight;
+      canvas.width = state.w;
+      canvas.height = state.h;
+      editorPanel.classList.remove('hidden');
+      statusEl.textContent = state.w + ' × ' + state.h + ' px';
+      draw();
+    };
+    img.onerror = function(){ alert('Could not read that image. Please try another file.'); };
+    img.src = state.url;
+  }
+
+  /* ---- controls ---- */
+  posBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      posBtns.forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      state.pos = b.dataset.pos;
+      draw();
+    });
+  });
+
+  wmSize.addEventListener('input', function(){ document.getElementById('wmSizeVal').textContent = wmSize.value + '%'; draw(); });
+  wmOpacity.addEventListener('input', function(){ document.getElementById('wmOpacityVal').textContent = wmOpacity.value + '%'; draw(); });
+  wmRotate.addEventListener('input', function(){ document.getElementById('wmRotateVal').textContent = wmRotate.value + '°'; draw(); });
+  [wmText, wmFont, wmColor, wmShadow, wmTile].forEach(function(el){
+    el.addEventListener('input', draw);
+    el.addEventListener('change', draw);
+  });
+
+  /* ---- rendering ---- */
+  function draw(){
+    if(!state.img) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(state.img, 0, 0, state.w, state.h);
+
+    var text = wmText.value;
+    if(!text.trim()) return;
+
+    // Font size is a percentage of the image's shorter side, so it scales
+    // consistently across portrait and landscape images.
+    var base = Math.min(state.w, state.h);
+    var fontSize = base * (parseFloat(wmSize.value) / 100);
+    var pad = base * 0.03;
+
+    ctx.save();
+    ctx.globalAlpha = parseInt(wmOpacity.value, 10) / 100;
+    ctx.font = '700 ' + fontSize + 'px ' + wmFont.value;
+    ctx.fillStyle = wmColor.value;
+
+    if(wmShadow.value === '1'){
+      ctx.shadowColor = 'rgba(0,0,0,0.55)';
+      ctx.shadowBlur = fontSize * 0.22;
+      ctx.shadowOffsetX = fontSize * 0.04;
+      ctx.shadowOffsetY = fontSize * 0.04;
+    }
+
+    var angle = parseInt(wmRotate.value, 10) * Math.PI / 180;
+
+    if(wmTile.checked){
+      drawTiled(text, fontSize, angle);
+    } else {
+      drawSingle(text, fontSize, pad, angle);
+    }
+    ctx.restore();
+  }
+
+  function drawSingle(text, fontSize, pad, angle){
+    var m = ctx.measureText(text);
+    var tw = m.width;
+    var p = state.pos;
+
+    var x, y;
+    if(p[1] === 'l'){ ctx.textAlign = 'left';   x = pad; }
+    else if(p[1] === 'r'){ ctx.textAlign = 'right'; x = state.w - pad; }
+    else { ctx.textAlign = 'center'; x = state.w / 2; }
+
+    if(p[0] === 't'){ ctx.textBaseline = 'top';    y = pad; }
+    else if(p[0] === 'b'){ ctx.textBaseline = 'alphabetic'; y = state.h - pad; }
+    else { ctx.textBaseline = 'middle'; y = state.h / 2; }
+
+    if(angle){
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.fillText(text, 0, 0);
+    } else {
+      ctx.fillText(text, x, y);
+    }
+    return tw;
+  }
+
+  function drawTiled(text, fontSize, angle){
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    var tw = ctx.measureText(text).width;
+    var stepX = tw + fontSize * 2.2;
+    var stepY = fontSize * 3.2;
+    var diag = Math.sqrt(state.w*state.w + state.h*state.h);
+
+    ctx.translate(state.w/2, state.h/2);
+    ctx.rotate(angle || -Math.PI/9); // default diagonal tiling when no rotation set
+
+    for(var y = -diag/2; y <= diag/2; y += stepY){
+      for(var x = -diag/2; x <= diag/2; x += stepX){
+        ctx.fillText(text, x, y);
+      }
+    }
+  }
+
+  /* ---- download ---- */
+  downloadBtn.addEventListener('click', function(){
+    if(!state.img) return;
+    var type = outFormat.value;
+    var ext  = type === 'image/png' ? 'png' : (type === 'image/webp' ? 'webp' : 'jpg');
+    var quality = type === 'image/png' ? undefined : 0.92;
+
+    var out = canvas;
+    // JPG has no transparency, so flatten onto white first.
+    if(type === 'image/jpeg'){
+      out = document.createElement('canvas');
+      out.width = canvas.width; out.height = canvas.height;
+      var octx = out.getContext('2d');
+      octx.fillStyle = '#ffffff';
+      octx.fillRect(0, 0, out.width, out.height);
+      octx.drawImage(canvas, 0, 0);
+    }
+
+    out.toBlob(function(blob){
+      if(!blob){ statusEl.textContent = 'Could not create the file. Try a different format.'; return; }
+      var baseName = (state.file.name || 'image').replace(/\.[^/.]+$/, '');
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = baseName + '-watermarked.' + ext;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+      statusEl.textContent = 'Saved as ' + a.download;
+    }, type, quality);
+  });
+
+  resetBtn.addEventListener('click', function(){
+    if(state.url) URL.revokeObjectURL(state.url);
+    state = { file:null, url:null, img:null, w:0, h:0, pos:state.pos };
+    fileInput.value = '';
+    editorPanel.classList.add('hidden');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    statusEl.textContent = '';
+  });
+})();
 </script>
 </body></html>
